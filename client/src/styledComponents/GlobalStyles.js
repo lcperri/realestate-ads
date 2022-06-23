@@ -35,8 +35,4 @@ export default createGlobalStyle`
         font-size: 10px;
         font-weight: 300;
     }
-
-
-
-    
 `
