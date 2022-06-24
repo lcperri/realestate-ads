@@ -1,41 +1,45 @@
-import {
-    ALL_PROPERTIES,
-  LOADING,
-  PROPERTY
-} from './actionTypes';
+import { ALL_PROPERTIES, LOADING, PROPERTY, FILTER } from "./actionTypes";
 
 const initialState = {
   loading: true,
   notFound: false,
   error: {},
   properties: [],
-  property: {}
-}
+  property: {},
+  city: "",
+};
 
 const reducer = (state = initialState, { type, payload }) => {
   switch (type) {
     case LOADING:
-        return {
+      return {
         ...state,
-        loading: true
-        };
+        loading: true,
+      };
     case ALL_PROPERTIES:
-        return {
-            ...state,
-            properties: payload,
-            loading: false
-        };
+      return {
+        ...state,
+        properties: payload,
+        loading: false,
+      };
     case PROPERTY:
-        return {
-            ...state,
-            property: payload,
-            loading: false
-        }
-    default:
-        return {
-            ...state
-        };
-  }
-}
+      return {
+        ...state,
+        property: payload,
+        loading: false,
+      };
+    case FILTER:
+      return {
+        ...state,
+        properties: payload,
+        loading: false,
+      };
 
-export default reducer
+    default:
+      return {
+        ...state,
+      };
+  }
+};
+
+export default reducer;
