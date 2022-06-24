@@ -1,26 +1,26 @@
-import React from 'react'
-import Cards from '../../components/Cards'
-import CardsContainer from '../../styledComponents/CardsContainer'
-import StyledCard from '../../styledComponents/StyledCard'
-import Filter from '../../components/Filters'
+import React from "react";
+import Cards from "../../components/Cards";
+import CardsContainer from "../../styledComponents/CardsContainer";
+import StyledCard from "../../styledComponents/StyledCard";
+import Filter from "../../components/Filters";
+import Nav from "../../components/Nav";
 
 const Home = () => {
   return (
-
     <div>
       <div>
-        Aquí Navbar
+        <Nav />
       </div>
       <div>
-        <div className='LeftPanel'>
-          <Filter/>
+        <div className="LeftPanel">
+          <Filter />
         </div>
         <CardsContainer>
-            <Cards/>
+          <Cards />
         </CardsContainer>
-      </div>      
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
