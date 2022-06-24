@@ -9,6 +9,8 @@ const Cards = () => {
   const dispatch = useDispatch()
 
   return (
+    
+
     <CardsContainer>
       {
         propertiesList.map(e => (
