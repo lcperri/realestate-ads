@@ -1,7 +1,7 @@
 .navbar {
     height: 56px;
     width: 100%;    
-    background-color: rgb(12, 12, 12);
+    background-color: #444;
     display: flex;
     flex-wrap: wrap;
     justify-content:  space-between;
@@ -37,12 +37,12 @@
     border-bottom: 4px solid transparent;
 }
 .div-botones {
-       margin-left: 700px;
+       margin-left: 630px;
 }
 .btn-nav{
     background-color:rgb(80, 169, 196);
     border: none;
-    border-radius: 10px;
+    border-radius: 30px;
     margin-right: 10px;
     padding: 5px;
     color: black;

@@ -1,8 +1,14 @@
 import React from 'react'
+import Nav from '../../components/Nav';
+import CreateForm from '../../components/FormCreateProp';
 
 const Create = () => {
   return (
-    <div>Create</div>
+    <div>
+      <Nav/>
+
+      <CreateForm/>
+    </div>
   )
 }
 

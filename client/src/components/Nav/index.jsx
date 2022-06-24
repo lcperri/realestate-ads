@@ -11,6 +11,7 @@ const Nav = () => {
           <li className="items">
             <NavLink to={'/home'}>Home</NavLink>
             <NavLink to={'/properties'}>Propiedades</NavLink>
+            <NavLink to={'home/create'}>Publicar Prop.</NavLink>
             <NavLink to={'/about'}>About</NavLink>
             <NavLink to={'/contact'}>Contact</NavLink>                        
           </li>
