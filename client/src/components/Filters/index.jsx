@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "../../styledComponents/Button";
+import { useDispatch, useSelector } from "react-redux";
+import { filter } from "../../redux/actions";
+
 import {
   Container,
   Title,
@@ -10,31 +13,80 @@ import {
   StyledButton,
 } from "../../styledComponents/FiltersStyles";
 
-const Filter = () => {
+export default function Filter() {
+  const dispatch = useDispatch();
+  // const city = useSelector((state) => state.city);
+
+  const [input, setInput] = useState({
+    city: "Buenos Aires",
+    // city: city,
+    type: "",
+    rooms: "",
+    bathrooms: "",
+    neighbourhood: "",
+    // rentPrice: "",
+    // sellPrice: "",
+    priceMax: "",
+  });
+
+  function handleChange(e) {
+    e.preventDefault();
+    setInput({
+      ...input,
+      [e.target.name]: e.target.value,
+    });
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    dispatch(filter(input));
+    // alert("EN CONSTRUCCION");
+    // setInput({
+    //   type: "",
+    //   rooms: "",
+    //   bathrooms: "",
+    //   neighbourhood: "",
+    //   // rentPrice: "",
+    //   // sellPrice: "",
+    //   priceMax: "",
+    // });
+  }
+
   return (
     <Container>
-      <form>
+      <form onSubmit={(e) => handleSubmit(e)} autoComplete="off">
         <Title>Filtrar Por</Title>
 
         <Input
-          // action={{ icon: "search" }}
-          name="search"
+          type="text"
+          value={input.neighbourhood}
+          name="neighbourhood"
           placeholder="Zona/Barrio"
+          onChange={(e) => handleChange(e)}
         />
 
         <Label>
           <FilterType>Tipo de Propiedad</FilterType>
-          <Select name="type">
+          <Select name="type" value={input.type} onChange={handleChange}>
             <option value="">Cualquier</option>
-            <option value="apartment">Departamento</option>
-            <option value="house">Casa</option>
-            <option value="condo">Condo</option>
-            <option value="townhome">Casa de Campo</option>
+            <option value="Departamento">Departamento</option>
+            <option value="Casa">Casa</option>
+            <option value="Casa de Campo">Casa de Campo</option>
+            <option value="Casa de Playa">Casa de Playa</option>
+            <option value="Garage">Grarage</option>
+            <option value="Habitacion">Habitacion</option>
+            <option value="Hotel">Hotel</option>
+            <option value="Local Comercial">Local Comercial</option>
+            <option value="Local Industrial">Local Industrial</option>
+            <option value="Oficina">Oficina</option>
+            <option value="Otros">Otros</option>
+            <option value="Terreno/Lote">Terreno/Lote</option>
+            <option value="Terreno agricola">Terreno agricola</option>
           </Select>
         </Label>
         <Label>
           <FilterType>Habitaciones</FilterType>
-          <Select name="beds">
+          <Select name="rooms" value={input.rooms} onChange={handleChange}>
             <option value="">Sin Preferencias</option>
             <option value="1">1+</option>
             <option value="2">2+</option>
@@ -45,7 +97,11 @@ const Filter = () => {
         </Label>
         <Label>
           <FilterType>Baños</FilterType>
-          <Select name="baths">
+          <Select
+            name="bathrooms"
+            value={input.bathrooms}
+            onChange={handleChange}
+          >
             <option value="">Sin Preferencias</option>
             <option value="1">1+</option>
             <option value="2">2+</option>
@@ -56,7 +112,11 @@ const Filter = () => {
         </Label>
         <Label>
           <FilterType>Precio</FilterType>
-          <Select name="priceMax">
+          <Select
+            name="priceMax"
+            value={input.priceMax}
+            onChange={handleChange}
+          >
             <option value="">Sin Limite</option>
             <option value="400">$400</option>
             <option value="600">$600</option>
@@ -73,7 +133,7 @@ const Filter = () => {
             <option value="10000">$10,000</option>
           </Select>
         </Label>
-        <Label>
+        {/* <Label>
           <FilterType>Otro Filtro</FilterType>
           <Select name="distanceMax">
             <option value="">Sin Limite</option>
@@ -91,7 +151,7 @@ const Filter = () => {
             <option value="20">20 miles</option>
             <option value="25">25 miles</option>
           </Select>
-        </Label>
+        </Label> */}
         <StyledButton>
           <Button style={{ color: "black" }} color="yellow" type="submit">
             Aplicar Filtro
@@ -100,6 +160,4 @@ const Filter = () => {
       </form>
     </Container>
   );
-};
-
-export default Filter;
+}
