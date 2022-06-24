@@ -11,8 +11,9 @@ export default createGlobalStyle`
 
     /* Titulo */
     h1 {
-        font-size: 18px;
-        font-weight: 700;
+        font-size: 19px;
+        font-weight: 600;
+        margin: 24px 0 16px 0;
     }
     /* SubTitulo */
     h2 {
@@ -24,7 +25,6 @@ export default createGlobalStyle`
         font-size: 14px;
         font-weight: 500;
     }
-
     /* Small */
     h4 {
         font-size: 12px;
