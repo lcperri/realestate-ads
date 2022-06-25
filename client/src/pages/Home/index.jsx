@@ -5,6 +5,7 @@ import StyledCard from "../../styledComponents/StyledCard";
 import Filter from "../../components/Filters";
 import Nav from "../../components/Nav";
 import Loader from "../../pages/Loader";
+import { useDispatch } from "react-redux";
 
 const Home = () => {
   return (
