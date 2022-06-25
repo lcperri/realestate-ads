@@ -6,10 +6,10 @@ import RoomIcon from '../Icons/Room'
 import AreaIcon from '../Icons/Area'
 import StyledText from '../../styledComponents/StyledText'
 
-const Card = ({id, address, area, type, rooms, status, bathrooms, rentPrice, sellPrice, pictures }) => {
+const Card = ({id, address, city, area, type, rooms, status, bathrooms, rentPrice, sellPrice, pictures }) => {
   return (
     <StyledCard>
-      <img src = {pictures} />
+      <img src = {pictures[0]} />
       <div>
         <h2>
           $ {rentPrice > 0 ? rentPrice : sellPrice} 
@@ -19,14 +19,17 @@ const Card = ({id, address, area, type, rooms, status, bathrooms, rentPrice, sel
         <StyledText>{type}</StyledText> 
       </div>
       <div>
-        {address}
+        <h4>{address}</h4> 
       </div>
       <div>
-        <h4>
+        <h3>{city}</h3>
+      </div>
+      <div>
+        <h5>
           <AreaIcon/> {area}m2   
           <RoomIcon/> {rooms} hab
           <BathIcon/> {bathrooms} baños
-        </h4>
+        </h5>
       </div>
       <blockquote>
         <Button className='type'>{status}</Button>

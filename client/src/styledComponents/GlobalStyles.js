@@ -27,12 +27,12 @@ export default createGlobalStyle`
     }
     /* Small */
     h4 {
-        font-size: 12px;
+        font-size: 13px;
         font-weight: 400;
     }
 
     h5 {
-        font-size: 10px;
-        font-weight: 300;
+        font-size: 12px;
+        font-weight: 400;
     }
 `
