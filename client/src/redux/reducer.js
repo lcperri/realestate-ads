@@ -17,7 +17,6 @@ const reducer = (state = initialState, { type, payload }) => {
         loading: true,
       };
     case PROPERTIES:
-      console.log(payload)
       return {
         ...state,
         properties: payload,
