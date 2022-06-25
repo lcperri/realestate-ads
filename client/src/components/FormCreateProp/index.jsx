@@ -28,8 +28,8 @@ function validators(input){
 
 export default function FormCreateProp(){
     
-    let initialState = {type: "", city: "", address:"", rentPrice:"", sellPrice:"", area:"", 
-            bathrooms:"", neighbourhood:"",  constructionDate:"", parkingSlot:""};
+    let initialState = {type: "", city: "", address:"", rentPrice:0, sellPrice:0, area:"", 
+            rooms: 0, bathrooms:0, parkingSlot:false};
     const [input,setInput] = useState(initialState);
     const [error, setError] = useState(initialState);
     const dispatch = useDispatch();
@@ -55,20 +55,17 @@ export default function FormCreateProp(){
     const handlerS = (e) => {
         e.preventDefault();
         
-        if(!input.sellPrice && !input.rentPrice){alert("Debe ingresar el precio correspondiente a la operacion -> Venta o Alquiler")}
-        if(!input.address || !input.area || !input.type || !input.rooms || !input.bathrooms || input.parkingSlot || !input.city || !input.pictures.lengt){
-            alert("Complete todos los campos!!");
+        if(!input.sellPrice && !input.rentPrice)
+        if(!input.address || !input.area || !input.type || !input.rooms || !input.bathrooms || !input.city){
         }
         if(( input.rooms || input.bathrooms ) < 0){
-            alert("No se permiten Numeros Negativos...!!"); 
         }
         else{ 
             dispatch(createProperty(input));            
-            alert("Propiedad creada");
             setInput({});
             dispatch(getAllProperties());
-            setInput({type: "", city: "", address:"", rentPrice:"", sellPrice:"", area:"", 
-            bathrooms:"", neighbourhood:"",  constructionDate:"", parkingSlot:""});
+            // setInput({type: "", city: "", address:"", rentPrice:"", sellPrice:"", area:"", 
+            // bathrooms:"", neighbourhood:"",  constructionDate:"", parkingSlot:""});
         }
     };
 

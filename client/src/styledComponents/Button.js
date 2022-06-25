@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 
 const Button = styled.button`
-    background: #fff;
+    background: #E52F50;
+    color: #fff;
     cursor: pointer;
     font-size: 14px;
     padding: 4px 10px;
@@ -9,10 +10,9 @@ const Button = styled.button`
     font-weight: 500;
     border-radius: 30px;
     &:hover {
-        background-color: #E52F50;
-        color: #fff;
-        /* background: linear-gradient(45deg, #A3278F 0%, #E52F50 100%); */
-        /* border: 2px solid #E52F50; */
+        background-color: #fff;
+        color: #444;
+        border: 2px solid #E52F50;
     }
 
     &.type {
@@ -30,6 +30,14 @@ const Button = styled.button`
             background-color: #E52F50;
             /* color: #333; */
         }
+    }
+
+    &.center {
+        margin: 0 auto;
+        
+        /* &:hover {
+            background-color: #E52F50;
+        } */
     }
 `
 export default Button

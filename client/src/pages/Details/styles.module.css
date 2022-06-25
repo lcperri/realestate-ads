@@ -15,6 +15,20 @@
   width: 75%;
 }
 
+.container {
+  /* background-color: #ff9cae; */
+  /* padding: 10px; */
+  display: grid;
+  grid-template-columns: 33% 1fr;
+  align-items:flex-end;
+}
+
+.btnContainer {
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+}
+
 /*Modal: */
 .overlay {
     position: fixed;

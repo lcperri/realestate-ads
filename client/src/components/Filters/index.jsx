@@ -27,18 +27,51 @@ export default function Filter() {
 
   function handleChange(e) {
     setFreeze(false);
-    setFilters({
-      ...filters,
-      [e.target.name]: e.target.value,
-    });
+    // setFilters({
+    //   ...filters,
+    //   [e.target.name]: e.target.value,
+    // });
+
+    switch (e.target.name) {
+      case "rooms":
+        setFilters({
+          ...filters,
+          [e.target.name]: e.target.value,
+        });
+        break;
+      case "bathrooms":
+        setFilters({
+          ...filters,
+          [e.target.name]: e.target.value,
+        });
+        break;
+      case "priceMax":
+        setFilters({
+          ...filters,
+          [e.target.name]: e.target.value,
+        });
+        break;
+      case "parkingSlot":
+        setFilters({
+          ...filters,
+          [e.target.name]: e.target.value,
+        });
+        break;
+
+      default:
+        setFilters({
+          ...filters,
+          [e.target.name]: e.target.value,
+        });
+        break;
+    }
   }
 
   useEffect(() => {
-    console.log(filters)
     if (!freeze) {
       dispatch(filter(filters, location));
     }
-  }, [location, filters])
+  }, [location, filters]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -63,7 +96,7 @@ export default function Filter() {
         <Label>
           <FilterType>Tipo de Propiedad</FilterType>
           <Select name="type" value={filters.type} onChange={handleChange}>
-            <option value="">Cualquier</option>
+            <option value="">Sin Preferencias</option>
             <option value="Departamento">Departamento</option>
             <option value="Casa">Casa</option>
             <option value="Casa de Campo">Casa de Campo</option>
@@ -128,25 +161,33 @@ export default function Filter() {
             <option value="10000">$10,000</option>
           </Select>
         </Label>
-        {/* <Label>
-          <FilterType>Otro Filtro</FilterType>
-          <Select name="distanceMax">
-            <option value="">Sin Limite</option>
-            <option value="1">1 mile</option>
-            <option value="2">2 miles</option>
-            <option value="3">3 miles</option>
-            <option value="4">4 miles</option>
-            <option value="5">5 miles</option>
-            <option value="6">6 miles</option>
-            <option value="7">7 miles</option>
-            <option value="8">8 miles</option>
-            <option value="9">9 miles</option>
-            <option value="10">10 miles</option>
-            <option value="15">15 miles</option>
-            <option value="20">20 miles</option>
-            <option value="25">25 miles</option>
+        <Label>
+          <FilterType>Tipo de Operacion</FilterType>
+          <Select
+            name="business"
+            value={filters.business}
+            onChange={handleChange}
+          >
+            <option value="">Sin Preferencias</option>
+            <option value="Alquiler">Alquilar</option>
+            <option value="Venta">Comprar</option>
+            <option value="Alquiler Temporario">Alquilar por temporada</option>
           </Select>
-        </Label> */}
+        </Label>
+        <Label>
+          <FilterType>Garage</FilterType>
+          <Select
+            name="parkingSlot"
+            value={filters.parkingSlot}
+            onChange={handleChange}
+          >
+            <option value="">Sin Preferencias</option>
+            <option value="1">1</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5+</option>
+          </Select>
+        </Label>
         <StyledButton>
           <Button style={{ color: "black" }} color="yellow" type="submit">
             Aplicar Filtro
