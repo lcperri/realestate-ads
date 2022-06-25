@@ -27,9 +27,11 @@ function validators(input){
 //--------------------------------------------------------------------------------------------
 
 export default function FormCreateProp(){
-
-    const [input,setInput] = useState({});
-    const [error, setError] = useState({});
+    
+    let initialState = {type: "", city: "", address:"", rentPrice:"", sellPrice:"", area:"", 
+            bathrooms:"", neighbourhood:"",  constructionDate:"", parkingSlot:""};
+    const [input,setInput] = useState(initialState);
+    const [error, setError] = useState(initialState);
     const dispatch = useDispatch();
 
 
@@ -52,13 +54,22 @@ export default function FormCreateProp(){
         
     const handlerS = (e) => {
         e.preventDefault();
-
+        
+        if(!input.sellPrice && !input.rentPrice){alert("Debe ingresar el precio correspondiente a la operacion -> Venta o Alquiler")}
+        if(!input.address || !input.area || !input.type || !input.rooms || !input.bathrooms || input.parkingSlot || !input.city || !input.pictures.lengt){
+            alert("Complete todos los campos!!");
+        }
+        if(( input.rooms || input.bathrooms ) < 0){
+            alert("No se permiten Numeros Negativos...!!"); 
+        }
+        else{ 
             dispatch(createProperty(input));            
             alert("Propiedad creada");
             setInput({});
             dispatch(getAllProperties());
-            setInput({});
-        
+            setInput({type: "", city: "", address:"", rentPrice:"", sellPrice:"", area:"", 
+            bathrooms:"", neighbourhood:"",  constructionDate:"", parkingSlot:""});
+        }
     };
 
     return(
@@ -70,7 +81,7 @@ export default function FormCreateProp(){
                 <select onChange={handleCH} id={"type"} className={"select-tipoProps"}>
                       <option>Tipo de propiedad: </option>
                       <option>Casa</option>
-                      <option>departamento</option>
+                      <option>Departamento</option>
                       <option>Ph</option>
                       <option>Local Comercial</option>
                       <option>Casa de campo</option>
