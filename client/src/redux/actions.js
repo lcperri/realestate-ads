@@ -1,14 +1,14 @@
 import axios from "axios";
 import { url } from "./url";
-import { ALL_PROPERTIES, LOADING, PROPERTY, FILTER } from "./actionTypes";
+import { LOADING, PROPERTIES, PROPERTY } from "./actionTypes";
 
 export function getAllProperties() {
   return async function (dispatch) {
     dispatch({ type: LOADING });
     const properties = await axios.get(`${url}/property`);
     return dispatch({
-      type: ALL_PROPERTIES,
-      payload: properties,
+      type: PROPERTIES,
+      payload: properties.data,
     });
   };
 }
@@ -19,7 +19,7 @@ export function getPropertyById(id) {
     const property = await axios.get(`${url}/property/${id}`);
     return dispatch({
       type: PROPERTY,
-      payload: property,
+      payload: property.data,
     });
   };
 }
@@ -30,18 +30,18 @@ export function createProperty() {
     const property = await axios.post(`${url}/property`);
     return dispatch({
       type: PROPERTY,
-      payload: property,
+      payload: property.data,
     });
   };
 }
 
-export function filter(filterObject) {
+export function filter(filters, location) {
   return async function (dispatch) {
     dispatch({ type: LOADING });
-    const json = await axios.get("ruta", filterObject);
+    const filtered = await axios.get(`${url}/property/?location=${location}`, filters);
     return dispatch({
-      type: FILTER,
-      payload: json,
+      type: PROPERTIES,
+      payload: filtered.data,
     });
   };
 }
