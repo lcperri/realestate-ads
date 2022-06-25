@@ -17,13 +17,7 @@ export default function Filter() {
   const dispatch = useDispatch();
 
   const [location, setLocation] = useState("");
-  const [filters, setFilters] = useState({
-    type: "",
-    rooms: "",
-    bathrooms: "",
-    rentPrice: "",
-    sellPrice: ""
-  });
+  const [filters, setFilters] = useState({});
   const [freeze, setFreeze] = useState(false);
 
   function handleType(e) {
@@ -40,7 +34,8 @@ export default function Filter() {
   }
 
   useEffect(() => {
-    if (!freeze && location.length) {
+    console.log(filters)
+    if (!freeze) {
       dispatch(filter(filters, location));
     }
   }, [location, filters])
@@ -48,13 +43,7 @@ export default function Filter() {
   function handleSubmit(e) {
     e.preventDefault();
     setFreeze(true);
-    setFilters({
-      type: "",
-      rooms: "",
-      bathrooms: "",
-      rentPrice: "",
-      sellPrice: ""
-    });
+    setFilters({});
     setLocation("");
     dispatch(filter(filters, location));
   }
@@ -94,11 +83,11 @@ export default function Filter() {
           <FilterType>Habitaciones</FilterType>
           <Select name="rooms" value={filters.rooms} onChange={handleChange}>
             <option value="">Sin Preferencias</option>
-            <option value="1">1+</option>
-            <option value="2">2+</option>
-            <option value="3">3+</option>
-            <option value="4">4+</option>
-            <option value="5">5+</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
           </Select>
         </Label>
         <Label>
@@ -109,11 +98,11 @@ export default function Filter() {
             onChange={handleChange}
           >
             <option value="">Sin Preferencias</option>
-            <option value="1">1+</option>
-            <option value="2">2+</option>
-            <option value="3">3+</option>
-            <option value="4">4+</option>
-            <option value="5">5+</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
           </Select>
         </Label>
         <Label>
