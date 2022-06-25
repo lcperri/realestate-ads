@@ -4,6 +4,7 @@ import CardsContainer from "../../styledComponents/CardsContainer";
 import StyledCard from "../../styledComponents/StyledCard";
 import Filter from "../../components/Filters";
 import Nav from "../../components/Nav";
+import Loader from "../../pages/Loader";
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
         <div className="LeftPanel">
           <Filter />
         </div>
+        {/* <Loader /> */}
         <CardsContainer>
           <Cards />
         </CardsContainer>
