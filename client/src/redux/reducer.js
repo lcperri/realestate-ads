@@ -1,4 +1,4 @@
-import { LOADING, PROPERTIES, PROPERTY } from "./actionTypes";
+import { LOADING, PROPERTIES, PROPERTY, ALL_USERS, USER } from "./actionTypes";
 
 const initialState = {
   loading: true,
@@ -7,6 +7,8 @@ const initialState = {
   properties: [],
   property: {},
   city: "",
+  users:[],
+  user:{}
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -29,7 +31,18 @@ const reducer = (state = initialState, { type, payload }) => {
         property: payload,
         loading: false,
       };
-
+    case ALL_USERS:
+      return{
+        ...state,
+        users: payload,
+        loading: false,
+      }
+    case USER:
+      return{
+        ...state,
+        user: payload,
+        loading: false,
+      }
     default:
       return {
         ...state,

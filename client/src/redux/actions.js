@@ -1,6 +1,6 @@
 import axios from "axios";
 import { url } from "./url";
-import { LOADING, PROPERTIES, PROPERTY } from "./actionTypes";
+import { LOADING, PROPERTIES, PROPERTY, ALL_USERS, USER } from "./actionTypes";
 
 export function getAllProperties() {
   return async function (dispatch) {
@@ -33,6 +33,22 @@ export function createProperty(data) {
       payload: property.data,
     });
   };
+}
+
+export function getAllUsers(){
+  return async function(dispatch){
+    dispatch({ type: LOADING });
+    const resp = await axios.get(`${url}/user`);
+    return dispatch({type: ALL_USERS, payload: resp});
+  }
+}
+
+export function User(id){
+  return async function(dispatch){
+    dispatch({ type: LOADING });
+    const resp = await axios.get(`${url}/property/${id}`);
+    return dispatch({type: USER, payload: resp.data});
+  }
 }
 
 export function filter(filters, location) {

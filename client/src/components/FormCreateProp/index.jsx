@@ -96,7 +96,7 @@ export default function FormCreateProp(){
                       <option>Terreno agricola</option>
                 </select>
              
-                <input className={error.city ? "errorInput" : "input-ciudad"} type={'text'} id={'city'} value={input.city} onChange={handleCH}/>
+                <input className={error.city ? "errorInput" : "input-ciudad"} type={'text'} id={'city'} value={input.city} onChange={handleCH} placeholder={'Ciudad'}/>
                   
                 <input className={error.neighbourhood ? "errorInput" : "input-barrio"} type={'text'} id={'neighbourhood'} value={input.neighbourhood} onChange={handleCH} placeholder={"Barrio/Vecindario"}/>
                 <br></br>
