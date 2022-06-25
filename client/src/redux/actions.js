@@ -24,10 +24,10 @@ export function getPropertyById(id) {
   };
 }
 
-export function createProperty() {
+export function createProperty(data) {
   return async function (dispatch) {
     dispatch({ type: LOADING });
-    const property = await axios.post(`${url}/property`);
+    const property = await axios.post(`${url}/property`, data);
     return dispatch({
       type: PROPERTY,
       payload: property.data,
