@@ -43,12 +43,12 @@ export function getAllUsers(){
   }
 }
 
-export function User(id){
-  return async function(dispatch){
+export function createUser(data){
+  return async function (dispatch) {
     dispatch({ type: LOADING });
-    const resp = await axios.get(`${url}/property/${id}`);
-    return dispatch({type: USER, payload: resp.data});
-  }
+    const resp = await axios.post(`${url}/user`, data);
+    return dispatch({type: USER, payload: resp.data });
+  };
 }
 
 export function filter(filters, location) {

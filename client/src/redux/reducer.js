@@ -1,4 +1,4 @@
-import { LOADING, PROPERTIES, PROPERTY, ALL_USERS, USER } from "./actionTypes";
+import { LOADING, PROPERTIES, PROPERTY, ALL_USERS, USER} from "./actionTypes";
 
 const initialState = {
   loading: true,
@@ -37,7 +37,7 @@ const reducer = (state = initialState, { type, payload }) => {
         users: payload,
         loading: false,
       }
-    case USER:
+      case USER:
       return{
         ...state,
         user: payload,
