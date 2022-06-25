@@ -36,9 +36,17 @@ export function createProperty(data) {
 }
 
 export function filter(filters, location) {
+  if (filters.parkingSlot === "true") {
+    filters = { ...filters, parkingSlot: true };
+  } else {
+    filters = { ...filters, parkingSlot: true };
+  }
   return async function (dispatch) {
     dispatch({ type: LOADING });
-    const filtered = await axios.get(`${url}/property/?location=${location}`, filters);
+    const filtered = await axios.get(
+      `${url}/property/?location=${location}`,
+      filters
+    );
     return dispatch({
       type: PROPERTIES,
       payload: filtered.data,

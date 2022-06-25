@@ -34,35 +34,66 @@ export default function Filter() {
 
     switch (e.target.name) {
       case "rooms":
-        setFilters({
-          ...filters,
-          [e.target.name]: +e.target.value,
-        });
+        e.target.value
+          ? setFilters({
+              ...filters,
+              [e.target.name]: +e.target.value,
+            })
+          : setFilters({
+              ...filters,
+              [e.target.name]: undefined,
+            });
         break;
       case "bathrooms":
-        setFilters({
-          ...filters,
-          [e.target.name]: +e.target.value,
-        });
+        e.target.value
+          ? setFilters({
+              ...filters,
+              [e.target.name]: +e.target.value,
+            })
+          : setFilters({
+              ...filters,
+              [e.target.name]: undefined,
+            });
         break;
       case "priceMax":
-        setFilters({
-          ...filters,
-          [e.target.name]: +e.target.value,
-        });
+        e.target.value
+          ? setFilters({
+              ...filters,
+              [e.target.name]: +e.target.value,
+            })
+          : setFilters({
+              ...filters,
+              [e.target.name]: undefined,
+            });
         break;
       case "parkingSlot":
-        setFilters({
-          ...filters,
-          [e.target.name]: +e.target.value,
-        });
+        e.target.value
+          ? setFilters({
+              ...filters,
+              [e.target.name]: e.target.value,
+            })
+          : setFilters({
+              ...filters,
+              [e.target.name]: undefined,
+            });
+
+        // setFilters({
+        //   ...filters,
+        //   [e.target.name]: e.target.value,
+        // });
+
         break;
 
       default:
-        setFilters({
-          ...filters,
-          [e.target.name]: e.target.value,
-        });
+        e.target.value
+          ? setFilters({
+              ...filters,
+              [e.target.name]: e.target.value,
+            })
+          : setFilters({
+              ...filters,
+              [e.target.name]: undefined,
+            });
         break;
     }
   }
@@ -172,7 +203,6 @@ export default function Filter() {
             <option value="">Sin Preferencias</option>
             <option value="Alquiler">Alquilar</option>
             <option value="Venta">Comprar</option>
-            <option value="Alquiler Temporario">Alquilar por temporada</option>
           </Select>
         </Label>
         <Label>
@@ -183,10 +213,8 @@ export default function Filter() {
             onChange={handleChange}
           >
             <option value="">Sin Preferencias</option>
-            <option value="1">1</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5+</option>
+            <option value="true">Con garage</option>
+            <option value="false">Sin garage</option>
           </Select>
         </Label>
         <StyledButton>
