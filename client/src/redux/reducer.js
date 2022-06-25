@@ -1,4 +1,4 @@
-import { ALL_PROPERTIES, LOADING, PROPERTY, FILTER } from "./actionTypes";
+import { LOADING, PROPERTIES, PROPERTY } from "./actionTypes";
 
 const initialState = {
   loading: true,
@@ -16,7 +16,8 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         loading: true,
       };
-    case ALL_PROPERTIES:
+    case PROPERTIES:
+      console.log(payload)
       return {
         ...state,
         properties: payload,
@@ -26,12 +27,6 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         property: payload,
-        loading: false,
-      };
-    case FILTER:
-      return {
-        ...state,
-        properties: payload,
         loading: false,
       };
 

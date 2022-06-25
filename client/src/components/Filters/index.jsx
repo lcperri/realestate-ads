@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "../../styledComponents/Button";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { filter } from "../../redux/actions";
 
 import {
@@ -15,41 +15,37 @@ import {
 
 export default function Filter() {
   const dispatch = useDispatch();
-  // const city = useSelector((state) => state.city);
 
-  const [input, setInput] = useState({
-    city: "Buenos Aires",
-    // city: city,
-    type: "",
-    rooms: "",
-    bathrooms: "",
-    neighbourhood: "",
-    // rentPrice: "",
-    // sellPrice: "",
-    priceMax: "",
-  });
+  const [location, setLocation] = useState("");
+  const [filters, setFilters] = useState({});
+  const [freeze, setFreeze] = useState(false);
+
+  function handleType(e) {
+    setFreeze(false);
+    setLocation(e.target.value);
+  }
 
   function handleChange(e) {
-    e.preventDefault();
-    setInput({
-      ...input,
+    setFreeze(false);
+    setFilters({
+      ...filters,
       [e.target.name]: e.target.value,
     });
   }
 
+  useEffect(() => {
+    console.log(filters)
+    if (!freeze) {
+      dispatch(filter(filters, location));
+    }
+  }, [location, filters])
+
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(filter(input));
-    // alert("EN CONSTRUCCION");
-    // setInput({
-    //   type: "",
-    //   rooms: "",
-    //   bathrooms: "",
-    //   neighbourhood: "",
-    //   // rentPrice: "",
-    //   // sellPrice: "",
-    //   priceMax: "",
-    // });
+    setFreeze(true);
+    setFilters({});
+    setLocation("");
+    dispatch(filter(filters, location));
   }
 
   return (
@@ -59,15 +55,14 @@ export default function Filter() {
 
         <Input
           type="text"
-          value={input.neighbourhood}
           name="neighbourhood"
           placeholder="Zona/Barrio"
-          onChange={(e) => handleChange(e)}
+          onChange={(e) => handleType(e)}
         />
 
         <Label>
           <FilterType>Tipo de Propiedad</FilterType>
-          <Select name="type" value={input.type} onChange={handleChange}>
+          <Select name="type" value={filters.type} onChange={handleChange}>
             <option value="">Cualquier</option>
             <option value="Departamento">Departamento</option>
             <option value="Casa">Casa</option>
@@ -86,35 +81,35 @@ export default function Filter() {
         </Label>
         <Label>
           <FilterType>Habitaciones</FilterType>
-          <Select name="rooms" value={input.rooms} onChange={handleChange}>
+          <Select name="rooms" value={filters.rooms} onChange={handleChange}>
             <option value="">Sin Preferencias</option>
-            <option value="1">1+</option>
-            <option value="2">2+</option>
-            <option value="3">3+</option>
-            <option value="4">4+</option>
-            <option value="5">5+</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
           </Select>
         </Label>
         <Label>
           <FilterType>Baños</FilterType>
           <Select
             name="bathrooms"
-            value={input.bathrooms}
+            value={filters.bathrooms}
             onChange={handleChange}
           >
             <option value="">Sin Preferencias</option>
-            <option value="1">1+</option>
-            <option value="2">2+</option>
-            <option value="3">3+</option>
-            <option value="4">4+</option>
-            <option value="5">5+</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
           </Select>
         </Label>
         <Label>
           <FilterType>Precio</FilterType>
           <Select
             name="priceMax"
-            value={input.priceMax}
+            value={filters.priceMax}
             onChange={handleChange}
           >
             <option value="">Sin Limite</option>
