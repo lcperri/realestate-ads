@@ -1,105 +1,136 @@
-.cont-gral-create{
-    display: flex; 
-    justify-content: center; 
-    height: 569px;    
-    background-color:rgba(201, 194, 194, 0.466);
-    /* background-image: url('../Images/pokebolas.jpg'); */
-    background-position:center;
-    background-repeat: no-repeat;
-    background-size: 1280px ;
-} 
+
+.div-recuadro{
+    border: 2px solid rgb(33, 199, 228);
+    background-color: rgb(245, 238, 238);
+    border-radius: 30px;
+    width: 85%;
+    margin-top: 20px;
+    margin-left: 90px;
+}
 .cont-formulario{
     margin-top: 40px;
     margin-right: 100px;
-}
-.grupo1{
-    float: left;
-    width: 400px;
-    background-color: antiquewhite;
-    margin-left: 40px;
-} 
-.grupo2{
-    float: left;
-}
-.grupo3{
-    float: right;
-}
-.label{
-    font-size: 18px;
-    margin-left: 10px;
-    color: rgb(23, 22, 23);
-}
-.label-ch{
-    font-size: 15px;
-}
-.inp-check{
-    margin-left: 10px;
-    margin-right: 0px;
-}
-.itemInput{
-    background-color: black;
-    color: #35bcdd;
-    font-size: 15px;  
-    border-radius: 5px;    
-    margin-right: 15px;
-    margin-left: 100px;
-    margin-top: 2px;
-    margin-bottom: 5px;
-    width: 250px;
-    border: 2px solid #35bcdd;
-    appearance: none;
-    display: flex;   
-}
-.errorInput {
-    margin-right: 0px;
-    width: 250px;
-    border-color: red;
-    background-color: rgba(240, 230, 217, 0.781);   
-    border-radius: 5px;
-}  
-.span-error {
-    color: red;
-    margin-left: 100px;
     
 }
-.select-types-create{
-    width: 140px;
-    margin-top: 20px;
-    margin-left: 40px;
-    background-color:rgb(80, 169, 196);
-    color: black;
-    border-radius: 5px;
+.select-tipoProps{
+    margin-top: 5px;
+    margin-left: 120px;
+    margin-right: 30px;
+    float: left;
 }
-.btn-create {
-    margin-top: 10px;
-    border-radius: 10px;
+.label-direcc{    
+    margin-left: 120px;    
+}
+.label-venta{
+    float: left;
+}
+.label-alquiler{
+   float: left;
+    margin-left: 120px;
+}
+.label-area{
+    margin-top: 20px;
+    margin-left: 120px;
+}
+.label-fechRenov{
+    margin-left: 180px;
+}
+.label-cargaImagen{
+    margin-left: 120px;
+    margin-top: 30px;
+}
+.input-area{
+    margin-top: 20px;
+    width: 60px;
+}
+.input-barrio{
+    margin-top: 5px;
+}
+.input-ciudad{
+    margin-top: 5px;
+    margin-left: 30px;
+    margin-right: 50px;
+    width: 200px;
+}
+.input-direcc{
+    margin-top: 30px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    width: 550px;
+}
+.error-direcc{
+    
+    margin-top: 30px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+    width: 490px;
+    border-color: red;      
+    border-radius: 5px;
+        
+     
+}
+.div-precios, .fechas{
+    margin-top: 20px;
+    margin-left: 120px;
+    margin-bottom: 20px;
+}
+.input-sellPrice{
+    margin-left: 10px;
+    float: left;
+    width: 170px;
+}
+.input-rentPrice{
+    margin-left: 10px;
+    width: 180px;
+}
+.cargaFotos{
+    margin-left: 10px;
+}
+.fecha-construc{
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-bottom: 20px;
+}
+.cochera{
+    margin-top: 5px;
+}
+.errorInput {
+    margin-top: 5px;
+    margin-left: 10px;
+    width: 200px;
+    border-color: red;      
+    border-radius: 5px;
+    
+} 
+.error-caract{
+    border-color: red;      
+    border-radius: 5px;
+} 
+.span-error {
+    color: red;
+    margin-left: 20px;
+    margin-top: 0px;
+}
+.span-error-num {
+    color: red;
+    margin-left: 350px;
+}
+/* boton sub-----------*/
+.boton-sub {
+    margin-top: 5px;
+    border-radius: 30px;
     width: 400px;
     font-size: 20px;
     padding: 3px 10px;
-    color:#35bcdd;
-    border: 2px solid #35bcdd;
-    background-color:black;
-    margin-left: 300px;
+    color:#444;
+    border: 2px solid #E52F50;
+    background-color:#fff;;
+    margin-left: 320px;
     font-weight: bold;
-    margin-top: 80px;
+    margin-top: 70px;
+    margin-bottom: 10px;
 }
-.btn-create:hover {
-    color: rgb(126, 34, 180);
-    background-color:black;
-}
-.nameType{
-    color: rgb(0, 229, 255);
-}
-.types-select{
-    margin-top: 5px;
-    margin-left: 100px;
-    
-}
-.btn-delete{
-  cursor: pointer;
-  font-size: 13px;
-  background-color: rgba(255, 0, 0, 0.728);
-  margin-left: 100px;
-  margin-top: 5px;
-  border-radius: 10px;
+.boton-sub:hover {
+    color: rgb(33, 199, 228);
+    background-color:#444;
 }

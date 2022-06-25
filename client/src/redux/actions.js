@@ -1,5 +1,5 @@
 import axios from 'axios';
-import url from './url';
+import {url} from './url';
 import {
     ALL_PROPERTIES,
     LOADING,
@@ -28,13 +28,14 @@ export function getPropertyById(id){
     }
 }
 
-export function createProperty(){
+export function createProperty(data){
     return async function(dispatch){
         dispatch({ type: LOADING });
-        const property = await axios.post(`${url}/property`);
-        return dispatch({
-            type: PROPERTY,
-            payload: property
-        });
+       
+            let property =  await axios.post(`${url}/property`,data);
+            return property;
+        
+        
+         
     }
 }
