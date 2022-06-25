@@ -36,25 +36,25 @@ export default function Filter() {
       case "rooms":
         setFilters({
           ...filters,
-          [e.target.name]: +e.target.value,
+          [e.target.name]: e.target.value,
         });
         break;
       case "bathrooms":
         setFilters({
           ...filters,
-          [e.target.name]: +e.target.value,
+          [e.target.name]: e.target.value,
         });
         break;
       case "priceMax":
         setFilters({
           ...filters,
-          [e.target.name]: +e.target.value,
+          [e.target.name]: e.target.value,
         });
         break;
       case "parkingSlot":
         setFilters({
           ...filters,
-          [e.target.name]: +e.target.value,
+          [e.target.name]: e.target.value,
         });
         break;
 
@@ -68,11 +68,10 @@ export default function Filter() {
   }
 
   useEffect(() => {
-    console.log(filters);
     if (!freeze) {
       dispatch(filter(filters, location));
     }
-  }, [location, filters, freeze, dispatch]);
+  }, [location, filters]);
 
   function handleSubmit(e) {
     e.preventDefault();

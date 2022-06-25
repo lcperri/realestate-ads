@@ -38,7 +38,7 @@ export function createProperty(data) {
 export function filter(filters, location) {
   return async function (dispatch) {
     dispatch({ type: LOADING });
-    const filtered = await axios.get(`${url}/property/?location=${location}`, filters);
+    const filtered = await axios.post(`${url}/property/search/?location=${location}`, filters);
     return dispatch({
       type: PROPERTIES,
       payload: filtered.data,
