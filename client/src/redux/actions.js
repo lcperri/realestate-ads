@@ -1,6 +1,6 @@
 import axios from "axios";
 import { url } from "./url";
-import { LOADING, PAGINATION, PROPERTIES, PROPERTY } from "./actionTypes";
+import { FILTER, LOADING, PAGINATION, PROPERTIES, PROPERTY } from "./actionTypes";
 
 export function getAllProperties() {
   return async function (dispatch) {
@@ -13,13 +13,14 @@ export function getAllProperties() {
   };
 }
 
-export function propertyPagination(skip) {
+export function propertyPagination(skip, { filters, location, max }) {
   return async function (dispatch) {
     dispatch({ type: LOADING });
-    const properties = await axios.get(`${url}/property/pagination/${skip}`);
+    const filtered = await axios.post(`${url}/property/search/?skip=${skip}&location=${location}&max=${max}`, filters);
+    console.log(filtered.data)
     return dispatch({
       type: PAGINATION,
-      payload: properties.data,
+      payload: filtered.data,
     });
   };
 }
@@ -47,12 +48,11 @@ export function createProperty(data) {
 }
 
 export function filter(filters, location, max) {
-  return async function (dispatch) {
-    dispatch({ type: LOADING });
-    const filtered = await axios.post(`${url}/property/search/?location=${location}&max=${max}`, filters);
+  return function (dispatch) {
+    console.log('estos son los filtros', filters)
     return dispatch({
-      type: PROPERTIES,
-      payload: filtered.data,
+      type: FILTER,
+      payload: { filters, location, max }
     });
   };
 }

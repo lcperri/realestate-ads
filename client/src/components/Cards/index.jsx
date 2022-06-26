@@ -9,7 +9,8 @@ import Card from '../Card'
 const Cards = () => {
   const dispatch = useDispatch();
 
-  const paginatedProperties = useSelector(state => state.pagination);
+  const paginatedProperties = useSelector((state) => state.pagination);
+  const filter = useSelector((state) => state.filter)
 
   const [skip, setSkip] = useState(0);
   const [pagesNum, setPagesNum] = useState([]);
@@ -20,13 +21,16 @@ const Cards = () => {
   };
 
   useEffect(() => {
-    dispatch(propertyPagination(skip));
-    let pages = [];
-    for (let i = 0; i < Math.ceil(propertyAmount / 2); i++) {
-      pages.push(i + 1);
+    if (filter.location !== undefined && filter.max !== undefined) {
+      console.log(skip, filter)
+      dispatch(propertyPagination(skip, filter));
+      let pages = [];
+      for (let i = 0; i < Math.ceil(propertyAmount / 2); i++) {
+        pages.push(i + 1);
+      }
+      setPagesNum(pages);
     }
-    setPagesNum(pages);
-  }, [dispatch, propertyAmount, skip]);
+  }, [propertyAmount, skip, filter]);
 
   return (
     <>

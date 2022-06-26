@@ -1,9 +1,10 @@
-import { LOADING, PAGINATION, PROPERTIES, PROPERTY } from "./actionTypes";
+import { FILTER, LOADING, PAGINATION, PROPERTIES, PROPERTY } from "./actionTypes";
 
 const initialState = {
   loading: true,
   notFound: false,
   error: {},
+  filter: { location: "", max: "", filters: {} },
   properties: [],
   pagination: [],
   property: {},
@@ -29,10 +30,16 @@ const reducer = (state = initialState, { type, payload }) => {
         loading: false
       };
     case PAGINATION:
+      console.log(payload)
       return {
         ...state,
         pagination: payload,
         loading: false
+      }
+    case FILTER:
+      return {
+        ...state,
+        filter: payload
       }
     default:
       return {
