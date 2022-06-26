@@ -81,6 +81,7 @@ export default function FormCreateProp() {
 
     return (
         <DivContainer>
+<<<<<<< HEAD
             {/* <div className="cont-gral-create"> */}
             {/* <div className="div-recuadro"> */}
                 <form onSubmit={handlerS} >
@@ -161,6 +162,81 @@ export default function FormCreateProp() {
 
                     <div>
                         {/* <Button type={'submit'} disabled={!error.none} className='disabled'>
+=======
+        {/* <div className="cont-gral-create"> */}
+
+            <div className="div-recuadro">
+            <form onSubmit={handlerS} >
+                  
+                <select onChange={handleCH} id={"type"} className={"select-tipoProps"}>
+                      <option>Tipo de propiedad: </option>
+                      <option>Casa</option>
+                      <option>Departamento</option>
+                      <option>Ph</option>
+                      <option>Local Comercial</option>
+                      <option>Casa de campo</option>
+                      <option>Casa de playa</option>
+                      <option>Cochera</option>
+                      <option>Habitación</option>
+                      <option>Hotel</option>
+                      <option>Local Industrial</option>
+                      <option>Oficina</option>
+                      <option>Otros</option>
+                      <option>Terreno/Lote</option>
+                      <option>Terreno agricola</option>
+                </select>
+             
+                <input className={error.city ? "errorInput" : "input-ciudad"} type={'text'} id={'city'} value={input.city} onChange={handleCH}/>
+                  
+                <input className={error.neighbourhood ? "errorInput" : "input-barrio"} type={'text'} id={'neighbourhood'} value={input.neighbourhood} onChange={handleCH} placeholder={"Barrio/Vecindario"}/>
+                <br></br>
+                  
+                <label className="label-direcc">Direccion: </label>
+                <input className={error.address ? "error-direcc" : "input-direcc"} type={'text'} id={'address'} value={input.address} onChange={handleCH}/>
+
+                 {/* {buscoProp && (<span className="span-error">Ya existe una Prop para dicha dirección!!</span>)} */}
+                
+                <select onChange={handleCH} id={"operation"} className={"select-tipoProps"}>
+                        <option>Quiero:</option>
+                        <option>Vender mi propiedad</option>
+                        <option>Rentar mi propiedad</option>
+                </select>
+
+                <label>Precio:</label>
+                <input className="input-price" type={'number'} id={'price'} value={input.price} onChange={handleCH} min='10' max='1111111111'/> 
+                    
+                <label className="label-area">Area: </label>
+                <input className={error.area ? "error-caract" : "input-area"} type={'text'} value={input.area} id={'area'} onChange={handleCH}/>
+                
+                <label className="label-area">Habitaciones: </label>
+                <input className={error.area ? "error-caract" : "input-area"} type={'number'} min={'1'} max={'100'} value={input.rooms} id={'rooms'} onChange={handleCH}/>
+                
+                <label className="label-area">Baños: </label>
+                <input className={error.area ? "error-caract" : "input-area"} type={'number'} min={'1'} max={'50'} value={input.bathrooms} id={'bathrooms'} onChange={handleCH}/>
+                
+
+                <label className="label-area">Cochera: </label>
+                <select onChange={handleCH} id={'parkingSlot'} className={"cochera"}>
+                    <option>Si</option>
+                    <option>No</option>
+                </select> 
+                {error.parkingSlot && (<div><span className='span-error-num'>{error.parkingSlot}</span></div>)}
+
+                <div className="fechas">
+                    <label className="label-fechConstruc">ConstructionDate: </label>
+                    <input className="fecha-construc" type={'number'} id={'constructionDate'} value={input.constructionDate} onChange={handleCH} min={'1900'} max={'2022'}/>
+  
+                    <label className="label-fechRenov">RenovationDate: </label>
+                    <input className="fecha-construc" type={'number'} id={'renovationDate'} value={input.renovationDate} onChange={handleCH} min={'1900'} max={'2022'}/>                            
+                </div>
+  
+                <label className="label-cargaImagen">Cargar Imagen: </label>
+                {/* <input className="cargaFotos" type={'file'}/> */}
+                <input className="cargaFotos" type={'text'} id={'pictures'} value={input.pictures} onChange={handleCH}/>
+  
+                <div>
+                    <Button type={'submit'} disabled={!error.none} className='disabled'>
+>>>>>>> a38fdd25816e89f13d078818fc07e8f4f09f9f57
                         Crear propiedad
                     </Button> */}
                         <input className="boton-sub" type={'submit'} value={"Publicar Propiedad"} />
