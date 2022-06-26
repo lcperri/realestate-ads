@@ -39,5 +39,9 @@ const Button = styled.button`
             background-color: #E52F50;
         } */
     }
+
+    &.disabled {
+        background-color: #666;
+    }
 `
 export default Button
