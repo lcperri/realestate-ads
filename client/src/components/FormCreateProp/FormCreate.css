@@ -1,10 +1,11 @@
 
 .div-recuadro{
-    border: 2px solid rgb(33, 199, 228);
-    background-color: rgb(245, 238, 238);
+    /* border: 2px solid rgb(33, 199, 228); */
+    /* background-color: rgb(245, 238, 238); */
     border-radius: 30px;
     width: 85%;
-    margin-top: 20px;
+    /* padding: 90px; */
+    margin-top: 140px;
     margin-left: 90px;
 }
 .cont-formulario{
@@ -59,30 +60,28 @@
     width: 550px;
 }
 .error-direcc{
-    
     margin-top: 30px;
     margin-left: 10px;
     margin-bottom: 20px;
     width: 490px;
     border-color: red;      
     border-radius: 5px;
-        
-     
 }
 .div-precios, .fechas{
     margin-top: 20px;
-    margin-left: 120px;
+    /* margin-left: 120px; */
     margin-bottom: 20px;
+    width: 20%;
+    display: flex;
+    flex-direction: row;
 }
-.input-sellPrice{
+
+.input-price{
     margin-left: 10px;
     float: left;
     width: 170px;
 }
-.input-rentPrice{
-    margin-left: 10px;
-    width: 180px;
-}
+
 .cargaFotos{
     margin-left: 10px;
 }

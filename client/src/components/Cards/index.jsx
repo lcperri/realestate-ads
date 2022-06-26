@@ -4,8 +4,8 @@ import { useSelector, useDispatch } from 'react-redux'
 import { getAllProperties } from '../../redux/actions'
 import CardsContainer from '../../styledComponents/CardsContainer'
 import Card from '../Card'
+import StyledLink from '../../styledComponents/StyledLink'
 // import propertiesList from '../dataTemp'
-
 
 const Cards = () => {
   const dispatch = useDispatch()
@@ -20,9 +20,9 @@ const Cards = () => {
     <CardsContainer>
       {
         propertiesList?.map(e => (
-          <Link to={`/${e._id}`} key={e._id}>
+          <StyledLink to={`/${e._id}`} key={e._id}>
             <Card  {...e}/>
-          </Link>
+          </StyledLink>
         ))
       }
     </CardsContainer>

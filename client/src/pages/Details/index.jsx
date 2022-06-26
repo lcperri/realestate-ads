@@ -34,10 +34,9 @@ const Details = () => {
     dispatch(getPropertyById(id))
   }, [])
   
-  useEffect(() => {
-    // console.log(property)
-    console.log(id)
-  }, [property])
+  // useEffect(() => {
+    
+  // }, [property])
 
   
   const handleClick = (item, index) => {
@@ -84,8 +83,6 @@ const Details = () => {
 
   return (
     <>
-    {console.log()}
-    {console.log(id)}
       <Nav />
       <DivContainer>
         <h1>Imágenes:</h1>
@@ -136,7 +133,7 @@ const Details = () => {
         {/* <script src="script.js"></script> */}
         {/* <div id="map"></div> */}
         <h1>Ubicación:</h1>
-        <Map address={property?.address + ' ' + property?.neighbourhood + ' ' + property?.city} />
+        { property  && <Map address={property.address + ' ' + property.city} /> }
       </DivContainer>
       <div className={styles.btnContainer}>
         <Button className='center' onClick={() => navigate("/home", { replace: true })}>Volver</Button>
