@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom'
 
 const StyledLink = styled(Link)`
     text-decoration: none;
-    &:hover {
-        border: 2px solid #E52F50;
+    &:visited {
+        color:#444;
     }
+    /* &:hover {
+        border: 2px solid #E52F50;
+    } */
 `
 export default StyledLink
