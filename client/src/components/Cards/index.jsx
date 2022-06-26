@@ -5,61 +5,33 @@ import Button from '../../styledComponents/Button'
 import CardsContainer from '../../styledComponents/CardsContainer'
 import Card from '../Card'
 import StyledLink from '../../styledComponents/StyledLink'
+import Pagination from '../Pagination'
 
 const Cards = () => {
   const dispatch = useDispatch();
 
-  const paginatedProperties = useSelector((state) => state.pagination);
-  const filter = useSelector((state) => state.filter)
-
-  const [skip, setSkip] = useState(0);
-  const [pagesNum, setPagesNum] = useState([]);
-  const propertyAmount = paginatedProperties.length;
-
-  const pickPage = (event) => {
-    setSkip(event.target.textContent * 2 - 2);
-  };
+  const properties = useSelector((state) => state.properties);
+  const pages = useSelector((state) => state.pages);
+  const filter = useSelector((state) => state.filter);
 
   useEffect(() => {
     if (filter.location !== undefined && filter.max !== undefined) {
-      console.log(skip, filter)
-      dispatch(propertyPagination(skip, filter));
-      let pages = [];
-      for (let i = 0; i < Math.ceil(propertyAmount / 2); i++) {
-        pages.push(i + 1);
-      }
-      setPagesNum(pages);
+      dispatch(propertyPagination(filter));
     }
-  }, [propertyAmount, skip, filter]);
+  }, [filter]);
 
   return (
     <>
       <CardsContainer>
         {
-          paginatedProperties?.map(e => (
-            <div key={e.id}>
+          properties && properties.slice(pages[1]-1, pages[2]).map(e => (
+            <StyledLink to={`/${e._id}`} key={e._id}>
               <Card  {...e}/>
-            </div>
+            </StyledLink>
           ))
         }
       </CardsContainer>
-      {
-        paginatedProperties?.map(e => (
-          <StyledLink to={`/${e._id}`} key={e._id}>
-            <Card  {...e}/>
-          </StyledLink>
-        ))
-      }
-      {
-        pagesNum ?
-        pagesNum.map((num) => (
-          <Button key={num}
-            onClick={(e) => pickPage(e)} title={`Page ${num}`}>
-              {num}
-          </Button>
-        ))
-        : null
-      }
+      <Pagination></Pagination>
     </>
   )
 }

@@ -1,4 +1,4 @@
-import { FILTER, LOADING, PAGINATION, PROPERTIES, PROPERTY, ALL_USERS, USER } from "./actionTypes";
+import { FILTER, LOADING, PROPERTIES, PROPERTY, ALL_USERS, USER, PAGE_SETTER } from "./actionTypes";
 
 const initialState = {
   loading: true,
@@ -6,7 +6,7 @@ const initialState = {
   error: {},
   filter: { location: "", max: "", filters: {} },
   properties: [],
-  pagination: [],
+  pages: [1, 1, 10],
   property: {},
   city: "",
   users:[],
@@ -23,21 +23,19 @@ const reducer = (state = initialState, { type, payload }) => {
     case PROPERTIES:
       return {
         ...state,
-        properties: payload
+        properties: payload,
+        loading: false
       };
+    case PAGE_SETTER:
+      return {
+        ...state,
+        pages: payload
+      }
     case PROPERTY:
       return {
         ...state,
-        property: payload,
-        loading: false
+        property: payload
       };
-    case PAGINATION:
-      console.log(payload)
-      return {
-        ...state,
-        pagination: payload,
-        loading: false
-      }
     case FILTER:
       return {
         ...state,
