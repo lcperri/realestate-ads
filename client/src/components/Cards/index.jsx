@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { getAllProperties } from '../../redux/actions'
 import CardsContainer from '../../styledComponents/CardsContainer'
@@ -19,9 +20,9 @@ const Cards = () => {
     <CardsContainer>
       {
         propertiesList?.map(e => (
-          <div key={e.id}>
+          <Link to={`/${e._id}`} key={e._id}>
             <Card  {...e}/>
-          </div>
+          </Link>
         ))
       }
     </CardsContainer>
