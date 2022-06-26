@@ -35,10 +35,10 @@ export function createProperty(data) {
   };
 }
 
-export function filter(filters, location) {
+export function filter(filters, location, max) {
   return async function (dispatch) {
     dispatch({ type: LOADING });
-    const filtered = await axios.post(`${url}/property/search/?location=${location}`, filters);
+    const filtered = await axios.post(`${url}/property/search/?location=${location}&max=${max}`, filters);
     return dispatch({
       type: PROPERTIES,
       payload: filtered.data,
