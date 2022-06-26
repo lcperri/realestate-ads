@@ -39,7 +39,7 @@ export function getAllUsers(){
   return async function(dispatch){
     dispatch({ type: LOADING });
     const resp = await axios.get(`${url}/user`);
-    return dispatch({type: ALL_USERS, payload: resp});
+    return dispatch({type: ALL_USERS, payload: resp.data});
   }
 }
 

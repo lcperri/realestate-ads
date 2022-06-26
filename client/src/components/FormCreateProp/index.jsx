@@ -28,8 +28,8 @@ function validators(input){
 
 export default function FormCreateProp(){
     
-    let initialState = {type: "", city: "", address:"", rentPrice:0, sellPrice:0, area:"", 
-            rooms: 0, bathrooms:0, parkingSlot:false};
+    let initialState = {type: "", city: "", address:"", rentPrice:"", sellPrice: "", area:"", 
+            rooms: "", bathrooms: "", parkingSlot:false};
     const [input,setInput] = useState(initialState);
     const [error, setError] = useState(initialState);
     const dispatch = useDispatch();
@@ -55,10 +55,7 @@ export default function FormCreateProp(){
     const handlerS = (e) => {
         e.preventDefault();
         
-        if(!input.sellPrice && !input.rentPrice)
-        if(!input.address || !input.area || !input.type || !input.rooms || !input.bathrooms || !input.city){
-        }
-        if(( input.rooms || input.bathrooms ) < 0){
+        if(!input.address || !input.sellPrice|| !input.area || !input.type || !input.rooms || !input.bathrooms || !input.city){
         }
         else{ 
             dispatch(createProperty(input));            
@@ -72,8 +69,8 @@ export default function FormCreateProp(){
     return(
         <div className="cont-gral-create">
 
-            <div className="div-recuadro">
-            <form onSubmit={handlerS} className="cont-formulario">
+            <div className="div-rec">
+               <form onSubmit={handlerS} className="cont-formulario">
                   
                 <select onChange={handleCH} id={"type"} className={"select-tipoProps"}>
                       <option>Tipo de propiedad: </option>
@@ -100,49 +97,40 @@ export default function FormCreateProp(){
                   
                 <label className="label-direcc">Direccion: </label>
                 <input className={error.address ? "error-direcc" : "input-direcc"} type={'text'} id={'address'} value={input.address} onChange={handleCH}/>
-                 {/* {buscoProp && (<span className="span-error">Ya existe una Prop para dicha dirección!!</span>)} */}
-                <div className="div-precios">
-                    <label className="label-venta">Precio Venta: </label>
-                    <input className="input-sellPrice" type={'number'} id={'sellPrice'} value={input.sellPrice} onChange={handleCH} min='500' max='1111111111'/> 
-  
-                    <label className="label-alquiler">Precio Alquiler: </label>
-                    <input className="input-rentPrice" type={'number'} id={'rentPrice'} value={input.rentPrice} onChange={handleCH} min='0' max='1111111111'/>
-                </div>
-  
+                 
+                <label className="label-venta">Precio Venta: </label>
+                <input className="input-price" type={'number'} id={'sellPrice'} value={input.sellPrice} onChange={handleCH} min='0' max='1111111111'/> 
+                
                 <label className="label-area">Area: </label>
                 <input className={error.area ? "error-caract" : "input-area"} type={'text'} value={input.area} id={'area'} onChange={handleCH}/>
                 {error.area && (<div><span className='span-error-num'>{error.area}</span></div>)}
                 
-                <label className="label-area">Habitaciones: </label>
-                <input className={error.area ? "error-caract" : "input-area"} type={'number'} min={'1'} max={'100'} value={input.rooms} id={'rooms'} onChange={handleCH}/>
+                <label className="label-hab">Habitaciones: </label>
+                <input className={error.area ? "error-caract" : "input-room"} type={'number'} min='0' max='100' value={input.rooms} id={'rooms'} onChange={handleCH}/>
                 {error.rooms && (<div><span className='span-error-num'>{error.rooms}</span></div>)}
 
-                <label className="label-area">Baños: </label>
-                <input className={error.area ? "error-caract" : "input-area"} type={'number'} min={'1'} max={'50'} value={input.bathrooms} id={'bathrooms'} onChange={handleCH}/>
+                <label className="label-room">Baños: </label>
+                <input className={error.area ? "error-caract" : "input-room"} type={'number'} min={'1'} max={'50'} value={input.bathrooms} id={'bathrooms'} onChange={handleCH}/>
                 {error.bathrooms && (<div><span className='span-error-num'>{error.bathrooms}</span></div>)}
 
-                <label className="label-area">Cochera: </label>
-                <select onChange={handleCH} id={'parkingSlot'} className={"cochera"}>
+                <label className="label-room">Cochera: </label>
+                <select onChange={handleCH} id={'parkingSlot'} className={"input-room"}>
                     <option>Si</option>
                     <option>No</option>
                 </select> 
                 {error.parkingSlot && (<div><span className='span-error-num'>{error.parkingSlot}</span></div>)}
 
-                <div className="fechas">
-                    <label className="label-fechConstruc">ConstructionDate: </label>
-                    <input className="fecha-construc" type={'number'} id={'constructionDate'} value={input.constructionDate} onChange={handleCH} min={'1900'} max={'2022'}/>
+                <label className="label-fechConstruc">ConstructionDate: </label>
+                <input className="fecha-construc" type={'number'} id={'constructionDate'} value={input.constructionDate} onChange={handleCH} min={'1900'} max={'2022'}/>
   
-                    <label className="label-fechRenov">RenovationDate: </label>
-                    <input className="fecha-construc" type={'number'} id={'renovationDate'} value={input.renovationDate} onChange={handleCH} min={'1900'} max={'2022'}/>                            
-                </div>
-  
-                <label className="label-cargaImagen">Cargar Imagen: </label>
-                {/* <input className="cargaFotos" type={'file'}/> */}
+                <label className="label-fechRenov">RenovationDate: </label>
+                <input className="fecha-construc" type={'number'} id={'renovationDate'} value={input.renovationDate} onChange={handleCH} min={'1900'} max={'2022'}/>                            
+                <br></br>
+                <label className="label-cargaImagen">Cargar Imagen: </label>                
                 <input className="cargaFotos" type={'text'} id={'pictures'} value={input.pictures} onChange={handleCH}/>
-  
-                <div>
-                  <input className="boton-sub" type={'submit'} value={"Create Prop"}/>
-                </div>
+   
+                 
+                <input className="boton-sub" type={'submit'} value={"Create Prop"}/>                
   
               </form>
             </div>

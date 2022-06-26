@@ -23,8 +23,6 @@ function validators(input){
     if(!input.dni){errors.dni = "Pleace, dni is required";} 
 
     if(!input.telephone){errors.telephone = "Pleace, telephone is required";} 
-
-    if(!input.avatar){errors.avatar = "Pleace, avatar is required";} 
     
     return errors;
 }
@@ -33,10 +31,12 @@ export default function UserCreate(){
     const inisitalState = {name:"", lastName:"", password:"", birthday:"", email:"", dni:"", telephone:"", avatar:""};
     const [input, setInput] = useState(inisitalState);
     const [error, setError] = useState(inisitalState);
-    /* const allUsers = useSelector(state => state.users);
-    let buscaUser = allUsers.find(u => u.dni === input.dni); */
+    const allUs = useSelector(state => state.users);   
     const dispatch = useDispatch();
-
+    /* console.log(allUs)
+    let buskUser = allUs.find(u => u.dni !== '123')
+    console.log("data:",buskUser)
+ */
     useEffect(()=>{
         dispatch(getAllUsers());
     }, [dispatch]);
@@ -48,8 +48,8 @@ export default function UserCreate(){
     const handlerS = (e) => {
         e.preventDefault();
         
-        if(!input.name || !input.lastName || !input.password || !input.birthday || !input.email || !input.dni || !input.telephone || !input.avatar ){
-            alert("Faltan datos");
+        if(!input.name || !input.lastName || !input.password || !input.birthday || !input.email || !input.dni || !input.telephone ){
+            /* alert("Faltan datos"); */
         }
         dispatch(createUser(input));
         alert("Creado");
@@ -68,9 +68,7 @@ export default function UserCreate(){
                         <div className="nombre">
                             <label className="label-g1">Nombre: </label>
                             <input className={error.name ? "errorInput" : "itemInput"} type={'text'} id={'name'} value={input.name} onChange={handlerCH}/>
-                            {error.name && (<div><p className="p-error">{error.name}</p></div>)}
-                            {/*muestro msj SI el poke a crear ya existe */}
-                            {/* {buscaUser && (<div><p className="p-error">El Usuario ya existe!!</p></div>)} */}
+                            {error.name && (<div><p className="p-error">{error.name}</p></div>)}                            
                         </div>
 
                         <div className="lastName">
@@ -104,6 +102,8 @@ export default function UserCreate(){
                             <label className="label-g2">Dni: </label>
                             <input className={error.dni ? "errorInput" : "itemInput-g2"} type={'number'} id={'dni'} value={input.dni} onChange={handlerCH}/>
                             {error.dni && (<div><p className="p-error">{error.dni}</p></div>)}
+                            {/*muestro msj SI el poke a crear ya existe */}
+                            {/* {buskUser && (<div><p className="p-error">El Usuario ya existe!!</p></div>)}  */}
                         </div>
 
                         <div className="telephone">
