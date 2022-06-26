@@ -1,6 +1,6 @@
 import axios from "axios";
 import { url } from "./url";
-import { LOADING, PROPERTIES, PROPERTY, ALL_USERS, USER } from "./actionTypes";
+import { FILTER, LOADING, PROPERTIES, PROPERTY, ALL_USERS, USER, PAGE_SETTER } from "./actionTypes";
 
 export function getAllProperties() {
   return async function (dispatch) {
@@ -12,6 +12,24 @@ export function getAllProperties() {
     });
   };
 }
+
+export function propertyPagination({ filters, location, max }) {
+  return async function (dispatch) {
+    dispatch({ type: LOADING });
+    const filtered = await axios.post(`${url}/property/search/?location=${location}&max=${max}`, filters);
+    return dispatch({
+      type: PROPERTIES,
+      payload: filtered.data,
+    });
+  };
+}
+
+export function pageSetter (payload) {
+  return {
+    type: PAGE_SETTER,
+    payload
+  };
+};
 
 export function getPropertyById(id) {
   return async function (dispatch) {
@@ -51,13 +69,11 @@ export function createUser(data){
   };
 }
 
-export function filter(filters, location) {
-  return async function (dispatch) {
-    dispatch({ type: LOADING });
-    const filtered = await axios.post(`${url}/property/search/?location=${location}`, filters);
+export function filter(filters, location, max) {
+  return function (dispatch) {
     return dispatch({
-      type: PROPERTIES,
-      payload: filtered.data,
+      type: FILTER,
+      payload: { filters, location, max }
     });
   };
 }
