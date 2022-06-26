@@ -12,6 +12,7 @@ const StyledCard = styled.div`
   border-radius: 1rem;
   border: 1px solid #efefef;
   box-shadow: 0 3px 15px rgba(0, 0, 0, 0.089);
+  object-fit: cover;
   
   img {
     width: 300px;
