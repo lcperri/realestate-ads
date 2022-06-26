@@ -1,30 +1,55 @@
-import React, { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { getAllProperties } from '../../redux/actions'
+import { propertyPagination } from '../../redux/actions'
+import Button from '../../styledComponents/Button'
 import CardsContainer from '../../styledComponents/CardsContainer'
 import Card from '../Card'
-// import propertiesList from '../dataTemp'
 
 
 const Cards = () => {
-  const dispatch = useDispatch()
-  const propertiesList = useSelector(state => state.properties)
+  const dispatch = useDispatch();
+
+  const paginatedProperties = useSelector(state => state.pagination);
+
+  const [skip, setSkip] = useState(0);
+  const [pagesNum, setPagesNum] = useState([]);
+  const propertyAmount = paginatedProperties.length;
+
+  const pickPage = (event) => {
+    setSkip(event.target.textContent * 2 - 2);
+  };
 
   useEffect(() => {
-    dispatch(getAllProperties())
-  }, [getAllProperties])
+    dispatch(propertyPagination(skip));
+    let pages = [];
+    for (let i = 0; i < Math.ceil(propertyAmount / 2); i++) {
+      pages.push(i + 1);
+    }
+    setPagesNum(pages);
+  }, [dispatch, propertyAmount, skip]);
 
   return (
-
-    <CardsContainer>
+    <>
+      <CardsContainer>
+        {
+          paginatedProperties?.map(e => (
+            <div key={e.id}>
+              <Card  {...e}/>
+            </div>
+          ))
+        }
+      </CardsContainer>
       {
-        propertiesList?.map(e => (
-          <div key={e.id}>
-            <Card  {...e}/>
-          </div>
+        pagesNum ?
+        pagesNum.map((num) => (
+          <Button key={num}
+            onClick={(e) => pickPage(e)} title={`Page ${num}`}>
+              {num}
+          </Button>
         ))
+        : null
       }
-    </CardsContainer>
+    </>
   )
 }
 

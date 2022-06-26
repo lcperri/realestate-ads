@@ -1,10 +1,11 @@
-import { LOADING, PROPERTIES, PROPERTY } from "./actionTypes";
+import { LOADING, PAGINATION, PROPERTIES, PROPERTY } from "./actionTypes";
 
 const initialState = {
   loading: true,
   notFound: false,
   error: {},
   properties: [],
+  pagination: [],
   property: {},
   city: "",
 };
@@ -19,16 +20,20 @@ const reducer = (state = initialState, { type, payload }) => {
     case PROPERTIES:
       return {
         ...state,
-        properties: payload,
-        loading: false,
+        properties: payload
       };
     case PROPERTY:
       return {
         ...state,
         property: payload,
-        loading: false,
+        loading: false
       };
-
+    case PAGINATION:
+      return {
+        ...state,
+        pagination: payload,
+        loading: false
+      }
     default:
       return {
         ...state,

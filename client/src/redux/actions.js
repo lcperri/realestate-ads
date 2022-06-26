@@ -1,6 +1,6 @@
 import axios from "axios";
 import { url } from "./url";
-import { LOADING, PROPERTIES, PROPERTY } from "./actionTypes";
+import { LOADING, PAGINATION, PROPERTIES, PROPERTY } from "./actionTypes";
 
 export function getAllProperties() {
   return async function (dispatch) {
@@ -8,6 +8,17 @@ export function getAllProperties() {
     const properties = await axios.get(`${url}/property`);
     return dispatch({
       type: PROPERTIES,
+      payload: properties.data,
+    });
+  };
+}
+
+export function propertyPagination(skip) {
+  return async function (dispatch) {
+    dispatch({ type: LOADING });
+    const properties = await axios.get(`${url}/property/pagination/${skip}`);
+    return dispatch({
+      type: PAGINATION,
       payload: properties.data,
     });
   };
