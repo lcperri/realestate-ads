@@ -113,31 +113,25 @@ export default function FormCreateProp(){
                 <input className={error.address ? "error-direcc" : "input-direcc"} type={'text'} id={'address'} value={input.address} onChange={handleCH}/>
 
                  {/* {buscoProp && (<span className="span-error">Ya existe una Prop para dicha dirección!!</span>)} */}
-                <div className="div-precios">
-                    <select onChange={handleCH} id={"operation"} className={"select-tipoProps"}>
+                
+                <select onChange={handleCH} id={"operation"} className={"select-tipoProps"}>
                         <option>Quiero:</option>
                         <option>Vender mi propiedad</option>
                         <option>Rentar mi propiedad</option>
-                    </select>
-                    <div>
-                        Precio:
-                    </div>
-                    <div>
-                        <input className="input-price" type={'number'} id={'price'} value={input.price} onChange={handleCH} min='10' max='1111111111'/> 
-                    </div>
-                </div>
-  
+                </select>
+
+                <label>Precio:</label>
+                <input className="input-price" type={'number'} id={'price'} value={input.price} onChange={handleCH} min='10' max='1111111111'/> 
+                    
                 <label className="label-area">Area: </label>
                 <input className={error.area ? "error-caract" : "input-area"} type={'text'} value={input.area} id={'area'} onChange={handleCH}/>
-                {error.area && (<div><span className='span-error-num'>{error.area}</span></div>)}
                 
                 <label className="label-area">Habitaciones: </label>
                 <input className={error.area ? "error-caract" : "input-area"} type={'number'} min={'1'} max={'100'} value={input.rooms} id={'rooms'} onChange={handleCH}/>
-                {error.rooms && (<div><span className='span-error-num'>{error.rooms}</span></div>)}
-
+                
                 <label className="label-area">Baños: </label>
                 <input className={error.area ? "error-caract" : "input-area"} type={'number'} min={'1'} max={'50'} value={input.bathrooms} id={'bathrooms'} onChange={handleCH}/>
-                {error.bathrooms && (<div><span className='span-error-num'>{error.bathrooms}</span></div>)}
+                
 
                 <label className="label-area">Cochera: </label>
                 <select onChange={handleCH} id={'parkingSlot'} className={"cochera"}>
