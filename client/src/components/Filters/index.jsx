@@ -34,11 +34,11 @@ export default function Filter() {
   }
 
   useEffect(() => {
-    console.log(filters)
+    console.log(filters);
     if (!freeze) {
       dispatch(filter(filters, location));
     }
-  }, [location, filters])
+  }, [location, filters, freeze, dispatch]);
 
   function handleSubmit(e) {
     e.preventDefault();

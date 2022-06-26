@@ -1,0 +1,468 @@
+.home {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* background-color: brown; */
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  max-width: 1920px;
+  margin: auto;
+}
+
+/* Common Styles */
+.checkbtn {
+  font-size: 30px;
+  color: black;
+  cursor: pointer;
+  display: none;
+}
+.check {
+  display: none;
+}
+
+.container {
+  max-width: 1120px;
+  padding: 0 20px;
+  margin: auto;
+}
+
+img {
+  max-width: 100%;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+h2 {
+  font-size: 40px;
+  color: #1f373d;
+}
+
+.btn {
+  padding: 13px 25px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.btnprimary {
+  background: #ff385c;
+}
+
+.searchbtn {
+  background: #ff385c;
+  padding: 20px 22px;
+  border-radius: 0 5px 5px 0;
+  display: inline-block;
+  margin-left: -4px;
+  outline: none;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+/* Navbar */
+.mainnav {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 10;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 35px 35px 35px 0;
+}
+.navbar .bar {
+  display: none;
+}
+.navbar .logo {
+  width: 110px;
+  margin-right: 140px;
+}
+
+.navbar .navigation ul,
+.navbar .join ul {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar .navigation a,
+.navbar .join a {
+  font-size: 14px;
+  padding: 0 14px;
+  color: #1f373d;
+}
+
+.navbar a:hover {
+  color: #ff385c;
+}
+.navbar .join ul li a:last-child {
+  padding: 13px 25px;
+}
+
+.navbar .join .btnprimary:hover {
+  color: #fff;
+}
+/* Header Area*/
+
+/* Showcase */
+.showcase {
+  position: relative;
+  height: 600px;
+}
+.showcase .showcaseimg {
+  background: url(./img/showcase.jpeg) no-repeat center center/cover;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 200px;
+  z-index: -1;
+}
+
+.showcase .showcaseimgcontent {
+  width: 60%;
+  padding: 30px 0;
+  position: absolute;
+  background: #ff385c;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  bottom: 0;
+  right: 0;
+}
+
+.showcase .showcaseimgcontent .number,
+.showcase .showcaseimgcontent .location {
+  display: flex;
+  align-items: center;
+}
+.showcase .showcaseimgcontent .number p,
+.showcase .showcaseimgcontent .location p {
+  font-size: 18px;
+  margin-left: 30px;
+}
+
+.showcase .showcasecontent {
+  z-index: 1;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.showcase .showcasecontent h1 {
+  font-size: 60px;
+  margin-bottom: 50px;
+}
+
+.showcase .showcasecontent .formgroup {
+  position: relative;
+}
+.showcase .showcasecontent input[type="text"] {
+  width: 360px;
+  padding: 20px 0;
+  padding-left: 30px;
+  border: none;
+  outline: none;
+  border-radius: 5px 0 0 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.showcase .showcasecontent .formgroup i {
+  position: absolute;
+  top: 20px;
+  left: 5px;
+  color: #919eb1;
+  font-size: 14px;
+}
+
+/* Company stats */
+.companystats {
+  padding-top: 130px;
+}
+
+.companystats .statcontent {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 80px;
+  padding-bottom: 50px;
+}
+
+.companystats .statleft h2 {
+  padding-bottom: 70px;
+}
+
+.companystats .statleft p {
+  padding-bottom: 40px;
+}
+
+.companystats .statright {
+  display: flex;
+  flex-wrap: wrap;
+}
+.companystats .statbox {
+  height: 200px;
+  width: 200px;
+  background: #f6f5f4;
+  margin: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.companystats .statbox .num {
+  font-size: 40px;
+  color: #ff385c;
+}
+.companystats .statbox p {
+  font-weight: 700;
+  color: #1f373d;
+  margin: 5px;
+}
+
+/* Appartment Section */
+.appartments {
+  padding: 50px 0;
+  background: #f6f5f4;
+}
+
+.appartments h2 {
+  padding-bottom: 50px;
+}
+
+.appartments .appartmentlist {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 30px;
+  padding-bottom: 50px;
+}
+
+.appartments .appartmentlist .appartmentitem {
+  background: #fff;
+  height: 470px;
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 10px 0 rgba(0, 0, 0, 0.1);
+}
+.appartments .appartmentlist .appartmentitem .num {
+  color: #ff385c;
+  font-weight: bold;
+}
+.appartments .appartmentlist .appartmentitem img {
+  width: 100%;
+}
+.appartments .appartmentlist .appartmentitem h3 {
+  font-size: 15px;
+  margin: 20px 0;
+}
+
+.appartments .formgroup {
+  position: relative;
+}
+.appartments .formgroup input[type="text"] {
+  width: 360px;
+  padding: 20px 0;
+  padding-left: 30px;
+  border: none;
+  outline: none;
+  border-radius: 5px 0 0 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.appartments .formgroup i {
+  position: absolute;
+  top: 20px;
+  left: 5px;
+  color: #919eb1;
+  font-size: 14px;
+}
+.appartments .btngroup {
+  display: flex;
+  justify-content: space-between;
+}
+
+.appartments .btngroup button {
+  padding: 20px 50px;
+  cursor: pointer;
+  background: #fff;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+}
+.appartments .btngroup button:hover {
+  color: #ff385c;
+}
+
+/* How It Works */
+.howitworks {
+  margin: 50px 0;
+}
+
+.howitworks .content {
+  width: 40%;
+  margin-bottom: 30px;
+}
+.howitworks .content h2 {
+  margin-bottom: 20px;
+}
+
+.howitworks .boxes {
+  display: flex;
+  justify-content: space-between;
+}
+
+.howitworks .boxes .box {
+  height: 300px;
+  width: 300px;
+  background: #fff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 10px 0 rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+}
+.howitworks .boxes .box > p {
+  margin: 25px 0;
+}
+
+.howitworks .boxes .box .strong {
+  font-weight: bold;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #1f373d;
+}
+.howitworks .boxes .yellowbox {
+  background: #ff385c;
+  color: #fff;
+}
+.howitworks .boxes .yellowbox .strong {
+  border-color: #fff;
+}
+
+/* Services */
+.services {
+  margin-bottom: 50px;
+}
+.services h2 {
+  padding: 30px 0;
+}
+.services .servicesinner {
+  margin: 40px 0;
+  width: 40%;
+}
+
+.services .servicescontent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 100px;
+}
+
+.services .servicesdetails {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.services .servicesdetails h3 {
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+/* Agents Section */
+.agents {
+  padding: 40px 0;
+  background: #f6f5f4;
+}
+
+.agentscontainer {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 80%;
+  /* padding: 0 20px; */
+  margin: auto;
+}
+
+.agents .agenttitle {
+  width: 40%;
+  margin-bottom: 40px;
+}
+.agents .agenttitle h2 {
+  margin-bottom: 30px;
+}
+
+.agents .agentcardboxes {
+  display: flex;
+  justify-content: space-between;
+}
+.agents .agentcardboxes .agentcard {
+  margin-right: 50px;
+  height: 450px;
+  background: #fff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 10px 0 rgba(0, 0, 0, 0.1);
+}
+.agents .agentcardboxes .agentcard:last-child {
+  margin-right: 0px;
+}
+
+.agents .agentcardcontent {
+  display: flex;
+  justify-content: space-between;
+}
+.agents .agentname {
+  margin-left: 20px;
+  margin-top: 20px;
+}
+.agents .agentname h3 {
+  margin-bottom: 5px;
+}
+
+.agents .agentsocial {
+  margin-top: 50px;
+}
+
+.agents .agentsocial a {
+  margin-right: 20px;
+  color: #1f373d;
+}
+.agents .agentsocial a:hover {
+  color: #ff385c;
+}
+
+/* Footer */
+.footer {
+  background: #1f373d;
+  padding: 50px 0;
+}
+
+.footer .footerinner {
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr 1fr 1fr;
+}
+.footer h3 {
+  margin-bottom: 20px;
+  color: #919eb1;
+}
+
+.footer .footerinner .logo p,
+.footer .footerinner .logo h3 {
+  color: #fff;
+}
+.footer .footerinner ul li {
+  margin-bottom: 10px;
+}
+.footer .footerinner ul li a {
+  color: #fff;
+  font-size: 14px;
+}
+
+.footer .footerinner ul li a:hover {
+  color: #ff385c;
+}
