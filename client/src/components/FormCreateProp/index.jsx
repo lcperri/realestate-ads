@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import './FormCreate.css';
 import {createProperty, getAllProperties} from '../../redux/actions';
+import DivContainer from "../../styledComponents/DivContainer";
+import Button from "../../styledComponents/Button";
 
 
 //--funcion para hacer validaciones----------------------------
@@ -21,15 +23,25 @@ function validators(input){
     if(input.rooms < 0){errors.rooms = "No se permiten Numeros Negativos";} 
     if(input.bathrooms < 0){errors.bathrooms = "No se permiten Numeros Negativos";}  
     if(input.parkingSlot < 0){errors.parkingSlot = "No se permiten Numeros Negativos";}
-    
+    //Validación para que se active o desactive el botón de Submit form:
+    if (JSON.stringify(errors) === '{}') return {none: true}
     return errors;
 }
 //--------------------------------------------------------------------------------------------
 
 export default function FormCreateProp(){
     
-    let initialState = {type: "", city: "", address:"", rentPrice:0, sellPrice:0, area:"", 
-            rooms: 0, bathrooms:0, parkingSlot:false};
+    let initialState = {
+        type: "", 
+        city: "", 
+        address:"", 
+        price:0, 
+        area:"", 
+        rooms: 1, 
+        bathrooms:1,
+        parkingSlot:false
+    };
+
     const [input,setInput] = useState(initialState);
     const [error, setError] = useState(initialState);
     const dispatch = useDispatch();
@@ -41,12 +53,12 @@ export default function FormCreateProp(){
 
     const handleCH = (e) => {
         e.preventDefault();
-        if(e.target.id === 'type'){
+        if (e.target.id === 'type'){
             setInput({...input, type: e.target.value})
-        }else if(e.target.id === 'parkingSlot'){
+        } else if(e.target.id === 'parkingSlot'){
             if(e.target.value === 'Si'){setInput({...input, parkingSlot: true})}
             if(e.target.value === 'No'){setInput({...input, parkingSlot: false})}
-        }else{
+        } else{
             setInput({...input, [e.target.id]: e.target.value});
             setError(validators({...input, [e.target.id]: e.target.value}));
         }
@@ -54,8 +66,7 @@ export default function FormCreateProp(){
         
     const handlerS = (e) => {
         e.preventDefault();
-        
-        if(!input.sellPrice && !input.rentPrice)
+        if(!input.price && !input.rentPrice)
         if(!input.address || !input.area || !input.type || !input.rooms || !input.bathrooms || !input.city){
         }
         if(( input.rooms || input.bathrooms ) < 0){
@@ -63,17 +74,17 @@ export default function FormCreateProp(){
         else{ 
             dispatch(createProperty(input));            
             setInput({});
-            dispatch(getAllProperties());
-            // setInput({type: "", city: "", address:"", rentPrice:"", sellPrice:"", area:"", 
+            // setInput({type: "", city: "", address:"", rentPrice:"", price:"", area:"", 
             // bathrooms:"", neighbourhood:"",  constructionDate:"", parkingSlot:""});
         }
     };
 
     return(
-        <div className="cont-gral-create">
+        <DivContainer>
+        {/* <div className="cont-gral-create"> */}
 
             <div className="div-recuadro">
-            <form onSubmit={handlerS} className="cont-formulario">
+            <form onSubmit={handlerS} >
                   
                 <select onChange={handleCH} id={"type"} className={"select-tipoProps"}>
                       <option>Tipo de propiedad: </option>
@@ -100,26 +111,27 @@ export default function FormCreateProp(){
                   
                 <label className="label-direcc">Direccion: </label>
                 <input className={error.address ? "error-direcc" : "input-direcc"} type={'text'} id={'address'} value={input.address} onChange={handleCH}/>
+
                  {/* {buscoProp && (<span className="span-error">Ya existe una Prop para dicha dirección!!</span>)} */}
-                <div className="div-precios">
-                    <label className="label-venta">Precio Venta: </label>
-                    <input className="input-sellPrice" type={'number'} id={'sellPrice'} value={input.sellPrice} onChange={handleCH} min='500' max='1111111111'/> 
-  
-                    <label className="label-alquiler">Precio Alquiler: </label>
-                    <input className="input-rentPrice" type={'number'} id={'rentPrice'} value={input.rentPrice} onChange={handleCH} min='0' max='1111111111'/>
-                </div>
-  
+                
+                <select onChange={handleCH} id={"operation"} className={"select-tipoProps"}>
+                        <option>Quiero:</option>
+                        <option>Vender mi propiedad</option>
+                        <option>Rentar mi propiedad</option>
+                </select>
+
+                <label>Precio:</label>
+                <input className="input-price" type={'number'} id={'price'} value={input.price} onChange={handleCH} min='10' max='1111111111'/> 
+                    
                 <label className="label-area">Area: </label>
                 <input className={error.area ? "error-caract" : "input-area"} type={'text'} value={input.area} id={'area'} onChange={handleCH}/>
-                {error.area && (<div><span className='span-error-num'>{error.area}</span></div>)}
                 
                 <label className="label-area">Habitaciones: </label>
                 <input className={error.area ? "error-caract" : "input-area"} type={'number'} min={'1'} max={'100'} value={input.rooms} id={'rooms'} onChange={handleCH}/>
-                {error.rooms && (<div><span className='span-error-num'>{error.rooms}</span></div>)}
-
+                
                 <label className="label-area">Baños: </label>
                 <input className={error.area ? "error-caract" : "input-area"} type={'number'} min={'1'} max={'50'} value={input.bathrooms} id={'bathrooms'} onChange={handleCH}/>
-                {error.bathrooms && (<div><span className='span-error-num'>{error.bathrooms}</span></div>)}
+                
 
                 <label className="label-area">Cochera: </label>
                 <select onChange={handleCH} id={'parkingSlot'} className={"cochera"}>
@@ -141,12 +153,15 @@ export default function FormCreateProp(){
                 <input className="cargaFotos" type={'text'} id={'pictures'} value={input.pictures} onChange={handleCH}/>
   
                 <div>
-                  <input className="boton-sub" type={'submit'} value={"Create Prop"}/>
+                    <Button type={'submit'} disabled={!error.none} className='disabled'>
+                        Crear propiedad
+                    </Button>
+                  <input className="boton-sub" type={'submit'} value={"Subir Propiedad"}/>
                 </div>
-  
               </form>
             </div>
             
-        </div>
+        {/* </div> */}
+        </DivContainer>
     )
 }

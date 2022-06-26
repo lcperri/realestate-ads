@@ -1,65 +1,99 @@
 
-.div-recuadro{
-    border: 2px solid rgb(33, 199, 228);
+.div-rec{
+    border: 2px solid rgb(49, 209, 237);
     background-color: rgb(245, 238, 238);
     border-radius: 30px;
     width: 85%;
-    margin-top: 20px;
+    /* padding: 90px; */
+    margin-top: 140px;
     margin-left: 90px;
 }
 .cont-formulario{
     margin-top: 40px;
     margin-right: 100px;
-    
+    height: 400px;  
 }
 .select-tipoProps{
     margin-top: 5px;
     margin-left: 120px;
     margin-right: 30px;
-    float: left;
-}
-.label-direcc{    
-    margin-left: 120px;    
-}
-.label-venta{
-    float: left;
-}
-.label-alquiler{
-   float: left;
-    margin-left: 120px;
-}
-.label-area{
-    margin-top: 20px;
-    margin-left: 120px;
-}
-.label-fechRenov{
-    margin-left: 180px;
-}
-.label-cargaImagen{
-    margin-left: 120px;
-    margin-top: 30px;
-}
-.input-area{
-    margin-top: 20px;
-    width: 60px;
-}
-.input-barrio{
-    margin-top: 5px;
+    width: 200px;
 }
 .input-ciudad{
     margin-top: 5px;
     margin-left: 30px;
     margin-right: 50px;
-    width: 200px;
+    width: 230px;
+}
+.input-barrio{
+    margin-top: 5px;
+    width: 230px;
+}
+
+.label-direcc{    
+    margin-left: 120px; 
+    margin-top: 10px;   
 }
 .input-direcc{
     margin-top: 30px;
     margin-left: 10px;
     margin-bottom: 20px;
-    width: 550px;
+    width: 410px;
 }
-.error-direcc{
+.label-area{
+    margin-top: 20px;
+    margin-left: 120px;
+    margin-right: 5px;
+}
+.input-area{
+    margin-top: 20px;
+    width: 60px;
+}
+.label-hab{
+    margin-left: 40px;
+    margin-right: 5px;
+}
+.label-venta{
+    margin-left: 45px;
     
+}
+.input-price{
+    width: 135px;
+    margin-left: 10px;
+}
+.label-room{
+    margin-left: 40px;
+    margin-right: 5px;
+}
+.input-room{
+    width: 70px;
+}
+.label-fechConstruc{
+   margin-left: 120px;
+   
+}
+.fecha-construc{
+    margin-top: 30px;
+    margin-left: 5px;
+    width: 180px;
+}
+.label-fechRenov{
+    margin-left: 40px;
+}
+.label-cargaImagen{
+    margin-left: 120px;
+    margin-top: 30px;
+}
+.label-cargaImagen{
+    margin-left: 120px;
+    ;
+}
+.cargaFotos{
+    margin-left: 10px;
+    margin-top: 40px
+}
+
+.error-direcc{    
     margin-top: 30px;
     margin-left: 10px;
     margin-bottom: 20px;
@@ -67,32 +101,6 @@
     border-color: red;      
     border-radius: 5px;
         
-     
-}
-.div-precios, .fechas{
-    margin-top: 20px;
-    margin-left: 120px;
-    margin-bottom: 20px;
-}
-.input-sellPrice{
-    margin-left: 10px;
-    float: left;
-    width: 170px;
-}
-.input-rentPrice{
-    margin-left: 10px;
-    width: 180px;
-}
-.cargaFotos{
-    margin-left: 10px;
-}
-.fecha-construc{
-    margin-top: 20px;
-    margin-left: 10px;
-    margin-bottom: 20px;
-}
-.cochera{
-    margin-top: 5px;
 }
 .errorInput {
     margin-top: 5px;
@@ -102,19 +110,14 @@
     border-radius: 5px;
     
 } 
-.error-caract{
-    border-color: red;      
-    border-radius: 5px;
-} 
-.span-error {
+ 
+.p-error {
     color: red;
-    margin-left: 20px;
-    margin-top: 0px;
+    margin-top: 30px;
+    margin-left: 400px;
+    
 }
-.span-error-num {
-    color: red;
-    margin-left: 350px;
-}
+
 /* boton sub-----------*/
 .boton-sub {
     margin-top: 5px;

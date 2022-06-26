@@ -1,6 +1,6 @@
 import axios from "axios";
 import { url } from "./url";
-import { FILTER, LOADING, PAGINATION, PROPERTIES, PROPERTY } from "./actionTypes";
+import { FILTER, LOADING, PAGINATION, PROPERTIES, PROPERTY, ALL_USERS, USER } from "./actionTypes";
 
 export function getAllProperties() {
   return async function (dispatch) {
@@ -47,9 +47,24 @@ export function createProperty(data) {
   };
 }
 
+export function getAllUsers(){
+  return async function(dispatch){
+    dispatch({ type: LOADING });
+    const resp = await axios.get(`${url}/user`);
+    return dispatch({type: ALL_USERS, payload: resp.data});
+  }
+}
+
+export function createUser(data){
+  return async function (dispatch) {
+    dispatch({ type: LOADING });
+    const resp = await axios.post(`${url}/user`, data);
+    return dispatch({type: USER, payload: resp.data });
+  };
+}
+
 export function filter(filters, location, max) {
   return function (dispatch) {
-    console.log('estos son los filtros', filters)
     return dispatch({
       type: FILTER,
       payload: { filters, location, max }
