@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 const CardsContainer = styled.div`
+    
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;

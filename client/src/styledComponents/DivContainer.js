@@ -18,6 +18,16 @@ const DivContainer = styled.div`
   box-shadow: 0 3px 15px rgba(0, 0, 0, 0.159);
   /* width: max-content; */
   
+  &.home {
+    /* E52F50 */
+    background: #BA5370;  /* fallback for old browsers */
+    /* #fdfcfb */
+    /* #e2d1c3 */
+    background: -webkit-linear-gradient(to right, #ffc3a0            , #ec637c);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ffc3a0           , #ec637c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    margin-left: 350px;
+  }
   /* img {
     width: 300px;
     height: 240px;

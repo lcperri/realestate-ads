@@ -67,13 +67,28 @@
     border-color: red;      
     border-radius: 5px;
 }
-.div-precios, .fechas{
+.div-precios{
     margin-top: 20px;
     /* margin-left: 120px; */
     margin-bottom: 20px;
     width: 20%;
     display: flex;
     flex-direction: row;
+}
+
+.fechas{
+    position: relative;
+    left: 110px;
+    border-radius: 10px;
+    padding: 0 50px;
+    background: -webkit-linear-gradient(to right, #ffc3a0            , #E52F50);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ffc3a0           , #E52F50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    margin-top: 20px;
+    /* margin-left: 600px; */
+    margin-bottom: 20px;
+    width: 50%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 .input-price{
@@ -89,6 +104,7 @@
     margin-top: 20px;
     margin-left: 10px;
     margin-bottom: 20px;
+    /* width: 50%; */
 }
 .cochera{
     margin-top: 5px;
