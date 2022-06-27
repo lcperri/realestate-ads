@@ -1,13 +1,16 @@
 .navbar {
     height: 56px;
     width: 100%;    
-    background-color: #333;
-    display:flexbox;
+    background: #333;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #5f676d , #333);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #5f676d , #333); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     flex-wrap: wrap;
-    justify-content:flex-end;
+    position: fixed;
+    top: 0px;
     align-items: center;
     padding: 40px 300px;
     box-sizing: border-box;
+    z-index: 999;
 } 
 .navbar nav {
     height: 100%;
@@ -32,18 +35,17 @@
 }
 .items a {
     color: #fff;
-    height: 100%;
-    padding: 8px 3px;
+    padding: 0 3px;
     margin-right: 6px;
-    border-bottom: 4px solid transparent;
+    display: flex;
+    align-items: center;
 }
 .div-botones {
-       display: flex;
-       flex-direction: row;
-        justify-content: space-between;
-       margin-left: 630px;
-       /* padding-left: 20px; */
-       width: 200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 630px;
+    width: 200px;
 }
 .btn-nav{
     background-color: #E52F50;

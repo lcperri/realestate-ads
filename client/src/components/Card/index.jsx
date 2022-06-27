@@ -1,23 +1,23 @@
 import React from 'react'
-import Button from '../../styledComponents/Button'
+import StyledText from '../../styledComponents/StyledText'
 import StyledCard from '../../styledComponents/StyledCard'
 import BathIcon from '../Icons/Bath'
 import RoomIcon from '../Icons/Room'
 import AreaIcon from '../Icons/Area'
-import StyledText from '../../styledComponents/StyledText'
+import styles from './styles.module.css'
 
-
-const Card = ({address, city, area, type, rooms, status, bathrooms, rentPrice, sellPrice, pictures }) => {
+const Card = ({address, city, area, type, rooms, status, bathrooms, price, operation, pictures }) => {
   return (
     <StyledCard>
         <img src = {pictures[0]} />
-        <div>
+        <div className={styles.priceOperation}>
           <h2>
-            $ {rentPrice > 0 ? rentPrice : sellPrice} 
+            $ {price} USD 
           </h2>
+          <StyledText className='operationCard'>{operation === 'rent' ? 'En alquiler' : 'En venta'}</StyledText>
         </div>
         <div>
-          <StyledText>{type}</StyledText> 
+          <StyledText className='typeCard'>{type}</StyledText> 
         </div>
         <div>
           <h4>{address}</h4> 
@@ -33,7 +33,7 @@ const Card = ({address, city, area, type, rooms, status, bathrooms, rentPrice, s
           </h5>
         </div>
         <blockquote>
-          <Button className='type'>{status}</Button>
+          <StyledText className='statusCard'>{status}</StyledText>
         </blockquote>
     </StyledCard>
   )

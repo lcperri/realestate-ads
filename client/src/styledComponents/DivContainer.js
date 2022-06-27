@@ -6,7 +6,7 @@ const DivContainer = styled.div`
   border-radius: 20px;
   margin: 14px auto;
   width: 75%;
-  margin: 15px auto;
+  margin: 110px auto 15px auto;
   padding: 20px 60px 30px 60px;
   /* gap:2px; */
   /* align-items: flex-start; */
@@ -21,22 +21,13 @@ const DivContainer = styled.div`
   &.home {
     /* E52F50 */
     background: #BA5370;  /* fallback for old browsers */
-    /* #fdfcfb */
-    /* #e2d1c3 */
-    background: -webkit-linear-gradient(to right, #ffc3a0            , #ec637c);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #ffc3a0           , #ec637c); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+    background: -webkit-linear-gradient(to right, #FF416C 0%, #ff765e 100%);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(0deg, #FF416C 0%, #ff765e 100%); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     margin-left: 350px;
   }
-  /* img {
-    width: 300px;
-    height: 240px;
-    object-fit: cover;
-    border-radius: 1rem;
-  } */
 
   div {
-    margin: 5px 0 8px 0;
+    margin: 1.3px 0 1.5px 0;
   }
 
 `
