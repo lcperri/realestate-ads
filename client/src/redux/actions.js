@@ -13,7 +13,7 @@ import {
 export function getAllProperties() {
   return async function (dispatch) {
     dispatch({ type: LOADING });
-    const properties = await axios.get(`${url}/property`);
+    const properties = await axios.post(`${url}/property/search`);
     return dispatch({
       type: PROPERTIES,
       payload: properties.data,
@@ -53,10 +53,10 @@ export function getPropertyById(id) {
   };
 }
 
-export function createProperty(data) {
+export function createProperty(info) {
   return async function (dispatch) {
     dispatch({ type: LOADING });
-    const property = await axios.post(`${url}/property`, data);
+    const property = await axios.post(`${url}/property`, info);
     return dispatch({
       type: PROPERTY,
       payload: property.data,
