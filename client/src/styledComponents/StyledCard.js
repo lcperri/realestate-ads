@@ -4,8 +4,6 @@ const StyledCard = styled.div`
   background-color: #fff;
   cursor: pointer;
   min-height: 15rem;
-  margin: 14px;
-  gap:2px;
   align-items: flex-start;
   display: flex;
   flex-direction: column; 
@@ -14,7 +12,7 @@ const StyledCard = styled.div`
   border: 1px solid #efefef;
   box-shadow: 0 3px 15px rgba(0, 0, 0, 0.089);
   object-fit: cover;
-  
+
   img {
     width: 300px;
     height: 240px;
@@ -38,8 +36,8 @@ const StyledCard = styled.div`
   }
   
   &:hover {
-    margin-top: 8px;
-    margin-bottom: 20px;
+    margin-top: -3px;
+    /* margin-bottom: 20px; */
   }
 
 `

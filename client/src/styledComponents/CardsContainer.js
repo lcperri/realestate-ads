@@ -10,8 +10,8 @@ const CardsContainer = styled.div`
     width: 100%;
     background-color: none;
     justify-content: center;
-    gap: 10px;
-    padding: 10px;
+    gap: 25px;
+    padding-top: 4px;
 
     @media (max-width: 768px) {
       gap: 2px;

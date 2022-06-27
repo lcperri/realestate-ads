@@ -15,14 +15,23 @@ const Button = styled.button`
         border: 2px solid #E52F50;
     }
 
-    &.type {
-        background: #E52F50;
-        color: #fff;
-        border: 1px solid #E52F50;
+    &.status {
         padding: 0px 4px 0px 4px;
-        /* position: relative; */
+        position: relative;
+        margin-right: 4px;
+        top: -89px;
+        /* left: -60px; */
+        width: auto;
+    }
+
+    &.operation {
+        padding: 0px 4px 0px 4px;
+        border: 2px solid #999;
+        background-color: #999;
+        color: #fff;
+        position: relative;
         margin: 0;
-        /* top: -263px; */
+        top: -89px;
         /* left: -60px; */
         width: auto;
         /* cursor: default; */

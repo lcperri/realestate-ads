@@ -1,7 +1,6 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom';
 import Button from '../../styledComponents/Button';
-import StyledTextTwo from '../../styledComponents/StyledTextTwo';
 import './Nav.css';
 
 const Nav = () => {

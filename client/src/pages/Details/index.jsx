@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import propertiesList from '../../components/dataTemp'
 import AreaIcon from '../../components/Icons/Area'
 import BathIcon from '../../components/Icons/Bath'
 import RoomIcon from '../../components/Icons/Room'
@@ -15,7 +14,7 @@ import GalleryDetails from '../../styledComponents/GalleryDetails'
 import GalleryDetailsContainer from '../../styledComponents/GalleryDetailsContainer'
 import Modal from './Modal'
 import { useNavigate, useParams } from 'react-router-dom'
-import StyledTextTwo from '../../styledComponents/StyledTextTwo'
+import StyledText from '../../styledComponents/StyledText'
 import Map from '../../components/Map'
 import Button from '../../styledComponents/Button'
 import styles from './styles.module.css'
@@ -95,12 +94,13 @@ const Details = () => {
             ))
           }
         </GalleryDetailsContainer>
-        <StyledTextTwo className='available'>{property.status}</StyledTextTwo>
+        <div className={styles.statusOperation}>
+          <StyledText className='statusDetail'>{property.status}</StyledText>
+          <StyledText className='operationDetail'>{property.operation === 'rent' ? 'En alquiler' : 'En venta'}</StyledText>
+        </div>
+        <h1>Dirección:</h1>
         <div className={styles.container}>
-          <div>
-            <h1>Dirección:</h1>
-            {property.city} <b>{' > '}</b> {property.neighbourhood} <b>{' > '}</b> {property.address}
-          </div>
+            {property.city} <b> {` > `} </b> {property.neighbourhood} <b>{' > '}</b> {property.address}
         </div>
         <h1>Características:</h1>
         <div className={styles.features}>

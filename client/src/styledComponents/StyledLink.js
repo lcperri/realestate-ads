@@ -6,6 +6,9 @@ const StyledLink = styled(Link)`
     &:visited {
         color:#444;
     }
+    &:link {
+        color:#444;
+    }
     /* &:hover {
         border: 2px solid #E52F50;
     } */

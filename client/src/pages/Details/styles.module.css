@@ -16,17 +16,24 @@
 }
 
 .container {
-  /* background-color: #ff9cae; */
   /* padding: 10px; */
-  display: grid;
-  grid-template-columns: 33% 1fr;
+  display: flex;
+  flex-direction: row;
+  /* grid-template-columns: 33% 1fr; */
   align-items:flex-end;
+  gap:10px;
 }
 
 .btnContainer {
   margin: 20px;
   display: flex;
   justify-content: center;
+}
+
+.statusOperation {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
 }
 
 /*Modal: */
@@ -106,8 +113,6 @@
     top: 47%;
     z-index: 999;
   }
-
-  
 
   /*Modal  Responsive: */
   @media (max-width: 768px) {
