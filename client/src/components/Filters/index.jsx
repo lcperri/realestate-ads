@@ -191,10 +191,8 @@ export default function Filter() {
             onChange={(e) => handleChange(e)}
           >
             <option value="">Sin Preferencias</option>
-            <option value="1">1</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5+</option>
+            <option value="true">Con garage</option>
+            <option value="false">Sin garage</option>
           </Select>
         </Label>
         <StyledButton>
