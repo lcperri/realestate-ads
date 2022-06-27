@@ -33,7 +33,8 @@ const Card = ({address, city, area, type, rooms, status, bathrooms, price, opera
           </h5>
         </div>
         <blockquote>
-          <StyledText className='statusCard'>{status}</StyledText>
+          <StyledText className='statusCard'>{status === 'available' ? 'Disponible' : 'Reservado'}</StyledText>
+          {/* validar más tipos de status */}
         </blockquote>
     </StyledCard>
   )

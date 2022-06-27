@@ -195,11 +195,11 @@ export default function Filter() {
             <option value="false">Sin garage</option>
           </Select>
         </Label>
-        <StyledButton>
+        {/* <StyledButton>
           <Button style={{ color: "black" }} color="yellow" type="submit">
             Aplicar Filtro
           </Button>
-        </StyledButton>
+        </StyledButton> */}
       </form>
     </Container>
   );

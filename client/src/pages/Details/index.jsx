@@ -32,12 +32,12 @@ const Details = () => {
     geoCodeAddress()
     dispatch(getPropertyById(id))
   }, [])
-  
+
   // useEffect(() => {
-    
+
   // }, [property])
 
-  
+
   const handleClick = (item, index) => {
     setCurrentIndex(index);
     setClickedImg(item);
@@ -81,7 +81,7 @@ const Details = () => {
   }
 
   return (
-    <>
+    <div className={styles.bodyDetails}>
       <Nav />
       <DivContainer>
         <h1>Imágenes:</h1>
@@ -95,48 +95,56 @@ const Details = () => {
           }
         </GalleryDetailsContainer>
         <div className={styles.statusOperation}>
-          <StyledText className='statusDetail'>{property.status}</StyledText>
           <StyledText className='operationDetail'>{property.operation === 'rent' ? 'En alquiler' : 'En venta'}</StyledText>
+          <StyledText className='statusDetail'>{property.status === 'available' ? 'Disponible' : 'Reservado'}</StyledText>
         </div>
-        <h1>Dirección:</h1>
-        <div className={styles.container}>
-            {property.city} <b> {` > `} </b> {property.neighbourhood} <b>{' > '}</b> {property.address}
+        <div className={styles.addresFeatures_contact_wrapper}>
+          <div>
+            <h1>Dirección:</h1>
+            <div className={styles.container}>
+              {property.city} <b> {` > `} </b> {property.neighbourhood} <b>{' > '}</b> {property.address}
+            </div>
+            <h1>Características:</h1>
+            <div className={styles.features}>
+              <div>
+                <AreaIcon /> <h3>Área:</h3> {property.area}m2
+              </div>
+              <div>
+                <TypeIcon /> <h3>Tipo:</h3>{property.type}
+              </div>
+              <div>
+                <RoomIcon /> <h3>Nro de habitaciones:</h3> {property.rooms}
+              </div>
+
+              <div>
+                <BathIcon /> <h3>Nro de baños:</h3>{property.bathrooms}
+              </div>
+              <div>
+                <NeighborhoodIcon /><h3>Vecindario:</h3>{property.neighbourhood}
+              </div>
+              <div>
+                <BuildIcon /><h3>Fecha de construcción:</h3>{property.constructionDate}
+              </div>
+              <div>
+                <RenovationIcon /><h3>Fecha de renovación:</h3>{property.renovationDate}
+              </div>
+              <div>
+                <ParkingIcon /><h3>Estacionamiento:</h3>{property.parkingSlot ? 'Sí' : 'No'}
+              </div>
+            </div>
+          </div>
+          <div className={styles.contact_subWrapper}>
+            Aquí formulario de contactos:
+          </div>
         </div>
-        <h1>Características:</h1>
-        <div className={styles.features}>
-          <div>
-            <AreaIcon /> <h3>Área:</h3> {property.area}m2
-          </div>
-          <div>
-            <TypeIcon /> <h3>Tipo:</h3>{property.type}
-          </div>
-          <div>
-            <RoomIcon /> <h3>Nro de habitaciones:</h3> {property.rooms}
-          </div>
-          
-          <div>
-            <BathIcon /> <h3>Nro de baños:</h3>{property.bathrooms}
-          </div>
-          <div>
-            <NeighborhoodIcon /><h3>Vecindario:</h3>{property.neighbourhood}
-          </div>
-          <div>
-            <BuildIcon /><h3>Fecha de construcción:</h3>{property.constructionDate}
-          </div>
-          <div>
-            <RenovationIcon /><h3>Fecha de renovación:</h3>{property.renovationDate}
-          </div>
-          <div>
-            <ParkingIcon /><h3>Estacionamiento:</h3>{property.parkingSlot ? 'Sí' : 'No'}
-          </div>
-        </div>
-        {/* <script src="script.js"></script> */}
-        {/* <div id="map"></div> */}
         <h1>Ubicación:</h1>
-        { property  && <Map address={property.address + ' ' + property.city} /> }
+        {property && <Map address={property.address + ' ' + property.city} />}
       </DivContainer>
       <div className={styles.btnContainer}>
-        <Button className='center' onClick={() => navigate("/home", { replace: true })}>Volver</Button>
+        <Button onClick={() => navigate("/home", { replace: true })}>Volver</Button>
+      </div>
+      <div className={styles.btnBackTop}>
+        <Button className='btnBackTopDetail' onClick={() => navigate("/home", { replace: true })}>{'<'}</Button>
       </div>
       {clickedImg && (
         <Modal
@@ -146,7 +154,7 @@ const Details = () => {
           handelRotationLeft={handelRotationLeft}
         />
       )}
-    </>
+    </div>
   )
 }
 
