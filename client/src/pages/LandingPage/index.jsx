@@ -1,6 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 import styles from "./Landing.module.css";
-import apartmentone from "./img/apartment.jpg";
+import apartmentone from "./img/edificio1.jpg";
+import apartmenttwoo from "./img/edificio2.jpg";
+import apartmentthree from "./img/edificio3.jpg";
+import apartmentfour from "./img/edificio4.jpg";
+import apartmentfive from "./img/edificio5.jpg";
+import apartmentsix from "./img/edificio6.jpg";
+import services from "./img/servicios.png";
 
 const LandingPage = () => {
   return (
@@ -68,11 +76,13 @@ const LandingPage = () => {
                 <form className={styles.formgroup}>
                   <i className={styles.fasfasearch}></i>
                   <input type="text" name="location" placeholder="Ciudad" />
-                  <input
-                    className={`${styles.btn} ${styles.searchbtn}`}
-                    type="submit"
-                    value="Search"
-                  />
+                  <Link to={"/home"}>
+                    <input
+                      className={`${styles.btn} ${styles.searchbtn}`}
+                      type="submit"
+                      value="Buscar"
+                    />
+                  </Link>
                 </form>
               </div>
               <div className={styles.showcaseimg}>
@@ -143,52 +153,80 @@ const LandingPage = () => {
       <section className={styles.appartments}>
         <div className={styles.container}>
           <h2>
-            Mas de 5000 <br />
-            departamentos en Alquiler
+            Mas de 25.000 <br />
+            Departamentos en Alquiler
           </h2>
           <div className={styles.appartmentlist}>
             <div className={styles.appartmentitem}>
-              <img src={apartmentone} alt="" />
+              <img
+                className={styles.appartmentitemPhotos}
+                src={apartmentone}
+                alt=""
+              />
               <h3>Alicia Moreau de Justo, 553, Buenos Aires</h3>
-              <p className={styles.num}>us$3500</p>
+              <p className={styles.num}>USD 3500</p>
             </div>
             <div className={styles.appartmentitem}>
-              <img src="./img/apartment.jpg" alt="" />
+              <img
+                className={styles.appartmentitemPhotos}
+                src={apartmenttwoo}
+                alt=""
+              />
               <h3>Azucena Villaflor, 1453, Buenos Aires</h3>
-              <p className={styles.num}>us$3500</p>
+              <p className={styles.num}>USD 3500</p>
             </div>
             <div className={styles.appartmentitem}>
-              <img src="./img/apartment.jpg" alt="" />
-              <h3>Emma de la Barra, Apt 5643, Buenos Aires</h3>
-              <p className={styles.num}>us$2000</p>
+              <img
+                className={styles.appartmentitemPhotos}
+                src={apartmentthree}
+                alt=""
+              />
+              <h3>Emma de la Barra, 5643, Buenos Aires</h3>
+              <p className={styles.num}>USD 2000</p>
             </div>
             <div className={styles.appartmentitem}>
-              <img src="./img/apartment.jpg" alt="" />
+              <img
+                className={styles.appartmentitemPhotos}
+                src={apartmentfour}
+                alt=""
+              />
               <h3>Carolina Elena Lorenzini, 2453, Buenos Aires</h3>
-              <p className={styles.num}>us$3000</p>
+              <p className={styles.num}>USD 3000</p>
             </div>
             <div className={styles.appartmentitem}>
-              <img src="./img/apartment.jpg" alt="" />
+              <img
+                className={styles.appartmentitemPhotos}
+                src={apartmentfive}
+                alt=""
+              />
               <h3>Victoria Ocampo, 1458, Buenos Aires</h3>
-              <p className={styles.num}>us$3500</p>
+              <p className={styles.num}>USD 3500</p>
             </div>
             <div className={styles.appartmentitem}>
-              <img src="./img/apartment.jpg" alt="" />
-              <h3>Marie Langer, 3453, Buenos Aires</h3>
-              <p className={styles.num}>us$3000</p>
+              <img
+                className={styles.appartmentitemPhotos}
+                src={apartmentsix}
+                alt=""
+              />
+              <h3>Marie Langer , 3453, Buenos Aires</h3>
+              <p className={styles.num}>USD 3000</p>
             </div>
           </div>
           <div className={styles.btngroup}>
             <form className={styles.formgroup}>
               <i className={styles.fasfasearch}></i>
               <input type="text" name="location" placeholder="Ciudad" />
-              <input
-                className={`${styles.btn} ${styles.searchbtn}`}
-                type="submit"
-                value="Search"
-              />
+              <Link to={"/home"}>
+                <input
+                  className={`${styles.btn} ${styles.searchbtn}`}
+                  type="submit"
+                  value="Buscar"
+                />
+              </Link>
             </form>
-            <button>Mira los Departamentos Destacados</button>
+            <Link to={"/home"}>
+              <button>Departamentos Destacados</button>
+            </Link>
           </div>
         </div>
       </section>
@@ -239,7 +277,7 @@ const LandingPage = () => {
           </div>
           <div className={styles.servicescontent}>
             <div className={styles.servicesimg}>
-              <img src="./img/service-img.jpg" alt="Service Image" />
+              <img src={services} alt="services img" />
             </div>
             <div className={styles.servicesdetails}>
               <div className={styles.service1}>
@@ -336,7 +374,7 @@ const LandingPage = () => {
               </div>
               <div className={styles.agentcardcontent}>
                 <div className={styles.agentname}>
-                  <h3>Gerente de Seguridad</h3>
+                  <h3>Director de Seguridad</h3>
                   <p>Julian Meraviglia</p>
                 </div>
                 <div className={styles.agentsocial}>
@@ -364,7 +402,7 @@ const LandingPage = () => {
                   <h3>Director de Sistemas</h3>
                   <p>Marcos Forasteire</p>
                 </div>
-                <div className={styles.agentsocial}>
+                {/* <div className={styles.agentsocial}>
                   <a href>
                     <i className={`${styles.fab} ${styles.fafacebookf}`}></i>
                   </a>
@@ -374,7 +412,7 @@ const LandingPage = () => {
                   <a href>
                     <i className={`${styles.fab} ${styles.fainstagram}`}></i>
                   </a>
-                </div>
+                </div> */}
               </div>
             </div>
             <div className={styles.agentcard}>
