@@ -80,7 +80,7 @@ export default function FormCreateProp() {
     const handlerS = (e) => {
         e.preventDefault();
         
-        if (!input.address || !input.price || !input.area || !input.type || !input.rooms || !input.bathrooms || !input.city) {
+        if (!input.address || !input.price || !input.area || !input.type || !input.rooms || !input.city) {
             alert("Faltan datos");
         }else {
             //dispatch(createProperty(input));
@@ -172,7 +172,7 @@ export default function FormCreateProp() {
                     <input className="input-fechaConstruc" type={'number'} id={'constructionDate'} value={input.constructionDate} onChange={handleCH} min={'1900'} max={'2022'}/>
   
                     <label className="label-fechRenov">Fecha Renovación: </label>
-                    <input className="input-fechaRenov" type={'number'} id={'renovationDate'} value={input.renovationDate} onChange={handleCH} min={'1900'} max={'2022'}/>                            
+                    <input className="input-fechaRenov" type={'number'} id={'renovationDate'} value={input.renovationDate} onChange={handleCH} min={'0'} max={'2022'}/>                            
                 
                     <br></br>
                     <label className="cargImagen">Subir Imagen:</label>
