@@ -1,12 +1,12 @@
 .navbar {
     height: 56px;
     width: 100%;    
-    background-color: #444;
+    background-color: #333;
     display:flexbox;
     flex-wrap: wrap;
-    justify-content:  space-between;
+    justify-content:flex-end;
     align-items: center;
-    padding: 20px;
+    padding: 40px 300px;
     box-sizing: border-box;
 } 
 .navbar nav {
@@ -14,8 +14,7 @@
     
 }
 .lista {
-    margin: 0;
-    margin-right: 10px;
+    margin: 0 auto;
     padding: 0;
     list-style: none;
     display: flex;
@@ -25,22 +24,29 @@
 }
 .items {    
     display: flex;
+    justify-content: space-between;
     height: 100%;
     width: auto;
     align-items: center;
+    /* margin-left: 100px; */
 }
 .items a {
-    color: #35bcdd;
+    color: #fff;
     height: 100%;
     padding: 8px 3px;
-    margin-right: 2px;
+    margin-right: 6px;
     border-bottom: 4px solid transparent;
 }
 .div-botones {
+       display: flex;
+       flex-direction: row;
+        justify-content: space-between;
        margin-left: 630px;
+       /* padding-left: 20px; */
+       width: 200px;
 }
 .btn-nav{
-    background-color:rgb(80, 169, 196);
+    background-color: #E52F50;
     border: none;
     border-radius: 30px;
     margin-right: 10px;

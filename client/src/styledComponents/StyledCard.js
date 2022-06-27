@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 const StyledCard = styled.div`
+  background-color: #fff;
   cursor: pointer;
   min-height: 15rem;
   margin: 14px;

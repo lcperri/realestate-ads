@@ -1,5 +1,7 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom';
+import Button from '../../styledComponents/Button';
+import StyledTextTwo from '../../styledComponents/StyledTextTwo';
 import './Nav.css';
 
 const Nav = () => {
@@ -9,25 +11,20 @@ const Nav = () => {
       <nav>
         <ul className="lista">
           <li className="items">
-            <NavLink to={'/home'}>Home</NavLink>
+            <NavLink to={'/home'}>Inicio</NavLink>
             <NavLink to={'/properties'}>Propiedades</NavLink>
-            <NavLink to={'/create'}>Publicar Prop.</NavLink>
-            <NavLink to={'/about'}>About</NavLink>
-            <NavLink to={'/contact'}>Contact</NavLink>                        
+            <NavLink to={'/create'}>Publicar Propiedad</NavLink>
+            <NavLink to={'/about'}>Acerca de </NavLink>
+            <NavLink to={'/contact'}>Contacto</NavLink>                        
           </li>
 
           <div className="div-botones">
-
             <NavLink to={'/login'}>
-              <button className='btn-nav'>Login</button>
+              <Button>Login </Button>
             </NavLink>
-            <NavLink to={'/login'}>
-              <button className='btn-nav'>Sing In</button>
+            <NavLink to={'/sigin'}>
+              <Button>Registrarse </Button>
             </NavLink>
-            <NavLink to={'/login'}>
-              <button className='btn-nav'>Log Out</button>
-            </NavLink>
-
           </div>
         </ul>
       </nav>
