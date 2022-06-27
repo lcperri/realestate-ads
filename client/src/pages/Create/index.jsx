@@ -6,7 +6,6 @@ const Create = () => {
   return (
     <div>
       <Nav/>
-
       <CreateForm/>
     </div>
   )

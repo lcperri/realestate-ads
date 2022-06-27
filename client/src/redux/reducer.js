@@ -1,12 +1,16 @@
-import { LOADING, PROPERTIES, PROPERTY } from "./actionTypes";
+import { FILTER, LOADING, PROPERTIES, PROPERTY, ALL_USERS, USER, PAGE_SETTER } from "./actionTypes";
 
 const initialState = {
   loading: true,
   notFound: false,
   error: {},
+  filter: { location: "", max: "", filters: {} },
   properties: [],
+  pages: [1, 1, 10],
   property: {},
   city: "",
+  users:[],
+  user:{}
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -17,19 +21,38 @@ const reducer = (state = initialState, { type, payload }) => {
         loading: true,
       };
     case PROPERTIES:
-      console.log(payload)
       return {
         ...state,
         properties: payload,
-        loading: false,
+        loading: false
       };
+    case PAGE_SETTER:
+      return {
+        ...state,
+        pages: payload
+      }
     case PROPERTY:
       return {
         ...state,
-        property: payload,
-        loading: false,
+        property: payload
       };
-
+    case FILTER:
+      return {
+        ...state,
+        filter: payload
+      }
+    case ALL_USERS:
+      return{
+        ...state,
+        users: payload,
+        loading: false,
+      }
+      case USER:
+      return{
+        ...state,
+        user: payload,
+        loading: false,
+      }
     default:
       return {
         ...state,

@@ -17,6 +17,7 @@ export default function Filter() {
   const dispatch = useDispatch();
 
   const [location, setLocation] = useState("");
+  const [max, setMax] = useState("");
   const [filters, setFilters] = useState({});
   const [freeze, setFreeze] = useState(false);
 
@@ -25,20 +26,56 @@ export default function Filter() {
     setLocation(e.target.value);
   }
 
+  function handleMax(e) {
+    setFreeze(false);
+    setMax(e.target.value);
+  }
+
   function handleChange(e) {
     setFreeze(false);
-    setFilters({
-      ...filters,
-      [e.target.name]: e.target.value,
-    });
+    if (e.target.value) {
+      switch (e.target.name) {
+        case "operation":
+          setFilters({
+            ...filters,
+            [e.target.name]: e.target.value,
+          });
+          break;
+        case "rooms":
+          setFilters({
+            ...filters,
+            [e.target.name]: e.target.value,
+          });
+          break;
+        case "bathrooms":
+          setFilters({
+            ...filters,
+            [e.target.name]: e.target.value,
+          });
+          break;
+        case "parkingSlot":
+          setFilters({
+            ...filters,
+            [e.target.name]: e.target.value,
+          });
+          break;
+        default:
+          setFilters({
+            ...filters,
+            [e.target.name]: e.target.value,
+          });
+          break;
+      }
+    } else {
+      setFilters(delete [e.target.name]);
+    }
   }
 
   useEffect(() => {
-    console.log(filters);
     if (!freeze) {
-      dispatch(filter(filters, location));
+      dispatch(filter(filters, location, max));
     }
-  }, [location, filters, freeze, dispatch]);
+  }, [location, filters, max]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -52,18 +89,32 @@ export default function Filter() {
     <Container>
       <form onSubmit={(e) => handleSubmit(e)} autoComplete="off">
         <Title>Filtrar Por</Title>
-
+        <Label>
+          <FilterType>Tipo de Operacion</FilterType>
+          <Select
+            name="operation"
+            value={filters.operation}
+            onChange={handleChange}
+          >
+            <option value="">Sin Preferencias</option>
+            <option value="rent">Alquilar</option>
+            <option value="sell">Comprar</option>
+          </Select>
+        </Label>
         <Input
           type="text"
           name="neighbourhood"
           placeholder="Zona/Barrio"
           onChange={(e) => handleType(e)}
         />
-
         <Label>
           <FilterType>Tipo de Propiedad</FilterType>
-          <Select name="type" value={filters.type} onChange={handleChange}>
-            <option value="">Cualquier</option>
+          <Select
+            name="type"
+            value={filters.type}
+            onChange={(e) => handleChange(e)}
+          >
+            <option value="">Sin Preferencias</option>
             <option value="Departamento">Departamento</option>
             <option value="Casa">Casa</option>
             <option value="Casa de Campo">Casa de Campo</option>
@@ -81,7 +132,11 @@ export default function Filter() {
         </Label>
         <Label>
           <FilterType>Habitaciones</FilterType>
-          <Select name="rooms" value={filters.rooms} onChange={handleChange}>
+          <Select
+            name="rooms"
+            value={filters.rooms}
+            onChange={(e) => handleChange(e)}
+          >
             <option value="">Sin Preferencias</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -95,7 +150,7 @@ export default function Filter() {
           <Select
             name="bathrooms"
             value={filters.bathrooms}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e)}
           >
             <option value="">Sin Preferencias</option>
             <option value="1">1</option>
@@ -108,9 +163,9 @@ export default function Filter() {
         <Label>
           <FilterType>Precio</FilterType>
           <Select
-            name="priceMax"
+            name="max"
             value={filters.priceMax}
-            onChange={handleChange}
+            onChange={(e) => handleMax(e)}
           >
             <option value="">Sin Limite</option>
             <option value="400">$400</option>
@@ -128,25 +183,20 @@ export default function Filter() {
             <option value="10000">$10,000</option>
           </Select>
         </Label>
-        {/* <Label>
-          <FilterType>Otro Filtro</FilterType>
-          <Select name="distanceMax">
-            <option value="">Sin Limite</option>
-            <option value="1">1 mile</option>
-            <option value="2">2 miles</option>
-            <option value="3">3 miles</option>
-            <option value="4">4 miles</option>
-            <option value="5">5 miles</option>
-            <option value="6">6 miles</option>
-            <option value="7">7 miles</option>
-            <option value="8">8 miles</option>
-            <option value="9">9 miles</option>
-            <option value="10">10 miles</option>
-            <option value="15">15 miles</option>
-            <option value="20">20 miles</option>
-            <option value="25">25 miles</option>
+        <Label>
+          <FilterType>Garage</FilterType>
+          <Select
+            name="parkingSlot"
+            value={filters.parkingSlot}
+            onChange={(e) => handleChange(e)}
+          >
+            <option value="">Sin Preferencias</option>
+            <option value="1">1</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5+</option>
           </Select>
-        </Label> */}
+        </Label>
         <StyledButton>
           <Button style={{ color: "black" }} color="yellow" type="submit">
             Aplicar Filtro

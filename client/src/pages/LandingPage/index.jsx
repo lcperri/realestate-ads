@@ -149,33 +149,33 @@ const LandingPage = () => {
           <div className={styles.appartmentlist}>
             <div className={styles.appartmentitem}>
               <img src={apartmentone} alt="" />
-              <h3>Random Street, Apt B453, New York</h3>
-              <p className={styles.num}>$3500</p>
+              <h3>Alicia Moreau de Justo, 553, Buenos Aires</h3>
+              <p className={styles.num}>us$3500</p>
             </div>
             <div className={styles.appartmentitem}>
               <img src="./img/apartment.jpg" alt="" />
-              <h3>Random Street, Apt B453, New York</h3>
-              <p className={styles.num}>$3500</p>
+              <h3>Azucena Villaflor, 1453, Buenos Aires</h3>
+              <p className={styles.num}>us$3500</p>
             </div>
             <div className={styles.appartmentitem}>
               <img src="./img/apartment.jpg" alt="" />
-              <h3>Random Street, Apt B453, New York</h3>
-              <p className={styles.num}>$3500</p>
+              <h3>Emma de la Barra, Apt 5643, Buenos Aires</h3>
+              <p className={styles.num}>us$2000</p>
             </div>
             <div className={styles.appartmentitem}>
               <img src="./img/apartment.jpg" alt="" />
-              <h3>Random Street, Apt B453, New York</h3>
-              <p className={styles.num}>$3500</p>
+              <h3>Carolina Elena Lorenzini, 2453, Buenos Aires</h3>
+              <p className={styles.num}>us$3000</p>
             </div>
             <div className={styles.appartmentitem}>
               <img src="./img/apartment.jpg" alt="" />
-              <h3>Random Street, Apt B453, New York</h3>
-              <p className={styles.num}>$3500</p>
+              <h3>Victoria Ocampo, 1458, Buenos Aires</h3>
+              <p className={styles.num}>us$3500</p>
             </div>
             <div className={styles.appartmentitem}>
               <img src="./img/apartment.jpg" alt="" />
-              <h3>Random Street, Apt B453, New York</h3>
-              <p className={styles.num}>$3500</p>
+              <h3>Marie Langer, 3453, Buenos Aires</h3>
+              <p className={styles.num}>us$3000</p>
             </div>
           </div>
           <div className={styles.btngroup}>
