@@ -110,8 +110,7 @@
     border-color: red;      
     border-radius: 5px;
     
-} 
- 
+}  
 .p-error {
     color: red;
     margin-top: 30px;
@@ -122,6 +121,7 @@
 /* boton sub-----------*/
 .boton-sub {
     margin-top: 5px;
+    margin-left: 290px;
     border-radius: 30px;
     width: 400px;
     font-size: 20px;
@@ -129,7 +129,7 @@
     color:#444;
     border: 2px solid #E52F50;
     background-color:#fff;;
-    margin-left: 320px;
+    
     font-weight: bold;
     margin-top: 70px;
     margin-bottom: 10px;

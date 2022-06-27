@@ -1,6 +1,14 @@
 import axios from "axios";
 import { url } from "./url";
-import { FILTER, LOADING, PROPERTIES, PROPERTY, ALL_USERS, USER, PAGE_SETTER } from "./actionTypes";
+import {
+  FILTER,
+  LOADING,
+  PROPERTIES,
+  PROPERTY,
+  ALL_USERS,
+  USER,
+  PAGE_SETTER,
+} from "./actionTypes";
 
 export function getAllProperties() {
   return async function (dispatch) {
@@ -16,7 +24,10 @@ export function getAllProperties() {
 export function propertyPagination({ filters, location, max }) {
   return async function (dispatch) {
     dispatch({ type: LOADING });
-    const filtered = await axios.post(`${url}/property/search/?location=${location}&max=${max}`, filters);
+    const filtered = await axios.post(
+      `${url}/property/search/?location=${location}&max=${max}`,
+      filters
+    );
     return dispatch({
       type: PROPERTIES,
       payload: filtered.data,
@@ -24,12 +35,12 @@ export function propertyPagination({ filters, location, max }) {
   };
 }
 
-export function pageSetter (payload) {
+export function pageSetter(payload) {
   return {
     type: PAGE_SETTER,
-    payload
+    payload,
   };
-};
+}
 
 export function getPropertyById(id) {
   return async function (dispatch) {
@@ -53,19 +64,19 @@ export function createProperty(data) {
   };
 }
 
-export function getAllUsers(){
-  return async function(dispatch){
+export function getAllUsers() {
+  return async function (dispatch) {
     dispatch({ type: LOADING });
     const resp = await axios.get(`${url}/user`);
-    return dispatch({type: ALL_USERS, payload: resp.data});
-  }
+    return dispatch({ type: ALL_USERS, payload: resp.data });
+  };
 }
 
-export function createUser(data){
+export function createUser(data) {
   return async function (dispatch) {
     dispatch({ type: LOADING });
     const resp = await axios.post(`${url}/user`, data);
-    return dispatch({type: USER, payload: resp.data });
+    return dispatch({ type: USER, payload: resp.data });
   };
 }
 
@@ -73,7 +84,7 @@ export function filter(filters, location, max) {
   return function (dispatch) {
     return dispatch({
       type: FILTER,
-      payload: { filters, location, max }
+      payload: { filters, location, max },
     });
   };
 }

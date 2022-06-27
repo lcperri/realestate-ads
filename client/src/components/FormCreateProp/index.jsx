@@ -153,12 +153,11 @@ export default function FormCreateProp() {
                 {/* <input className="cargaFotos" type={'file'}/> */}
                 <input className="cargaFotos" type={'text'} id={'pictures'} value={input.pictures} onChange={handleCH}/>
   
-                <div>
-                        <input className="boton-sub" type={'submit'} value={"Publicar Propiedad"} />
-                    </div>
-                </form>
-            {/* </div> */}
-
+                <div>                    
+                  <input className="boton-sub" type={'submit'} value={"Subir Propiedad"}/>
+                </div>
+                
+              </form>
             </div>
         </DivContainer>
     )
