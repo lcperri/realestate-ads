@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { pageSetter } from "../../redux/actions";
+import Button from "../../styledComponents/Button";
 
 export default function Pagination () {
    const dispatch = useDispatch();
@@ -31,7 +32,7 @@ export default function Pagination () {
    return (
       <div>
          {indexes && indexes.map(i => {
-            return <button key={i} onClick={() => pageManager(i)}>{i}</button>
+            return <Button key={i} onClick={() => pageManager(i)}>{i}</Button>
          })}
       </div>
    );

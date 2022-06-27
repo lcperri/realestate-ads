@@ -17,7 +17,7 @@ export default createGlobalStyle`
     }
     /* SubTitulo */
     h2 {
-        font-size: 16px;
+        font-size: 17px;
         font-weight: 600;
     }
     /* Normal */
