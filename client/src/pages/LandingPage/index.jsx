@@ -2,6 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import styles from "./Landing.module.css";
+
+import fotoJuanCarlos from "./img/Juan Carlos.jpg";
+
 import apartmentone from "./img/edificio1.jpg";
 import apartmenttwoo from "./img/edificio2.jpg";
 import apartmentthree from "./img/edificio3.jpg";
@@ -417,7 +420,7 @@ const LandingPage = () => {
             </div>
             <div className={styles.agentcard}>
               <div className={styles.agentimg}>
-                <img src="./img/agent-img.jpg" alt="Agent 1" />
+                <img src={fotoJuanCarlos} alt="Agent 1" />
               </div>
               <div className={styles.agentcardcontent}>
                 <div className={styles.agentname}>
