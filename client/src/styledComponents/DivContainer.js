@@ -3,6 +3,7 @@ import styled from 'styled-components'
 const DivContainer = styled.div`
   /* cursor: pointer; */
   /* min-height: 15rem; */
+  background-color: #fff;
   border-radius: 20px;
   margin: 14px auto;
   width: 75%;

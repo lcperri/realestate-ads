@@ -2,15 +2,15 @@
     height: 56px;
     width: 100%;    
     background: #333;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #5f676d , #333);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #5f676d , #333); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: -webkit-linear-gradient(to right, #5f676d , #111);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #5f676d , #111); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     flex-wrap: wrap;
     position: fixed;
     top: 0px;
     align-items: center;
-    padding: 40px 300px;
+    padding: 40px 250px;
     box-sizing: border-box;
-    z-index: 999;
+    z-index: 5;
 } 
 .navbar nav {
     height: 100%;
@@ -46,6 +46,8 @@
     justify-content: space-between;
     margin-left: 630px;
     width: 200px;
+    align-items: center;
+    gap: 25px;
 }
 .btn-nav{
     background-color: #E52F50;

@@ -15,6 +15,11 @@ const Button = styled.button`
         border: 2px solid #E52F50;
     }
 
+    &.btnBackTopDetail {
+        font-size: 24px;
+        border-radius: 100%;
+    }
+
     &.status {
         padding: 0px 4px 0px 4px;
         position: relative;
@@ -39,14 +44,6 @@ const Button = styled.button`
             background-color: #E52F50;
             /* color: #333; */
         }
-    }
-
-    &.center {
-        margin: 0 auto;
-        
-        /* &:hover {
-            background-color: #E52F50;
-        } */
     }
 
     &.disabled {

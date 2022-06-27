@@ -29,7 +29,8 @@ const StyledText = styled.div`
         display: flex;
         /* justify-content: center; */
         min-width: 110px;
-        max-width:140px;
+        max-width:auto;
+        z-index: 1;
     }
 
     &.operationCard {

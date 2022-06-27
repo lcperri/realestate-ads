@@ -21,7 +21,7 @@ function Map({ address }) {
       dataType: 'json'
     }
   })
-    .then(result => result.data.results[0].geometry.location)
+    .then(result => result.data.results[0].geometry?.location)
     .catch(err => console.log(err))
 
   //Usememo para que realice el cálculo de posición solo la primera vez y quede guardado en memoria.
