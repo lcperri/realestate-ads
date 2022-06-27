@@ -81,9 +81,9 @@ export default function FormCreateProp() {
         e.preventDefault();
         
         if (!input.address || !input.price || !input.area || !input.type || !input.rooms || !input.city) {
-            alert("Faltan datos");
+            
         }else {
-            //dispatch(createProperty(input));
+            dispatch(createProperty(input));
             alert("Creado")
             setInput({
                 type: "",
