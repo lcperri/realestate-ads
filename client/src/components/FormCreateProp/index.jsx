@@ -12,19 +12,19 @@ function validators(input) {
     const errors = {}
 
     if (!input.neighbourhood) { errors.neighbourhood = "El barrio es requerido!!" }
-    if (!input.city) { errors.city = "La ciudad es requerida!!" }
+    if (!input.city) { errors.city = "*" }
     if (!input.address) { errors.address = "La dirección es requerida!!" }
     if (!input.area)  {errors.area = "El area es requerido!!"} 
     if (!input.rooms)/* {errors.rooms = "La cant de habitaciones es requerida!!"} */
     if (!input.bathrooms)/* {errors.bathrooms = "La cant de baños es requerida!!"} */
      //if(!input.pictures.length)/* {errors.pictures = "La carga de imagenes es requerida!!"} */
-
+    if (input.area < 0 || input.area === 0) { errors.area = "Corrija el precio"; }
     if (input.area < 0) { errors.area = "No se permiten Numeros Negativos"; }
     if (input.rooms < 0) { errors.rooms = "No se permiten Numeros Negativos"; }
     if (input.bathrooms < 0) { errors.bathrooms = "No se permiten Numeros Negativos"; }
-    if (input.parkingSlot < 0) { errors.parkingSlot = "No se permiten Numeros Negativos"; }
+    
     //Validación para que se active o desactive el botón de Submit form:
-    if (JSON.stringify(errors) === '{}') return { none: true }
+    //if (JSON.stringify(errors) === '{}') return { none: true }
 
     return errors;
 }
@@ -83,7 +83,7 @@ export default function FormCreateProp() {
         if (!input.address || !input.price || !input.area || !input.type || !input.rooms || !input.bathrooms || !input.city) {
             alert("Faltan datos");
         }else {
-            dispatch(createProperty(input));
+            //dispatch(createProperty(input));
             alert("Creado")
             setInput({
                 type: "",
@@ -131,14 +131,14 @@ export default function FormCreateProp() {
                     </select>
                                   
                     <label className="lab-ciuda">Ciudad:</label> 
-                    <input className={error.city ? "errorInput" : "input-ciudad"} type={'text'} id={'city'} value={input.city} onChange={handleCH}/>
-               
+                    <input className={error.city ? "errorInputF" : "input-ciudad"} type={'text'} id={'city'} value={input.city} onChange={handleCH}/>
+                    
                     <label className="lab-barrio">Barrio/Vecindario:</label>
-                    <input className={error.neighbourhood ? "errorInput" : "input-barrio"} type={'text'} id={'neighbourhood'} value={input.neighbourhood} onChange={handleCH} placeholder={"Barrio/Vecindario"}/>
+                    <input className={error.neighbourhood ? "errorInputF" : "input-barrio"} type={'text'} id={'neighbourhood'} value={input.neighbourhood} onChange={handleCH} placeholder={"Barrio/Vecindario"}/>
                     <br></br>
                     
                     <label className="lab-direcc">Dirección:</label>
-                    <input className={error.address ? "error-direcc" : "input-direcc"} type={'text'} id={'address'} value={input.address} onChange={handleCH}/>
+                    <input className={error.address ? "input-direcc-error" : "input-direcc"} type={'text'} id={'address'} value={input.address} onChange={handleCH}/>
                                
                     <label className="lab-tipoOp">Tipo de Operación:</label>
                     <select onChange={handleCH} id={"operation"} className={"select-operation"}>
@@ -149,11 +149,11 @@ export default function FormCreateProp() {
                     <br></br>
 
                     <label className="lab-precio">Precio:</label>
-                    <input className="input-price" type={'number'} id={'price'} value={input.price} onChange={handleCH} min='10' max='1111111111' placeholder="Pecio Venta/Alquiler del Inmueble"/> 
+                    <input className={error.price ? "input-price-error" : "input-price"} type={'number'} id={'price'} value={input.price} onChange={handleCH} min='10' max='1111111111' placeholder="Pecio Venta/Alquiler del Inmueble"/> 
                   
                     <label className="label-area">Area: </label>
                     <input className={error.area ? "error-caract" : "input-area"} type={'text'} value={input.area} id={'area'} onChange={handleCH}/>
-                 
+                    
                     <label className="label-area">Habitaciones: </label>
                     <input className={error.area ? "error-caract" : "input-area"} type={'number'} min={'1'} max={'100'} value={input.rooms} id={'rooms'} onChange={handleCH}/>
                 
@@ -179,8 +179,8 @@ export default function FormCreateProp() {
                     <input className="input-cargImagen" type={'text'} id={'pictures'} value={input.pictures} onChange={handleCH}/>
   
                     <br></br>
-                    <input className="boton-sub" type={'submit'} value={"Subir Propiedad"}/>               
-                
+                    <input className="boton-sub" type={'submit'} value={"Subir Propiedad"}/>
+                   
               </form>
             </div>
         </DivContainer>
