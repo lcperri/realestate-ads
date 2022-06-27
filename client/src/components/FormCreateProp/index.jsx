@@ -16,10 +16,10 @@ function validators(input) {
     if (!input.address) { errors.address = "La dirección es requerida!!" }
     if (!input.area) { errors.area = "El area es requerido!!" }
     if (!input.rooms)/* {errors.rooms = "La cant de habitaciones es requerida!!"} */
-        if (!input.bathrooms)/* {errors.bathrooms = "La cant de baños es requerida!!"} */
+    if (!input.bathrooms)/* {errors.bathrooms = "La cant de baños es requerida!!"} */
             //if(!input.pictures.length)/* {errors.pictures = "La carga de imagenes es requerida!!"} */
 
-            if (input.area < 0) { errors.area = "No se permiten Numeros Negativos"; }
+    if (input.area < 0) { errors.area = "No se permiten Numeros Negativos"; }
     if (input.rooms < 0) { errors.rooms = "No se permiten Numeros Negativos"; }
     if (input.bathrooms < 0) { errors.bathrooms = "No se permiten Numeros Negativos"; }
     if (input.parkingSlot < 0) { errors.parkingSlot = "No se permiten Numeros Negativos"; }
