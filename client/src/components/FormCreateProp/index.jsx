@@ -1,10 +1,10 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import './FormCreate.css';
 import { createProperty, getAllProperties } from '../../redux/actions';
 import DivContainer from "../../styledComponents/DivContainer";
-import Button from "../../styledComponents/Button";
+
 
 
 //--funcion para hacer validaciones----------------------------
