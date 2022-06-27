@@ -15,6 +15,18 @@ const Button = styled.button`
         border: 2px solid #E52F50;
     }
 
+    &.paginationHome {
+        background-color: #fff;
+        border: 4px solid #ff765e;
+        color: #333;
+        margin-right: 6px;
+        &:hover {
+        background-color: #E52F50;
+        color: #fff;
+        border: 4px solid #E52F50;
+    }
+    }
+
     &.btnBackTopDetail {
         font-size: 24px;
         border-radius: 100%;
