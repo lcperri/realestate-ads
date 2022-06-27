@@ -48,7 +48,7 @@ export default function Filter() {
           });
           break;
         case "bathrooms":
-          setFilters({  
+          setFilters({
             ...filters,
             [e.target.name]: e.target.value,
           });
@@ -109,7 +109,11 @@ export default function Filter() {
         />
         <Label>
           <FilterType>Tipo de Propiedad</FilterType>
-          <Select name="type" value={filters.type} onChange={(e) => handleChange(e)}>
+          <Select
+            name="type"
+            value={filters.type}
+            onChange={(e) => handleChange(e)}
+          >
             <option value="">Sin Preferencias</option>
             <option value="Departamento">Departamento</option>
             <option value="Casa">Casa</option>
@@ -128,7 +132,11 @@ export default function Filter() {
         </Label>
         <Label>
           <FilterType>Habitaciones</FilterType>
-          <Select name="rooms" value={filters.rooms} onChange={(e) => handleChange(e)}>
+          <Select
+            name="rooms"
+            value={filters.rooms}
+            onChange={(e) => handleChange(e)}
+          >
             <option value="">Sin Preferencias</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -183,10 +191,8 @@ export default function Filter() {
             onChange={(e) => handleChange(e)}
           >
             <option value="">Sin Preferencias</option>
-            <option value="1">1</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5+</option>
+            <option value="true">Con garage</option>
+            <option value="false">Sin garage</option>
           </Select>
         </Label>
         <StyledButton>
