@@ -10,8 +10,8 @@ const Nav = () => {
       <nav>
         <ul className="lista">
           <li className="items">
-            <NavLink to={'/home'}>Inicio</NavLink>
-            <NavLink to={'/properties'}>Propiedades</NavLink>
+            <NavLink to={'/'}>Inicio</NavLink>
+            <NavLink to={'/home'}>Propiedades</NavLink>
 
             <NavLink to={'/about'}>Acerca de </NavLink>
             <NavLink to={'/contact'}>Contacto</NavLink>
