@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import { GoogleMap, LoadScript, Marker, MarkerF } from '@react-google-maps/api';
+import { GoogleMap, LoadScript, MarkerF } from '@react-google-maps/api';
 import axios from 'axios';
 
 const containerStyle = {

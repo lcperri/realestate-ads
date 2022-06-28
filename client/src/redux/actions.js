@@ -1,14 +1,36 @@
 import axios from "axios";
 import { url } from "./url";
 import {
+  ALL_USERS,
   FILTER,
   LOADING,
+  LOGIN,
   PROPERTIES,
   PROPERTY,
-  ALL_USERS,
   USER,
   PAGE_SETTER,
 } from "./actionTypes";
+
+export function login(data) {
+  return async function (dispatch) {
+    console.log('yupi')
+    const login = await axios.post(`${url}/login`, data);
+    return dispatch({
+      type: LOGIN,
+      payload: login.data
+    })
+  };
+}
+
+export function googleLogin(data) {
+  return async function (dispatch) {
+    const login = await axios.post(`${url}/login/google`, data);
+    return dispatch({
+      type: LOGIN,
+      payload: login.data
+    })
+  };
+}
 
 export function getAllProperties() {
   return async function (dispatch) {

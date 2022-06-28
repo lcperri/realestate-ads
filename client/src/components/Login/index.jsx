@@ -4,7 +4,7 @@ import DivContainer from "../../styledComponents/DivContainer";
 import GoogleAuthenticator from "../../libs/GoogleAuthentication";
 
 export default function Login(){
-  
+    // eslint-disable-next-line
     const [input, setInput] = useState({email: "", password: ""});
 
     const handleCH = (e) => {};
@@ -12,7 +12,6 @@ export default function Login(){
 
     return(
         <DivContainer>
-            <GoogleAuthenticator></GoogleAuthenticator>
            <div className="login">
                 <div className="cont-login">
                     <form onSubmit={handleS} className="form-login">
@@ -30,6 +29,7 @@ export default function Login(){
 
                         <br></br>
                         <button className="btn-login">Ingresar</button>
+                        <GoogleAuthenticator></GoogleAuthenticator>
 
                     </form>
                 </div>

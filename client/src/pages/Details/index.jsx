@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import AreaIcon from '../../components/Icons/Area'
 import BathIcon from '../../components/Icons/Bath'
@@ -6,7 +6,6 @@ import RoomIcon from '../../components/Icons/Room'
 import BuildIcon from '../../components/Icons/Build'
 import TypeIcon from '../../components/Icons/Type'
 import RenovationIcon from '../../components/Icons/Renovation'
-import Nav from '../../components/Nav'
 import DivContainer from '../../styledComponents/DivContainer'
 import ParkingIcon from '../../components/Icons/Parking'
 import NeighborhoodIcon from '../../components/Icons/Neighborhood'
@@ -15,7 +14,7 @@ import GalleryDetailsContainer from '../../styledComponents/GalleryDetailsContai
 import Modal from './Modal'
 import { useNavigate, useParams } from 'react-router-dom'
 import StyledText from '../../styledComponents/StyledText'
-import Map from '../../components/Map'
+import Map from '../../libs/Map'
 import Button from '../../styledComponents/Button'
 import styles from './styles.module.css'
 import { getPropertyById } from '../../redux/actions'
@@ -31,6 +30,7 @@ const Details = () => {
   useEffect(() => {
     geoCodeAddress()
     dispatch(getPropertyById(id))
+    // eslint-disable-next-line
   }, [])
 
   // useEffect(() => {
@@ -82,14 +82,13 @@ const Details = () => {
 
   return (
     <div className={styles.bodyDetails}>
-      <Nav />
       <DivContainer>
         <h1>Imágenes:</h1>
         <GalleryDetailsContainer>
           {
             property.pictures?.map((e, index) => (
               <GalleryDetails key={e}>
-                <img src={e} onClick={() => handleClick(e, index)} />
+                <img src={e} alt="Propiedad en venta o alquiler" onClick={() => handleClick(e, index)} />
               </GalleryDetails>
             ))
           }
