@@ -5,17 +5,9 @@ import styles from "./Landing.module.css";
 
 import fotoJuanCarlos from "./img/Juan Carlos.jpg";
 
-import apartmentone from "./img/edificio1.jpg";
-import apartmenttwoo from "./img/edificio2.jpg";
-import apartmentthree from "./img/edificio3.jpg";
-import apartmentfour from "./img/edificio4.jpg";
-import apartmentfive from "./img/edificio5.jpg";
-import apartmentsix from "./img/edificio6.jpg";
-import services from "./img/servicios.png";
-
 const LandingPage = () => {
   return (
-    <div className={styles.home}>
+    <div id="home" className={styles.home}>
       {/* <!-- Navbar --> */}
       <nav className={styles.mainnav}>
         <div className={styles.container}>
@@ -34,14 +26,9 @@ const LandingPage = () => {
                 <li>
                   <a href="#home">Home</a>
                 </li>
+
                 <li>
-                  <a href="#company-stats">Nuetra Empresa</a>
-                </li>
-                <li>
-                  <a href="#appartments">Departamentos</a>
-                </li>
-                <li>
-                  <a href="#how-it-works">Servicios</a>
+                  <a href="#how-it-works">Publicar</a>
                 </li>
                 <li>
                   <a href="#agents">Nosotros</a>
@@ -104,136 +91,8 @@ const LandingPage = () => {
           </div>
         </div>
       </header>
-      {/* <!-- Company Statistics --> */}
-      <section className={styles.companystats}>
-        <div className={styles.container}>
-          <div className={styles.statcontent}>
-            <div className={styles.statleft}>
-              <h2>
-                Nuestra Empresa <br />
-                Estadisticas
-              </h2>
-              <p>
-                Nos dedicamos a brindar servicios complementarios a la actividad
-                inmobiliaria con un fuerte foco en el cliente. No somos una
-                inmobiliaria en sí; no estamos en el negocio de la venta o
-                alquiler de inmuebles. Nos gusta decir que el nuestro no es un
-                negocio de propiedades, sino de relaciones personales.
-              </p>
-              <p>
-                Nuestra misión consiste en ayudarte a encontrar lo que estas
-                buscando. Sabemos tus deseos, tus necesidades, te ayudamos en la
-                búsqueda de tu nuevo hogar. Muchos usuarios se han enamorado de
-                nuestra pagina y nos recomiendan.Nosotros y nuestro equipo de
-                150 empleados provechamos para darte la gracias por estos 20
-                años juntos. Tenemos 57.000 publicaciones de inmuebles de
-                nuestros 10.000 usuarios registrados que nos reconocen como
-                lideres en el mercado local.
-              </p>
-            </div>
-            <div className={styles.statright}>
-              <div className={styles.statbox}>
-                <p className={styles.num}>57.000</p>
-                <p>Publicaciones de Inmuebles</p>
-              </div>
-              <div className={styles.statbox}>
-                <p className={styles.num}>10.000</p>
-                <p>Usuarios Registrados</p>
-              </div>
-              <div className={styles.statbox}>
-                <p className={styles.num}>150</p>
-                <p>Empleados</p>
-              </div>
-              <div className={styles.statbox}>
-                <p className={styles.num}>20</p>
-                <p>Años de Experiencia</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* <!-- Appartments --> */}
-      <section className={styles.appartments}>
-        <div className={styles.container}>
-          <h2>
-            Mas de 25.000 <br />
-            Departamentos en Alquiler
-          </h2>
-          <div className={styles.appartmentlist}>
-            <div className={styles.appartmentitem}>
-              <img
-                className={styles.appartmentitemPhotos}
-                src={apartmentone}
-                alt=""
-              />
-              <h3>Alicia Moreau de Justo, 553, Buenos Aires</h3>
-              <p className={styles.num}>USD 3500</p>
-            </div>
-            <div className={styles.appartmentitem}>
-              <img
-                className={styles.appartmentitemPhotos}
-                src={apartmenttwoo}
-                alt=""
-              />
-              <h3>Azucena Villaflor, 1453, Buenos Aires</h3>
-              <p className={styles.num}>USD 3500</p>
-            </div>
-            <div className={styles.appartmentitem}>
-              <img
-                className={styles.appartmentitemPhotos}
-                src={apartmentthree}
-                alt=""
-              />
-              <h3>Emma de la Barra, 5643, Buenos Aires</h3>
-              <p className={styles.num}>USD 2000</p>
-            </div>
-            <div className={styles.appartmentitem}>
-              <img
-                className={styles.appartmentitemPhotos}
-                src={apartmentfour}
-                alt=""
-              />
-              <h3>Carolina Elena Lorenzini, 2453, Buenos Aires</h3>
-              <p className={styles.num}>USD 3000</p>
-            </div>
-            <div className={styles.appartmentitem}>
-              <img
-                className={styles.appartmentitemPhotos}
-                src={apartmentfive}
-                alt=""
-              />
-              <h3>Victoria Ocampo, 1458, Buenos Aires</h3>
-              <p className={styles.num}>USD 3500</p>
-            </div>
-            <div className={styles.appartmentitem}>
-              <img
-                className={styles.appartmentitemPhotos}
-                src={apartmentsix}
-                alt=""
-              />
-              <h3>Marie Langer , 3453, Buenos Aires</h3>
-              <p className={styles.num}>USD 3000</p>
-            </div>
-          </div>
-          <div className={styles.btngroup}>
-            <form className={styles.formgroup}>
-              <i className={styles.fasfasearch}></i>
-              <input type="text" name="location" placeholder="Ciudad" />
-              <Link to={"/home"}>
-                <input
-                  className={`${styles.btn} ${styles.searchbtn}`}
-                  type="submit"
-                  value="Buscar"
-                />
-              </Link>
-            </form>
-            <Link to={"/home"}>
-              <button>Departamentos Destacados</button>
-            </Link>
-          </div>
-        </div>
-      </section>
-      <section className={styles.howitworks}>
+
+      <section id="how-it-works" className={styles.howitworks}>
         <div className={styles.container}>
           <div className={styles.content}>
             <h2>¿Como Publico mi Propiedad?</h2>
@@ -268,50 +127,9 @@ const LandingPage = () => {
           </div>
         </div>
       </section>
-      {/* <!-- Services --> */}
-      <section className={styles.services}>
-        <div className={styles.container}>
-          <div className={styles.servicesinner}>
-            <h2>Servicios</h2>
-            <p>
-              Te ofrecemos la infraestructura informatica mas avanzada. Tu
-              publicacion es la primera que ofrecen los buscadores.
-            </p>
-          </div>
-          <div className={styles.servicescontent}>
-            <div className={styles.servicesimg}>
-              <img src={services} alt="services img" />
-            </div>
-            <div className={styles.servicesdetails}>
-              <div className={styles.service1}>
-                <h3>Seguridad Informatica</h3>
-                <p>
-                  Tus datos estan absolutamente protegidos gracias nuestras
-                  políticas de seguridad, firewalls, control de fuga de
-                  información, autenticación, validación y encriptamiento.
-                </p>
-              </div>
-              <div className={styles.service2}>
-                <h3>Publicaciones Reales y Seguras </h3>
-                <p>
-                  Todas nuestras pubicaciones han sido verificadas por nuestro
-                  personal especializado en fraude informatico y garantizamos
-                  que son 100% reales.
-                </p>
-              </div>
-              <div className={styles.service3}>
-                <h3>Atencion Permanente</h3>
-                <p>
-                  Nuestro de atencion al cliente brinda una atencion de
-                  excelencia a traves de los medios de nuestra pagina.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+
       {/* <!-- Agents --> */}
-      <section className={styles.agents}>
+      <section id="agents" className={styles.agents}>
         <div className={styles.agentscontainer}>
           <div className={styles.agenttitle}>
             <h2>Conoce a Nuestro Staff Ejecutivo</h2>
@@ -451,31 +269,6 @@ const LandingPage = () => {
                 <div className={styles.agentname}>
                   <h3>Gerente de Infraestructura</h3>
                   <p>Micaela Fronti</p>
-                </div>
-                <div className={styles.agentsocial}>
-                  <a href>
-                    <i className={`${styles.fab} ${styles.fafacebookf}`}></i>
-                  </a>
-                  <a href>
-                    <i className={`${styles.fab} ${styles.fatwitter}`}></i>
-                  </a>
-                  <a href>
-                    <i className={`${styles.fab} ${styles.fainstagram}`}></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div className={styles.agentcard}>
-              <div className={styles.agentimg}>
-                <img
-                  src="https://ca.slack-edge.com/TPRS7H4PN-U031QQESY85-42fcf03a60a4-512"
-                  alt="Agent 1"
-                />
-              </div>
-              <div className={styles.agentcardcontent}>
-                <div className={styles.agentname}>
-                  <h3>Jefe de Sistemas</h3>
-                  <p>Juan Mario Parra D'Errico</p>
                 </div>
                 <div className={styles.agentsocial}>
                   <a href>
