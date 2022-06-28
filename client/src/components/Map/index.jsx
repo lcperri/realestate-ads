@@ -1,6 +1,5 @@
-import React, { useMemo } from 'react'
-import { GoogleMap, LoadScript, Marker, MarkerF } from '@react-google-maps/api';
-import axios from 'axios';
+import React, { useState } from 'react'
+import { GoogleMap, LoadScript, MarkerF,useJsApiLoader } from '@react-google-maps/api';
 
 const containerStyle = {
   width: '100%',
@@ -9,48 +8,41 @@ const containerStyle = {
   borderRadius: '10px'
 };
 
-function Map({ address }) {
-  // let center = {}
-  // Le damos una dirección a la api de goole y devuelve una coordenada:
-  // console.log('esta es addreess ', address);
-  // const center = {}
-  axios.get('https://maps.googleapis.com/maps/api/geocode/json', {
-    params: {
-      address: address,
-      key: 'AIzaSyBUD_-d0mWE87B23-tsWzpwz4SJawICzgs',
-      dataType: 'json'
-    }
+const Map = (props)=> {
+  const {isLoaded} = useJsApiLoader({
+    id:'google-map-script',
+    googleMapsApiKey: 'AIzaSyBUD_-d0mWE87B23-tsWzpwz4SJawICzgs'
   })
-    .then(result => result.data.results[0].geometry?.location)
-    .catch(err => console.log(err))
 
-  //Usememo para que realice el cálculo de posición solo la primera vez y quede guardado en memoria.
-  const center = useMemo(() => (
-    {
-      lat: -34.6036844,
-      lng: -58.3815591
-    }
-    // getCoordenate(address)
-  ), [])
+  const [map, setMap] = useState(null);
 
-  return (
-    <LoadScript
-      googleMapsApiKey="AIzaSyBUD_-d0mWE87B23-tsWzpwz4SJawICzgs"
-    >
-      <GoogleMap
-        mapContainerStyle={containerStyle}
-        center={center}
-        zoom={11.6}
-      >
-        <MarkerF
-          position={center}
-          visible={true}
-          clickable={true}
-        />
-        { /* Child components, such as markers, info windows, etc. */}
+  // const onLoad = React.useCallback(function callback(map) {
+  //       const bounds = new window.google.maps.LatLngBounds(props.address);
+  //       map.fitBounds(bounds);
+  //       setMap(map)
+  // }, []);
+  
+  const onUnmount = React.useCallback(function callback(map) {
+      setMap(null)
+  }, []);
+
+  return isLoaded ? (
+        <GoogleMap
+            mapContainerStyle={containerStyle}
+            center={props.address}
+            zoom={15}
+            options={{
+              gestureHandling: "cooperative"
+            }}
+            // onLoad={onLoad}
+            onUnmount={onUnmount}
+        >
+          <MarkerF
+            position={props.address}
+            visible={true}
+            clickable={true}
+          />
       </GoogleMap>
-    </LoadScript>
-  )
+  ): <></>
 }
-
-export default React.memo(Map)
+export default Map;

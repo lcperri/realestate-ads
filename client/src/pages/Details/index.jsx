@@ -19,6 +19,7 @@ import Map from '../../components/Map'
 import Button from '../../styledComponents/Button'
 import styles from './styles.module.css'
 import { getPropertyById } from '../../redux/actions'
+import getCoordenates from '../../functions/getCoordenates'
 
 const Details = () => {
   const navigate = useNavigate()
@@ -27,16 +28,17 @@ const Details = () => {
   const [currentIndex, setCurrentIndex] = useState(null);
   const { id } = useParams()
   const property = useSelector(state => state.property)
+  const [coordenate, setCoordenate] = useState()
 
   useEffect(() => {
-    geoCodeAddress()
     dispatch(getPropertyById(id))
   }, [])
-
-  // useEffect(() => {
-
-  // }, [property])
-
+  
+  useEffect(() => {
+    getCoordenates(property.address + ' ' + property.city)
+    .then(data => setCoordenate(data))
+    .catch(err => console.log(err))
+  }, [property])
 
   const handleClick = (item, index) => {
     setCurrentIndex(index);
@@ -75,9 +77,6 @@ const Details = () => {
     const newItem = newUrl[0];
     setClickedImg(newItem);
     setCurrentIndex(newIndex);
-  }
-
-  const geoCodeAddress = () => {
   }
 
   return (
@@ -138,7 +137,7 @@ const Details = () => {
           </div>
         </div>
         <h1>Ubicación:</h1>
-        {property && <Map address={property.address + ' ' + property.city} />}
+        <Map address={coordenate} />
       </DivContainer>
       <div className={styles.btnContainer}>
         <Button onClick={() => navigate("/home", { replace: true })}>Volver</Button>
