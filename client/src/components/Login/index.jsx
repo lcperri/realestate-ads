@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import './Login.css'
 import DivContainer from "../../styledComponents/DivContainer";
+import GoogleAuthenticator from "../../libs/GoogleAuthentication";
 
 export default function Login(){
   
@@ -11,6 +12,7 @@ export default function Login(){
 
     return(
         <DivContainer>
+            <GoogleAuthenticator></GoogleAuthenticator>
            <div className="login">
                 <div className="cont-login">
                     <form onSubmit={handleS} className="form-login">
