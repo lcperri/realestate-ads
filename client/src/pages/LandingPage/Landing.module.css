@@ -243,10 +243,22 @@ h2 {
 .appartments .appartmentlist {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  grid-gap: 30px;
+  grid-gap: 45px;
   padding-bottom: 50px;
 }
-
+.appartmentitem {
+  display: flex;
+  width: 327px;
+  flex-wrap: wrap;
+}
+.appartmentitemPhotos {
+  object-fit: cover;
+  height: 370px;
+  /* min-height: 00px; */
+  /* min-width: 170px;
+  max-width: 260px; */
+  /* background-color: #ff385c; */
+}
 .appartments .appartmentlist .appartmentitem {
   background: #fff;
   height: 470px;
@@ -359,7 +371,14 @@ h2 {
   margin: 40px 0;
   width: 40%;
 }
-
+.servicesimg {
+  object-fit: cover;
+  max-height: 300px;
+  min-height: 200px;
+  min-width: 170px;
+  max-width: 460px;
+  /* background-color: #ff385c; */
+}
 .services .servicescontent {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -381,6 +400,14 @@ h2 {
   padding: 40px 0;
   background: #f6f5f4;
 }
+.agentimg {
+  object-fit: cover;
+  height: 170px;
+  /* min-height: 170px; */
+  width: 170px;
+  /* max-width: 170px; */
+  background-color: #ff385c;
+}
 
 .agentscontainer {
   display: flex;
@@ -397,6 +424,15 @@ h2 {
 .agents .agenttitle h2 {
   margin-bottom: 30px;
 }
+.agentcard {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  /* height: 100px; */
+  width: 170px;
+}
 
 .agents .agentcardboxes {
   display: flex;
@@ -404,7 +440,7 @@ h2 {
 }
 .agents .agentcardboxes .agentcard {
   margin-right: 50px;
-  height: 450px;
+  height: 400px;
   background: #fff;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 10px 0 rgba(0, 0, 0, 0.1);
 }

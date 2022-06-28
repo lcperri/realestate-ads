@@ -38,7 +38,7 @@ const StyledText = styled.div`
         padding: 0px 5px 0px 5px;
         border: 2px solid #999;
         background-color: #999;
-        color: #eeeeee;
+        color: #fff;
         margin-left: 6px;
     }
 
