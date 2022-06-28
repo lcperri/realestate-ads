@@ -18,15 +18,32 @@
     border-bottom: 1px solid;
     font-size: 20px;
 }
-
+ .lab-email{
+   font-size: 20px;
+}
+.input-email, .input-pass{
+    width: 300px;
+   
+}
 .btn-login{
     width: 100%;
   height: 40px;
   background: #017bab;
   border: none;
   color: white;
-  margin-top: 50px;
+  margin-top: 80px;
   margin-bottom: 16px;
 }
-
+.btn-login:hover {
+    color: #017bab;
+    background-color:white;
+}
+.error-span{
+  color: red;
+}
+.p-olvido{
+  height: 40px;
+  text-align: center;
+  border-bottom: 1px solid;
+}
   
