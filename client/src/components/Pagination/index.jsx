@@ -32,7 +32,7 @@ export default function Pagination () {
    return (
       <div>
          {indexes && indexes.map(i => {
-            return <Button key={i} onClick={() => pageManager(i)}>{i}</Button>
+            return <Button className="paginationHome" key={i} onClick={() => pageManager(i)}>{i}</Button>
          })}
       </div>
    );

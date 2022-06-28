@@ -6,6 +6,7 @@ import Details from "./pages/Details";
 import Loader from "./pages/Loader";
 import UserCreate from "./components/User";
 import UserCard from "./components/CardUser";
+import Login from "./components/Login";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
       <Route path="/loader" element={<Loader />} />
       <Route path="/signup" element={<UserCreate />} />
       <Route path="/user" element={<UserCard />} />
+      <Route path="/login" element={<Login />} />
       <Route path="*" element={<Home />} />
     </Routes>
   );

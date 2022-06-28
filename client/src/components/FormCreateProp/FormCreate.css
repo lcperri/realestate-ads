@@ -22,6 +22,7 @@
     margin-left: 10px;
     width: 340px;
 }
+
 .input-ciudad{
     margin-top: 5px;
     margin-left: 10px;
@@ -33,21 +34,35 @@
     margin-left: 10px;
     width: 230px;
 }
-.input-direcc{
+.errorInputF{
+    border-color: #E52F50;
+    margin-top: 5px;
+    margin-left: 10px;
+    width: 230px;
+}
+
+.input-direcc, .input-direcc-error{
     margin-top: 30px;
     margin-left: 10px;
     margin-bottom: 20px;
     width: 410px;
 }
+.input-direcc-error{
+    border-color: #E52F50;
+}
+
 .input-area{
     margin-top: 20px;
     width: 60px;
 }
+
 .input-price{
     width: 135px;
     margin-left: 10px;
     margin-top: 10px;
 }
+
+
 .input-fechaConstruc{
     margin-top: 40px;
     width: 200px;
@@ -87,30 +102,6 @@
 .label-fechRenov{
     margin-left: 120px;
 }
-.error-direcc{    
-    margin-top: 30px;
-    margin-left: 10px;
-    margin-bottom: 20px;
-    width: 490px;
-    border-color: red;      
-    border-radius: 5px;
-        
-}
-.errorInput {
-    margin-top: 5px;
-    margin-left: 10px;
-    width: 200px;
-    border-color: red;      
-    border-radius: 5px;
-    
-}  
-.p-error {
-    color: red;
-    margin-top: 30px;
-    margin-left: 400px;
-    
-}
-
 /* boton sub-----------*/
 .boton-sub {
     margin-top: 5px;
