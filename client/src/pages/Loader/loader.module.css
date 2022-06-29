@@ -1,4 +1,4 @@
-.body {
+/* .body {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -8,14 +8,18 @@
   display: flex;
   flex-flow: column wrap;
   justify-content: center;
-}
+} */
 .wrapper {
-  width: 200px;
-  height: 60px;
+  /* width: 200px;
+  height: 60px; */
   position: absolute;
-  left: 60%;
+  /* left: 60%; */
   top: 30%;
-  transform: translate(-50%, -50%);
+  right: 50%;
+  /* transform: translate(-50%, -50%); */
+  /* display: flex; */
+  /* flex-flow: column wrap; */
+  /* justify-content: center; */
 }
 
 .wrapper span {
@@ -28,8 +32,9 @@
   font-weight: bold;
 
   /* letter-spacing: 12px; */
-  color: #e52f50;
-  left: -20%;
+  color: #ff385c;
+
+  left: -40%;
 }
 
 .ldsspinner {
@@ -53,7 +58,7 @@
   height: 18px;
   border-radius: 20%;
   /* background: #fff; */
-  background: #e52f50;
+  background: #ff385c;
 }
 .ldsspinner div:nth-child(1) {
   transform: rotate(0deg);

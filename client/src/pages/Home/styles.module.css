@@ -1,3 +1,8 @@
 .homeWrapper {
-  /* margin-top: 100px; */
+  position: absolute;
+  /* margin: 0; */
+
+  background: #BA5370;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #FF416C 0%, #ff765e 100%);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(0deg, #FF416C 0%, #ff765e 100%); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }

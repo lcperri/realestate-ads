@@ -4,7 +4,7 @@ import { propertyPagination } from '../../redux/actions'
 import Button from '../../styledComponents/Button'
 import CardsContainer from '../../styledComponents/CardsContainer'
 import Card from '../Card'
-import StyledLink from '../../styledComponents/StyledLink'
+import { StyledLinkCard } from '../../styledComponents/StyledLink'
 import Pagination from '../Pagination'
 
 const Cards = () => {
@@ -25,9 +25,9 @@ const Cards = () => {
       <CardsContainer>
         {
           properties && properties.slice(pages[1]-1, pages[2]).map(e => (
-            <StyledLink to={`/${e._id}`} key={e._id}>
+            <StyledLinkCard to={`/${e._id}`} key={e._id}>
               <Card  {...e}/>
-            </StyledLink>
+            </StyledLinkCard>
           ))
         }
       </CardsContainer>
