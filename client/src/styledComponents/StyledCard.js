@@ -10,7 +10,8 @@ const StyledCard = styled.div`
   padding: 1px 1px 0 1px;
   border-radius: 1rem;
   border: 1px solid #efefef;
-  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.089);
+  /* box-shadow: 0 3px 15px rgba(0, 0, 0, 0.389); */
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   object-fit: cover;
 
   img {

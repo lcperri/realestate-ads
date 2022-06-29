@@ -82,7 +82,7 @@ const Details = () => {
   return (
     <div className={styles.bodyDetails}>
       <Nav />
-      <DivContainer>
+      <DivContainer className='detail'>
         <h1>Imágenes:</h1>
         <GalleryDetailsContainer>
           {

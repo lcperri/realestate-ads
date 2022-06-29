@@ -1,12 +1,48 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import Button from '../../styledComponents/Button';
+import { StyledLink } from '../../styledComponents/StyledLink';
 import './Nav.css';
 
 const Nav = () => {
-
   return (
     <div className="navbar">
+      {/* <ul className="lista"> */}
+      <div className='subContainer'>
+        <div className='subContainerLeft'>
+          <li className="items">
+            <StyledLink to={'/'}>Inicio</StyledLink>
+            <StyledLink to={'/home'}>Propiedades</StyledLink>
+            <StyledLink to={'/about'}>Acerca de </StyledLink>
+            <StyledLink to={'/contact'}>Contacto</StyledLink>
+          </li>
+        </div>
+        <div className='subContainerRight'>
+          <StyledLink  to={'/sigin'}>
+            Registrarse
+          </StyledLink>
+          <StyledLink to={'/login'}>
+            <Button>Login </Button>
+          </StyledLink>
+          <StyledLink to={'/create'}>
+            <Button> Publicar </Button>
+          </StyledLink>
+        </div>
+      </div>
+
+
+      {/* </li> */}
+      {/* </ul> */}
+    </div>
+
+
+  )
+}
+
+export default Nav
+
+
+{/* <div className="navbar">
       <nav>
         <ul className="lista">
           <li className="items">
@@ -32,9 +68,4 @@ const Nav = () => {
           </div>
         </ul>
       </nav>
-    </div>
-
-  )
-}
-
-export default Nav
+    </div> */}

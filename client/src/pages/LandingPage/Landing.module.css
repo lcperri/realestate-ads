@@ -69,9 +69,9 @@ h2 {
 
 /* Navbar */
 .mainnav {
-  position: sticky;
-  top: 0;
-  background: #fff;
+  /* position: sticky; */
+  /* top: 80px; */
+  background:#ff385c;
   z-index: 10;
 }
 .navbar {
