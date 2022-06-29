@@ -11,7 +11,7 @@ export default function GoogleAuthenticator () {
   useEffect(() => {
     function start() {
       gapi.client.init({
-        clientId: '394343158069-32t8sde06fkbaib24hu1v95g1oqac8pm.apps.googleusercontent.com',
+        clientId: process.env.CLIENT_ID,
         scope: 'email',
       });
     }
