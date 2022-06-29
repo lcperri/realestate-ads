@@ -7,6 +7,7 @@ import Loader from "./pages/Loader";
 import UserCreate from "./components/User";
 import UserCard from "./components/CardUser";
 import Login from "./components/Login";
+import Perfil from "./components/Perfil/Perfil";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
       <Route path="/user" element={<UserCard />} />
       <Route path="/login" element={<Login />} />
       <Route path="*" element={<Home />} />
+      <Route path="/Perfil" element={<Perfil />} />
     </Routes>
   );
 };
