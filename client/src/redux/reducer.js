@@ -10,7 +10,8 @@ const initialState = {
   property: {},
   city: "",
   users:[],
-  user:{}
+  user:{},
+  calendar: true
 };
 
 const reducer = (state = initialState, { type, payload }) => {
