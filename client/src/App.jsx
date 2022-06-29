@@ -7,12 +7,13 @@ import Loader from "./pages/Loader";
 import UserCreate from "./components/User";
 import UserCard from "./components/CardUser";
 import Login from "./components/Login";
-import Nav from "./components/Nav/index";
+// import Nav from "./components/Nav/index";
+import ProfileDataUpdate from "./pages/ProfileDataUpdate/ProfileDataUpdate";
 
 const App = () => {
   return (
     <>
-      <Nav />
+      {/* <Nav /> */}
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/home" element={<Home />} />
@@ -22,6 +23,7 @@ const App = () => {
         <Route path="/signup" element={<UserCreate />} />
         <Route path="/user" element={<UserCard />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/profileUpdate" element={<ProfileDataUpdate />} />
         <Route path="*" element={<Home />} />
       </Routes>
     </>

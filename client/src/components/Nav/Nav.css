@@ -1,54 +1,60 @@
 .navbar {
-    height: 80px;
-    width: 100%;    
-    background: #333;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #5f798e , #1f373d);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #5f798e , #1f373d); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    display: flex;
-    flex-wrap: wrap;
-    grid-template-columns: 60% 40%;
-    position: fixed;
-    justify-content: center;
-    top: 0px;
-    align-items: center;
-    /* box-sizing: border-box; */
-    z-index: 5;
-    border-bottom: 5px solid #FF416C;
-} 
-
-.subContainer {
-    display: flex;
-    justify-content: space-between;
-    width: 70%;
+  height: 80px;
+  width: 100%;
+  background: #333; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #5f798e,
+    #1f373d
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #5f798e,
+    #1f373d
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  display: flex;
+  flex-wrap: wrap;
+  grid-template-columns: 60% 40%;
+  position: fixed;
+  justify-content: center;
+  top: 0px;
+  align-items: center;
+  /* box-sizing: border-box; */
+  z-index: 5;
+  border-bottom: 5px solid #ff416c;
 }
 
+.subContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 70%;
+}
 
-.items {    
-    display: flex;
-    height: 100%;
-    width: auto;
-    align-items: center;
+.items {
+  display: flex;
+  height: 100%;
+  width: auto;
+  align-items: center;
 }
 
 .items a {
-    background-color: #5f798e;
-    border-radius: 20px;
-    padding: 3px 8px;
-    margin-right: 11px;
+  background-color: #5f798e;
+  border-radius: 20px;
+  padding: 3px 8px;
+  margin-right: 11px;
 }
 .items a:hover {
-    color:#333;
-    background-color: #fff;
-    font-weight: 500;
+  color: #333;
+  background-color: #fff;
+  font-weight: 500;
 }
 
 .subContainerLeft {
-    /* background-color: yellow; */
-    
+  /* background-color: yellow; */
 }
 
 .subContainerRight {
-    display: flex;
-    align-items: center;
-    gap:15px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
 }
