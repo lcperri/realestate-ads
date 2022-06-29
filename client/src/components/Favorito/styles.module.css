@@ -1,0 +1,62 @@
+.contenedorFav{   
+    background-color: #fff;
+    border-radius: 20px;
+    margin: 14px auto;
+    width: 60%;
+    margin-top: 100px;
+    /* align-items: flex-start; 
+    display: flex; 
+    flex-direction: column; */      
+    border: 1px solid #efefef;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.159);  
+    display: flex; /*con display, justify-content, aling-items -> dejo centrados los filtros*/
+    justify-content: flex;
+    align-items:flex-start;
+}
+.divFotos{
+    margin-top: 20px;
+    margin-left: 30px;
+    margin-right: 80px;
+    margin-bottom: 40px;
+    width: 300px;
+    height: 200px;
+}
+.divCaracteristicas{  
+    width: 350px;  
+    height: 200px;
+    margin-top: 20px;
+    margin-bottom: 40px;
+    margin-right: 80px;
+    margin-bottom: 20px;
+}
+.divBotones{
+    align-items: flex-start; 
+    display: flex; 
+    flex-direction: column;
+    width: 200px;  
+    height: 200px;
+    margin-top: 20px;
+    margin-left: 50px;
+}
+.foto{
+    width: 300px;
+    height: 200px;       
+}
+.typo, .direcc, .areaRoomBath{
+    margin-top: 40px;    
+}
+
+.botonConetar{
+    width: 200px;
+    margin-top: 0px;
+    margin-bottom: 40px;
+}
+.botonDet{
+    width: 200px;
+    margin-top: 15px;
+    margin-bottom: 40px;
+}
+.botonQuitar{
+    width: 200px;
+    margin-top: 15px;
+}

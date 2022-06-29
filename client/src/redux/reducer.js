@@ -10,7 +10,21 @@ const initialState = {
   property: {},
   city: "",
   users:[],
-  user:{}
+  user:{},
+  favoritos: [{
+    _id:"62b74f620a21495c42dde489",
+    address:"Ruta Panamericana Km 36",
+    area:"20x20",
+    type:"Departamento",
+    rooms:2,
+    bathrooms:1,
+    city:"Pcia. de Buenos Aires",
+    neighbourhood:"Tortuguitas",
+    constructionDate:2001,
+    parkingSlot:false,
+    price:600,
+    pictures: ["https://img10.naventcdn.com/avisos/resize/111/00/08/00/42/12/1200x1200/221413042.jpg"]
+  }]
 };
 
 const reducer = (state = initialState, { type, payload }) => {

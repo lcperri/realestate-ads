@@ -24,7 +24,7 @@ const LandingPage = () => {
             <div className={styles.navigation}>
               <ul>
                 <li>
-                  <a href="#home">Home</a>
+                  <a href="home">Home</a>
                 </li>
 
                 <li>
