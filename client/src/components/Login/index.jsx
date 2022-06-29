@@ -1,36 +1,67 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import './Login.css'
 import DivContainer from "../../styledComponents/DivContainer";
 import GoogleAuthenticator from "../../libs/GoogleAuthentication";
 
 export default function Login(){
-    // eslint-disable-next-line
-    const [input, setInput] = useState({email: "", password: ""});
+  
+    const [mail, setMail] = useState("");
+    const [pass, setPass] = useState("");
+    const [error, setError] = useState('');
+    const [boton, setBoton] = useState(true);
 
-    const handleCH = (e) => {};
-    const handleS = (e) =>{};
+    function validateUser(value) {
+        if(!/\S+@\S+\.\S+/.test(value)) {
+          setError('el usuario tiene que ser un email');
+        } else {
+          setError('');
+        }
+        setMail(value);
+      }
+
+    useEffect(()=>{
+        if(mail && pass && !error){
+        
+            }    setBoton(false);
+    }, [mail, pass]);
+
+    
+    const handlerS = (e) => {
+        e.preventDefault();
+    
+        if(!mail || !pass){alert("faltan datos")}
+        else{
+          alert("correcto");
+        }
+      }   
 
     return(
         <DivContainer>
            <div className="login">
                 <div className="cont-login">
-                    <form onSubmit={handleS} className="form-login">
+
+                    <form onSubmit={handlerS} className="form-login">
 
                         <h5 className="titulo">Formulario Login</h5>
                   
                         <label className="lab-email">E-mail:</label>
                         <br></br>
-                        <input className="input-email" type={'text'} id={'email'} value={input.email} onChange={handleCH}/>
+                        <input className="input-email" type={'text'} id={'email'} value={mail} 
+                            onChange={(e) => validateUser(e.target.value)} placeholder={'Usuario'}/>
+                        {!error ? null : <span className="error-span">{error}</span>}
+                        <br></br>
+
+                        <label className="lab-email">Password:</label>
+                        <br></br>
+                        <input className="input-pass" type={'text'} id={'password'} value={pass} 
+                            onChange={(e) => setPass(e.target.value)} placeholder={'Contraseña'}/>
 
                         <br></br>
-                        <label className="lab-email">Pasword:</label>
+                        <button className="btn-login" type="submit" disabled={!!error}>Ingresar</button>
+                         
                         <br></br>
-                        <input className="input-pass" type={'text'} id={'password'} value={input.password} onChange={handleCH}/>
-
-                        <br></br>
-                        <button className="btn-login">Ingresar</button>
+                        <p className="p-olvido">¿Olvido contraseña?</p>
                         <GoogleAuthenticator></GoogleAuthenticator>
-
                     </form>
                 </div>
            </div>

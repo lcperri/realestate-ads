@@ -1,15 +1,28 @@
-import { GoogleLogin, GoogleLogout } from 'react-google-login';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux/es/exports';
-import { googleLogin } from '../../redux/actions';
+import { login } from '../../redux/actions';
+
+import { GoogleLogin, GoogleLogout } from 'react-google-login';
+import { gapi } from 'gapi-script';
 
 export default function GoogleAuthenticator () {
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    function start() {
+      gapi.client.init({
+        clientId: '394343158069-32t8sde06fkbaib24hu1v95g1oqac8pm.apps.googleusercontent.com',
+        scope: 'email',
+      });
+    }
+
+    gapi.load('client:auth2', start);
+  }, []);
+
 
   const successResponseGoogle = (response) => {
-    dispatch(googleLogin(response));
+    dispatch(login(response));
   }
-
 
   const errorResponseGoogle = (response) => {
     console.log('No se pudo autenticar su usuario.', response);

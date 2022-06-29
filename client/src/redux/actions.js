@@ -13,18 +13,7 @@ import {
 
 export function login(data) {
   return async function (dispatch) {
-    console.log('yupi')
     const login = await axios.post(`${url}/login`, data);
-    return dispatch({
-      type: LOGIN,
-      payload: login.data
-    })
-  };
-}
-
-export function googleLogin(data) {
-  return async function (dispatch) {
-    const login = await axios.post(`${url}/login/google`, data);
     return dispatch({
       type: LOGIN,
       payload: login.data
