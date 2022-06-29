@@ -14,8 +14,8 @@ const LandingPage = () => {
         <div className='subContainer'>
           <div className='subContainerLeft'>
             <li className="items">
-              <StyledLink to={'/'}>Inicio</StyledLink>
-              <StyledLink to={'/home'}>Ver Propiedades</StyledLink>
+              <a href="#">Inicio</a>
+              <StyledLink to={'/home'} onClick={() => window.scrollTo(0, 0)}>Ver Propiedades</StyledLink>
               <a href="#how-it-works">Cómo funciona </a>
               <a href="#agents">Acerca de </a>
               <StyledLink to={'/contact'}>Contacto</StyledLink>
