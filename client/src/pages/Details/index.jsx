@@ -19,6 +19,7 @@ import Button from '../../styledComponents/Button'
 import styles from './styles.module.css'
 import { getPropertyById } from '../../redux/actions'
 import getCoordenates from '../../functions/getCoordenates'
+import Nav from '../../components/Nav'
 
 const Details = () => {
   const navigate = useNavigate()

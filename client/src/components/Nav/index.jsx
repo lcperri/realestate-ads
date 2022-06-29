@@ -12,7 +12,7 @@ const Nav = () => {
         <div className='subContainerLeft'>
           <li className="items">
             <StyledLink to={'/'}>Inicio</StyledLink>
-            <StyledLink to={'/home'}>Propiedades</StyledLink>
+            <StyledLink to={'/home'}>Ver Propiedades</StyledLink>
             <StyledLink to={'/about'}>Acerca de </StyledLink>
             <StyledLink to={'/contact'}>Contacto</StyledLink>
           </li>

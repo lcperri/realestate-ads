@@ -9,6 +9,11 @@ export default createGlobalStyle`
         font-size: 14px;
     }
 
+    a {
+        font-size: 15px;
+        text-decoration: none;
+    }
+
     /* Titulo */
     h1 {
         font-size: 19px;
