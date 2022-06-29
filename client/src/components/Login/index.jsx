@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import './Login.css'
 import DivContainer from "../../styledComponents/DivContainer";
+import GoogleAuthenticator from "../../libs/GoogleAuthentication";
 
 export default function Login(){
   
@@ -60,7 +61,7 @@ export default function Login(){
                          
                         <br></br>
                         <p className="p-olvido">¿Olvido contraseña?</p>
-
+                        <GoogleAuthenticator></GoogleAuthenticator>
                     </form>
                 </div>
            </div>
