@@ -7,6 +7,8 @@ import Loader from "./pages/Loader";
 import UserCreate from "./components/User";
 import UserCard from "./components/CardUser";
 import Login from "./components/Login";
+import Planes from "./components/Planes";
+import CardsFavoritos from "./components/CardsFavoritos";
 
 const App = () => {
   return (
@@ -19,6 +21,8 @@ const App = () => {
       <Route path="/signup" element={<UserCreate />} />
       <Route path="/user" element={<UserCard/>} />
       <Route path="/login" element= {<Login/>} />
+      <Route path="/planes" element= {<Planes/>} />
+      <Route path="/cardfavorites" element= {<CardsFavoritos/>} />
       <Route path='*' element={<Home/>} /> 
     </Routes>
   );
