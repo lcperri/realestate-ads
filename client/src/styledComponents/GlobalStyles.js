@@ -1,5 +1,9 @@
 import { createGlobalStyle } from 'styled-components'
 export default createGlobalStyle`
+    html {
+        scroll-behavior: smooth;
+    }
+
     * {
         box-sizing: border-box;
         margin: 0;
@@ -10,6 +14,7 @@ export default createGlobalStyle`
     }
 
     a {
+        color: #fff;
         font-size: 15px;
         text-decoration: none;
     }
