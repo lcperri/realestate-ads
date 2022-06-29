@@ -1,12 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Nav from '../../components/Nav/'
 import styles from "./Landing.module.css";
 import fotoJuanCarlos from "./img/Juan Carlos.jpg";
 import { StyledLink } from "../../styledComponents/StyledLink";
 import Button from "../../styledComponents/Button";
+import { useDispatch } from "react-redux";
+import { filter } from "../../redux/actions"
 
 const LandingPage = () => {
+  const dispatch = useDispatch()
+  const [location, setLocation] = useState("")
+
+  const onCLickBtnSearch = (e) => {
+    setLocation(location)
+  }
+  
+  const handleInputChange = (e) => {
+    setLocation(e.target.value)
+  }
+
+  useEffect(()=> {
+    dispatch(filter({}, location, ""))
+  }, [location])
+
   return (
     <>
       <div className="navbar">
@@ -50,12 +66,13 @@ const LandingPage = () => {
                   </h1>
                   <form className={styles.formgroup}>
                     <i className={styles.fasfasearch}></i>
-                    <input type="text" name="location" placeholder="Ciudad" />
+                    <input type="text" name="location" placeholder="Ciudad" value={location} onChange={handleInputChange}/>
                     <Link to={"/home"}>
                       <input
                         className={`${styles.btn} ${styles.searchbtn}`}
                         type="submit"
-                        value="Buscar"
+                        value='buscar'
+                        onClick={(e) => onCLickBtnSearch(e)}
                       />
                     </Link>
                   </form>
@@ -67,7 +84,6 @@ const LandingPage = () => {
                       <p>(011) 1203-4567</p>
                     </div>
                     <div className={styles.location}>
-                      <i className={styles.fasfamapmarkeralt}></i>
                       <p>Buenos Aires, Argentina</p>
                     </div>
                   </div>
