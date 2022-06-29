@@ -7,20 +7,24 @@ import Loader from "./pages/Loader";
 import UserCreate from "./components/User";
 import UserCard from "./components/CardUser";
 import Login from "./components/Login";
+import Nav from './components/Nav/index';
 
 const App = () => {
   return (
-    <Routes>
-      <Route path="/" element={<LandingPage />} />
-      <Route path="/home" element={<Home />} />
-      <Route path="/create" element={<Create />} />
-      <Route path="/:id" element={<Details />} />
-      <Route path="/loader" element={<Loader />} />
-      <Route path="/signup" element={<UserCreate />} />
-      <Route path="/user" element={<UserCard />} />
-      <Route path="/login" element={<Login />} />
-      <Route path="*" element={<Home />} />
-    </Routes>
+    <>
+      <Nav />
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+        <Route path="/home" element={<Home />} />
+        <Route path="/create" element={<Create />} />
+        <Route path="/:id" element={<Details />} />
+        <Route path="/loader" element={<Loader />} /> 
+        <Route path="/signup" element={<UserCreate />} />
+        <Route path="/user" element={<UserCard/>} />
+        <Route path="/login" element= {<Login/>} />
+        <Route path='*' element={<Home/>} /> 
+      </Routes>
+    </>
   );
 };
 
