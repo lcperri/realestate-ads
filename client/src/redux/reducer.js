@@ -11,7 +11,60 @@ const initialState = {
   city: "",
   users:[],
   user:{},
+<<<<<<< HEAD
+  favoritos: [{
+    _id:"62b74f620a21495c42dde489",
+    address:"Ruta Panamericana Km 36",
+    area:"20x20",
+    type:"Departamento",
+    rooms:2,
+    bathrooms:1,
+    city:"Pcia. de Buenos Aires",
+    neighbourhood:"Tortuguitas",
+    constructionDate:2001,
+    parkingSlot:false,
+    price:600,
+    pictures: ["https://img10.naventcdn.com/avisos/resize/111/00/08/00/42/12/1200x1200/221413042.jpg"]
+  },{
+    _id:"62b907e7084a4c9b3a5664ac",
+address:"Ruta panamericana 450",
+operation:"sell",
+price:144600,
+area:"20x20",
+type:"Departamento",
+rooms:2,
+bathrooms:1,
+city:"Pcia. de Buenos Aires",
+neighbourhood:"Callao",
+constructionDate:2001,
+parkingSlot:false,
+status:"available",
+pictures: [
+  "https://img10.naventcdn.com/avisos/resize/111/00/08/00/42/12/1200x1200/221413042.jpg",
+  "https://img10.naventcdn.com/avisos/resize/111/00/08/00/42/12/1200x1200/221413045.jpg",
+  "https://img10.naventcdn.com/avisos/resize/111/00/08/00/42/12/1200x1200/221413039.jpg",
+  "https://img10.naventcdn.com/avisos/resize/111/00/08/00/42/12/1200x1200/221413043.jpg",
+  "https://img10.naventcdn.com/avisos/resize/111/00/08/00/42/12/1200x1200/221413037.jpg",
+  "https://img10.naventcdn.com/avisos/resize/111/00/08/00/42/12/1200x1200/221413044.jpg"
+]
+  }],
+  misPropiedades: [{
+      _id:"62b74f620a21495c42dde489",
+      address:"Ruta Panamericana Km 36",
+      area:"20x20",
+      type:"Departamento",
+      rooms:2,
+      bathrooms:1,
+      city:"Pcia. de Buenos Aires",
+      neighbourhood:"Tortuguitas",
+      constructionDate:2001,
+      parkingSlot:false,
+      price:600,
+      pictures: ["https://img10.naventcdn.com/avisos/resize/111/00/08/00/42/12/1200x1200/221413042.jpg"]
+  }]
+=======
   calendar: true
+>>>>>>> c44b33aac025038b63fd4dc13e81842c89f41b65
 };
 
 const reducer = (state = initialState, { type, payload }) => {

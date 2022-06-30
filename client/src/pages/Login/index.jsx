@@ -62,7 +62,7 @@ export default function Login(){
                          
                         <br></br>
                         <p className="p-olvido">¿Olvido contraseña?</p>
-                        <GoogleAuthenticator></GoogleAuthenticator>
+                        <GoogleAuthenticator className="btn-google"></GoogleAuthenticator >
                     </form>
                 </div>
            </div>

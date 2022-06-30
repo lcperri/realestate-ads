@@ -9,13 +9,15 @@ import UserCard from "./components/CardUser";
 import Login from "./pages/Login";
 import Nav from './components/Nav/index';
 import CalendarForm from './components/Calendar/index';
+import Favoritos from "./components/Favoritos";
+import MisPropsPV from "./components/MisPropPremiumVip";
 
 const App = () => {
   return (
     <>
       <Nav />
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route exact path="/" element={<LandingPage />} />
         <Route path="/home" element={<Home />} />
         <Route path="/create" element={<Create />} />
         <Route path="/:id" element={<Details />} />
@@ -24,7 +26,10 @@ const App = () => {
         <Route path="/signup" element={<UserCreate />} />
         <Route path="/user" element={<UserCard/>} />
         <Route path="/login" element= {<Login/>} />
-        <Route path='*' element={<Home/>} /> 
+        <Route path="planes" element={<Planes/>} />
+        <Route path="/favoritos" element={<Favoritos/>} />
+        <Route path="/mipropsvip" element={<MisPropsPV/>} />
+        {/* <Route path='*' element={<Home/>} />  */}
       </Routes>
     </>
   );
