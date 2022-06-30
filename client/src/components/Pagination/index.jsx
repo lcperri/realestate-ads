@@ -15,6 +15,10 @@ export default function Pagination () {
 
    }, [pages]);
 
+   useEffect(() => {
+      setPages([ 1, 1, 10])
+   }, [properties])
+
    const indexes = [];
    let indexAmount = properties && Math.ceil(properties.length / 10);
    for (let i=1; i < indexAmount+1; i++) indexes.push(i); 

@@ -32,6 +32,7 @@ export default function Filter() {
   }
 
   function handleChange(e) {
+    console.log(e.target.name)
     setFreeze(false);
     if (e.target.value) {
       switch (e.target.name) {

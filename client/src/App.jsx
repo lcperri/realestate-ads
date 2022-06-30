@@ -6,12 +6,10 @@ import Details from "./pages/Details";
 import Loader from "./pages/Loader";
 import UserCreate from "./components/User";
 import UserCard from "./components/CardUser";
-import Login from "./components/Login";
+import Login from "./pages/Login";
 import Nav from './components/Nav/index';
-import Planes from "./components/Planes";
-import CardFavorito from "./components/CardFavorito";
+import CalendarForm from './components/Calendar/index';
 import Favoritos from "./components/Favoritos";
-import CardMisPropsPV from "./components/CardMisPropsPremiumVip";
 import MisPropsPV from "./components/MisPropPremiumVip";
 
 const App = () => {
@@ -23,6 +21,7 @@ const App = () => {
         <Route path="/home" element={<Home />} />
         <Route path="/create" element={<Create />} />
         <Route path="/:id" element={<Details />} />
+        <Route path="/calendar" element={<CalendarForm />} />
         <Route path="/loader" element={<Loader />} /> 
         <Route path="/signup" element={<UserCreate />} />
         <Route path="/user" element={<UserCard/>} />
