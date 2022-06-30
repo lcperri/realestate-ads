@@ -19,7 +19,6 @@ const Nav = () => {
             <NavLink to={'/favoritos'}>favoritos</NavLink>
             <NavLink to={'/mipropsvip'}>mipropsvip</NavLink>
             <NavLink to={'/planes'}>planes</NavLink>
-            <NavLink to={'/user'}>user</NavLink>
           </li>
         </div>
         <div className='subContainerRight'>
