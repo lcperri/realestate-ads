@@ -1,5 +1,6 @@
 import axios from "axios";
 import { url } from "../helpers/url";
+import { SaveRefreshToken, SaveToken, SaveId } from './../localStorage/index';
 import {
   ALL_USERS,
   FILTER,
@@ -14,7 +15,9 @@ import {
 export function login(data) {
   return async function (dispatch) {
     const login = await axios.post(`${url}/login`, data);
-    
+    SaveToken(login.data[1]);
+    SaveRefreshToken(login.data[2]);
+    SaveId(login.data[0]._id);
     return dispatch({
       type: LOGIN,
       payload: login.data
