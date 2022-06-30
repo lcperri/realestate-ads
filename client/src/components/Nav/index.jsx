@@ -29,13 +29,7 @@ const Nav = () => {
           </StyledLink>
         </div>
       </div>
-
-
-      {/* </li> */}
-      {/* </ul> */}
     </div>
-
-
   )
 }
 

@@ -4,8 +4,8 @@ import { useDispatch } from "react-redux";
 import './FormCreate.css';
 import { createProperty, getAllProperties } from '../../redux/actions';
 import DivContainer from "../../styledComponents/DivContainer";
-
-
+import Cloudinary from "../Cloudinary";
+import Input from "../../styledComponents/Input";
 
 //--funcion para hacer validaciones----------------------------
 function validators(input) {
@@ -107,11 +107,11 @@ export default function FormCreateProp() {
     return (
         <DivContainer>
         {/* <div className="cont-gral-create"> */}
-
+            <h1>PUBLICA TU PROPIEDAD</h1>
             <div>
+
                 <form onSubmit={handlerS} >
-                  
-                    <label className="lab-tipoProp">Top de propiedad:</label> 
+                    <label className="lab-tipoProp">Tipo de propiedad:</label> 
                     <select onChange={handleCH} id={"type"} className={"select-tipoProps"}>
                       <option>Tipo de propiedad: </option>
                       <option>Casa</option>
@@ -131,14 +131,14 @@ export default function FormCreateProp() {
                     </select>
                                   
                     <label className="lab-ciuda">Ciudad:</label> 
-                    <input className={error.city ? "errorInputF" : "input-ciudad"} type={'text'} id={'city'} value={input.city} onChange={handleCH}/>
+                    <Input className={error.city ? "errorInputF" : "input-ciudad"} type={'text'} id={'city'} value={input.city} onChange={handleCH}/>
                     
                     <label className="lab-barrio">Barrio/Vecindario:</label>
-                    <input className={error.neighbourhood ? "errorInputF" : "input-barrio"} type={'text'} id={'neighbourhood'} value={input.neighbourhood} onChange={handleCH} placeholder={"Barrio/Vecindario"}/>
+                    <Input className={error.neighbourhood ? "errorInputF" : "input-barrio"} type={'text'} id={'neighbourhood'} value={input.neighbourhood} onChange={handleCH} placeholder={"Barrio/Vecindario"}/>
                     <br></br>
                     
                     <label className="lab-direcc">Dirección:</label>
-                    <input className={error.address ? "input-direcc-error" : "input-direcc"} type={'text'} id={'address'} value={input.address} onChange={handleCH}/>
+                    <Input className={error.address ? "input-direcc-error" : "input-direcc"} type={'text'} id={'address'} value={input.address} onChange={handleCH}/>
                                
                     <label className="lab-tipoOp">Tipo de Operación:</label>
                     <select onChange={handleCH} id={"operation"} className={"select-operation"}>
@@ -149,16 +149,16 @@ export default function FormCreateProp() {
                     <br></br>
 
                     <label className="lab-precio">Precio:</label>
-                    <input className={error.price ? "input-price-error" : "input-price"} type={'number'} id={'price'} value={input.price} onChange={handleCH} min='10' max='1111111111' placeholder="Pecio Venta/Alquiler del Inmueble"/> 
+                    <Input className={error.price ? "input-price-error" : "input-price"} type={'number'} id={'price'} value={input.price} onChange={handleCH} min='10' max='1111111111' placeholder="Pecio Venta/Alquiler del Inmueble"/> 
                   
                     <label className="label-area">Area: </label>
-                    <input className={error.area ? "error-caract" : "input-area"} type={'text'} value={input.area} id={'area'} onChange={handleCH}/>
+                    <Input className={error.area ? "error-caract" : "input-area"} type={'text'} value={input.area} id={'area'} onChange={handleCH}/>
                     
                     <label className="label-area">Habitaciones: </label>
-                    <input className={error.area ? "error-caract" : "input-area"} type={'number'} min={'1'} max={'100'} value={input.rooms} id={'rooms'} onChange={handleCH}/>
+                    <Input className={error.area ? "error-caract" : "input-area"} type={'number'} min={'1'} max={'100'} value={input.rooms} id={'rooms'} onChange={handleCH}/>
                 
                     <label className="label-area">Baños: </label>
-                    <input className={error.area ? "error-caract" : "input-area"} type={'number'} min={'1'} max={'50'} value={input.bathrooms} id={'bathrooms'} onChange={handleCH}/>
+                    <Input className={error.area ? "error-caract" : "input-area"} type={'number'} min={'1'} max={'50'} value={input.bathrooms} id={'bathrooms'} onChange={handleCH}/>
                 
 
                     <label className="label-area">Cochera: </label>
@@ -169,18 +169,18 @@ export default function FormCreateProp() {
                     <br></br>
 
                     <label className="label-fechConstruc">Fecha Construcción: </label>
-                    <input className="input-fechaConstruc" type={'number'} id={'constructionDate'} value={input.constructionDate} onChange={handleCH} min={'1900'} max={'2022'}/>
+                    <Input className="input-fechaConstruc" type={'number'} id={'constructionDate'} value={input.constructionDate} onChange={handleCH} min={'1900'} max={'2022'}/>
   
                     <label className="label-fechRenov">Fecha Renovación: </label>
-                    <input className="input-fechaRenov" type={'number'} id={'renovationDate'} value={input.renovationDate} onChange={handleCH} min={'0'} max={'2022'}/>                            
+                    <Input className="input-fechaRenov" type={'number'} id={'renovationDate'} value={input.renovationDate} onChange={handleCH} min={'0'} max={'2022'}/>                            
                 
                     <br></br>
                     <label className="cargImagen">Subir Imagen:</label>
-                    <input className="input-cargImagen" type={'text'} id={'pictures'} value={input.pictures} onChange={handleCH}/>
+                    <Input className="input-cargImagen" type={'text'} id={'pictures'} value={input.pictures} onChange={handleCH}/>
   
                     <br></br>
-                    <input className="boton-sub" type={'submit'} value={"Subir Propiedad"}/>
-                   
+                    <Input className="boton-sub" type={'submit'} value={"Subir Propiedad"}/>
+                    <Cloudinary/>
               </form>
             </div>
         </DivContainer>
