@@ -1,5 +1,5 @@
 .navbar {
-  height: 80px;
+  height: 90px;
   width: 100%;
   background: #333; /* fallback for old browsers */
   background: -webkit-linear-gradient(
@@ -21,7 +21,7 @@
   align-items: center;
   /* box-sizing: border-box; */
   z-index: 5;
-  border-bottom: 5px solid #ff416c;
+  border-bottom: 8px solid #ff416c;
 }
 
 .subContainer {

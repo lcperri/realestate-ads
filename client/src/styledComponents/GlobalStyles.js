@@ -1,5 +1,9 @@
 import { createGlobalStyle } from 'styled-components'
 export default createGlobalStyle`
+    html {
+        scroll-behavior: smooth;
+    }
+
     * {
         box-sizing: border-box;
         margin: 0;
@@ -7,6 +11,12 @@ export default createGlobalStyle`
         padding: 0;
         font-family: 'Montserrat', sans-serif;
         font-size: 14px;
+    }
+
+    a {
+        color: #fff;
+        font-size: 15px;
+        text-decoration: none;
     }
 
     /* Titulo */

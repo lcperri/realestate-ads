@@ -1,54 +1,58 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Nav from '../../components/Nav/'
 import styles from "./Landing.module.css";
-
 import fotoJuanCarlos from "./img/Juan Carlos.jpg";
+import { StyledLink } from "../../styledComponents/StyledLink";
+import Button from "../../styledComponents/Button";
+import { useDispatch } from "react-redux";
+import { filter } from "../../redux/actions"
 
 const LandingPage = () => {
+  const dispatch = useDispatch()
+  const [location, setLocation] = useState("")
+
+  const onCLickBtnSearch = (e) => {
+    setLocation(location)
+  }
+  
+  const handleInputChange = (e) => {
+    setLocation(e.target.value)
+  }
+
+  useEffect(()=> {
+    dispatch(filter({}, location, ""))
+  }, [location])
+
   return (
     <>
-      <Nav />
-      
-      <div id="home" className={styles.home}>
-        <nav className={styles.mainnav}>
-          <div className={styles.container}>
-            <div className={styles.navbar}>
-              <div className={styles.logo}>
-                <a href="index.html">
-                  <img src="./img/logo.png" alt="logo" />
-                </a>
-              </div>
-              <div className={styles.navigation}>
-                <ul>
-                  <li>
-                    <a href="#home">Home</a>
-                  </li>
-                  <li>
-                    <a href="#how-it-works">Publicar</a>
-                  </li>
-                  <li>
-                    <a href="#agents">Nosotros</a>
-                  </li>
-                </ul>
-              </div>
-              <div className={styles.join}>
-                <ul>
-                  <li>
-                    <a href>Registrarse</a>
-                  </li>
-                  <li>
-                    <a className={styles.btnbtnprimary} href>
-                      Ingresar
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
+      <div className="navbar">
+        {/* <ul className="lista"> */}
+        <div className='subContainer'>
+          <div className='subContainerLeft'>
+            <li className="items">
+              <a href="#">Inicio</a>
+              <StyledLink to={'/home'} onClick={() => window.scrollTo(0, 0)}>Ver Propiedades</StyledLink>
+              <a href="#how-it-works">Cómo funciona </a>
+              <a href="#agents">Acerca de </a>
+              <StyledLink to={'/contact'}>Contacto</StyledLink>
+            </li>
           </div>
-        </nav>
+          <div className='subContainerRight'>
+            <StyledLink to={'/sigin'}>
+              Registrarse
+            </StyledLink>
+            <StyledLink to={'/login'}>
+              <Button>Login </Button>
+            </StyledLink>
+            <StyledLink to={'/create'}>
+              <Button> Publicar </Button>
+            </StyledLink>
+          </div>
+        </div>
+      </div>
 
-        {/* <!-- Header Section --> */}
+      {/* <!-- Header Section --> */}
+      <div id="home" className={styles.home}>
         <header className={styles.header}>
           <div className={styles.container}>
             <div className={styles.headerarea}>
@@ -56,18 +60,19 @@ const LandingPage = () => {
               <div className={styles.showcase}>
                 <div className={styles.showcasecontent}>
                   <h1>
-                    Encuentra Tu Departamento
+                    Encuentra tu Casa/Departamento
                     <br />
-                    Nuevo Y Accesible
+                    Nuevo y Accesible
                   </h1>
                   <form className={styles.formgroup}>
                     <i className={styles.fasfasearch}></i>
-                    <input type="text" name="location" placeholder="Ciudad" />
+                    <input type="text" name="location" placeholder="Ciudad" value={location} onChange={handleInputChange}/>
                     <Link to={"/home"}>
                       <input
                         className={`${styles.btn} ${styles.searchbtn}`}
                         type="submit"
-                        value="Buscar"
+                        value='buscar'
+                        onClick={(e) => onCLickBtnSearch(e)}
                       />
                     </Link>
                   </form>
@@ -79,7 +84,6 @@ const LandingPage = () => {
                       <p>(011) 1203-4567</p>
                     </div>
                     <div className={styles.location}>
-                      <i className={styles.fasfamapmarkeralt}></i>
                       <p>Buenos Aires, Argentina</p>
                     </div>
                   </div>
@@ -89,11 +93,12 @@ const LandingPage = () => {
           </div>
         </header>
 
+
         <section id="how-it-works" className={styles.howitworks}>
           <div className={styles.container}>
             <div className={styles.content}>
-              <h2>¿Como Publico mi Propiedad?</h2>
-              <p>
+              <h1 >¿Cómo Publico mi Propiedad?</h1>
+              <p className={styles.pHowToPublicDescription}>
                 Publica el alquiler o la venta de: departamentos, casas, terrenos
                 u otras propiedades.
               </p>
@@ -130,7 +135,6 @@ const LandingPage = () => {
           <div className={styles.agentscontainer}>
             <div className={styles.agenttitle}>
               <h2>Conoce a Nuestro Staff Ejecutivo</h2>
-              <p></p>
             </div>
             <div className={styles.agentcardboxes}>
               <div className={styles.agentcard}>
@@ -144,17 +148,6 @@ const LandingPage = () => {
                   <div className={styles.agentname}>
                     <h3>Presidente</h3>
                     <p>Luis Carlos Perez Rios</p>
-                  </div>
-                  <div className={styles.agentsocial}>
-                    <a href>
-                      <i className={`${styles.fab} ${styles.fafacebookf}`}></i>
-                    </a>
-                    <a href>
-                      <i className={`${styles.fab} ${styles.fatwitter}`}></i>
-                    </a>
-                    <a href>
-                      <i className={`${styles.fab} ${styles.fainstagram}`}></i>
-                    </a>
                   </div>
                 </div>
               </div>
@@ -170,17 +163,6 @@ const LandingPage = () => {
                     <h3>Vicepresidente</h3>
                     <p>Emilio Conde</p>
                   </div>
-                  <div className={styles.agentsocial}>
-                    <a href>
-                      <i className={`${styles.fab} ${styles.fafacebookf}`}></i>
-                    </a>
-                    <a href>
-                      <i className={`${styles.fab} ${styles.fatwitter}`}></i>
-                    </a>
-                    <a href>
-                      <i className={`${styles.fab} ${styles.fainstagram}`}></i>
-                    </a>
-                  </div>
                 </div>
               </div>
               <div className={styles.agentcard}>
@@ -194,17 +176,6 @@ const LandingPage = () => {
                   <div className={styles.agentname}>
                     <h3>Director de Seguridad</h3>
                     <p>Julian Meraviglia</p>
-                  </div>
-                  <div className={styles.agentsocial}>
-                    <a href>
-                      <i className={`${styles.fab} ${styles.fafacebookf}`}></i>
-                    </a>
-                    <a href>
-                      <i className={`${styles.fab} ${styles.fatwitter}`}></i>
-                    </a>
-                    <a href>
-                      <i className={`${styles.fab} ${styles.fainstagram}`}></i>
-                    </a>
                   </div>
                 </div>
               </div>
@@ -220,17 +191,6 @@ const LandingPage = () => {
                     <h3>Director de Sistemas</h3>
                     <p>Marcos Forasteire</p>
                   </div>
-                  {/* <div className={styles.agentsocial}>
-                  <a href>
-                    <i className={`${styles.fab} ${styles.fafacebookf}`}></i>
-                  </a>
-                  <a href>
-                    <i className={`${styles.fab} ${styles.fatwitter}`}></i>
-                  </a>
-                  <a href>
-                    <i className={`${styles.fab} ${styles.fainstagram}`}></i>
-                  </a>
-                </div> */}
                 </div>
               </div>
               <div className={styles.agentcard}>
@@ -241,17 +201,6 @@ const LandingPage = () => {
                   <div className={styles.agentname}>
                     <h3>Gerente de Ciberseguridad</h3>
                     <p>Juan Carlos Padierna Rueda</p>
-                  </div>
-                  <div className={styles.agentsocial}>
-                    <a href>
-                      <i className={`${styles.fab} ${styles.fafacebookf}`}></i>
-                    </a>
-                    <a href>
-                      <i className={`${styles.fab} ${styles.fatwitter}`}></i>
-                    </a>
-                    <a href>
-                      <i className={`${styles.fab} ${styles.fainstagram}`}></i>
-                    </a>
                   </div>
                 </div>
               </div>
@@ -267,22 +216,12 @@ const LandingPage = () => {
                     <h3>Gerente de Infraestructura</h3>
                     <p>Micaela Fronti</p>
                   </div>
-                  <div className={styles.agentsocial}>
-                    <a href>
-                      <i className={`${styles.fab} ${styles.fafacebookf}`}></i>
-                    </a>
-                    <a href>
-                      <i className={`${styles.fab} ${styles.fatwitter}`}></i>
-                    </a>
-                    <a href>
-                      <i className={`${styles.fab} ${styles.fainstagram}`}></i>
-                    </a>
-                  </div>
                 </div>
               </div>
             </div>
           </div>
         </section>
+        
         {/* <!-- Footer --> */}
         <footer className={styles.footer}>
           <div className={styles.container}>
@@ -349,14 +288,6 @@ const LandingPage = () => {
             </div>
           </div>
         </footer>
-
-        {/* <!-- JQuery CDN -->
-    <script
-      src="https://code.jquery.com/jquery-3.5.1.min.js"
-      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-      crossorigin="anonymous"
-    ></script>
-    <script src="./main.js"></script> */}
       </div>
     </>
   );
