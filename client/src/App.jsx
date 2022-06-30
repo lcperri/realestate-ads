@@ -9,6 +9,7 @@ import UserCard from "./components/CardUser";
 import Login from "./pages/Login";
 import Nav from "./components/Nav/index";
 import CalendarForm from "./components/Calendar/index";
+import ProfileDataUpdate from "./pages/ProfileDataUpdate/ProfileDataUpdate";
 
 const App = () => {
   return (

@@ -6,7 +6,7 @@ export const Container = styled.div`
   top: 98px;
   width: 240px;
   background-color: #f1f1f1;
-  height: 1000px;
+  height: 832px;
 `;
 
 export const Title = styled.h1`

@@ -7,7 +7,7 @@ import Filter from "../../components/Filters";
 import Nav from "../../components/Nav";
 import Loader from "../../pages/Loader";
 import { useDispatch } from "react-redux";
-import styles from "./styles.module.css";
+import styles from "./NavBarProfileUpdate.module.css";
 import Button from "../../styledComponents/Button";
 import { StyledLink } from "../../styledComponents/StyledLink";
 
