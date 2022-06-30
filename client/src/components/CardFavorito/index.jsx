@@ -6,9 +6,14 @@ import BathIcon from '../Icons/Bath'
 import RoomIcon from '../Icons/Room'
 import AreaIcon from '../Icons/Area'
 import Button from '../../styledComponents/Button';
+import StyledLink from '../../styledComponents/StyledLink'
 
 
-export default function CardFavorito({type, address, price, area, rooms, bathrooms, pictures}){
+export default function CardFavorito({_id, type, address, price, area, rooms, bathrooms, pictures}){
+
+
+    const handleConectar = (e) => {};
+    const handleElim = (e) => {};
 
     return(
         <div className={styles.contenedorFav}>
@@ -44,9 +49,13 @@ export default function CardFavorito({type, address, price, area, rooms, bathroo
             </div>             
             
             <div className={styles.divBotones}>
-                <Button className={styles.botonConetar}>Contactar</Button>      
-                <Button className={styles.botonDet}>Ver detalle</Button>      
-                <Button className={styles.botonQuitar}>Quitar de favoritos</Button>
+                <Button className={styles.botonConetar} onClick={handleConectar}>Contactar</Button> 
+
+                <StyledLink to={`/${_id}`}> {/*62b74f620a21495c42dde489*/}
+                    <Button className={styles.botonDet}>Ver detalle</Button>      
+                </StyledLink>     
+                
+                <Button className={styles.botonQuitar} onClick={handleElim}>Quitar de favoritos</Button>
             </div>
                    
         </div>

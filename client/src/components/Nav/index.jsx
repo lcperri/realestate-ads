@@ -12,9 +12,12 @@ const Nav = () => {
           <li className="items">
             <NavLink to={'/home'}>Inicio</NavLink>
             <NavLink to={'/properties'}>Propiedades</NavLink>
-
             <NavLink to={'/about'}>Acerca de </NavLink>
             <NavLink to={'/contact'}>Contacto</NavLink>
+            {/*rutas provisorias para ver los componentes */}
+            <NavLink to={'/favoritos'}>favoritos</NavLink>
+            <NavLink to={'/mipropsvip'}>mipropsvip</NavLink>
+            <NavLink to={'/planes'}>planes</NavLink>
           </li>
 
           <div className="div-botones">
