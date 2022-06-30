@@ -45,18 +45,10 @@ export default function CalendarForm () {
                <br />
                <label>Comienzo de la visita</label>
                <input
-                  type='datetime-local'
+                  type='date'
                   id='startDateTime'
                   value={startDateTime}
                   onChange={(e) => setStartDateTime(e.target.value)}>
-               </input>
-               <br />
-               <label>Fin de la visita</label>
-               <input
-                  type='datetime-local'
-                  id='endDateTime'
-                  value={endDateTime}
-                  onChange={(e) => setEndDateTime(e.target.value)}>
                </input>
                <br />
                <button type="submit">Programar visita.</button>
