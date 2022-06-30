@@ -1,0 +1,45 @@
+.contenedor{   
+  background-color: #fff;
+  border-radius: 20px;
+  margin: 14px auto;
+  width: 65%;
+   margin-top: 150px;
+   align-items: flex-start; 
+   display: flex; 
+   flex-direction: column;      
+  border: 1px solid #efefef;
+  box-shadow: 0 3px 15px rgba(0, 0, 0, 0.159);  
+}
+.p-titulo{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    margin-top: 20px;
+    margin-left: 500px;
+    margin-bottom: 70px;
+    
+}
+.sub-cont{
+    width: 85%;
+    display: flex; /*con display, justify-content, aling-items -> dejo centrados los filtros*/
+    
+    align-items:baseline; 
+    justify-content:space-between;    
+    
+}
+.premium{    
+    float: left;    
+}
+.vip, .premium{  
+    font-family: 'Montserrat', sans-serif;    
+    width: 30%;
+    margin-left: 150px;
+    margin-bottom: 50px;
+    border-radius: 30px;
+    height: 300px;
+    float: left;
+    border: 3px solid #efefef;  
+}
+.descripcion-plan{
+    margin-top: 20px;
+    margin-left: 10px;
+}
