@@ -8,31 +8,8 @@ import { useDispatch } from "react-redux";
 import { filter } from "../../redux/actions"
 
 const LandingPage = () => {
-<<<<<<< HEAD
-  return (
-    <div id="home" className={styles.home}>
-      {/* <!-- Navbar --> */}
-      <nav className={styles.mainnav}>
-        <div className={styles.container}>
-          <div className={styles.navbar}>
-            <div className={styles.logo}>
-              <a href="index.html">
-                <img src="./img/logo.png" alt="logo" />
-              </a>
-            </div>
-            <input type="checkbox" className={styles.check} />
-            <label for="check" className={styles.checkbtn}>
-              <i className={styles.fasfabars}></i>
-            </label>
-            <div className={styles.navigation}>
-              <ul>
-                <li>
-                  <a href="home">Home</a>
-                </li>
-=======
   const dispatch = useDispatch()
   const [location, setLocation] = useState("")
->>>>>>> c44b33aac025038b63fd4dc13e81842c89f41b65
 
   const onCLickBtnSearch = (e) => {
     setLocation(location)

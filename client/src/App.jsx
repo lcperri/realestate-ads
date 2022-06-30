@@ -9,6 +9,7 @@ import UserCard from "./components/CardUser";
 import Login from "./pages/Login";
 import Nav from './components/Nav/index';
 import CalendarForm from './components/Calendar/index';
+import Planes from './components/Planes';
 import Favoritos from "./components/Favoritos";
 import MisPropsPV from "./components/MisPropPremiumVip";
 
