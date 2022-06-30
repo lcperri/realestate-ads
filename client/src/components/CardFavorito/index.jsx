@@ -6,7 +6,7 @@ import BathIcon from '../Icons/Bath'
 import RoomIcon from '../Icons/Room'
 import AreaIcon from '../Icons/Area'
 import Button from '../../styledComponents/Button';
-import StyledLink from '../../styledComponents/StyledLink'
+import {StyledLink} from '../../styledComponents/StyledLink'
 
 
 export default function CardFavorito({_id, type, address, price, area, rooms, bathrooms, pictures}){
