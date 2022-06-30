@@ -55,15 +55,15 @@ export default function Login(){
                       <input className="input-password" type={'text'} id={'password'} value={password} 
                           onChange={(e) => setPassword(e.target.value)} placeholder={'Contraseña'}/>
 
-                      <br></br>
-                      <button className="btn-login" type="submit" disabled={!!error}>Ingresar</button>
-                        
-                      <br></br>
-                      <p className="p-olvido">¿Olvido contraseña?</p>
-                      <GoogleAuthenticator></GoogleAuthenticator>
-                  </form>
-              </div>
-          </div>
-      </DivContainer>
-  )
+                        <br></br>
+                        <button className="btn-login" type="submit" disabled={!!error}>Ingresar</button>
+                         
+                        <br></br>
+                        <p className="p-olvido">¿Olvidó su contraseña?</p>
+                        <GoogleAuthenticator className="btn-google"></GoogleAuthenticator >
+                    </form>
+                </div>
+           </div>
+        </DivContainer>
+    )
 }

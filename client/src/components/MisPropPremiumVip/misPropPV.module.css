@@ -1,0 +1,23 @@
+.contenedor{
+   /*  background-color:aqua ;  */   
+    width: 95%;
+}
+.cont{
+    width: 35%;
+    height: 80px;
+}
+.plan{
+    margin-top: 10px;    
+    margin-left: 20px;
+    margin-right: 20px;
+    width: 350px;
+    color:#fff;
+    background-color: #E52F50;
+    font-size: 20px;
+    font-family: 'Montserrat', sans-serif;
+    float: left;
+    border-radius: 10px;
+}
+.contratar{
+    margin-top: 5px;
+}
