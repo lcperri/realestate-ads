@@ -99,3 +99,14 @@ export function filter(filters, location, max) {
     });
   };
 }
+
+export function calendar(code) {
+  return async function (dispatch) {
+    const calendar = await axios.post(`${url}/calendar`, code);
+    console.log(calendar.data);
+    return dispatch({
+      type: LOGIN,
+      payload: calendar.data
+    })
+  };
+}
