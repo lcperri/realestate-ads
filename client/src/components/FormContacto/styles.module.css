@@ -1,0 +1,24 @@
+.contFormContacto{
+    width: 520px;
+    height: 500px;
+    
+}
+.titulo{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.email{
+    width: 300px;
+}
+.nombre,.tel, .descrip{
+    margin-top: 20px;
+    width: 300px;
+}
+.descrip{
+    width: 400px;
+    height: 200px;
+}
+.contactar{
+    margin-top: 10px;
+    width: 400px;
+}

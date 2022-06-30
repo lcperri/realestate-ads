@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink} from 'react-router-dom';
 import Button from '../../styledComponents/Button';
 import { StyledLink } from '../../styledComponents/StyledLink';
 import './Nav.css';
@@ -19,6 +19,7 @@ const Nav = () => {
             <NavLink to={'/favoritos'}>favoritos</NavLink>
             <NavLink to={'/mipropsvip'}>mipropsvip</NavLink>
             <NavLink to={'/planes'}>planes</NavLink>
+            <NavLink to={'/user'}>user</NavLink>
           </li>
         </div>
         <div className='subContainerRight'>
