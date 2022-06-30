@@ -20,6 +20,8 @@ import styles from './styles.module.css'
 import { getPropertyById } from '../../redux/actions'
 import getCoordenates from '../../functions/getCoordenates'
 import Nav from '../../components/Nav'
+import FormContacto from '../../components/FormContacto';
+
 
 const Details = () => {
   const navigate = useNavigate()
@@ -133,9 +135,11 @@ const Details = () => {
               </div>
             </div>
           </div>
+
           <div className={styles.contact_subWrapper}>
-            Aquí formulario de contactos:
+            <FormContacto/>
           </div>
+
         </div>
         <h1>Ubicación:</h1>
         <Map address={coordenate} />
