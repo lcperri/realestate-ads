@@ -15,6 +15,10 @@ const Nav = () => {
             <StyledLink to={'/home'}>Ver Propiedades</StyledLink>
             <StyledLink to={'/about'}>Acerca de </StyledLink>
             <StyledLink to={'/contact'}>Contacto</StyledLink>
+            {/*rutas provisorias para ver los componentes */}
+            <NavLink to={'/favoritos'}>favoritos</NavLink>
+            <NavLink to={'/mipropsvip'}>mipropsvip</NavLink>
+            <NavLink to={'/planes'}>planes</NavLink>
           </li>
         </div>
         <div className='subContainerRight'>
@@ -33,19 +37,18 @@ const Nav = () => {
   )
 }
 
-export default Nav
+export default Nav;
 
 
-{/* <div className="navbar">
+ /*<div className="navbar">
       <nav>
         <ul className="lista">
           <li className="items">
-            <NavLink to={'/'}>Inicio</NavLink>
-            <NavLink to={'/home'}>Propiedades</NavLink>
-
+            <NavLink to={'/home'}>Inicio</NavLink>
+            <NavLink to={'/properties'}>Propiedades</NavLink>
             <NavLink to={'/about'}>Acerca de </NavLink>
             <NavLink to={'/contact'}>Contacto</NavLink>
-          </li>
+            
 
           <div className="div-botones">
             <li className="items">
@@ -62,4 +65,4 @@ export default Nav
           </div>
         </ul>
       </nav>
-    </div> */}
+    </div> */
