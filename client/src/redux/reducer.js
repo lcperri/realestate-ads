@@ -12,7 +12,7 @@ const initialState = {
   users:[],
   user:{},
   calendar: true,
-  /* favoritos: [{
+  favoritos: [{
     _id:"62b74f620a21495c42dde489",
     address:"Ruta Panamericana Km 36",
     area:"20x20",
@@ -61,7 +61,7 @@ pictures: [
       parkingSlot:false,
       price:600,
       pictures: ["https://img10.naventcdn.com/avisos/resize/111/00/08/00/42/12/1200x1200/221413042.jpg"]
-  }] */
+  }]
 };
 
 const reducer = (state = initialState, { type, payload }) => {
