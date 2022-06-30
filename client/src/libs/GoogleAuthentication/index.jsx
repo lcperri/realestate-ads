@@ -7,19 +7,7 @@ import { gapi } from 'gapi-script';
 
 export default function GoogleAuthenticator () {
   const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   function start() {
-  //     gapi.client.init({
-  //       clientId: process.env.CLIENT_ID,
-  //       scope: 'email',
-  //     });
-  //   }
-
-  //   gapi.load('client:auth2', start);
-  // }, []);
-
-
+  
   const successResponseGoogle = (response) => {
     dispatch(login(response));
   }

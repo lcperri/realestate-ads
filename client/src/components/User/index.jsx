@@ -49,10 +49,8 @@ export default function UserCreate(){
         e.preventDefault();
         
         if(!input.name || !input.lastName || !input.password || !input.birthday || !input.email || !input.dni || !input.telephone ){
-            /* alert("Faltan datos"); */
         }
         dispatch(createUser(input));
-        alert("Creado");
         dispatch(getAllUsers());
         setInput({name:"", lastName:"", password:"", birthday:"", email:"", dni:"", telephone:"", avatar:""});
         
