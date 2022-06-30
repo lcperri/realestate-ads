@@ -110,3 +110,14 @@ export function calendar(code) {
     })
   };
 }
+
+export function createEvent(code) {
+  return async function (dispatch) {
+    const calendar = await axios.post(`${url}/calendar/event`, code);
+    console.log(calendar.data);
+    return dispatch({
+      type: LOGIN,
+      payload: calendar.data
+    })
+  };
+}
