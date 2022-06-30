@@ -1,5 +1,5 @@
 import React from "react";
-import styles from './styles.module.css';
+import styles from './CardFav.module.css';
 import StyledText from '../../styledComponents/StyledText'
 //import DivContainer from '../../styledComponents/'
 import BathIcon from '../Icons/Bath'
@@ -8,7 +8,7 @@ import AreaIcon from '../Icons/Area'
 import Button from '../../styledComponents/Button';
 
 
-export default function Favorito({type, address, price, area, rooms, bathrooms, pictures}){
+export default function CardFavorito({type, address, price, area, rooms, bathrooms, pictures}){
 
     return(
         <div className={styles.contenedorFav}>

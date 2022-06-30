@@ -9,9 +9,10 @@ import UserCard from "./components/CardUser";
 import Login from "./components/Login";
 import Nav from './components/Nav/index';
 import Planes from "./components/Planes";
-import Favorito from "./components/Favorito";
-import CardsFavoritos from "./components/CardsFavoritos";
-
+import CardFavorito from "./components/CardFavorito";
+import Favoritos from "./components/Favoritos";
+import CardMisPropsPV from "./components/CardMisPropsPremiumVip";
+import MisPropsPV from "./components/MisPropPremiumVip";
 
 const App = () => {
   return (
@@ -27,8 +28,10 @@ const App = () => {
         <Route path="/user" element={<UserCard/>} />
         <Route path="/login" element= {<Login/>} />
         <Route path="planes" element={<Planes/>} />
-        <Route path="/favorito" element={<Favorito/>} />
-        <Route path="/cardsfavoritos" element= {<CardsFavoritos/>} />
+        <Route path="/cardfavorito" element={<CardFavorito/>} />
+        <Route path="/favoritos" element={<Favoritos/>} />
+        <Route path="/cardmispropsvip" element={<CardMisPropsPV/>} />
+        <Route path="/mipropsvip" element={<MisPropsPV/>} />
         {/* <Route path='*' element={<Home/>} />  */}
       </Routes>
     </>
