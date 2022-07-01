@@ -1,33 +1,10 @@
-// import { v2 as cloudinary } from 'cloudinary';
-
-// cloudinary.config (
-//     cloud_name = 'real-estate-ads',
-//     api_key = '977744573767923',
-//     api_secret = 'aJN3RgVBZzfblwwxw7xDybiaHN4'
-// )
-
-// module.exports = cloudinary;
 
 import React, { useState } from 'react'
 import DivContainer from '../../styledComponents/DivContainer'
 
-const Cloudinary = () => {
+const Cloudinary = ({ getImages }) => {
     const [image, setImage] = useState("")
-    const [loading, setloading] = useState(false)
-    
-//     const handleImage = (e) => {
-//         const file = e.target.files
-//         setFileToBase(file)
-//         console.log(file);
-//     }
-    
-//     const setFileToBase = (file) => {
-//         const reader = new FileReader()
-//         reader.readAsDataURL(file)
-//         reader.onloadend = () => {
-//         setImage(reader.result)
-//         }
-//     }
+    const [loading, setloading] = useState(false)    
 
     const uploadImage =  async (files) => {
         const data = new FormData()
@@ -44,7 +21,8 @@ const Cloudinary = () => {
         const file = await res.json()
         // console.log(res);
         setImage(file.secure_url)
-        console.log(file.secure_url);
+        getImages(file.secure_url)
+        // console.log(file.secure_url);
         setloading(false)
     }
 
@@ -56,8 +34,6 @@ const Cloudinary = () => {
                 </div>
                 <Image publicId="sample" width="0.5" />
             </CloudinaryContext> */}
-            <DivContainer>
-                <h2>Subiendo imágenes</h2>
                 <input
                     type='file'    
                     name='file'
@@ -65,9 +41,34 @@ const Cloudinary = () => {
                     onChange={e => uploadImage(e.target.files)}
                 >
                 </input>
-            </DivContainer>
+                
+                {image && <img src={image} placeholder='upload preview' />}
         </div>
     )
 }
 
 export default Cloudinary
+
+// import { v2 as cloudinary } from 'cloudinary';
+
+// cloudinary.config (
+//     cloud_name = 'real-estate-ads',
+//     api_key = '977744573767923',
+//     api_secret = 'aJN3RgVBZzfblwwxw7xDybiaHN4'
+// )
+
+// module.exports = cloudinary;
+
+//     const handleImage = (e) => {
+//         const file = e.target.files
+//         setFileToBase(file)
+//         console.log(file);
+//     }
+    
+//     const setFileToBase = (file) => {
+//         const reader = new FileReader()
+//         reader.readAsDataURL(file)
+//         reader.onloadend = () => {
+//         setImage(reader.result)
+//         }
+//     }
