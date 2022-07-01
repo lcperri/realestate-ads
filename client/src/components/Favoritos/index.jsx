@@ -1,6 +1,6 @@
 import React from "react";
 import Filter from "../Filters";
-import Favorito from '../CardFavorito';
+import Favorito from '../../dumb/CardFavorito';
 import { useSelector } from "react-redux";
 
 export default function Favoritos(){

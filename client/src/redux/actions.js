@@ -51,6 +51,21 @@ export function propertyPagination({ filters, location, max }) {
   };
 }
 
+export function filterByOwner({ filters, location, max }, id) {
+  return async function (dispatch) {
+    dispatch({ type: LOADING });
+    const filtered = await axios.post(
+      `${url}/property/${id}/search/?location=${location}&max=${max}`,
+      filters
+    );
+    console.log(filtered.data)
+    return dispatch({
+      type: PROPERTIES,
+      payload: filtered.data,
+    });
+  };
+}
+
 export function pageSetter(payload) {
   return {
     type: PAGE_SETTER,
@@ -71,7 +86,7 @@ export function getPropertyById(id) {
 
 export function createProperty(info) {
   return async function (dispatch) {
-    const id = localStorage.getItem('id') 
+    const id = localStorage.getItem('id');
     dispatch({ type: LOADING });
     const property = await axios.post(`${url}/property/${id}`, info);
     return dispatch({
