@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Button from "../../styledComponents/Button";
 import { useDispatch } from "react-redux";
 import { filter } from "../../redux/actions";
 
@@ -9,8 +8,7 @@ import {
   Input,
   Label,
   FilterType,
-  Select,
-  StyledButton,
+  Select
 } from "../../styledComponents/FiltersStyles";
 
 export default function Filter() {
@@ -32,7 +30,6 @@ export default function Filter() {
   }
 
   function handleChange(e) {
-    console.log(e.target.name)
     setFreeze(false);
     if (e.target.value) {
       switch (e.target.name) {
@@ -73,9 +70,7 @@ export default function Filter() {
   }
 
   useEffect(() => {
-    if (!freeze) {
-      dispatch(filter(filters, location, max));
-    }
+    dispatch(filter(filters, location, max));
   }, [location, filters, max]);
 
   function handleSubmit(e) {
@@ -106,6 +101,7 @@ export default function Filter() {
           type="text"
           name="neighbourhood"
           placeholder="Zona/Barrio"
+          value={location}
           onChange={(e) => handleType(e)}
         />
         <Label>
