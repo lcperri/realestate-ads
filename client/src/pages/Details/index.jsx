@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import AreaIcon from "../../components/Icons/Area";
-import BathIcon from "../../components/Icons/Bath";
-import RoomIcon from "../../components/Icons/Room";
-import BuildIcon from "../../components/Icons/Build";
-import TypeIcon from "../../components/Icons/Type";
-import RenovationIcon from "../../components/Icons/Renovation";
+import AreaIcon from "../../dumb/Icons/Area";
+import BathIcon from "../../dumb/Icons/Bath";
+import RoomIcon from "../../dumb/Icons/Room";
+import BuildIcon from "../../dumb/Icons/Build";
+import TypeIcon from "../../dumb/Icons/Type";
+import RenovationIcon from "../../dumb/Icons/Renovation";
 import DivContainer from "../../styledComponents/DivContainer";
-import ParkingIcon from "../../components/Icons/Parking";
-import NeighborhoodIcon from "../../components/Icons/Neighborhood";
+import ParkingIcon from "../../dumb/Icons/Parking";
+import NeighborhoodIcon from "../../dumb/Icons/Neighborhood";
 import GalleryDetails from "../../styledComponents/GalleryDetails";
 import GalleryDetailsContainer from "../../styledComponents/GalleryDetailsContainer";
 import Modal from "./Modal";
@@ -107,6 +107,12 @@ const Details = () => {
         </div>
         <div className={styles.addresFeatures_contact_wrapper}>
           <div>
+            <div className={styles.priceWrapper}>
+              Desde: $
+              {property.operation === "rent"
+                ? ` ${property.price} USD/Mes    ¡Alquílalo ya!`
+                : ` ${property.price} ¡Adquiérelo ya!`}
+            </div>
             <h1>Dirección:</h1>
             <div className={styles.container}>
               {property.city} <b> {` > `} </b> {property.neighbourhood}{" "}

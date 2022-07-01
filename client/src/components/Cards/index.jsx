@@ -1,13 +1,14 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { propertyPagination } from '../../redux/actions'
-import Button from '../../styledComponents/Button'
+import { filterByFollower, filterByOwner, propertyPagination } from '../../redux/actions'
 import CardsContainer from '../../styledComponents/CardsContainer'
-import Card from '../Card'
+import Card from '../../dumb/Card'
 import { StyledLinkCard } from '../../styledComponents/StyledLink'
 import Pagination from '../Pagination'
+import CardMisPropsPremiumVip from '../../dumb/CardMisPropsPremiumVip';
+import Favorito from '../../dumb/CardFavorito'
 
-const Cards = () => {
+const Cards = ({ id, favourites }) => {
   const dispatch = useDispatch();
 
   const properties = useSelector((state) => state.properties);
@@ -15,8 +16,12 @@ const Cards = () => {
   const filter = useSelector((state) => state.filter);
 
   useEffect(() => {
-    if (filter.location !== undefined && filter.max !== undefined) {
+    if ((!id && !favourites) && (filter.location !== undefined && filter.max !== undefined)) {
       dispatch(propertyPagination(filter));
+    } else if ((id) && (filter.location !== undefined && filter.max !== undefined)) {
+      dispatch(filterByOwner(filter, id));
+    } else if ((favourites) && (filter.location !== undefined && filter.max !== undefined)) {
+      dispatch(filterByFollower(filter, favourites));
     }
   }, [filter]);
 
@@ -24,6 +29,15 @@ const Cards = () => {
     <>
       <CardsContainer>
         {
+          id ?
+          properties && properties.slice(pages[1]-1, pages[2]).map(e => (
+            <CardMisPropsPremiumVip key={e.id} type={e.type} address={e.address} price={e.price} 
+              area={e.area} rooms={e.rooms} bathrooms={e.bathrooms} pictures={e.pictures[0]}/>
+          )) : favourites ?       
+          properties && properties.slice(pages[1]-1, pages[2]).map(e => (                
+            <Favorito key={e.id} type={e.type} address={e.address} price={e.price} 
+            area={e.area} rooms={e.rooms} bathrooms={e.bathrooms} pictures={e.pictures[0]}/>
+            ))  :
           properties && properties.slice(pages[1]-1, pages[2]).map(e => (
             <StyledLinkCard to={`/${e._id}`} key={e._id}>
               <Card  {...e}/>

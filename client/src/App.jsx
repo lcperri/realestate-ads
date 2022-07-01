@@ -5,7 +5,7 @@ import Create from "./pages/Create";
 import Details from "./pages/Details";
 import Loader from "./pages/Loader";
 import UserCreate from "./components/User";
-import UserCard from "./components/CardUser";
+import UserCard from "./dumb/CardUser";
 import Login from "./pages/Login";
 import Nav from "./components/Nav/index";
 import CalendarForm from "./components/Calendar/index";

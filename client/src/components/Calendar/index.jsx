@@ -10,7 +10,6 @@ export default function CalendarForm () {
    const dispatch = useDispatch();
 
    const [ summary, setSummary ] = useState('');
-   console.log(summary)
    const [ location, setLocation ] = useState('');
    const [ startDateTime, setStartDateTime ] = useState('');
    const [ endDateTime, setEndDateTime ] = useState('');
