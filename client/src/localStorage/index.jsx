@@ -9,3 +9,7 @@ export function SaveRefreshToken(tokenHeader){
 export function SaveId(idUser){
    localStorage.setItem('id', idUser);
 }
+
+export function SaveRange(range){
+   localStorage.setItem('range', range);
+}
