@@ -1,6 +1,6 @@
 import axios from "axios";
 import { url } from "../helpers/url";
-import { SaveRefreshToken, SaveToken, SaveId, SaveRange } from './../localStorage/index';
+import { SaveRefreshToken, SaveToken, SaveId, SaveRange, SaveLastName, SaveName } from './../localStorage/index';
 import {
   ALL_USERS,
   FILTER,
@@ -19,6 +19,8 @@ export function login(data) {
     SaveRefreshToken(login.data[2]);
     SaveId(login.data[0]._id);
     SaveRange(login.data[0].range);
+    SaveLastName(login.data[0].lastName);
+    SaveName(login.data[0].name);
     return dispatch({
       type: LOGIN,
       payload: login.data
