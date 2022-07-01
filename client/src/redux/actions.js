@@ -58,7 +58,6 @@ export function filterByOwner({ filters, location, max }, id) {
       `${url}/property/${id}/search/?location=${location}&max=${max}`,
       filters
     );
-    console.log(filtered.data);
     return dispatch({
       type: PROPERTIES,
       payload: filtered.data,

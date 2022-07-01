@@ -17,7 +17,6 @@ const Cards = ({ id, favourites }) => {
 
   useEffect(() => {
     if ((!id && !favourites) && (filter.location !== undefined && filter.max !== undefined)) {
-      console.log('entre')
       dispatch(propertyPagination(filter));
     } else if ((id) && (filter.location !== undefined && filter.max !== undefined)) {
       dispatch(filterByOwner(filter, id));
