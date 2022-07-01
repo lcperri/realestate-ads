@@ -1,7 +1,7 @@
 .createProperty {
     position: absolute;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     background: #BA5370;  
     background: -webkit-linear-gradient(to right, #FF416C 0%, #ff765e 100%); 
     background: linear-gradient(0deg, #FF416C 0%, #ff765e 100%);
@@ -67,8 +67,8 @@
 
 .caracteristicasSubWrapper {
     display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 30px;
+    grid-template-columns: 190px 1fr;
+    gap: 40px;
 }
 
 .buttonsNextBack {

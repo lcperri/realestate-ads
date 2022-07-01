@@ -12,6 +12,16 @@
   margin: 0;
 }
 
+.priceWrapper {
+  color: #333;
+  font-size: 24px;
+  font-weight: 600;
+  display: flex;
+  padding: 30px 0 10px 0;
+  /* grid-template-columns: 1fr 1fr 1fr; */
+  /* align */
+}
+
 .features {
   /* background-color: #999; */
   display: grid;

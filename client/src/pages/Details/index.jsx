@@ -102,6 +102,13 @@ const Details = () => {
         </div>
         <div className={styles.addresFeatures_contact_wrapper}>
           <div>
+            <div className={styles.priceWrapper}>
+              Desde: $ 
+                { property.operation === 'rent' 
+                  ? ` ${property.price} USD/Mes    ¡Alquílalo ya!` 
+                  : ` ${property.price} ¡Adquiérelo ya!` 
+                } 
+            </div>
             <h1>Dirección:</h1>
             <div className={styles.container}>
               {property.city} <b> {` > `} </b> {property.neighbourhood} <b>{' > '}</b> {property.address}

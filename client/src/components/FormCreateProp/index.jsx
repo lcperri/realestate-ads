@@ -55,7 +55,6 @@ export default function FormCreateProp() {
     const [contador, setContador] = useState(0)
     const dispatch = useDispatch();
 
-
     useEffect(() => {
         dispatch(getAllProperties())
     }, [dispatch]);
@@ -103,7 +102,19 @@ export default function FormCreateProp() {
             });
 
         }
-    };
+    }
+
+    //Obteniendo imágeness de Cloudinary:
+    const getImagesResultsCloudinary = (images) =>{
+        setInput({
+            ...input,
+            pictures: images
+        })
+    }
+    
+    useEffect(() => {
+        console.log(input.pictures);
+    }, [getImagesResultsCloudinary])
 
     return (
         <div className="createProperty">
@@ -192,7 +203,7 @@ export default function FormCreateProp() {
                                     <div className="caracteristicasSubWrapper">
                                         <div className="group">
                                             <Label>Area: </Label>
-                                            <Input type={'text'} value={input.area} id={'area'} onChange={handleCH} />
+                                            <Input className="addressCreateForm" type='text' value={input.area} id='area' onChange={handleCH} />
                                         </div>
                                         <div className="group">
                                             <Label>Habitaciones: </Label>
@@ -237,14 +248,14 @@ export default function FormCreateProp() {
                             <DivContainer className="create">
                                 <div className='subContainerCreate'>
                                     <div className="subTitle">Sube imágenes de tu propiedad, y listo!</div>
-                                    <Cloudinary />
+                                    <Cloudinary getImages={getImagesResultsCloudinary} />
                                 </div>
                                 <div className="buttonsNextBack">
                                     <Button onClick={() => setContador(2)}>Anterior</Button>
                                 </div>
                             </DivContainer>
                             <div className="group submit">
-                                <Input type={'submit'} value={"Publicar"} />
+                                <Input type='submit' value="Publicar" />
                             </div >
                         </>
                     }
