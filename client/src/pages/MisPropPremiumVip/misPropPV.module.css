@@ -2,9 +2,12 @@
    /*  background-color:aqua ;  */   
     width: 95%;
 }
-.cont{
-    width: 35%;
-    height: 80px;
+.contPlan{
+    width: 650px;
+    height: 75px;
+    background: #333;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #5f798e , #1f373d);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #5f798e , #1f373d);
 }
 .plan{
     margin-top: 10px;    

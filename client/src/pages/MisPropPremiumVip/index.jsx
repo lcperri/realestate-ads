@@ -20,7 +20,7 @@ export default function MisPropPremiumVip(){
             {/* <Loader /> */}
 
             {
-            <DivContainer className={styles.cont}>
+            <DivContainer className={styles.contPlan}>
                 
               <label className={styles.plan}>Hacete VIP y publica SIN LIMITES !!</label>
                

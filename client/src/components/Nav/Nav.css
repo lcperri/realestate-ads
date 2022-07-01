@@ -41,12 +41,6 @@
     background-color: #fff;
     font-weight: 500;
 }
-
-.subContainerLeft {
-    /* background-color: yellow; */
-    
-}
-
 .subContainerRight {
     display: flex;
     align-items: center;

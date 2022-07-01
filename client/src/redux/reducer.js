@@ -47,7 +47,7 @@ const initialState = {
       "https://img10.naventcdn.com/avisos/resize/111/00/08/00/42/12/1200x1200/221413044.jpg"
     ]
   }],
-  misPropiedades: [{
+  misPropiedades: [/* {
       _id:"62b74f620a21495c42dde489",
       address:"Ruta Panamericana Km 36",
       area:"20x20",
@@ -60,7 +60,7 @@ const initialState = {
       parkingSlot:false,
       price:600,
       pictures: ["https://img10.naventcdn.com/avisos/resize/111/00/08/00/42/12/1200x1200/221413042.jpg"]
-  }],
+  } */],
   calendar: true
 };
 
