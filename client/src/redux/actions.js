@@ -1,6 +1,6 @@
 import axios from "axios";
 import { url } from "../helpers/url";
-import { SaveRefreshToken, SaveToken, SaveId } from './../localStorage/index';
+import { SaveRefreshToken, SaveToken, SaveId, SaveRange } from './../localStorage/index';
 import {
   ALL_USERS,
   FILTER,
@@ -18,6 +18,7 @@ export function login(data) {
     SaveToken(login.data[1]);
     SaveRefreshToken(login.data[2]);
     SaveId(login.data[0]._id);
+    SaveRange(login.data[0].range);
     return dispatch({
       type: LOGIN,
       payload: login.data
@@ -70,8 +71,9 @@ export function getPropertyById(id) {
 
 export function createProperty(info) {
   return async function (dispatch) {
+    const id = localStorage.getItem('id') 
     dispatch({ type: LOADING });
-    const property = await axios.post(`${url}/property`, info);
+    const property = await axios.post(`${url}/property/${id}`, info);
     return dispatch({
       type: PROPERTY,
       payload: property.data,
