@@ -11,13 +11,13 @@ import Nav from "./components/Nav/index";
 import CalendarForm from "./components/Calendar/index";
 import Planes from "./components/Planes";
 import Favoritos from "./components/Favoritos";
-import MisPropsPV from "./components/MisPropPremiumVip";
+import MisPropsPV from "./pages/MisPropPremiumVip";
 import ProfileDataUpdate from "./pages/ProfileDataUpdate/ProfileDataUpdate";
 
 const App = () => {
   return (
     <>
-      {/* <Nav /> */}
+      <Nav />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/home" element={<Home />} />
