@@ -33,7 +33,7 @@ export default function Login(){
     if(!email || !password) console.log("faltan datos");
     else dispatch(login({ email, password }))
   }   
-
+  
   return(
       <DivContainer>
           <div className="login">
