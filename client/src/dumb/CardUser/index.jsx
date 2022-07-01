@@ -11,7 +11,6 @@ export default function UserCard(/* {id, name, lastName, birthday, email, dni, t
     const id_user = "62b74bb91ac8e14f67b57b87";
     let user = allUsers.find(u => u._id === id_user);
     //------------------------
-    console.log("data: ", allUsers)
 
     useEffect(()=>{
         dispatch(getAllUsers());
