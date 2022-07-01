@@ -12,15 +12,14 @@ import CalendarForm from "./components/Calendar/index";
 import Planes from "./components/Planes";
 import Favoritos from "./components/Favoritos";
 import MisPropsPV from "./components/MisPropPremiumVip";
-
-
+import ProfileDataUpdate from "./pages/ProfileDataUpdate/ProfileDataUpdate";
 
 const App = () => {
   return (
     <>
       {/* <Nav /> */}
       <Routes>
-        <Route exact path="/" element={<LandingPage />} />
+        <Route path="/" element={<LandingPage />} />
         <Route path="/home" element={<Home />} />
         <Route path="/create" element={<Create />} />
         <Route path="/:id" element={<Details />} />
@@ -32,6 +31,9 @@ const App = () => {
         <Route path="planes" element={<Planes />} />
         <Route path="/favoritos" element={<Favoritos />} />
         <Route path="/mipropsvip" element={<MisPropsPV />} />
+
+        <Route path="/personaldata" element={<ProfileDataUpdate />} />
+
         {/* <Route path='*' element={<Home/>} />  */}
       </Routes>
     </>

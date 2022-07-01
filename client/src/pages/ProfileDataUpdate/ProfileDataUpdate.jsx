@@ -1,24 +1,25 @@
-import React from "react";
-import Cards from "../../components/Cards";
-import CardsContainer from "../../styledComponents/CardsContainer";
-import DivContainer from "../../styledComponents/DivContainer";
-import Filter from "../../components/Filters";
+import React, { useState } from "react";
 
-import Nav from "./NavBarProfileUpdate";
-import AsideBar from "./AsideBar";
-import PersonalData from "./PersonalData";
+import Nav from "../../components/NavBarProfileUpdate/NavBarProfileUpdate";
+import AsideBar from "../../components/AsideBar/AsideBar";
+import PersonalData from "../../components/PersonalData/PersonalData";
+import PasswordUpdate from "../../components/PasswordUpdate/PasswordUpdate";
+import EmailUpdate from "../../components/EmailUpdate/EmailUpdate";
 
-import Loader from "../../pages/Loader";
-import { useDispatch } from "react-redux";
-import styles from "./styles.module.css";
+import styles from "./ProfileDataUpdate.module.css";
 
 const ProfileDataUpdate = () => {
+  const [isButton, setButton] = useState("Data");
+
   return (
     <div className={styles.conteiner}>
       <Nav />
       <div className={styles.infoconteiner}>
-        <AsideBar />
-        <PersonalData />
+        <AsideBar setButton={setButton} />
+
+        {isButton === "Data" && <PersonalData />}
+        {isButton === "Pass" && <PasswordUpdate />}
+        {isButton === "email" && <EmailUpdate />}
       </div>
     </div>
   );
