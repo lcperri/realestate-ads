@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import AreaIcon from "../../components/Icons/Area";
@@ -20,6 +21,32 @@ import styles from "./styles.module.css";
 import { getPropertyById } from "../../redux/actions";
 import getCoordenates from "../../functions/getCoordenates";
 import Nav from "../../components/Nav";
+=======
+import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import AreaIcon from '../../components/Icons/Area'
+import BathIcon from '../../components/Icons/Bath'
+import RoomIcon from '../../components/Icons/Room'
+import BuildIcon from '../../components/Icons/Build'
+import TypeIcon from '../../components/Icons/Type'
+import RenovationIcon from '../../components/Icons/Renovation'
+import DivContainer from '../../styledComponents/DivContainer'
+import ParkingIcon from '../../components/Icons/Parking'
+import NeighborhoodIcon from '../../components/Icons/Neighborhood'
+import GalleryDetails from '../../styledComponents/GalleryDetails'
+import GalleryDetailsContainer from '../../styledComponents/GalleryDetailsContainer'
+import Modal from './Modal'
+import { useNavigate, useParams } from 'react-router-dom'
+import StyledText from '../../styledComponents/StyledText'
+import Map from '../../libs/Map'
+import Button from '../../styledComponents/Button'
+import styles from './styles.module.css'
+import { getPropertyById } from '../../redux/actions'
+import getCoordenates from '../../functions/getCoordenates'
+import Nav from '../../components/Nav'
+import FormContacto from '../../components/FormContacto';
+
+>>>>>>> d0732d23c4a8164fc812ec321f12584bf2d961d3
 
 const Details = () => {
   const navigate = useNavigate();
@@ -150,9 +177,11 @@ const Details = () => {
               </div>
             </div>
           </div>
+
           <div className={styles.contact_subWrapper}>
-            Aquí formulario de contactos:
+            <FormContacto/>
           </div>
+
         </div>
         <h1>Ubicación:</h1>
         <Map address={coordenate} />

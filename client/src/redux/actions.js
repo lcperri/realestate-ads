@@ -1,5 +1,6 @@
 import axios from "axios";
-import { url } from "./url";
+import { url } from "../helpers/url";
+import { SaveRefreshToken, SaveToken, SaveId, SaveRange } from './../localStorage/index';
 import {
   ALL_USERS,
   FILTER,
@@ -14,6 +15,10 @@ import {
 export function login(data) {
   return async function (dispatch) {
     const login = await axios.post(`${url}/login`, data);
+    SaveToken(login.data[1]);
+    SaveRefreshToken(login.data[2]);
+    SaveId(login.data[0]._id);
+    SaveRange(login.data[0].range);
     return dispatch({
       type: LOGIN,
       payload: login.data
@@ -66,8 +71,9 @@ export function getPropertyById(id) {
 
 export function createProperty(info) {
   return async function (dispatch) {
+    const id = localStorage.getItem('id') 
     dispatch({ type: LOADING });
-    const property = await axios.post(`${url}/property`, info);
+    const property = await axios.post(`${url}/property/${id}`, info);
     return dispatch({
       type: PROPERTY,
       payload: property.data,
@@ -103,6 +109,17 @@ export function filter(filters, location, max) {
 export function calendar(code) {
   return async function (dispatch) {
     const calendar = await axios.post(`${url}/calendar`, code);
+    console.log(calendar.data);
+    return dispatch({
+      type: LOGIN,
+      payload: calendar.data
+    })
+  };
+}
+
+export function createEvent(code) {
+  return async function (dispatch) {
+    const calendar = await axios.post(`${url}/calendar/event`, code);
     console.log(calendar.data);
     return dispatch({
       type: LOGIN,
