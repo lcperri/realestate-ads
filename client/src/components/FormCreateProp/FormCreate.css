@@ -1,39 +1,89 @@
-.bodyForm{
-    /* position: absolute; */
-    background-repeat: repeat;
-    background-size: cover;
-    margin: 0;
-    background: #BA5370;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #FF416C 0%, #ff765e 100%);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(0deg, #FF416C 0%, #ff765e 100%); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-}
-.cont-formulario{
-    margin-top: 40px;
-    margin-right: 100px;
-    height: 400px;  
-}
-.select-tipoProps{
-    margin-top: 5px;
-    margin-left: 10px;
-    margin-right: 30px;
-    width: 200px;
-}
-.select-operation{
-    margin-left: 10px;
-    width: 340px;
+.createProperty {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background: #BA5370;  
+    background: -webkit-linear-gradient(to right, #FF416C 0%, #ff765e 100%); 
+    background: linear-gradient(0deg, #FF416C 0%, #ff765e 100%);
 }
 
-.input-ciudad{
-    margin-top: 5px;
-    margin-left: 10px;
-    margin-right: 50px;
-    width: 230px;
+.form{
+    border-radius: 20px;
+    width: 50%;  
+    background-size: cover;
+    margin: 160px auto;
 }
-.input-barrio{
-    margin-top: 5px;
-    margin-left: 10px;
-    width: 230px;
+
+.subContainerCreate {
+    display: grid;
+    grid-template-columns: 35% 65%;
+    transition: width 2s;
 }
+
+.group {
+    /* position: relative;
+    top:-10px; */
+    padding:0;
+}
+
+.title {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 600;
+    width: 75%;
+    margin: 0 auto;
+}
+
+.subTitle {
+    padding: 9px 40px 10px 0px;
+    font-size: 20px;
+    font-weight: 500;
+    color:#FF416C;
+}
+
+.addressWrapper {
+    display: flex;
+    flex-direction: column;
+    width: 120%;
+    transition: width 2s;
+}
+
+
+.operationTypeWrapper {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 40px;
+    transition: width 2s;
+}
+
+.caracteristicasWrapper {
+    padding-top: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* flex-wrap: wrap; */
+    gap: 10px;
+}
+
+.caracteristicasSubWrapper {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 30px;
+}
+
+.buttonsNextBack {
+    padding-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.submit {
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+
 .errorInputF{
     border-color: #E52F50;
     margin-top: 5px;
@@ -49,76 +99,4 @@
 }
 .input-direcc-error{
     border-color: #E52F50;
-}
-
-.input-area{
-    margin-top: 20px;
-    width: 60px;
-}
-
-.input-price{
-    width: 135px;
-    margin-left: 10px;
-    margin-top: 10px;
-}
-
-
-.input-fechaConstruc{
-    margin-top: 40px;
-    width: 200px;
-}
-.input-fechaRenov{
-    width: 200px;
-    margin-left: 10px;
-}
-.input-cargImagen{
-    margin-left: 10px;
-    margin-top: 40px;
-    width: 500px;
-}
-.lab-tipoProp, .lab-direcc, .label-fechConstruc, .cargImagen{
-    margin-left: 100px;
-}
-.lab-tipoOp{
-    margin-left: 50px;
-}
-.label-hab{
-    margin-left: 40px;
-    margin-right: 5px;
-}
-.label-area{
-    margin-left: 50px;
-}
-.label-venta{
-    margin-left: 45px;
-    
-}
-.lab-precio{
-    margin-left: 100px;
-}
-.input-room{
-    width: 70px;
-}
-.label-fechRenov{
-    margin-left: 120px;
-}
-/* boton sub-----------*/
-.boton-sub {
-    margin-top: 5px;
-    margin-left: 420px;
-    border-radius: 30px;
-    width: 400px;
-    font-size: 20px;
-    padding: 3px 10px;
-    color:#444;
-    border: 2px solid #E52F50;
-    background-color:#fff;;
-    
-    font-weight: bold;
-    margin-top: 70px;
-    margin-bottom: 10px;
-}
-.boton-sub:hover {
-    color: rgb(33, 199, 228);
-    background-color:#444;
 }

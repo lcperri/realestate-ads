@@ -56,8 +56,6 @@ const Cloudinary = () => {
                 </div>
                 <Image publicId="sample" width="0.5" />
             </CloudinaryContext> */}
-            <DivContainer>
-                <h2>Subiendo imágenes</h2>
                 <input
                     type='file'    
                     name='file'
@@ -65,7 +63,6 @@ const Cloudinary = () => {
                     onChange={e => uploadImage(e.target.files)}
                 >
                 </input>
-            </DivContainer>
         </div>
     )
 }
