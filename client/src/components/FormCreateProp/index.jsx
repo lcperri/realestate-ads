@@ -84,7 +84,6 @@ export default function FormCreateProp() {
             
         }else {
             dispatch(createProperty(input));
-            alert("Creado")
             setInput({
                 type: "",
                 city: "",
