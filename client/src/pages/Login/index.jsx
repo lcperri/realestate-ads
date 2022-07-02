@@ -68,7 +68,7 @@ export default function Login(){
 
                 <div>
                   <p className={styles.Olvido}>¿Olvidó su contraseña?</p>
-                  <GoogleAuthenticator className={styles.btnGoogle}></GoogleAuthenticator>
+                  <GoogleAuthenticator/>
                 </div>
 
               </div>

@@ -27,7 +27,8 @@
   margin: 0 auto;
 }
 .email, .pass{
-  width: 400px;   
+  width: 150%;  
+   
 }
 .buttonIngresar {
   display: flex;
@@ -42,6 +43,8 @@
   margin-top: 10px;
   height: 40px;
 }
-
+.btnGoogle{
+  margin-left: 100px;
+}
 
   
