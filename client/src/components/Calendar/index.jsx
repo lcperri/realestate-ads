@@ -12,12 +12,11 @@ export default function CalendarForm () {
    const [ summary, setSummary ] = useState('');
    const [ location, setLocation ] = useState('');
    const [ startDateTime, setStartDateTime ] = useState('');
-   const [ endDateTime, setEndDateTime ] = useState('');
    const authorized = useSelector((state) => state.calendar);
 
    const handleSubmit = (e) => {
       e.preventDefault();
-      dispatch(createEvent({ summary, location, startDateTime, endDateTime }));
+      dispatch(createEvent({ summary, location, startDateTime }));
    }
 
    return (

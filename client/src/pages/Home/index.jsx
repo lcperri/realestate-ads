@@ -11,9 +11,6 @@ import styles from "./styles.module.css";
 const Home = () => {
   return (
     <div>
-      <div>
-        <Nav />
-      </div>
       <div className={styles.homeWrapper}>
         <div>
           <Filter />

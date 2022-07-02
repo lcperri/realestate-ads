@@ -1,5 +1,6 @@
 import axios from "axios";
 import { url } from "../helpers/url";
+import headers from "../localStorage/login";
 import { SaveRefreshToken, SaveToken, SaveId, SaveRange, SaveLastName, SaveName } from './../localStorage/index';
 import {
   ALL_USERS,
@@ -58,7 +59,8 @@ export function filterByOwner({ filters, location, max }, id) {
     dispatch({ type: LOADING });
     const filtered = await axios.post(
       `${url}/property/${id}/search/?location=${location}&max=${max}`,
-      filters
+      filters,
+      headers
     );
     return dispatch({
       type: PROPERTIES,
@@ -72,7 +74,8 @@ export function filterByFollower({ filters, location, max }, id) {
     dispatch({ type: LOADING });
     const filtered = await axios.post(
       `${url}/property/${id}/favourites/?location=${location}&max=${max}`,
-      filters
+      filters,
+      headers
     );
     return dispatch({
       type: PROPERTIES,
@@ -136,9 +139,9 @@ export function filter(filters, location, max) {
   };
 }
 
-export function calendar(code) {
+export function calendar(code, id) {
   return async function (dispatch) {
-    const calendar = await axios.post(`${url}/calendar`, code);
+    const calendar = await axios.post(`${url}/calendar/${id}`, code);
     return dispatch({
       type: LOGIN,
       payload: calendar.data
