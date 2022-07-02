@@ -1,0 +1,16 @@
+.btnGoogle{
+    border-radius: 10px;
+    background: #E52F50;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 4px 10px;
+    border: 2px solid #E52F50;
+    font-weight: 500;
+    border-radius: 30px;
+  }
+  .btnGoogle:hover {
+    background-color: #fff;
+    color: #444;
+    border: 2px solid #E52F50;
+  }

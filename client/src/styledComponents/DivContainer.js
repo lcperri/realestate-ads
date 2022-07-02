@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const DivContainer = styled.div`
   /* cursor: pointer; */
@@ -28,7 +28,7 @@ const DivContainer = styled.div`
     border: 1px solid #efefef;
     box-shadow: 0 3px 15px rgba(0, 0, 0, 0.159);
   }
-  
+
   &.home {
     /* E52F50 */
     background: #BA5370;  /* fallback for old browsers */
@@ -40,6 +40,5 @@ const DivContainer = styled.div`
   div {
     margin: 1.3px 0 1.5px 0;
   }
-
-`
-export default DivContainer
+`;
+export default DivContainer;

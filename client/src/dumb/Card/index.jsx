@@ -5,6 +5,7 @@ import BathIcon from '../Icons/Bath'
 import RoomIcon from '../Icons/Room'
 import AreaIcon from '../Icons/Area'
 import styles from './styles.module.css'
+import Heart from '../Icons/Heart'
 
 const Card = ({address, city, area, type, rooms, status, bathrooms, price, operation, pictures }) => {
   return (
@@ -32,10 +33,13 @@ const Card = ({address, city, area, type, rooms, status, bathrooms, price, opera
             <BathIcon/> {bathrooms} baños
           </h5>
         </div>
-        <blockquote>
-          <StyledText className='statusCard'>{status === 'available' ? 'Disponible' : 'Reservado'}</StyledText>
-          {/* validar más tipos de status */}
-        </blockquote>
+        <div className={styles.footer}>
+          <blockquote>
+            <StyledText className='statusCard'>{status === 'available' ? 'Disponible' : 'Reservado'}</StyledText>
+            {/* validar más tipos de status */}
+          </blockquote>
+          <Heart width='30' height='30' onClick={() => console.log('me añadiste a favoritos')} />
+        </div>
     </StyledCard>
   )
 }
