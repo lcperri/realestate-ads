@@ -38,8 +38,6 @@ const PersonalData = () => {
     // dispatch(postPoke(input))
     // alert('Pokemon creado.')
     datosIniniciales = input;
-    console.log(datosIniniciales);
-    // setInput({});
   }
 
   return (
