@@ -70,3 +70,11 @@ input[type="number"] {
   border-radius: 1rem;
   margin-bottom: 30px;
 }
+
+.errospan {
+  display: flex;
+  margin-bottom: 30px;
+
+  color: red;
+  font-size: 0.9em;
+}

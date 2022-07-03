@@ -1,33 +1,20 @@
 export const validate = (input) => {
   let errors = {};
-  errors.button = false;
+  errors.button = true;
 
-  if (!/^[a-zA-Z\s]+$/.test(input.name)) {
-    errors.name = "Nombre no valido";
+  if (!(input.newemail === input.repeatemail)) {
+    errors.email = "Los emails no coinciden";
+  } else if (input.newemail && input.repeatemail) {
+    if (
+      !/^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/.test(
+        input.newemail
+      )
+    ) {
+      errors.email = "No tiene formato de email";
+    }
   }
-
-  if (!input.lastname) {
-    errors.lastname = "Apellido no valido";
-  } else if (!/^[a-zA-Z\s]+$/.test(input.lastname)) {
-    errors.lastname = "Apellido no valido";
-  }
-
-  if (!Number.isInteger(parseInt(input.dni))) {
-    errors.dni = "Numero no valido";
-  } else if (input.dni < 0) {
-    errors.dni = "Numero no valido";
-  } else if (input.dni >= 50000000) {
-    errors.dni = "Numero no valido";
-  }
-
-  if (!/^[0-9]+$/.test(input.tel)) {
-    errors.tel = "Telefono no valido";
-  }
-
-  if (!errors.name && !errors.lastname && !errors.dni && !errors.tel) {
+  if (!errors.email && input.newemail && input.repeatemail) {
     errors.button = false;
-  } else {
-    errors.button = true;
   }
 
   return errors;

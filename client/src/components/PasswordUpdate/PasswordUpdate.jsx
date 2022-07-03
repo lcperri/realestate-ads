@@ -34,7 +34,6 @@ const PasswordUpdate = () => {
     // passInicial = input;
     passInicial = input.newpassword;
     setInput({});
-    console.log(passInicial);
   }
 
   return (

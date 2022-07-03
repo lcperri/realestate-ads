@@ -6,14 +6,21 @@ import { validate } from "./validate";
 let datosIniniciales = {
   name: "Julian",
   lastname: "Meraviglia",
-  // birth: "",
+  birth: "",
   dni: 20000000,
   tel: "0340715333957",
-  // avatar:''
+  avatar: "",
 };
 
 const PersonalData = () => {
-  const [input, setInput] = useState({});
+  const [input, setInput] = useState({
+    name: "",
+    lastname: "",
+    birth: "",
+    dni: "",
+    tel: "",
+    avatar: "",
+  });
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
@@ -87,8 +94,8 @@ const PersonalData = () => {
           name="birth"
           placeholder="Cumpleaños"
           className={styles.input}
-          disabled="true"
-          // value={input.birth}
+          disabled={true}
+          value={input.birth}
         />
       </div>
 
@@ -124,7 +131,7 @@ const PersonalData = () => {
           placeholder="avatar"
           className={styles.input}
           value={input.avatar}
-          disabled="true"
+          disabled={true}
         />
       </div>
       <button
