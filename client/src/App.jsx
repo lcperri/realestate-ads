@@ -13,6 +13,7 @@ import Planes from "./components/Planes";
 import Favoritos from "./components/Favoritos";
 import MisPropsPV from "./pages/MisPropPremiumVip";
 import ProfileDataUpdate from "./pages/ProfileDataUpdate/ProfileDataUpdate";
+import CalendariesCards from "./components/CalendariesCards";
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
         <Route path="planes" element={<Planes />} />
         <Route path="/favoritos" element={<Favoritos />} />
         <Route path="/mipropsvip" element={<MisPropsPV />} />
+        <Route path="/calendariescards" element={<CalendariesCards />} />
 
         <Route path="/personaldata" element={<ProfileDataUpdate />} />
 

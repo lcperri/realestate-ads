@@ -11,7 +11,31 @@ const initialState = {
   city: "",
   users:[],
   user:{},
-  calendar: true
+  calendar: true,
+  cardsCalendary: [{
+    summary: 'Alquiler',
+    location: 'dirección de tu casa',
+    colorId: 1, 
+    star: '2022-07-03',
+    end: '2022-07-03',
+    attendees: 'tumail@gmail.com' ,    
+  },
+  {
+    summary: 'Venta',
+    location: 'Acá iría la dirección de tu casa',
+    colorId: '2', 
+    star: '2022-07-03',
+    end: '2022-07-03',
+    attendees: 'tumail@gmail.com' ,    
+  },
+  {
+    summary: 'Venta',
+    location: 'Acá iría la dirección de tu casa',
+    colorId: '2', 
+    star: '2022-07-03',
+    end: '2022-07-03',
+    attendees: 'tumail@gmail.com' ,    
+  }]
 };
 
 const reducer = (state = initialState, { type, payload }) => {

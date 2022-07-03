@@ -59,7 +59,7 @@ export default function Login(){
                                     
                 <div className="group">
                   <Label for="">Contraseña:</Label>                      
-                  <Input className={styles.pass} type={'text'} id={'password'} value={password} onChange={(e) => setPassword(e.target.value)} placeholder={'Contraseña'}/>            
+                  <Input className={styles.pass} type={'password'} id={'password'} value={password} onChange={(e) => setPassword(e.target.value)} placeholder={'Contraseña'}/>            
                 </div>
                 
                 <div className="group">
