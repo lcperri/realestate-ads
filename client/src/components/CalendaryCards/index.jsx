@@ -4,7 +4,7 @@ import CalendaryCard from '../../dumb/CalendaryCard';
 import CardsContainer from '../../styledComponents/CardsContainer';
 import DivContainer from '../../styledComponents/DivContainer';
 
-export default function CalendariesCards() {
+export default function CalendaryCards() {
 
   const calendaryC = useSelector((state) => state.cardsCalendary);
 
