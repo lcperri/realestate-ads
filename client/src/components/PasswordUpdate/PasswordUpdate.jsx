@@ -20,6 +20,7 @@ const PasswordUpdate = () => {
           name="name"
           placeholder="Contraseña actual"
           className={styles.input}
+          disabled="true"
         />
       </div>
       <label className={styles.header}>Contraseña nueva</label>

@@ -20,6 +20,7 @@ const EmailUpdate = () => {
           name="name"
           placeholder="Email actual"
           className={styles.input}
+          disabled="true"
         />
       </div>
 
