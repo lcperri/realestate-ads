@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-// import Nav from "../../components/NavBarProfileUpdate/NavBarProfileUpdate";
 import AsideBar from "../../components/AsideBar/AsideBar";
 import PersonalData from "../../components/PersonalData/PersonalData";
 import PasswordUpdate from "../../components/PasswordUpdate/PasswordUpdate";
@@ -13,7 +12,6 @@ const ProfileDataUpdate = () => {
 
   return (
     <div className={styles.conteiner}>
-      {/* <Nav /> */}
       <div className={styles.infoconteiner}>
         <AsideBar setButton={setButton} />
 

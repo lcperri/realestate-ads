@@ -19,7 +19,6 @@ import Button from "../../styledComponents/Button";
 import styles from "./styles.module.css";
 import { getPropertyById } from "../../redux/actions";
 import getCoordenates from "../../functions/getCoordenates";
-import Nav from "../../components/Nav";
 import FormContacto from "../../components/FormContacto";
 
 const Details = () => {
@@ -83,7 +82,6 @@ const Details = () => {
 
   return (
     <div className={styles.bodyDetails}>
-      <Nav />
       <DivContainer className="detail">
         <h1>Imágenes:</h1>
         <GalleryDetailsContainer>
