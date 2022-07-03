@@ -25,8 +25,7 @@ const LandingPage = () => {
 
   return (
     <>
-      <div className="navbar">
-        {/* <ul className="lista"> */}
+      {/* <div className="navbar">
         <div className='subContainer'>
           <div className='subContainerLeft'>
             <li className="items">
@@ -49,7 +48,7 @@ const LandingPage = () => {
             </StyledLink>
           </div>
         </div>
-      </div>
+      </div> */}
 
       {/* <!-- Header Section --> */}
       <div id="home" className={styles.home}>

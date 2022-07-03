@@ -1,6 +1,7 @@
 import axios from "axios";
 import { url } from "../helpers/url";
-import { SaveRefreshToken, SaveToken, SaveId, SaveRange } from './../localStorage/index';
+import headers from "../localStorage/login";
+import { SaveRefreshToken, SaveToken, SaveId, SaveRange, SaveLastName, SaveName } from './../localStorage/index';
 import {
   ALL_USERS,
   FILTER,
@@ -19,6 +20,8 @@ export function login(data) {
     SaveRefreshToken(login.data[2]);
     SaveId(login.data[0]._id);
     SaveRange(login.data[0].range);
+    SaveLastName(login.data[0].lastName);
+    SaveName(login.data[0].name);
     return dispatch({
       type: LOGIN,
       payload: login.data
@@ -56,7 +59,8 @@ export function filterByOwner({ filters, location, max }, id) {
     dispatch({ type: LOADING });
     const filtered = await axios.post(
       `${url}/property/${id}/search/?location=${location}&max=${max}`,
-      filters
+      filters,
+      headers
     );
     return dispatch({
       type: PROPERTIES,
@@ -71,7 +75,8 @@ export function filterByFollower({ filters, location, max }, id) {
     
     const filtered = await axios.post(
       `${url}/property/${id}/favourites/?location=${location}&max=${max}`,
-      filters
+      filters,
+      headers
     );
    
     return dispatch({
@@ -136,9 +141,9 @@ export function filter(filters, location, max) {
   };
 }
 
-export function calendar(code) {
+export function calendar(code, id) {
   return async function (dispatch) {
-    const calendar = await axios.post(`${url}/calendar`, code);
+    const calendar = await axios.post(`${url}/calendar/${id}`, code);
     return dispatch({
       type: LOGIN,
       payload: calendar.data

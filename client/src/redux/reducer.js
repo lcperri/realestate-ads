@@ -11,7 +11,7 @@ const initialState = {
   city: "",
   users:[],
   user:{},
-  calendar: true,
+  calendar: false,
   cardsCalendary: [{
     summary: 'Alquiler',
     location: 'dirección de tu casa',

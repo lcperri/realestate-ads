@@ -1,9 +1,7 @@
-import { useEffect } from 'react';
 import { useDispatch } from 'react-redux/es/exports';
 import { login } from '../../redux/actions';
 
 import { GoogleLogin } from 'react-google-login';
-import { gapi } from 'gapi-script';
 
 import styles from './styles.module.css';
 
