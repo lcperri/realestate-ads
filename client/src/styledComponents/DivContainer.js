@@ -25,6 +25,12 @@ const DivContainer = styled.div`
     padding: 30px 40px 32px 40px;
   }
 
+  &.login {
+    margin: 60px auto 15px auto;
+    padding: 30px 250px 32px 40px;
+    width: 55%;
+  }
+
   &.grid {
     display: grid;
     grid-template-columns: 35% 65%;
