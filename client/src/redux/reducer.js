@@ -11,7 +11,7 @@ const initialState = {
   city: "",
   users:[],
   user:{},
-  calendar: false
+  calendar: true
 };
 
 const reducer = (state = initialState, { type, payload }) => {

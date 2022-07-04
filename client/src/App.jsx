@@ -8,7 +8,7 @@ import UserCreate from "./components/User";
 import UserCard from "./dumb/CardUser";
 import Login from "./pages/Login";
 import Nav from "./components/Nav/index";
-import CalendarForm from "./components/Calendar/index";
+import CalendarForm from "./components/CalendarPost/index";
 import Planes from "./components/Planes";
 import Favoritos from "./components/Favoritos";
 import MisPropsPV from "./pages/MisPropPremiumVip";
