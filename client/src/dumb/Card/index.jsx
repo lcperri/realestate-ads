@@ -38,7 +38,7 @@ const Card = ({address, city, area, type, rooms, status, bathrooms, price, opera
             <StyledText className='statusCard'>{status === 'available' ? 'Disponible' : 'Reservado'}</StyledText>
             {/* validar más tipos de status */}
           </blockquote>
-          <Heart width='30' height='30' onClick={() => console.log('me añadiste a favoritos')} />
+          <Heart width='30' height='30' fill='red' onClick={() => console.log('me añadiste a favoritos')} />
         </div>
     </StyledCard>
   )
