@@ -20,6 +20,7 @@ const Nav = () => {
             <NavLink to={'/mipropsvip'}>mipropsvip</NavLink>
             <NavLink to={'/planes'}>planes</NavLink>
             <NavLink to={'/calendaryCards'}>CalendaryCards</NavLink>
+            
           </li>
         </div>
         <div className='subContainerRight'>
