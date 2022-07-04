@@ -17,7 +17,7 @@ import StyledText from "../../styledComponents/StyledText";
 import Map from "../../libs/Map";
 import Button from "../../styledComponents/Button";
 import styles from "./styles.module.css";
-import { getPropertyById } from "../../redux/actions";
+import { getPropertyById, getAllUsers } from "../../redux/actions";
 import getCoordenates from "../../functions/getCoordenates";
 import FormContacto from "../../components/FormContacto";
 
@@ -29,17 +29,20 @@ const Details = () => {
   const { id } = useParams();
   const property = useSelector((state) => state.property);
   const [coordenate, setCoordenate] = useState();
+   
 
   useEffect(() => {
     dispatch(getPropertyById(id));
     // eslint-disable-next-line
+    dispatch(getAllUsers());
   }, []);
 
   useEffect(() => {
     getCoordenates(property.address + " " + property.city)
       .then((data) => setCoordenate(data))
       .catch((err) => console.log(err));
-  }, [property]);
+  }, [property]);  
+  
 
   const handleClick = (item, index) => {
     setCurrentIndex(index);

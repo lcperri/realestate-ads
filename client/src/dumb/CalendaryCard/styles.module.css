@@ -1,0 +1,18 @@
+.datos{
+    width: 350px;
+    margin-top: 5px;
+}
+.colorId1{
+    color: rgba(243, 11, 11, 0.799);
+    width: 350px;
+    font-size: 20px;
+    margin-top: 5px;
+    margin-bottom: 0;    
+}
+.colorId2{
+    color: rgb(13, 204, 179);
+    width: 350px;
+    font-size: 20px;
+    margin-top: 5px;
+    margin-bottom: 0;
+}

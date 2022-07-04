@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
-import './Login.css'
+import styles from './styles.module.css';
+import Input from "../../styledComponents/Input";
+import Label from "../../styledComponents/Label";
+import Button from "../../styledComponents/Button"
 import DivContainer from "../../styledComponents/DivContainer";
 import GoogleAuthenticator from "../../libs/GoogleAuthentication";
 import Calendar from "../../libs/Calendar";
@@ -33,37 +36,48 @@ export default function Login(){
     if(!email || !password) console.log("faltan datos");
     else dispatch(login({ email, password }))
   }   
-
+  
   return(
-      <DivContainer>
-          <div className="login">
-              <div className="cont-login">
+      <div className="createProperty">
 
-                  <form onSubmit={handleSubmit} className="form-login">
+        <form onSubmit={handleSubmit} className="form-login">
 
-                      <h5 className="titulo">Formulario Login</h5>
-                
-                      <label className="lab-email">Correo electrónico:</label>
-                      <br></br>
-                      <input className="input-email" type={'text'} id={'email'} value={email} 
-                          onChange={(e) => validateUser(e.target.value)} placeholder={'Usuario'}/>
-                      {!error ? null : <span className="error-span">{error}</span>}
-                      <br></br>
+          <div className="form">
+            <div className='title'>
+                FORMULARIO PARA LOGUEARTE
+            </div>
+            
+            <DivContainer className="create">
+            <div className='subContainerCreate'>
+              <div className="addressWrapper">
 
-                      <label className="lab-email">Contraseña:</label>
-                      <br></br>
-                      <input className="input-password" type={'text'} id={'password'} value={password} 
-                          onChange={(e) => setPassword(e.target.value)} placeholder={'Contraseña'}/>
-
-                        <br></br>
-                        <button className="btn-login" type="submit" disabled={!!error}>Ingresar</button>
-                         
-                        <br></br>
-                        <p className="p-olvido">¿Olvidó su contraseña?</p>
-                        <GoogleAuthenticator className="btn-google"></GoogleAuthenticator >
-                    </form>
+                <div className="group">
+                  <Label for="">Correo electrónico:</Label>
+                  <Input className={styles.email} type={'text'} id={'email'} value={email} onChange={(e) => validateUser(e.target.value)} placeholder={'Usuario'}/>
+                  {!error ? null : <span className={styles.errorSpan}>{error}</span>}                    
                 </div>
-           </div>
-        </DivContainer>
+                                    
+                <div className="group">
+                  <Label for="">Contraseña:</Label>                      
+                  <Input className={styles.pass} type={'password'} id={'password'} value={password} onChange={(e) => setPassword(e.target.value)} placeholder={'Contraseña'}/>            
+                </div>
+                
+                <div className="group">
+                  <Button className={styles.buttonIngresar} type="submit" disabled={!!error}>Ingresar</Button>                
+                </div>
+
+                <div>
+                  <p className={styles.Olvido}>¿Olvidó su contraseña?</p>
+                  <GoogleAuthenticator></GoogleAuthenticator>
+                </div>
+
+              </div>
+            </div>
+            </DivContainer>
+            
+          </div>
+        </form>                     
+               
+      </div>
     )
 }

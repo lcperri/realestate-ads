@@ -72,11 +72,13 @@ export function filterByOwner({ filters, location, max }, id) {
 export function filterByFollower({ filters, location, max }, id) {
   return async function (dispatch) {
     dispatch({ type: LOADING });
+    
     const filtered = await axios.post(
       `${url}/property/${id}/favourites/?location=${location}&max=${max}`,
       filters,
       headers
     );
+   
     return dispatch({
       type: PROPERTIES,
       payload: filtered.data,

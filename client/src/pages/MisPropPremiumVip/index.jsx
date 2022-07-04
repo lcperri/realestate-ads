@@ -19,16 +19,16 @@ export default function MisPropPremiumVip(){
           </div>
           {/* <Loader /> */}
 
-          {
-          <DivContainer className={styles.cont}>
-              
-            <label className={styles.plan}>Hacete VIP y publica SIN LIMITES !!</label>
-              
-            <div><Button className={styles.contratar} onClick={handleVip}>Contratar</Button></div>
-              
-          </DivContainer>
-          }
-          <Cards id={id} />
-      </div>
-    )
+            {
+            <DivContainer className={styles.contPlan}>
+                
+              <label className={styles.plan}>Hacete VIP y publica SIN LIMITES !!</label>
+               
+              <div><Button className={styles.contratar} onClick={handleVip}>Contratar</Button></div>
+                
+            </DivContainer>
+            }
+            <Cards id={id} />
+        </div>
+      )
   }

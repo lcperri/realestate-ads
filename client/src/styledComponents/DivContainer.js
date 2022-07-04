@@ -37,6 +37,14 @@ const DivContainer = styled.div`
     margin-left: 350px;
   }
 
+  &.calendaris {
+    /* E52F50 */
+    background: #BA5370;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #FF416C 0%, #ff765e 100%); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(0deg, #FF416C 0%, #ff765e 100%); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    margin-left: 240px;
+  }
+
   div {
     margin: 1.3px 0 1.5px 0;
   }
