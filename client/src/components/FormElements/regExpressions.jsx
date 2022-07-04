@@ -44,16 +44,15 @@ const regExps = {
     renovationDate: {
         regExp: /^(19|20)\d{2}$/,
         errorLeyend: 'Fecha mínima 1900. Máx año actual. La fecha de renovación no puede ser menor que la fecha de construcción.'
+    },
+    email: {
+        regExp: /\S+@\S+\.\S+/,
+        errorLeyend: 'Ingrese un e-mail válido.'
+    },
+    password: {
+        regExp: /^.{6,24}$/,
+        errorLeyend: 'La contraseña debe tener entre 6 y 24 caracteres.'
     }
-    
 }
 
 export { regExps } 
-// name: /^[a-zA-Z]{3,16}$/, // solo letras de  a 16 caracteres.
-//   img: /(http(s?):)([a-z\-_0-9\/\:\.])*\.(jpg|jpeg|png|gif)/i,
-//   hp: /^0*([1-9][0-9]{0,2})$/, //numeros del 1 al 9, de 1 a 3 cifras.
-//   strength: /^0*([1-9][0-9]{0,3})$/, 
-//   defense: /^0*([1-9][0-9]{0,2})$/, 
-//   speed: /^0*([1-9][0-9]{0,2})$/,
-//   height: /^0*([1-9][0-9]{0,2})$/,
-//   weight: /^0*([1-9][0-9]{0,2})$/,
