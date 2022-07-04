@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from './styles.module.css';
-import Input from "../../styledComponents/Input";
-import Label from "../../styledComponents/Label";
+import { Input } from "../../styledComponents/StyledFormElements";
+import { Label } from "../../styledComponents/StyledFormElements";
 import Button from "../../styledComponents/Button"
 import DivContainer from "../../styledComponents/DivContainer";
 import GoogleAuthenticator from "../../libs/GoogleAuthentication";
