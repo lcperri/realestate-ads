@@ -3,11 +3,9 @@ import { GrupoInput, Label, Input, ValidationIcon, ErrorLeyend } from '../../sty
 import { faCircleCheck, faCircleXmark } from '@fortawesome/free-solid-svg-icons'
 import capitalize from '../../functions/capitalize'
 
-const InputComponent = ({ className, type, min, max, name, placeHolder, regExp, errorLeyend, state, setState }) => {
+const InputComponent = ({ className, type, min, max, name, placeHolder, regExp, errorLeyend, state, setState, funcion }) => {
 
   const handleOnChange = (e) => {
-
-
     //Replaces: Quita multiples espacios y ceros al inicio:
     setState({
       ...state,
@@ -36,6 +34,9 @@ const InputComponent = ({ className, type, min, max, name, placeHolder, regExp, 
         setState({ ...state, valid: 'false'})
       }
     }
+
+    //ejecutamos funcion que va a comparar fecha creac con renovation:
+    funcion && funcion()
   }
 
   return (

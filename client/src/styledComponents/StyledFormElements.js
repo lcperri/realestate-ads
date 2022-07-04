@@ -59,6 +59,7 @@ const GrupoInput = styled.div`
     &.operationCreateForm {
         width: 76%;
     }
+    
 `
 const GrupoSelect = styled.div`
     /* background-color: black; */
@@ -71,10 +72,11 @@ const GrupoSelect = styled.div`
             width: 107%;
         }
     }
-
-    &.cocheraCreateForm {
-        width: 100%;
-        background-color: aquamarine;
+    &.adjustCocheraSelect {
+        width: 95%;
+        select {
+            width: 105%;
+        }
     }
 `
 
@@ -97,6 +99,9 @@ const Select = styled.select`
 
     ${(props) => props.valid === 'false' && css`
         border: 2px solid red !important;
+    `}
+    ${(props) => props.valid === 'true' && css`
+        border: 2px solid #333 !important;
     `}
 `
 const ErrorLeyend = styled.p`
@@ -127,10 +132,16 @@ const ValidationIcon = styled(FontAwesomeIcon)`
     }
 `
 const TermsAndConditions = styled.div`
+    padding: 10px 20px 10px 20px;
+    border-radius: 20px;
     background-color: azure;
     grid-column: span 2;
+    margin: 40px auto;
     input {
         margin-right: 10px;
+    }
+    label {
+        font-size: 16px;
     }
 `
 const SubmitContainer = styled.div`
@@ -138,6 +149,7 @@ const SubmitContainer = styled.div`
     flex-direction: column;
     align-items: center;
     grid-column: span 2;
+    padding-bottom: 40px;
 `
 const MensajeExito = styled.p`
     padding: 12px;

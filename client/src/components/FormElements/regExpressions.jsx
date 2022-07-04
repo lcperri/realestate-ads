@@ -43,7 +43,7 @@ const regExps = {
     },
     renovationDate: {
         regExp: /^(19|20)\d{2}$/,
-        errorLeyend: 'Fecha mínima 1900. Máx año actual.'
+        errorLeyend: 'Fecha mínima 1900. Máx año actual. La fecha de renovación no puede ser menor que la fecha de construcción.'
     }
     
 }

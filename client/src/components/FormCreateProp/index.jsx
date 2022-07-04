@@ -12,31 +12,35 @@ import { faCheck, faCircleExclamation } from '@fortawesome/free-solid-svg-icons'
 import Input from "../FormElements/Input";
 import Select from "../FormElements/Select";
 import { regExps } from "../FormElements/regExpressions";
-
-//--funcion para hacer validaciones----------------------------
-function validators(input) {
-    const errors = {}
-
-    if (!input.neighbourhood) { errors.neighbourhood = "El barrio es requerido!!" }
-    if (!input.city) { errors.city = "*" }
-    if (!input.address) { errors.address = "La dirección es requerida!!" }
-    if (!input.area) { errors.area = "El area es requerido!!" }
-    if (!input.rooms)/* {errors.rooms = "La cant de habitaciones es requerida!!"} */
-        if (!input.bathrooms)/* {errors.bathrooms = "La cant de baños es requerida!!"} */
-            //if(!input.pictures.length)/* {errors.pictures = "La carga de imagenes es requerida!!"} */
-            if (input.area < 0) { errors.area = "No se permiten Numeros Negativos"; }
-    if (input.rooms < 0) { errors.rooms = "No se permiten Numeros Negativos"; }
-    if (input.bathrooms < 0) { errors.bathrooms = "No se permiten Numeros Negativos"; }
-    //Validación para que se active o desactive el botón de Submit form:
-    //if (JSON.stringify(errors) === '{}') return { none: true }
-    return errors;
-}
-//--------------------------------------------------------------------------------------------
+import toast, { Toaster } from 'react-hot-toast';
+import Swal from "sweetalert2";
+import {useNavigate } from "react-router-dom";
 
 export default function FormCreateProp() {
-    // const [input, setInput] = useState(initialState);
+    //para las cards:
     const [contador, setContador] = useState(0)
-    const dispatch = useDispatch();
+    const [errorsFirstCard, setErrorsFirstCard] = useState(true)
+    const [errorsSecondCard, setErrorsSecondCard] = useState(true)
+    const [errorsThirdCard, setErrorsThirdCard] = useState(true)
+    // estados de cada input:
+    const [city, setCity] = useState({ key: '', valid: null })
+    const [neighbourhood, setneighbourhood] = useState({ key: '', valid: null })
+    const [address, setAddress] = useState({ key: '', valid: null })
+    const [price, setPrice] = useState({ key: '', valid: null })
+    const [operation, setOperation] = useState({ key: '', valid: null })
+    const [type, setType] = useState({ key: '', valid: null })
+    const [area, setArea] = useState({ key: '', valid: null })
+    const [rooms, setRooms] = useState({ key: '', valid: null })
+    const [bathrooms, setBathrooms] = useState({ key: '', valid: null })
+    const [parkingSlot, setParkingSlot] = useState({ key: '', valid: null })
+    const [constructionDate, setConstructionDate] = useState({ key: '', valid: null })
+    const [renovationDate, setRenovationDate] = useState({ key: '', valid: null })
+    const [pictures, setPictures] = useState([])
+    const [termsAndConditions, setTermsAndConditions] = useState(false)
+    const [propertyCreated, setPropertyCreated] = useState(false)
+    const [formOk, setFormOk] = useState(false)
+    const navigate = useNavigate();
+    const dispatch = useDispatch()
 
     const cleanForm = () => {
         setCity({ key: '', valid: null })
@@ -51,50 +55,55 @@ export default function FormCreateProp() {
         setParkingSlot({ key: '', valid: null })
         setConstructionDate({ key: '', valid: null })
         setRenovationDate({ key: '', valid: null })
-        setPictures({ key: '', valid: null })
+        setPictures([])
     }
-
-
+    
     const handleOnSubmit = (e) => {
         e.preventDefault();
-        
-        //Mensaje debajo de btn submit: propi creada:
         setPropertyCreated(true)
         setTermsAndConditions(false)
-
-        cleanForm()
-        //clean:
-        
+        dispatch(createProperty({
+            type: type.key,
+            city: city.key,
+            address: address.key,
+            operation: operation.key,
+            price: price.key,
+            area: area.key,
+            rooms: rooms.key,
+            bathrooms: bathrooms.key,
+            constructionDate: constructionDate.key,
+            renovationDate: renovationDate.key,
+            neighbourhood: neighbourhood.key,
+            parkingSlot: parkingSlot.key,
+            pictures
+        }))
+        .then(() => {
+            Swal.fire({
+                position: 'top-center',
+                icon: 'success',
+                title: 'Tu publicación fue creada exitosamente',
+                showConfirmButton: false,
+                timer: 1500
+            })            
+            navigate('/mipropsvip')
+            cleanForm()   
+        })
+        .catch(() => {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Oops, algo no salió bien. Por favor intenta nuevamente.'
+            })
+            navigate('/create')
+        })        
     }
 
     //Obteniendo imágeness de Cloudinary:
     const getImagesResultsCloudinary = (images) => {
-        setPictures({
-            pictures: [images] || []
-        })
+        setPictures([images])
     }
 
-    const [errorsFirstCard, setErrorsFirstCard] = useState(true)
-    const [errorsSecondCard, setErrorsSecondCard] = useState(true)
-    const [errorsThirdCard, setErrorsThirdCard] = useState(true)
-
-    const [city, setCity] = useState({ key: '', valid: null })
-    const [neighbourhood, setneighbourhood] = useState({ key: '', valid: null })
-    const [address, setAddress] = useState({ key: '', valid: null })
-    const [price, setPrice] = useState({ key: '', valid: null })
-    const [operation, setOperation] = useState({ key: '', valid: null })
-    const [type, setType] = useState({ key: '', valid: null })
-    const [area, setArea] = useState({ key: '', valid: null })
-    const [rooms, setRooms] = useState({ key: '', valid: null })
-    const [bathrooms, setBathrooms] = useState({ key: '', valid: null })
-    const [parkingSlot, setParkingSlot] = useState({ key: '', valid: null })
-    const [constructionDate, setConstructionDate] = useState({ key: '', valid: null })
-    const [renovationDate, setRenovationDate] = useState({ key: '', valid: null })
-    const [pictures, setPictures] = useState({ key: '', valid: null })
-    const [termsAndConditions, setTermsAndConditions] = useState(false)
-    const [propertyCreated, setPropertyCreated] = useState(false)
-    const [formOk, setFormOk] = useState(false)
-
+    //habilita botones siguiente de cards:
     useEffect(() => {
         //1ra card
         if (city.valid === 'true' && neighbourhood.valid === 'true' && address.valid === 'true')
@@ -107,17 +116,44 @@ export default function FormCreateProp() {
         else
             setErrorsSecondCard(true)
         //3ra card
-        if (type.valid === 'true' && area.valid === 'true' && rooms.valid === 'true' && bathrooms.valid === 'true' && parkingSlot.valid === 'true' && constructionDate.valid === 'true' && renovationDate.valid === 'true')
-            setErrorsThirdCard(false)
+        if (
+            type.valid === 'true' && 
+            area.valid === 'true' && 
+            rooms.valid === 'true' && 
+            bathrooms.valid === 'true' && 
+            parkingSlot.valid === 'true' && 
+            constructionDate.valid === 'true' && 
+            renovationDate.valid === 'true'
+        )   setErrorsThirdCard(false)
         else
             setErrorsThirdCard(true)
 
     }, [city, neighbourhood, address, price, operation, type, area, rooms, bathrooms, parkingSlot, constructionDate, renovationDate])
 
+    //términos y condiciones:
     const onChangeTerms = (e) => {
         setTermsAndConditions(e.target.checked)
     }
 
+    const validateWithCreation = () => {
+        if (constructionDate.key.length > 0) {
+            if (parseInt(renovationDate.key) < parseInt(constructionDate.key) ) {
+                setRenovationDate( prevState => {
+                    return {
+                        ...prevState,
+                        valid: 'false'    
+                    }
+                })
+                console.log('falsee');
+            } else {
+                console.log('renovation es mayor');
+            }
+        }
+        
+
+    }
+
+    //valida todos los inputs y selects del form cuando hago click en términos:
     useEffect (()=> {
         if (
             type.valid === 'true' &&
@@ -137,7 +173,7 @@ export default function FormCreateProp() {
         ) setFormOk(true)
         else setFormOk(false)
     }, [termsAndConditions])
-
+    
     return (
         <div className="createProperty">
             <form onSubmit={handleOnSubmit} id='form'>
@@ -225,11 +261,10 @@ export default function FormCreateProp() {
 
                     {contador === 2 &&
                         <DivContainer className="create">
-                            <div className='subContainerCreate'>
                                 <div className="subTitle">
                                     ¿Que caraterísticas tiene tu inmueble?:
                                 </div>
-                                <div >
+                                <div>
                                     <Select
                                         className='adjustOperationSelect'
                                         name='Tipo de propiedad:'
@@ -237,18 +272,18 @@ export default function FormCreateProp() {
                                         state={type}
                                         setState={setType}
                                         options={[
-                                            { description: 'Tengo un(a)' },
-                                            { description: 'Casa' },
-                                            { description: 'Departamento' },
-                                            { description: 'Local Comercial' },
-                                            { description: 'Casa de campo' },
-                                            { description: 'Cochera' },
-                                            { description: 'Habitación' },
-                                            { description: 'Hotel' },
-                                            { description: 'Local Industrial' },
-                                            { description: 'Oficina' },
-                                            { description: 'Terreno/Lote' },
-                                            { description: 'Terreno agricola' },
+                                            { description: 'tengo un(a)' },
+                                            { description: 'casa' },
+                                            { description: 'departamento' },
+                                            { description: 'local Comercial' },
+                                            { description: 'casa de campo' },
+                                            { description: 'cochera' },
+                                            { description: 'habitación' },
+                                            { description: 'hotel' },
+                                            { description: 'local Industrial' },
+                                            { description: 'oficina' },
+                                            { description: 'terreno/Lote' },
+                                            { description: 'terreno agricola' },
                                         ]}
                                     />
                                     <div className="caracteristicasSubWrapper">
@@ -286,7 +321,7 @@ export default function FormCreateProp() {
                                             setState={setBathrooms}
                                         />
                                         <Select
-                                            className='adjustOperationSelect'
+                                            className='adjustCocheraSelect'
                                             name='Cochera:'
                                             errorLeyend={regExps.parkingSlot.errorLeyend}
                                             state={parkingSlot}
@@ -310,6 +345,7 @@ export default function FormCreateProp() {
                                             regExp={regExps.constructionDate.regExp}
                                             state={constructionDate}
                                             setState={setConstructionDate}
+                                            funcion={validateWithCreation}
                                         />
                                         <Input
                                             className='addressCreateForm'
@@ -322,10 +358,10 @@ export default function FormCreateProp() {
                                             regExp={regExps.renovationDate.regExp}
                                             state={renovationDate}
                                             setState={setRenovationDate}
+                                            funcion={validateWithCreation}
                                         />
                                     </div>
                                 </div>
-                            </div>
                             <div className="buttonsNextBack">
                                 <Button onClick={() => setContador(1)}>Anterior</Button>
                                 <Button disabled={errorsThirdCard} onClick={() => setContador(3)}>Siguiente</Button>
@@ -363,7 +399,6 @@ export default function FormCreateProp() {
                             </MensajeError>}
                             <SubmitContainer>
                                 <Button disabled={!formOk} className="submitCreateForm" type='submit'> Publicar </Button>
-                                {propertyCreated && <MensajeExito>Propiedad publicada exitosamente.</MensajeExito>}
                             </SubmitContainer>
                         </>
                     }

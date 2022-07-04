@@ -68,8 +68,8 @@
 .buttonsNextBack {
     padding-top: 30px;
     display: flex;
-    flex-direction: column;
-    gap: 10px;
+    flex-direction: row;
+    gap: 14px;
     margin:0 auto;
     justify-content: center;
     align-items: center;

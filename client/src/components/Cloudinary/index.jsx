@@ -1,7 +1,7 @@
-
 import React, { useState } from 'react'
 import DivContainer from '../../styledComponents/DivContainer'
 import { Input } from '../../styledComponents/StyledFormElements'
+import styles from './styles.module.css'
 
 const Cloudinary = ({ getImages }) => {
     const [image, setImage] = useState("")
@@ -28,20 +28,20 @@ const Cloudinary = ({ getImages }) => {
     }
 
     return (
-        <div>
+        <div className={styles.wrapper}>
             {/* <CloudinaryContext cloudName="real-estate-ads">
                 <div>
                     <Image publicId="sample" width="50" />
                 </div>
                 <Image publicId="sample" width="0.5" />
             </CloudinaryContext> */}
-                <Input
+                <input
                     type='file'    
                     name='file'
                     placeholder='Sube tu imagen aquí'
                     onChange={e => uploadImage(e.target.files)}
                 >
-                </Input>
+                </input>
                 
                 {image && <img src={image} placeholder='upload preview' />}
         </div>
