@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "../../styledComponents/Button";
 import DivContainer from "../../styledComponents/DivContainer";
-import Input from "../../styledComponents/Input";
+import { Input } from "../../styledComponents/StyledFormElements";
 import styles from './styles.module.css'
 import imagw  from './whatsapp.png';
 
