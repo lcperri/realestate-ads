@@ -14,11 +14,6 @@
     margin: 160px auto;
 }
 
-.subContainerCreate {
-    display: grid;
-    grid-template-columns: 35% 65%;
-    transition: width 2s;
-}
 
 .group {
     /* position: relative;
@@ -44,15 +39,13 @@
 .addressWrapper {
     display: flex;
     flex-direction: column;
-    width: 120%;
     transition: width 2s;
 }
 
 
 .operationTypeWrapper {
     display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 40px;
+    grid-template-columns: 1fr 1fr;
     transition: width 2s;
 }
 
@@ -66,16 +59,20 @@
 }
 
 .caracteristicasSubWrapper {
+    /* background-color: aqua; */
     display: grid;
-    grid-template-columns: 190px 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 40px;
 }
 
 .buttonsNextBack {
     padding-top: 30px;
     display: flex;
+    flex-direction: row;
+    gap: 14px;
+    margin:0 auto;
     justify-content: center;
-    gap: 10px;
+    align-items: center;
 }
 
 .submit {

@@ -58,8 +58,26 @@ const Button = styled.button`
         }
     }
 
-    &.disabled {
-        background-color: #666;
+    &.submitCreateForm {
+        height: 45px;
+        /* line-height: 45px; */
+        width: 30%;
+        background-color: #000;
+        color: #fff;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+        transition: .1s ease all;
+
+        &:hover {
+            box-shadow: 3px 0px 30px rgba(163, 163, 163, 1);
+        }
+    }
+
+    &:disabled {
+        background-color: #E3E3E3;
+        color: #999;
+        border: 2px solid transparent;
     }
 `
 export default Button
