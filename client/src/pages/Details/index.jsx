@@ -20,6 +20,7 @@ import styles from "./styles.module.css";
 import { getPropertyById, getAllUsers } from "../../redux/actions";
 import getCoordenates from "../../functions/getCoordenates";
 import FormContacto from "../../components/FormContacto";
+import capitalize from "../../functions/capitalize";
 
 const Details = () => {
   const navigate = useNavigate();
@@ -111,13 +112,13 @@ const Details = () => {
             <div className={styles.priceWrapper}>
               Desde: $
               {property.operation === "rent"
-                ? ` ${property.price} USD/Mes    ¡Alquílalo ya!`
-                : ` ${property.price} ¡Adquiérelo ya!`}
+                ? ` ${property.price} USD/Mes    ¡Alquílalo ahora!`
+                : ` ${property.price} ¡Adquiérelo ahora!`}
             </div>
             <h1>Dirección:</h1>
             <div className={styles.container}>
-              {property.city} <b> {` > `} </b> {property.neighbourhood}{" "}
-              <b>{" > "}</b> {property.address}
+              {capitalize(property.city)} <b> {` > `} </b> {capitalize(property.neighbourhood)}{" "}
+              <b>{" > "}</b> {capitalize(property.address)}
             </div>
             <h1>Características:</h1>
             <div className={styles.features}>
@@ -126,7 +127,7 @@ const Details = () => {
               </div>
               <div>
                 <TypeIcon /> <h3>Tipo:</h3>
-                {property.type}
+                {capitalize(property.type)}
               </div>
               <div>
                 <RoomIcon /> <h3>Nro de habitaciones:</h3> {property.rooms}
@@ -139,7 +140,7 @@ const Details = () => {
               <div>
                 <NeighborhoodIcon />
                 <h3>Vecindario:</h3>
-                {property.neighbourhood}
+                {capitalize(property.neighbourhood)}
               </div>
               <div>
                 <BuildIcon />

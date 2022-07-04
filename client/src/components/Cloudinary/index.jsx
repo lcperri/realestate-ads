@@ -1,6 +1,7 @@
-
 import React, { useState } from 'react'
 import DivContainer from '../../styledComponents/DivContainer'
+import { Input } from '../../styledComponents/StyledFormElements'
+import styles from './styles.module.css'
 
 const Cloudinary = ({ getImages }) => {
     const [image, setImage] = useState("")
@@ -27,7 +28,7 @@ const Cloudinary = ({ getImages }) => {
     }
 
     return (
-        <div>
+        <div className={styles.wrapper}>
             {/* <CloudinaryContext cloudName="real-estate-ads">
                 <div>
                     <Image publicId="sample" width="50" />

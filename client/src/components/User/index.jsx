@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import './UserCreate.css';
 import { getAllUsers, createUser } from '../../redux/actions';
+import DivContainer from "../../styledComponents/DivContainer";
 
 //---funcion validadora de errores en los inputs-----
 function validators(input){
@@ -57,6 +58,7 @@ export default function UserCreate(){
     };
 
     return(
+        <DivContainer>
         <div className="cont-gral">
 
             <div className="div-rec">
@@ -124,5 +126,6 @@ export default function UserCreate(){
             </div>
             
         </div>
+        </DivContainer>
     )
 }
