@@ -168,7 +168,6 @@ const LandingPage = () => {
             </div>
           </div>
         </section>
-        
         {/* <!-- Footer --> */}
         <footer className={styles.footer}>
           <div className={styles.container}>
