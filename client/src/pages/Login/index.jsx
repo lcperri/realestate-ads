@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styles from './styles.module.css';
-import { Input } from "../../styledComponents/StyledFormElements";
-import { Label } from "../../styledComponents/StyledFormElements";
 import Button from "../../styledComponents/Button"
 import DivContainer from "../../styledComponents/DivContainer";
 import GoogleAuthenticator from "../../libs/GoogleAuthentication";
-import Calendar from "../../libs/Calendar";
-import { useDispatch } from 'react-redux/es/exports';
+
+import { useDispatch, useSelector } from 'react-redux/es/exports';
 import { login } from "../../redux/actions";
 import InputComponent from "../../components/FormElements/Input";
 import { regExps } from "../../components/FormElements/regExpressions";
@@ -14,28 +12,14 @@ import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 
 export default function Login() {
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const logged = useSelector((state) => state.logged);
 
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState({ key: "", valid: null });
   const [password, setPassword] = useState({ key: "", valid: null });
   const [error, setError] = useState('');
-
-  // function validateUser(value) {
-  //   if (!/\S+@\S+\.\S+/.test(value)) {
-  //     setError('el usuario tiene que ser un email');
-  //   } else {
-  //     setError('');
-  //   }
-  //   setEmail(value);
-  // }
-
-  // useEffect(() => {
-  //   if (email && password && !error) {
-  //   }
-  // }, [email, password]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -43,11 +27,15 @@ export default function Login() {
       dispatch(login({
         email: email.key,
         password: password.key 
-      }))
-      navigate('/home')
-      }
+      }))}
     else Swal.fire('Revise sus datos.')
   }
+
+  useEffect(() => {
+    if (logged) {
+      navigate('/home');
+    }
+  }, [logged]);
 
   return (
     <div className="createProperty">

@@ -8,12 +8,11 @@ import UserCreate from "./components/User";
 import UserCard from "./dumb/CardUser";
 import Login from "./pages/Login";
 import Nav from "./components/Nav/index";
-import CalendarForm from "./components/CalendarPost/index";
 import Planes from "./components/Planes";
 import Favoritos from "./pages/Favoritos";
 import MisPropsPV from "./pages/MisPropPremiumVip";
 import ProfileDataUpdate from "./pages/ProfileDataUpdate/ProfileDataUpdate";
-import CalendaryCards from "./libs/CalendaryCards";
+import Calendar from "./libs/CalendarPost";
 
 const App = () => {
   return (
@@ -24,7 +23,6 @@ const App = () => {
         <Route path="/home" element={<Home />} />
         <Route path="/publicar" element={<Create />} />
         <Route path="/:id" element={<Details />} />
-        <Route path="/calendar" element={<CalendarForm />} />
         <Route path="/loader" element={<Loader />} />
         <Route path="/registro" element={<UserCreate />} />
         <Route path="/user" element={<UserCard />} />
@@ -32,7 +30,7 @@ const App = () => {
         <Route path="/planes" element={<Planes />} />
         <Route path="/favoritos" element={<Favoritos />} />
         <Route path="/mispropidades" element={<MisPropsPV />} />
-        <Route path="/calendario" element={<CalendaryCards />} />
+        <Route path="/calendario" element={<Calendar />} />
 
         <Route path="/perfil" element={<ProfileDataUpdate />} />
 

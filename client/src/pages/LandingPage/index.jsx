@@ -132,7 +132,7 @@ const LandingPage = () => {
                 </div>
                 <div className={styles.agentcardcontent}>
                   <div className={styles.agentname}>
-                    <h3>Vicepresidente</h3>
+                    <h3>Vicepresidente Junior</h3>
                     <p>Emilio Conde</p>
                   </div>
                 </div>
@@ -162,31 +162,6 @@ const LandingPage = () => {
                   <div className={styles.agentname}>
                     <h3>Director de Sistemas</h3>
                     <p>Marcos Forasteire</p>
-                  </div>
-                </div>
-              </div>
-              <div className={styles.agentcard}>
-                <div className={styles.agentimg}>
-                  <img src={fotoJuanCarlos} alt="Agent 1" />
-                </div>
-                <div className={styles.agentcardcontent}>
-                  <div className={styles.agentname}>
-                    <h3>Gerente de Ciberseguridad</h3>
-                    <p>Juan Carlos Padierna Rueda</p>
-                  </div>
-                </div>
-              </div>
-              <div className={styles.agentcard}>
-                <div className={styles.agentimg}>
-                  <img
-                    src="https://ca.slack-edge.com/TPRS7H4PN-U02TN5HEECQ-ccf2f56bb019-512"
-                    alt="Agent 1"
-                  />
-                </div>
-                <div className={styles.agentcardcontent}>
-                  <div className={styles.agentname}>
-                    <h3>Gerente de Infraestructura</h3>
-                    <p>Micaela Fronti</p>
                   </div>
                 </div>
               </div>

@@ -21,3 +21,27 @@ export function SaveLastName(lastName){
 export function SaveName(name){
    localStorage.setItem('name', name);
 }
+
+export function RemoveToken(){
+   localStorage.removeItem('auth-token');
+}
+
+export function RemoveRefreshToken(){
+   localStorage.removeItem('refresh-token');
+}
+
+export function RemoveId(){
+   localStorage.removeItem('id');
+}
+
+export function RemoveRange(){
+   localStorage.removeItem('range');
+}
+
+export function RemoveLastName(){
+   localStorage.removeItem('last-name');
+}
+
+export function RemoveName(){
+   localStorage.removeItem('name');
+}
