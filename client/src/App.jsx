@@ -1,4 +1,4 @@
-import { Route, Routes, useLocation } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import Home from "./pages/Home";
 import Create from "./pages/Create";
@@ -10,10 +10,10 @@ import Login from "./pages/Login";
 import Nav from "./components/Nav/index";
 import CalendarForm from "./components/CalendarPost/index";
 import Planes from "./components/Planes";
-import Favoritos from "./components/Favoritos";
+import Favoritos from "./pages/Favoritos";
 import MisPropsPV from "./pages/MisPropPremiumVip";
 import ProfileDataUpdate from "./pages/ProfileDataUpdate/ProfileDataUpdate";
-import CalendaryCards from "./components/CalendaryCards";
+import CalendaryCards from "./libs/CalendaryCards";
 
 const App = () => {
   return (

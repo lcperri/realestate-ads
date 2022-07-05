@@ -1,6 +1,9 @@
 .contFormContacto{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 520px;
-    height: 500px; 
+    height: 500px;
 }
 .titulo{
     margin-top: 10px;
@@ -14,8 +17,8 @@
     width: 300px;
 }
 .descrip{
-    width: 300px;
-    height: 130px;
+    max-width: 300px;
+    max-height: 120px;
     color: #666;
     font-size: 18px;
     padding: 9px;
@@ -28,12 +31,20 @@
     color: #444;
     border: 2px solid #ff765e;
 }
-.contactar{
-    margin-top: 5px;
-    width: 180px;
-    margin-left: 20px;
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
 }
-.whatsap{
-    width: 50px;
-    
+.contactar{
+    margin-top: 1rem;
+    width: 10rem;
+    height: 2.9rem;
+    margin-left: 2rem;
+}
+.whatsapp{
+    margin-top: 1rem;
+    margin-left: 2rem;
+    width: 3rem;
+    height: 3rem;
 }

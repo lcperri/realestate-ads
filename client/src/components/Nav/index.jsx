@@ -4,13 +4,18 @@ import Button from '../../styledComponents/Button';
 import { StyledHash, StyledLink } from '../../styledComponents/StyledLink';
 import './Nav.css';
 import { useLocation } from 'react-router-dom';
+import capitalize from './../../functions/capitalize';
 
 const Nav = () => {
   const location = useLocation();
   const range = localStorage.getItem('range');
-  const name = localStorage.getItem('name');
-  const lastName = localStorage.getItem('last-name');
-  console.log(range)
+  var name = localStorage.getItem('name');
+  var lastName = localStorage.getItem('last-name');
+  
+  if (name) {
+    name = capitalize(name);
+    lastName = capitalize(lastName);
+  }
 
 
   const logout = (e) => {

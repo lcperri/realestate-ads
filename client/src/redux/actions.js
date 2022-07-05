@@ -11,6 +11,7 @@ import {
   PROPERTY,
   USER,
   PAGE_SETTER,
+  CLEAR,
 } from "./actionTypes";
 
 export function login(data) {
@@ -50,6 +51,14 @@ export function propertyPagination({ filters, location, max }) {
     return dispatch({
       type: PROPERTIES,
       payload: filtered.data,
+    });
+  };
+}
+
+export function clear() {
+  return function (dispatch) {
+    return dispatch({
+      type: CLEAR
     });
   };
 }

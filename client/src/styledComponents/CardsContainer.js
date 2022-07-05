@@ -5,8 +5,6 @@ const CardsContainer = styled.div`
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    /* display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); */
     width: 100%;
     background-color: none;
     justify-content: center;
