@@ -31,7 +31,7 @@ const App = () => {
         <Route path="/sesion" element={<Login />} />
         <Route path="/planes" element={<Planes />} />
         <Route path="/favoritos" element={<Favoritos />} />
-        <Route path="/mispropidades" element={<MisPropsPV />} />
+        <Route path="/mispropiedades" element={<MisPropsPV />} />
         <Route path="/calendario" element={<CalendaryCards />} />
 
         <Route path="/perfil" element={<ProfileDataUpdate />} />
