@@ -7,7 +7,7 @@ import { clear } from "../../redux/actions";
 export default function Favoritos(){
   const dispatch = useDispatch();
   const id = localStorage.getItem('id');
-
+  
   useEffect(() => {
     return () => dispatch(clear());
   });

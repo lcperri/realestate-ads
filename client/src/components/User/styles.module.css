@@ -1,99 +1,18 @@
-.createProperty {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: #BA5370;  
-    background: -webkit-linear-gradient(to right, #FF416C 0%, #ff765e 100%); 
-    background: linear-gradient(0deg, #FF416C 0%, #ff765e 100%);
-}
 
-.form{
+.create3{
+    background-color: #fff;
     border-radius: 20px;
-    width: 50%;  
-    background-size: cover;
-    margin: 160px auto;
-}
-
-
-.group {
-    /* position: relative;
-    top:-10px; */
-    padding:0;
-}
-
-.title {
-    color: #fff;
-    font-size: 24px;
-    font-weight: 600;
+    margin: 14px auto;
     width: 75%;
-    margin: 0 auto;
-}
-
-.subTitle {
-    padding: 9px 40px 10px 0px;
-    font-size: 20px;
-    font-weight: 500;
-    color:#FF416C;
-}
-
-.addressWrapper {
-    display: flex;
-    flex-direction: column;
-    transition: width 2s;
-}
-
-
-.operationTypeWrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    transition: width 2s;
-}
-
-.caracteristicasWrapper {
-    padding-top: 12px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    /* flex-wrap: wrap; */
-    gap: 10px;
-}
-
-.caracteristicasSubWrapper {
-    /* background-color: aqua; */
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-}
-
-.buttonsNextBack {
-    padding-top: 30px;
-    display: flex;
-    flex-direction: row;
-    gap: 14px;
-    margin:0 auto;
-    justify-content: center;
-    align-items: center;
-}
-
-.submit {
-    padding-top: 20px;
-    display: flex;
-    justify-content: center;
-}
-
-.errorInputF{
-    border-color: #E52F50;
-    margin-top: 5px;
-    margin-left: 10px;
-    width: 230px;
-}
-
-.input-direcc, .input-direcc-error{
-    margin-top: 30px;
-    margin-left: 10px;
-    margin-bottom: 20px;
-    width: 410px;
-}
-.input-direcc-error{
-    border-color: #E52F50;
+    margin: 30px auto 15px auto;
+    padding: 20px 60px 30px 60px;
+    /* gap:2px; */
+    /* align-items: flex-start; */
+    /* display: flex; */
+    /* flex-direction: column;  */
+    /* padding: 1px 1px 0 1px; */
+    /* border-radius: 1rem; */
+    border: 1px solid #efefef;
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.159);
+    /* width: max-content; */
 }
