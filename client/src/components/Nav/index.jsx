@@ -12,18 +12,18 @@ const Nav = () => {
         <div className='subContainerLeft'>
           <li className="items">
             <StyledLink to={'/'}>Inicio</StyledLink>
-            <StyledLink to={'/home'}>Ver Propiedades</StyledLink>
             <StyledLink to={'/about'}>Acerca de </StyledLink>
             <StyledLink to={'/contact'}>Contacto</StyledLink>
             {/*rutas provisorias para ver los componentes */}
-            <NavLink to={'/favoritos'}>favoritos</NavLink>
-            <NavLink to={'/mipropsvip'}>mipropsvip</NavLink>
-            <NavLink to={'/planes'}>planes</NavLink>
-            <NavLink to={'/calendaryCards'}>CalendaryCards</NavLink>
+            <NavLink to={'/favoritos'}>Mis favoritos</NavLink>
+            <NavLink to={'/mipropsvip'}>Mis propiedades</NavLink>
+            <NavLink to={'/planes'}>Planes</NavLink>
+            <NavLink to={'/calendaryCards'}>Calendario de visitas</NavLink>
+            <StyledLink to={'/home'}>Ver Propiedades</StyledLink>
           </li>
         </div>
         <div className='subContainerRight'>
-          <StyledLink  to={'/sigin'}>
+          <StyledLink  to={'/signup'}>
             Registrarse
           </StyledLink>
           <StyledLink to={'/login'}>

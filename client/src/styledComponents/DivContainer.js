@@ -63,5 +63,9 @@ const DivContainer = styled.div`
   div {
     margin: 1.3px 0 1.5px 0;
   }
+
+  aside {
+    padding-right: 10px;
+  }
 `;
 export default DivContainer;

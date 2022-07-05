@@ -59,10 +59,10 @@ export default function UserCreate(){
 
     return(
         <DivContainer>
-        <div className="cont-gral">
+        <div >
 
-            <div className="div-rec">
-                <form onSubmit={handlerS} className="cont-formulario">
+            <div >
+                <form onSubmit={handlerS}>
                     
                     <div className="grupo1">
                         <div className="nombre">
