@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Landing.module.css";
 import fotoJuanCarlos from "./img/Juan Carlos.jpg";
-import { StyledLink } from "../../styledComponents/StyledLink";
-import Button from "../../styledComponents/Button";
 import { useDispatch } from "react-redux";
 import { filter } from "../../redux/actions"
 
@@ -25,31 +23,6 @@ const LandingPage = () => {
 
   return (
     <>
-      {/* <div className="navbar">
-        <div className='subContainer'>
-          <div className='subContainerLeft'>
-            <li className="items">
-              <a href="#">Inicio</a>
-              <StyledLink to={'/home'} onClick={() => window.scrollTo(0, 0)}>Ver Propiedades</StyledLink>
-              <a href="#how-it-works">Cómo funciona </a>
-              <a href="#agents">Acerca de </a>
-              <StyledLink to={'/contact'}>Contacto</StyledLink>
-            </li>
-          </div>
-          <div className='subContainerRight'>
-            <StyledLink to={'/sigin'}>
-              Registrarse
-            </StyledLink>
-            <StyledLink to={'/login'}>
-              <Button>Login </Button>
-            </StyledLink>
-            <StyledLink to={'/create'}>
-              <Button> Publicar </Button>
-            </StyledLink>
-          </div>
-        </div>
-      </div> */}
-
       {/* <!-- Header Section --> */}
       <div id="home" className={styles.home}>
         <header className={styles.header}>
@@ -159,7 +132,7 @@ const LandingPage = () => {
                 </div>
                 <div className={styles.agentcardcontent}>
                   <div className={styles.agentname}>
-                    <h3>Vicepresidente</h3>
+                    <h3>Vicepresidente Junior</h3>
                     <p>Emilio Conde</p>
                   </div>
                 </div>
@@ -192,35 +165,9 @@ const LandingPage = () => {
                   </div>
                 </div>
               </div>
-              <div className={styles.agentcard}>
-                <div className={styles.agentimg}>
-                  <img src={fotoJuanCarlos} alt="Agent 1" />
-                </div>
-                <div className={styles.agentcardcontent}>
-                  <div className={styles.agentname}>
-                    <h3>Gerente de Ciberseguridad</h3>
-                    <p>Juan Carlos Padierna Rueda</p>
-                  </div>
-                </div>
-              </div>
-              <div className={styles.agentcard}>
-                <div className={styles.agentimg}>
-                  <img
-                    src="https://ca.slack-edge.com/TPRS7H4PN-U02TN5HEECQ-ccf2f56bb019-512"
-                    alt="Agent 1"
-                  />
-                </div>
-                <div className={styles.agentcardcontent}>
-                  <div className={styles.agentname}>
-                    <h3>Gerente de Infraestructura</h3>
-                    <p>Micaela Fronti</p>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
         </section>
-        
         {/* <!-- Footer --> */}
         <footer className={styles.footer}>
           <div className={styles.container}>

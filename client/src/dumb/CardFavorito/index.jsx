@@ -6,10 +6,10 @@ import RoomIcon from '../Icons/Room';
 import AreaIcon from '../Icons/Area';
 import Button from '../../styledComponents/Button';
 import {StyledLink} from '../../styledComponents/StyledLink';
+import { useParams } from "react-router-dom";
 
 
-export default function CardFavorito({_id, type, address, price, area, rooms, bathrooms, pictures}){
-
+export default function CardFavorito({id, type, address, price, area, rooms, bathrooms, pictures}){
 
     const handleConectar = (e) => {};
     const handleElim = (e) => {};
@@ -17,10 +17,8 @@ export default function CardFavorito({_id, type, address, price, area, rooms, ba
     return(
         <div className={styles.contenedorFav}>
 
-            <div className={styles.divFotos}>
-                
-                <img src={pictures} alt={"not found"} className={styles.foto}/>
-                               
+            <div className={styles.divFotos}>                
+                <img src={pictures} alt={"not found"} className={styles.foto}/>                               
             </div>
 
             <div className={styles.divCaracteristicas}>
@@ -50,7 +48,7 @@ export default function CardFavorito({_id, type, address, price, area, rooms, ba
             <div className={styles.divBotones}>
                 <Button className={styles.botonConetar} onClick={handleConectar}>Contactar</Button> 
 
-                <StyledLink to={`/${_id}`}> {/*62b74f620a21495c42dde489*/}
+                <StyledLink to={`/${id}`}> {/*62b7e86c0c65fc9fbc1e18e7*/}
                     <Button className={styles.botonDet}>Ver detalle</Button>      
                 </StyledLink>     
                 

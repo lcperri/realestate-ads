@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import AreaIcon from "../../dumb/Icons/Area";
 import BathIcon from "../../dumb/Icons/Bath";
 import RoomIcon from "../../dumb/Icons/Room";
@@ -17,10 +18,11 @@ import StyledText from "../../styledComponents/StyledText";
 import Map from "../../libs/Map";
 import Button from "../../styledComponents/Button";
 import styles from "./styles.module.css";
-import { getPropertyById, getAllUsers } from "../../redux/actions";
+
+import { getPropertyById, getAllUsers, clear } from "../../redux/actions";
 import getCoordenates from "../../functions/getCoordenates";
 import FormContacto from "../../components/FormContacto";
-import capitalize from "../../functions/capitalize";
+//import capitalize from "../../functions/capitalize";
 
 const Details = () => {
   const navigate = useNavigate();
@@ -35,6 +37,7 @@ const Details = () => {
     dispatch(getPropertyById(id));
     // eslint-disable-next-line
     dispatch(getAllUsers());
+    return () => dispatch(clear());
   }, []);
 
   useEffect(() => {
@@ -116,8 +119,8 @@ const Details = () => {
             </div>
             <h1>Dirección:</h1>
             <div className={styles.container}>
-              {capitalize(property.city)} <b> {` > `} </b> {capitalize(property.neighbourhood)}{" "}
-              <b>{" > "}</b> {capitalize(property.address)}
+              {property.city} <b> {` > `} </b> {property.neighbourhood}{" "}
+              <b>{" > "}</b> {property.address}
             </div>
             <h1>Características:</h1>
             <div className={styles.features}>
@@ -126,7 +129,7 @@ const Details = () => {
               </div>
               <div>
                 <TypeIcon /> <h3>Tipo:</h3>
-                {capitalize(property.type)}
+                {property.type}
               </div>
               <div>
                 <RoomIcon /> <h3>Nro de habitaciones:</h3> {property.rooms}
@@ -139,7 +142,7 @@ const Details = () => {
               <div>
                 <NeighborhoodIcon />
                 <h3>Vecindario:</h3>
-                {capitalize(property.neighbourhood)}
+                {property.neighbourhood}
               </div>
               <div>
                 <BuildIcon />

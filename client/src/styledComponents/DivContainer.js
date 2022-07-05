@@ -5,17 +5,12 @@ const DivContainer = styled.div`
   /* min-height: 15rem; */
   background-color: #fff;
   border-radius: 20px;
-  width: 75%;
+  ${(props) => props.contact === true ? 'width: 100%; height: 100%;' :
+    props.home ? 'min-width: 100rem; min-height: 58rem; width: 75%; height: 75%;' : 
+    'width: 75%;'
+  }
   margin: 120px auto 15px auto;
   padding: 20px 60px 30px 60px;
-  /* gap:2px; */
-  /* align-items: flex-start; */
-  /* display: flex; */
-  /* flex-direction: column;  */
-  /* padding: 1px 1px 0 1px; */
-  /* border-radius: 1rem; */
-  /* border: 1px solid #efefef; */
-  /* box-shadow: 0 3px 15px rgba(0, 0, 0, 0.159); */
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 18px;
   /* width: max-content; */
   transition: .3s ease all;
@@ -69,3 +64,5 @@ const DivContainer = styled.div`
   }
 `;
 export default DivContainer;
+
+

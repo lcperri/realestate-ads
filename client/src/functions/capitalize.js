@@ -1,5 +1,10 @@
 const capitalize = (text) => {
-    return text?.toLowerCase().charAt(0).toUpperCase() + text?.toLowerCase().slice(1)
+    if (!text) return;
+    const words = text.split(' ');
+    for (var i = 0; i < words.length; i++) {
+        words[i] = words[i].toLowerCase().charAt(0).toUpperCase() + words[i].toLowerCase().slice(1);
+    }
+    return words.join(' ');
 }
 
 export default capitalize

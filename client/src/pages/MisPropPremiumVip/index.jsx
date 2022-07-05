@@ -1,15 +1,20 @@
-import React from "react";
+import { useEffect } from "react";
 import Filter from "../../components/Filters";
-import { useSelector } from "react-redux";
 import styles from './misPropPV.module.css';
 import Button from '../../styledComponents/Button';
 import DivContainer from "../../styledComponents/DivContainer";
 import Cards from "../../components/Cards";
+import { clear } from "../../redux/actions";
+import { useDispatch } from 'react-redux';
 
 export default function MisPropPremiumVip(){
+  const dispatch = useDispatch();
   const id = localStorage.getItem('id');
 
-  const allProps = useSelector(state => state.misPropiedades);
+  useEffect(() => {
+    return () => dispatch(clear());
+  });
+
   const handleVip = (e) => {};
 
   return(      
