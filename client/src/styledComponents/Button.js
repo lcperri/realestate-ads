@@ -19,7 +19,8 @@ const Button = styled.button`
         background-color: #fff;
         border: 4px solid #ff765e;
         color: #333;
-        margin-right: 6px;
+        margin-left: 3px;
+        margin-right: 3px;
         &:hover {
         background-color: #E52F50;
         color: #fff;
@@ -35,7 +36,8 @@ const Button = styled.button`
     &.status {
         padding: 0px 4px 0px 4px;
         position: relative;
-        margin-right: 4px;
+        margin-left: 2px;
+        margin-right: 2px;
         top: -89px;
         /* left: -60px; */
         width: auto;
