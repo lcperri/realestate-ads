@@ -2,17 +2,16 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import './styles.module.css';
-import { createUser, getAllUsers } from '../../redux/actions';
+import { createUser } from '../../redux/actions';
 import DivContainer from "../../styledComponents/DivContainer";
-import Cloudinary from "../Cloudinary";
+//import Cloudinary from "../Cloudinary";
 import Button from "../../styledComponents/Button"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { GrupoInput, Option, ErrorLeyend, ValidationIcon, TermsAndConditions, SubmitContainer, MensajeError, MensajeExito, Label } from "../../styledComponents/StyledFormElements";
-import { faCheck, faCircleExclamation } from '@fortawesome/free-solid-svg-icons'
-import Input from "../FormElements/Input";
 import Select from "../FormElements/Select";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { TermsAndConditions, SubmitContainer, MensajeError, Label } from "../../styledComponents/StyledFormElements";
+import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons'
+import Input from "../FormElements/Input";
 import { regExps } from "../FormElements/regExpressions";
-import toast, { Toaster } from 'react-hot-toast';
 import Swal from "sweetalert2";
 import {useNavigate } from "react-router-dom";
 
@@ -33,7 +32,7 @@ export default function UserCreate(){
     const[email, setEmail] = useState({key: '', valid: null});
     const[password, setPassword] = useState({key: '', valid: null});
     const[range, setRange] = useState({key: '', valid: null});
-
+    
     const [termsAndConditions, setTermsAndConditions] = useState(false)
     const [userCreated, setUserCreated] = useState(false)
     const [formOk, setFormOk] = useState(false)
@@ -104,13 +103,159 @@ export default function UserCreate(){
         setTermsAndConditions(e.target.checked)
     }
 
+    //valida todos los inputs y selects del form cuando hago click en términos:
+    useEffect (()=> {
+        if (
+            name.valid === 'true' &&
+            lastName.valid === 'true' &&
+            dni.valid === 'true' &&
+            telephone.valid === 'true' &&
+            birthday.valid === 'true' &&
+            email.valid === 'true' &&
+            password.valid === 'true' &&
+            range.valid === 'true' &&
+            termsAndConditions === true
+        ) setFormOk(true)
+        else setFormOk(false)
+    }, [termsAndConditions]);
+
     return(
         <div className="createProperty">
             <form onSubmit={handleOnSubmit} id='form'>
                 <div className="form">
                     <div className='title'>
-                        Date de alta y encotra/vende tu inmueble!!
+                        Date de alta en nuestra app!!
                     </div>
+                    {/*tarjeta 1 */}
+                    {
+                        contador === 0 &&
+                        <DivContainer className="create">
+                            <div className="addressWrapper">
+                                <Input 
+                                    className='addressCreateForm'
+                                    name='Nombre:'
+                                    type='text'
+                                    placeHolder={'Nombre'}
+                                    /* errorLeyend={regExps.city.errorLeyend}
+                                    regExp={regExps.city.regExp} */
+                                    state={name}
+                                    setState={setName}
+                                />
+                                <Input 
+                                    className='addressCreateForm'
+                                    name='Apellido:'
+                                    type='text'
+                                    placeHolder={'Apellido'}
+                                    /* errorLeyend={regExps.city.errorLeyend}
+                                    regExp={regExps.city.regExp} */
+                                    state={lastName}
+                                    setState={setLastName}
+                                />
+                                <Input 
+                                    className='addressCreateForm'
+                                    name='Dni:'
+                                    type='number'
+                                    placeHolder={'Dni'}
+                                    /* errorLeyend={regExps.city.errorLeyend}
+                                    regExp={regExps.city.regExp} */
+                                    state={dni}
+                                    setState={setDni}
+                                />
+                                <Input 
+                                    className='addressCreateForm'
+                                    name='Telephone:'
+                                    type='number'
+                                    placeHolder={'Telephone'}
+                                    /* errorLeyend={regExps.city.errorLeyend}
+                                    regExp={regExps.city.regExp} */
+                                    state={telephone}
+                                    setState={setTelephone}
+                                />
+                                <Input 
+                                    className='addressCreateForm'
+                                    name='Birthday:'
+                                    type='Date'
+                                    placeHolder={'Birthday'}
+                                    /* errorLeyend={regExps.city.errorLeyend}
+                                    regExp={regExps.city.regExp} */
+                                    state={birthday}
+                                    setState={setBirthday}
+                                />
+                            </div>
+                            <div className="buttonsNextBack">
+                                <Button /* disabled={errorsFirstCard} */ onClick={() => setContador(1)}> Siguiente</Button>
+                            </div>                            
+                        </DivContainer>
+                    }
+                    {
+                        contador === 1 &&
+                        <>
+                           <DivContainer className="create">
+                                <div className="addressWrapper">
+                                <Select
+                                    className='adjustOperationSelect'
+                                    name='Tipo de Usuario'
+                                    /* errorLeyend={regExps.tipoUsuario.errorLeyend} */
+                                    state={range}
+                                    setState={setRange}
+                                    options={[
+                                        { description: 'Tipo Usuario:', value: null },
+                                        { description: 'Free', value: 'free' },
+                                        { description: 'Premium', value: 'premium' },
+                                        { description: 'Vip', value: 'vip' },
+                                        { description: 'Adim', value: 'admin' }
+                                    ]}
+                                // // onChange={handleChange} 
+                                />
+                                    <Input 
+                                        className='addressCreateForm'
+                                        name='Email:'
+                                        type='text'
+                                        placeHolder={'Email'}
+                                        /* errorLeyend={regExps.email.errorLeyend}
+                                        regExp={regExps.email.regExp} */
+                                        state={email}
+                                        setState={setEmail}
+                                    />
+                                    <Input 
+                                        className='addressCreateForm'
+                                        name='Password:'
+                                        type='text'
+                                        placeHolder={'Password'}
+                                        /* errorLeyend={regExps.password.errorLeyend}
+                                        regExp={regExps.password.regExp} */
+                                        state={password}
+                                        setState={setPassword}
+                                    />
+                                </div>
+                                <div className="buttonsNextBack">
+                                <Button onClick={() => setContador(0)}>Anterior</Button>                              
+                            </div>                            
+                           </DivContainer>
+
+                           <TermsAndConditions>
+                           <Label>
+                               <input
+                                   type='checkbox'
+                                   name='terms'
+                                   id='terms'
+                                   onChange={onChangeTerms}
+                                   checked={termsAndConditions} 
+                                />
+                                Acepto los términos y condiciones.
+                           </Label>
+                           </TermsAndConditions>
+                           {false && <MensajeError>
+                           <p>
+                               <FontAwesomeIcon icon={faCircleExclamation} />
+                               <b>Error:</b> Para darte de alta tienes que llenar el formulario correctamente.
+                           </p>
+                           </MensajeError>}
+                           <SubmitContainer>
+                               <Button disabled={!formOk} className="submitCreateForm" type='submit'> Submit </Button>
+                           </SubmitContainer>
+                        </>
+                    }                          
                 </div>
             </form>
         </div>

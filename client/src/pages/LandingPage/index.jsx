@@ -176,7 +176,7 @@ const LandingPage = () => {
                   </div>
                 </div>
               </div>
-              <div className={styles.agentcard}>
+              {/* <div className={styles.agentcard}>
                 <div className={styles.agentimg}>
                   <img
                     src="https://ca.slack-edge.com/TPRS7H4PN-U02TN5HEECQ-ccf2f56bb019-512"
@@ -189,7 +189,7 @@ const LandingPage = () => {
                     <p>Micaela Fronti</p>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </section>

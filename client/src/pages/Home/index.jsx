@@ -22,7 +22,7 @@ const Home = () => {
           <Filter />
         </div>
         {/* <Loader /> */}
-        <DivContainer className="home">
+        <DivContainer home={true} className="home">
           <CardsContainer>
             <Cards />
           </CardsContainer>
