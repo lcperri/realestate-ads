@@ -27,7 +27,7 @@ const App = () => {
         <Route path="/calendar" element={<CalendarForm />} />
         <Route path="/loader" element={<Loader />} />
         <Route path="/signup" element={<UserCreate />} />
-        <Route path="/user" element={<UserCard />} />
+        <Route path="/user" element={<UserCreate />} />
         <Route path="/login" element={<Login />} />
         <Route path="planes" element={<Planes />} />
         <Route path="/favoritos" element={<Favoritos />} />

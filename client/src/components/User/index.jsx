@@ -1,131 +1,118 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import './UserCreate.css';
-import { getAllUsers, createUser } from '../../redux/actions';
+import React from "react";
+import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import './styles.module.css';
+import { createUser, getAllUsers } from '../../redux/actions';
 import DivContainer from "../../styledComponents/DivContainer";
+import Cloudinary from "../Cloudinary";
+import Button from "../../styledComponents/Button"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { GrupoInput, Option, ErrorLeyend, ValidationIcon, TermsAndConditions, SubmitContainer, MensajeError, MensajeExito, Label } from "../../styledComponents/StyledFormElements";
+import { faCheck, faCircleExclamation } from '@fortawesome/free-solid-svg-icons'
+import Input from "../FormElements/Input";
+import Select from "../FormElements/Select";
+import { regExps } from "../FormElements/regExpressions";
+import toast, { Toaster } from 'react-hot-toast';
+import Swal from "sweetalert2";
+import {useNavigate } from "react-router-dom";
 
-//---funcion validadora de errores en los inputs-----
-function validators(input){
-    const errors = {};
+//name,lastName,password,birthday,email,dni,telephone,range
 
-    if(!input.name){errors.name = "Pleace, name is required";}
-    if(!/^[a-zA-Z\s]*$/.test(input.name)){errors.name = "Pleace, enter only letters";}
-
-    if(!input.lastName){errors.lastName = "Pleace, lastName is required";} 
-    if(!/^[a-zA-Z\s]*$/.test(input.lastName)){errors.lastName = "Pleace, enter only letters";}
-
-    if(!input.password){errors.password = "Pleace, password is required";} 
-    
-    if(!input.birthday){errors.birthday = "Pleace, birthday is required";} 
-
-    if(!input.email){errors.email = "Pleace, email is required";} 
-
-    if(!input.dni){errors.dni = "Pleace, dni is required";} 
-
-    if(!input.telephone){errors.telephone = "Pleace, telephone is required";} 
-    
-    return errors;
-}
 export default function UserCreate(){
 
-    const inisitalState = {name:"", lastName:"", password:"", birthday:"", email:"", dni:"", telephone:"", avatar:""};
-    const [input, setInput] = useState(inisitalState);
-    const [error, setError] = useState(inisitalState);
-    const allUs = useSelector(state => state.users);   
-    const dispatch = useDispatch();
-    /* console.log(allUs)
-    let buskUser = allUs.find(u => u.dni !== '123')
-    console.log("data:",buskUser)
- */
-    useEffect(()=>{
-        dispatch(getAllUsers());
-    }, [dispatch]);
+    //para las tarjetas
+    const[contador,setContador] = useState(0);    
+    const [errorsFirstCard, setErrorsFirstCard] = useState(true);
+    const [errorsSecondCard, setErrorsSecondCard] = useState(true);
+    //estado de c/input
+    const[name, setName] = useState({key: '', valid: null});
+    const[lastName, setLastName] = useState({key: '', valid: null});
+    const[dni, setDni] = useState({key: '', valid: null});
+    const[telephone, setTelephone] = useState({key: '', valid: null});
+    const[birthday, setBirthday] = useState({key: '', valid: null});
+    const[email, setEmail] = useState({key: '', valid: null});
+    const[password, setPassword] = useState({key: '', valid: null});
+    const[range, setRange] = useState({key: '', valid: null});
 
-    const handlerCH = (e) => {
-        setInput({...input, [e.target.id]: e.target.value});
-        setError(validators({...input, [e.target.id]: e.target.value}));
+    const [termsAndConditions, setTermsAndConditions] = useState(false)
+    const [userCreated, setUserCreated] = useState(false)
+    const [formOk, setFormOk] = useState(false)
+    const navigate = useNavigate();
+    const dispatch = useDispatch()
+
+    const cleanForm = () => {
+        setName({ key: '', valid: null });
+        setLastName({ key: '', valid: null });
+        setDni({ key: '', valid: null });
+        setTelephone({ key: '', valid: null });
+        setBirthday({ key: '', valid: null });
+        setEmail({ key: '', valid: null });
+        setPassword({ key: '', valid: null });
+        setRange({ key: '', valid: null });
     };
-    const handlerS = (e) => {
+
+    const handleOnSubmit = (e) => {
         e.preventDefault();
-        
-        if(!input.name || !input.lastName || !input.password || !input.birthday || !input.email || !input.dni || !input.telephone ){
-        }
-        dispatch(createUser(input));
-        dispatch(getAllUsers());
-        setInput({name:"", lastName:"", password:"", birthday:"", email:"", dni:"", telephone:"", avatar:""});
-        
-    };
+        setUserCreated(true);
+        setTermsAndConditions(false);
+        dispatch(createUser({
+            name: name.key,
+            lastName: lastName.key,
+            dni: dni.key,
+            telephone: telephone.key,
+            birthday: birthday.key,
+            email: email.key,
+            password: password.key,
+            range: range.key,
+        }))
+        .then(() => {
+            Swal.fire({
+                position: 'top-center',
+                icon: 'success',
+                title: 'Usuario/a creado/a exitosamente',
+                showConfirmButton: false,
+                timer: 1500
+            });
+            cleanForm();
+        })
+        .catch(() => {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Oops, algo no salió bien. Por favor intenta nuevamente.'
+            })
+            navigate('/signup')
+        })
+    }
+
+    //habilita botones siguiente de cards:
+    useEffect(() => {
+        //1ra card
+        if (name.valid === 'true' && lastName.valid === 'true' && dni.valid === 'true' && birthday.valid === 'true'  && telephone.valid === 'true')
+            setErrorsFirstCard(false)
+        else
+            setErrorsFirstCard(true)
+        //2da card
+        if (email.valid === 'true' && password.valid === 'true' && range.valid === 'true')
+            setErrorsSecondCard(false)
+        else
+            setErrorsSecondCard(true)
+    },[name, lastName, dni, telephone, birthday, email, password, range]);
+
+    //términos y condiciones:
+    const onChangeTerms = (e) => {
+        setTermsAndConditions(e.target.checked)
+    }
 
     return(
-        <DivContainer>
-        <div className="cont-gral">
-
-            <div className="div-rec">
-                <form onSubmit={handlerS} className="cont-formulario">
-                    
-                    <div className="grupo1">
-                        <div className="nombre">
-                            <label className="label-g1">Nombre: </label>
-                            <input className={error.name ? "errorInput" : "itemInput"} type={'text'} id={'name'} value={input.name} onChange={handlerCH}/>
-                            {error.name && (<div><p className="p-error">{error.name}</p></div>)}                            
-                        </div>
-
-                        <div className="lastName">
-                            <label className="label-g1">LastName: </label>
-                            <input className={error.lastName ? "errorInput" : "itemInput"} type={'text'} id={'lastName'} value={input.lastName} onChange={handlerCH}/>
-                            {error.lastName && (<div><p className="p-error">{error.lastName}</p></div>)}
-                        </div>
-
-                        <div className="password">
-                            <label className="label-g1">Password: </label>
-                            <input className={error.password ? "errorInput" : "itemInput"} type='password' id={'password'} value={input.password} onChange={handlerCH}/>
-                            {error.password && (<div><p className="p-error">{error.password}</p></div>)}
-                        </div>
-
-                        <div className="birthday">
-                            <label className="label-g1">Birthday: </label>
-                            <input className={error.birthday ? "errorInput" : "itemInput"} type='date' id={'birthday'} value={input.birthday} onChange={handlerCH}/>
-                            {error.birthday && (<div><p className="p-error">{error.birthday}</p></div>)}
-                        </div>
-
-                    </div> 
-   
-                    <div className="grupo2">
-                        <div className="email">
-                            <label className="label-g2">Email: </label>
-                            <input className={error.email ? "errorInput" : "itemInput-g2"} type={'text'} id={'email'} value={input.email} onChange={handlerCH}/>
-                            {error.email && (<div><p className="p-error">{error.email}</p></div>)}
-                        </div>
-
-                        <div className="dni">
-                            <label className="label-g2">Dni: </label>
-                            <input className={error.dni ? "errorInput" : "itemInput-g2"} type={'number'} id={'dni'} value={input.dni} onChange={handlerCH}/>
-                            {error.dni && (<div><p className="p-error">{error.dni}</p></div>)}
-                            {/*muestro msj SI el poke a crear ya existe */}
-                            {/* {buskUser && (<div><p className="p-error">El Usuario ya existe!!</p></div>)}  */}
-                        </div>
-
-                        <div className="telephone">
-                            <label className="label-g2">Telephone: </label>
-                            <input className={error.email ? "errorInput" : "itemInput-g2"} type={'number'} id={'telephone'} value={input.telephone} onChange={handlerCH}/>
-                            {error.telephone && (<div><p className="p-error">{error.telephone}</p></div>)}
-                        </div>
-
-                        <div className="avatar">
-                            <label className="label-g2">Avatar: </label>
-                            <input className={error.avatar ? "errorInput" : "itemInput-g2"} type={'text'} id={'avatar'} value={input.avatar} onChange={handlerCH}/>
-                            {error.avatar && (<div><p className="p-error">{error.avatar}</p></div>)}
-                        </div>
-                    </div> 
-
-                    <div className="div-btn-create">
-                       <input className="btn-create" type={'submit'} value={'Create Poke'} />
+        <div className="createProperty">
+            <form onSubmit={handleOnSubmit} id='form'>
+                <div className="form">
+                    <div className='title'>
+                        Date de alta
                     </div>
-                </form>
-            </div>
-            
+                </div>
+            </form>
         </div>
-        </DivContainer>
     )
 }
