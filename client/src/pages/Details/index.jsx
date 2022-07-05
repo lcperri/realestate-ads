@@ -32,7 +32,6 @@ const Details = () => {
   const { id } = useParams();
   const property = useSelector((state) => state.property);
   const [coordenate, setCoordenate] = useState();
-   
 
   useEffect(() => {
     dispatch(getPropertyById(id));

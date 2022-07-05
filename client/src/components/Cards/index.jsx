@@ -7,6 +7,7 @@ import { StyledLinkCard } from '../../styledComponents/StyledLink'
 import Pagination from '../Pagination'
 import CardMisPropsPremiumVip from '../../dumb/CardMisPropsPremiumVip';
 import Favorito from '../../dumb/CardFavorito'
+import StyledCard from '../../styledComponents/StyledCard'
 
 const Cards = ({ id, favourites }) => {
   const dispatch = useDispatch();
@@ -39,9 +40,9 @@ const Cards = ({ id, favourites }) => {
             area={e.area} rooms={e.rooms} bathrooms={e.bathrooms} pictures={e.pictures[0]}/>
             ))  :
           properties && properties.slice(pages[1]-1, pages[2]).map(e => (
-            <StyledLinkCard to={`/${e._id}`} key={e._id}>
+            <StyledCard key={e._id}>
               <Card  {...e}/>
-            </StyledLinkCard>
+            </StyledCard>
           ))
         }
       </CardsContainer>
