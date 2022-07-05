@@ -12,7 +12,7 @@ export default function FormContacto(){
    
 
     return(
-        <DivContainer className={styles.contFormContacto}>
+        <DivContainer contact={true} className={styles.contFormContacto}>
             
             <h1 className={styles.titulo}>Formulario de contacto</h1>
             <br></br>
@@ -24,12 +24,10 @@ export default function FormContacto(){
             <br></br>
             <textarea className={styles.descrip} type={'text'} placeholder={'Mensaje:'}/>
             <br></br>
-            
-            <a href={url} ><img src={imagw} className={styles.whatsap}/></a>
-            
-            
+            <div className={styles.container}>
+            <a href={url}><img src={imagw} className={styles.whatsapp}/></a>
             <Button className={styles.contactar}>Contactar</Button>
-
+            </div>
 
         </DivContainer>
     )

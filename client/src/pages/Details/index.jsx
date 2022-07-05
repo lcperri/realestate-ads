@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import AreaIcon from "../../dumb/Icons/Area";
 import BathIcon from "../../dumb/Icons/Bath";
 import RoomIcon from "../../dumb/Icons/Room";
@@ -17,7 +18,8 @@ import StyledText from "../../styledComponents/StyledText";
 import Map from "../../libs/Map";
 import Button from "../../styledComponents/Button";
 import styles from "./styles.module.css";
-import { getPropertyById, getAllUsers } from "../../redux/actions";
+
+import { getPropertyById, getAllUsers, clear } from "../../redux/actions";
 import getCoordenates from "../../functions/getCoordenates";
 import FormContacto from "../../components/FormContacto";
 //import capitalize from "../../functions/capitalize";
@@ -36,6 +38,7 @@ const Details = () => {
     dispatch(getPropertyById(id));
     // eslint-disable-next-line
     dispatch(getAllUsers());
+    return () => dispatch(clear());
   }, []);
 
   useEffect(() => {

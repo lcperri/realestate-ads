@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import './FormCreate.css';
 import { createProperty, getAllProperties } from '../../redux/actions';
 import DivContainer from "../../styledComponents/DivContainer";
-import Cloudinary from "../Cloudinary";
+import Cloudinary from "../../libs/Cloudinary";
 import Button from "../../styledComponents/Button"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { GrupoInput, Option, ErrorLeyend, ValidationIcon, TermsAndConditions, SubmitContainer, MensajeError, MensajeExito, Label } from "../../styledComponents/StyledFormElements";

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { filter } from "../../redux/actions";
 
+import { useSelector } from 'react-redux/es/exports';
 import {
   Container,
   Title,
@@ -14,23 +15,20 @@ import {
 export default function Filter() {
   const dispatch = useDispatch();
 
-  const [location, setLocation] = useState("");
+  const search = useSelector((state) => state.filter.location);
+  const [location, setLocation] = useState(search);
   const [max, setMax] = useState("");
   const [filters, setFilters] = useState({});
-  const [freeze, setFreeze] = useState(false);
 
   function handleType(e) {
-    setFreeze(false);
     setLocation(e.target.value);
   }
 
   function handleMax(e) {
-    setFreeze(false);
     setMax(e.target.value);
   }
 
   function handleChange(e) {
-    setFreeze(false);
     if (e.target.value) {
       switch (e.target.name) {
         case "operation":
@@ -75,7 +73,6 @@ export default function Filter() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    setFreeze(true);
     setFilters({});
     setLocation("");
     dispatch(filter(filters, location));

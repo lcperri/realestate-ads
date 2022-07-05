@@ -109,7 +109,7 @@ export default function UserCreate(){
             <form onSubmit={handleOnSubmit} id='form'>
                 <div className="form">
                     <div className='title'>
-                        Date de alta
+                        Date de alta y encotra/vende tu inmueble!!
                     </div>
                 </div>
             </form>

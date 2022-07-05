@@ -11,6 +11,7 @@ import {
   PROPERTY,
   USER,
   PAGE_SETTER,
+  CLEAR,
 } from "./actionTypes";
 
 export function login(data) {
@@ -50,6 +51,14 @@ export function propertyPagination({ filters, location, max }) {
     return dispatch({
       type: PROPERTIES,
       payload: filtered.data,
+    });
+  };
+}
+
+export function clear() {
+  return function (dispatch) {
+    return dispatch({
+      type: CLEAR
     });
   };
 }
@@ -153,7 +162,7 @@ export function calendar(code, id) {
 
 export function createEvent(code) {
   return async function (dispatch) {
-    const calendar = await axios.post(`${url}/calendar/event`, code);
+    const calendar = await axios.post(`${url}/calendar/62b77256748ecce00e66f578/event`, code);
     return dispatch({
       type: LOGIN,
       payload: calendar.data
