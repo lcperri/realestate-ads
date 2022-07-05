@@ -1,5 +1,9 @@
 import { createGlobalStyle } from 'styled-components'
 export default createGlobalStyle`
+    html {
+        scroll-behavior: smooth;
+    }
+
     * {
         box-sizing: border-box;
         margin: 0;
@@ -9,14 +13,21 @@ export default createGlobalStyle`
         font-size: 14px;
     }
 
+    a {
+        color: #fff;
+        font-size: 15px;
+        text-decoration: none;
+    }
+
     /* Titulo */
     h1 {
-        font-size: 18px;
-        font-weight: 700;
+        font-size: 19px;
+        font-weight: 600;
+        margin: 24px 0 16px 0;
     }
     /* SubTitulo */
     h2 {
-        font-size: 16px;
+        font-size: 17px;
         font-weight: 600;
     }
     /* Normal */
@@ -24,15 +35,14 @@ export default createGlobalStyle`
         font-size: 14px;
         font-weight: 500;
     }
-
     /* Small */
     h4 {
-        font-size: 12px;
+        font-size: 13px;
         font-weight: 400;
     }
 
     h5 {
-        font-size: 10px;
-        font-weight: 300;
+        font-size: 12px;
+        font-weight: 400;
     }
 `

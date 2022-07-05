@@ -1,0 +1,80 @@
+.container {
+  border-radius: 10px;
+  /* position: fixed; */
+  /* top: 98px; */
+  /* left: 98px; */
+  width: 500px;
+
+  /* background-color: #f1f1f1; */
+  /* height: 500px; */
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  /* padding-top: 0px; */
+  padding-left: 50px;
+  padding-right: 50px;
+  /* margin-right: 20px; */
+  margin-bottom: 10px;
+}
+
+.title {
+  font-size: 30px;
+  text-align: left;
+}
+
+.header {
+  font-size: 20px;
+  font-weight: bold;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.explain {
+  font-size: 16px;
+  padding-bottom: 20px;
+}
+
+.inputcontainer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  max-width: 400px;
+  min-width: 300px;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 1rem;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+.label {
+  font-size: 15px;
+  display: flex;
+  padding-bottom: 5px;
+}
+
+.input {
+  background: transparent;
+  border: none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+input[type="number"] {
+  -moz-appearance: textfield; /* Firefox */
+}
+
+.savebutton {
+  padding: 10px;
+  border-radius: 1rem;
+  margin-bottom: 30px;
+}
+
+.errospan {
+  display: flex;
+  margin-bottom: 30px;
+
+  color: red;
+  font-size: 0.9em;
+}

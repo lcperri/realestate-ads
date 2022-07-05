@@ -1,101 +1,52 @@
-import React from 'react'
+import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
+import { filterByFollower, filterByOwner, propertyPagination } from '../../redux/actions'
 import CardsContainer from '../../styledComponents/CardsContainer'
-import Card from '../Card'
+import Card from '../../dumb/Card'
+import { StyledLinkCard } from '../../styledComponents/StyledLink'
+import Pagination from '../Pagination'
+import CardMisPropsPremiumVip from '../../dumb/CardMisPropsPremiumVip';
+import Favorito from '../../dumb/CardFavorito'
 
-const propertiesList = [
-  {
-    id: 1,
-    address: 'Av. La perla 534 Buenos aires',
-    area: 84,
-    type: 'Casa',
-    rooms: 2,
-    status: 'Disponible',
-    city: 'Buenos aires',
-    bathrooms: 2,
-    neighbourhood: 2,
-    constructionDate: '01-31-1990',
-    parkingSlot: false,
-    rentPrice: 200,
-    sellPrice: 0,
-    pictures: 'https://images1.forrent.com/i2/KpZbXTacfBro7B9aSYndt_p4u_ZgQMLdjZWKRXeOGiU/117/image.jpg'
-  },
+const Cards = ({ id, favourites }) => {
+  const dispatch = useDispatch();
 
-  {
-    id: 2,
-    address: 'Av. La perla 500 Rio de la plata',
-    area: 92,
-    type: 'Casa',
-    rooms: 2,
-    status: 'Disponible',
-    city: 'Buenos aires',
-    bathrooms: 2,
-    neighbourhood: 2,
-    constructionDate: '01-31-1990',
-    parkingSlot: false,
-    rentPrice: 300,
-    sellPrice: 0,
-    pictures: 'https://images1.forrent.com/i2/lSw0qLyu-bjaLi-ifsQYPCQ5eRHR2Q1TKDnN9bB62PM/117/image.jpg'
-  },
+  const properties = useSelector((state) => state.properties);
+  const pages = useSelector((state) => state.pages);
+  const filter = useSelector((state) => state.filter);
 
-  {
-    id: 3,
-    address: 'Av. La perla 500 lumbreras',
-    area: 170,
-    type: 'Condominio',
-    rooms: 2,
-    status: 'Disponible',
-    city: 'Buenos aires',
-    bathrooms: 2,
-    neighbourhood: 2,
-    constructionDate: '01-31-1990',
-    parkingSlot: false,
-    rentPrice: 0,
-    sellPrice: 1900000,
-    pictures: 'https://gestion.pe/resizer/TkV3ialO6t0dLcT8ciedCa6X7B0=/580x330/smart/filters:format(jpeg):quality(75)/arc-anglerfish-arc2-prod-elcomercio.s3.amazonaws.com/public/44IPJVFIBJHUFCS4WG6XSTGPKQ.jpg'
-  },
-  {
-    id: 4,
-    address: 'Calle General Castilla 2344 La Paz',
-    area: 220,
-    type: 'Casa de playa',
-    rooms: 2,
-    status: 'Disponible',
-    city: 'Buenos aires',
-    bathrooms: 2,
-    neighbourhood: 2,
-    constructionDate: '01-31-1990',
-    parkingSlot: false,
-    rentPrice: 0,
-    sellPrice: 1900000,
-    pictures: 'https://img10.naventcdn.com/avisos/111/00/12/95/56/13/360x266/201715697.jpg'
-  }
-]
-
-const Cards = () => {
-  const dispatch = useDispatch()
+  useEffect(() => {
+    if ((!id && !favourites) && (filter.location !== undefined && filter.max !== undefined)) {
+      dispatch(propertyPagination(filter));
+    } else if ((id) && (filter.location !== undefined && filter.max !== undefined)) {
+      dispatch(filterByOwner(filter, id));
+    } else if ((favourites) && (filter.location !== undefined && filter.max !== undefined)) {
+      dispatch(filterByFollower(filter, favourites));
+    }
+  }, [filter]);
 
   return (
-    <CardsContainer>
-      {
-        propertiesList.map(e => (
-          <Card 
-            key={e.id}
-            id = {e.id}
-            address = {e.address}
-            area  = {e.area}
-            type = {e.type}
-            rooms = {e.rooms}
-            status = {e.status}
-            city = {e.city}
-            bathrooms = {e.bathrooms}
-            rentPrice = {e.rentPrice}
-            sellPrice = {e.sellPrice}
-            pictures = {e.pictures}
-          />
-        ))
-      }
-    </CardsContainer>
+    <>
+      <CardsContainer>
+        {
+          id ?
+          properties && properties.slice(pages[1]-1, pages[2]).map(e => (
+            <CardMisPropsPremiumVip key={e.id} type={e.type} address={e.address} price={e.price} 
+              area={e.area} rooms={e.rooms} bathrooms={e.bathrooms} pictures={e.pictures[0]}/>
+          )) : favourites ?       
+          properties && properties.slice(pages[1]-1, pages[2]).map(e => (                
+            <Favorito key={e.id} type={e.type} address={e.address} price={e.price} 
+            area={e.area} rooms={e.rooms} bathrooms={e.bathrooms} pictures={e.pictures[0]}/>
+            ))  :
+          properties && properties.slice(pages[1]-1, pages[2]).map(e => (
+            <StyledLinkCard to={`/${e._id}`} key={e._id}>
+              <Card  {...e}/>
+            </StyledLinkCard>
+          ))
+        }
+      </CardsContainer>
+      <Pagination></Pagination>
+    </>
   )
 }
 

@@ -1,24 +1,35 @@
-import React from 'react'
-import Cards from '../../components/Cards'
-import CardsContainer from '../../styledComponents/CardsContainer'
-import StyledCard from '../../styledComponents/StyledCard'
+import { useEffect } from "react";
+import Cards from "../../components/Cards";
+import CardsContainer from "../../styledComponents/CardsContainer";
+import DivContainer from "../../styledComponents/DivContainer";
+import Filter from "../../components/Filters";
+import Loader from "../../pages/Loader";
+import { useDispatch } from "react-redux";
+import styles from "./styles.module.css";
+import { clear } from "../../redux/actions";
 
 const Home = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    return () => dispatch(clear());
+  });
+
   return (
     <div>
-      <div>
-        Aquí Navbar
-      </div>
-      <div>
-        <div className='LeftPanel'>
-          Aquí Filter Panel
+      <div className={styles.homeWrapper}>
+        <div>
+          <Filter />
         </div>
-        <CardsContainer>
-            <Cards/>
-        </CardsContainer>
-      </div>      
+        {/* <Loader /> */}
+        <DivContainer className="home">
+          <CardsContainer>
+            <Cards />
+          </CardsContainer>
+        </DivContainer>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

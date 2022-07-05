@@ -1,0 +1,50 @@
+.contFormContacto{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 520px;
+    height: 500px;
+}
+.titulo{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.email{
+    width: 300px;
+}
+.nombre,.tel, .descrip{
+    margin-top: 20px;
+    width: 300px;
+}
+.descrip{
+    max-width: 300px;
+    max-height: 120px;
+    color: #666;
+    font-size: 18px;
+    padding: 9px;
+    border-radius: 10px;
+    border: 2px solid #999;
+    font-weight: 500;
+   
+}
+.descrip:hover {
+    color: #444;
+    border: 2px solid #ff765e;
+}
+.container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.contactar{
+    margin-top: 1rem;
+    width: 10rem;
+    height: 2.9rem;
+    margin-left: 2rem;
+}
+.whatsapp{
+    margin-top: 1rem;
+    margin-left: 2rem;
+    width: 3rem;
+    height: 3rem;
+}
