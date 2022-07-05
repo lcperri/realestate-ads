@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import './styles.module.css';
+import styles from './styles.module.css';
 import { createUser } from '../../redux/actions';
 import DivContainer from "../../styledComponents/DivContainer";
 //import Cloudinary from "../Cloudinary";
@@ -23,6 +23,7 @@ export default function UserCreate(){
     const[contador,setContador] = useState(0);    
     const [errorsFirstCard, setErrorsFirstCard] = useState(true);
     const [errorsSecondCard, setErrorsSecondCard] = useState(true);
+    const [errorsThirdCard, setErrorsThirdCard] = useState(true);
     //estado de c/input
     const[name, setName] = useState({key: '', valid: null});
     const[lastName, setLastName] = useState({key: '', valid: null});
@@ -31,6 +32,7 @@ export default function UserCreate(){
     const[birthday, setBirthday] = useState({key: '', valid: null});
     const[email, setEmail] = useState({key: '', valid: null});
     const[password, setPassword] = useState({key: '', valid: null});
+    const[repitPassword,  setRepitPassword] = useState({key: '', valid: null});
     const[range, setRange] = useState({key: '', valid: null});
     
     const [termsAndConditions, setTermsAndConditions] = useState(false)
@@ -47,6 +49,7 @@ export default function UserCreate(){
         setBirthday({ key: '', valid: null });
         setEmail({ key: '', valid: null });
         setPassword({ key: '', valid: null });
+        setRepitPassword({ key: '', valid: null });
         setRange({ key: '', valid: null });
     };
 
@@ -87,22 +90,28 @@ export default function UserCreate(){
     //habilita botones siguiente de cards:
     useEffect(() => {
         //1ra card
-        if (name.valid === 'true' && lastName.valid === 'true' && dni.valid === 'true' && birthday.valid === 'true'  && telephone.valid === 'true')
+        if (name.valid === 'true' && lastName.valid === 'true' && email.valid === 'true')
             setErrorsFirstCard(false)
         else
             setErrorsFirstCard(true)
         //2da card
-        if (email.valid === 'true' && password.valid === 'true' && range.valid === 'true')
+        if ( dni.valid === 'true' && birthday.valid === 'true'  && telephone.valid === 'true')
             setErrorsSecondCard(false)
         else
             setErrorsSecondCard(true)
-    },[name, lastName, dni, telephone, birthday, email, password, range]);
+        //3da card
+        if ( range.valid === 'true' && password.valid === 'true' && repitPassword.valid === 'true')
+            setErrorsThirdCard(false)
+        else
+            setErrorsThirdCard(true)
+        
+    },[name, lastName, dni, telephone, birthday, email, password, repitPassword, range]);
 
     //términos y condiciones:
     const onChangeTerms = (e) => {
         setTermsAndConditions(e.target.checked)
     }
-
+    
     //valida todos los inputs y selects del form cuando hago click en términos:
     useEffect (()=> {
         if (
@@ -130,6 +139,7 @@ export default function UserCreate(){
                     {
                         contador === 0 &&
                         <DivContainer className="create">
+                            <div className="subTitle">Dinos quien eres:</div>
                             <div className="addressWrapper">
                                 <Input 
                                     className='addressCreateForm'
@@ -151,7 +161,31 @@ export default function UserCreate(){
                                     state={lastName}
                                     setState={setLastName}
                                 />
+                                
                                 <Input 
+                                    className='addressCreateForm'
+                                        name='Email:'
+                                        type='text'
+                                        placeHolder={'Email'}
+                                        /* errorLeyend={regExps.email.errorLeyend}
+                                        regExp={regExps.email.regExp} */
+                                        state={email}
+                                    setState={setEmail}
+                                />                                
+                            </div>
+                            <div className="buttonsNextBack">
+                                <Button /* disabled={errorsFirstCard} */ onClick={() => setContador(1)}> Siguiente</Button>
+                            </div>                            
+                        </DivContainer>
+                    }
+
+                    {/*tarjeta 2 */}
+                    {
+                        contador === 1 &&
+                        <DivContainer className="create">
+                            <div className="subTitle">Datos personales:</div>
+                            <div className="addressWrapper">
+                            <Input 
                                     className='addressCreateForm'
                                     name='Dni:'
                                     type='number'
@@ -183,15 +217,18 @@ export default function UserCreate(){
                                 />
                             </div>
                             <div className="buttonsNextBack">
-                                <Button /* disabled={errorsFirstCard} */ onClick={() => setContador(1)}> Siguiente</Button>
+                                <Button onClick={() => setContador(0)}>Anterior</Button>
+                                <Button /* disabled={errorsFirstCard} */ onClick={() => setContador(2)}> Siguiente</Button>
                             </div>                            
                         </DivContainer>
                     }
+                    {/*tarjeta 3 */}
                     {
-                        contador === 1 &&
+                        contador === 2 &&
                         <>
-                           <DivContainer className="create">
-                                <div className="addressWrapper">
+                           <div className={styles.create3}>
+                           <div className="subTitle">Datos de usuario:</div>
+                            <div className="ddressWrapper">
                                 <Select
                                     className='adjustOperationSelect'
                                     name='Tipo de Usuario'
@@ -207,31 +244,32 @@ export default function UserCreate(){
                                     ]}
                                 // // onChange={handleChange} 
                                 />
-                                    <Input 
-                                        className='addressCreateForm'
-                                        name='Email:'
-                                        type='text'
-                                        placeHolder={'Email'}
-                                        /* errorLeyend={regExps.email.errorLeyend}
-                                        regExp={regExps.email.regExp} */
-                                        state={email}
-                                        setState={setEmail}
-                                    />
-                                    <Input 
-                                        className='addressCreateForm'
-                                        name='Password:'
+                                <Input 
+                                    className='addressCreateForm'
+                                        name='Contraseña:'
                                         type='text'
                                         placeHolder={'Password'}
                                         /* errorLeyend={regExps.password.errorLeyend}
                                         regExp={regExps.password.regExp} */
                                         state={password}
-                                        setState={setPassword}
-                                    />
-                                </div>
+                                    setState={setPassword}
+                                />
+                                    
+                                    <Input 
+                                    className='addressCreateForm'
+                                        name='Repetir Contraseña:'
+                                        type='text'
+                                        placeHolder={'Repetir Contraseña'}
+                                        /* errorLeyend={regExps.password.errorLeyend}
+                                        regExp={regExps.password.regExp} */
+                                        state={repitPassword}
+                                    setState={setRepitPassword}
+                                />    
+                            </div>
                                 <div className="buttonsNextBack">
-                                <Button onClick={() => setContador(0)}>Anterior</Button>                              
-                            </div>                            
-                           </DivContainer>
+                                   <Button onClick={() => setContador(1)}>Anterior</Button>                             
+                                </div>                            
+                           </div>
 
                            <TermsAndConditions>
                            <Label>
