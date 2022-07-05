@@ -22,19 +22,19 @@ const App = () => {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/create" element={<Create />} />
+        <Route path="/publicar" element={<Create />} />
         <Route path="/:id" element={<Details />} />
         <Route path="/calendar" element={<CalendarForm />} />
         <Route path="/loader" element={<Loader />} />
-        <Route path="/signup" element={<UserCreate />} />
+        <Route path="/registro" element={<UserCreate />} />
         <Route path="/user" element={<UserCard />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="planes" element={<Planes />} />
+        <Route path="/sesion" element={<Login />} />
+        <Route path="/planes" element={<Planes />} />
         <Route path="/favoritos" element={<Favoritos />} />
-        <Route path="/mipropsvip" element={<MisPropsPV />} />
-        <Route path="/calendarycards" element={<CalendaryCards />} />
+        <Route path="/mispropidades" element={<MisPropsPV />} />
+        <Route path="/calendario" element={<CalendaryCards />} />
 
-        <Route path="/personaldata" element={<ProfileDataUpdate />} />
+        <Route path="/perfil" element={<ProfileDataUpdate />} />
 
         {/* <Route path='*' element={<Home/>} />  */}
       </Routes>

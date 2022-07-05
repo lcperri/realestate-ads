@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { HashLink } from 'react-router-hash-link'
 
 export const StyledLink = styled(Link)`
     color: #fff;
@@ -14,6 +15,22 @@ export const StyledLink = styled(Link)`
         color:#fff;
     }
 
+    &:hover {
+        color: #ff765e;
+    }
+`
+
+export const StyledHash = styled(HashLink)`
+    color: #fff;
+    text-decoration: none;
+    font-size: 15px;    
+
+    &:visited {
+        color:#fff;
+    }
+    &:link {
+        color:#fff;
+    }
     &:hover {
         color: #ff765e;
     }
