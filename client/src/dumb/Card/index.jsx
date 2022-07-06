@@ -24,10 +24,8 @@ const Card = ({ _id, address, city, area, type, rooms, status, bathrooms, price,
   useEffect (() => {
     if (userId) {
       if (user.favourites?.includes(_id)) {
-        console.log('estoy en fav', _id);
         setFav(true)
       } else {
-        console.log('ya no estoy en fav', _id);
         setFav(false)
       }
     }
@@ -35,7 +33,6 @@ const Card = ({ _id, address, city, area, type, rooms, status, bathrooms, price,
 
   const setFavourite = (e) => {
     e.preventDefault()
-    console.log('asasdas');
 
     dispatch(getFavourites(userId, {property: _id}, headers))
   }
