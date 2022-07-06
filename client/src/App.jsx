@@ -25,7 +25,7 @@ const App = () => {
 
   useEffect(() => {
     // if (!auth.length) {
-    if (!token.length) {
+    if (!token) {
       return () => dispatch(logout());
     }
   }, [token]);
