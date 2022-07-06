@@ -1,7 +1,14 @@
 import axios from "axios";
 import { url } from "../helpers/url";
 import headers from "../localStorage/login";
-import { SaveRefreshToken, SaveToken, SaveId, SaveRange, SaveLastName, SaveName } from './../localStorage/index';
+import {
+  SaveRefreshToken,
+  SaveToken,
+  SaveId,
+  SaveRange,
+  SaveLastName,
+  SaveName,
+} from "./../localStorage/index";
 import {
   ALL_USERS,
   FILTER,
@@ -12,6 +19,7 @@ import {
   USER,
   PAGE_SETTER,
   CLEAR,
+  GET_USER_BY_ID,
 } from "./actionTypes";
 
 export function login(data) {
@@ -25,8 +33,8 @@ export function login(data) {
     SaveName(login.data[0].name);
     return dispatch({
       type: LOGIN,
-      payload: login.data
-    })
+      payload: login.data,
+    });
   };
 }
 
@@ -58,7 +66,7 @@ export function propertyPagination({ filters, location, max }) {
 export function clear() {
   return function (dispatch) {
     return dispatch({
-      type: CLEAR
+      type: CLEAR,
     });
   };
 }
@@ -81,13 +89,13 @@ export function filterByOwner({ filters, location, max }, id) {
 export function filterByFollower({ filters, location, max }, id) {
   return async function (dispatch) {
     dispatch({ type: LOADING });
-    
+
     const filtered = await axios.post(
       `${url}/property/${id}/favourites/?location=${location}&max=${max}`,
       filters,
       headers
     );
-   
+
     return dispatch({
       type: PROPERTIES,
       payload: filtered.data,
@@ -115,7 +123,7 @@ export function getPropertyById(id) {
 
 export function createProperty(info) {
   return async function (dispatch) {
-    const id = localStorage.getItem('id');
+    const id = localStorage.getItem("id");
     dispatch({ type: LOADING });
     const property = await axios.post(`${url}/property/${id}`, info);
     return dispatch({
@@ -155,17 +163,31 @@ export function calendar(code, id) {
     const calendar = await axios.post(`${url}/calendar/${id}`, code);
     return dispatch({
       type: LOGIN,
-      payload: calendar.data
-    })
+      payload: calendar.data,
+    });
   };
 }
 
 export function createEvent(code) {
   return async function (dispatch) {
-    const calendar = await axios.post(`${url}/calendar/62b77256748ecce00e66f578/event`, code);
+    const calendar = await axios.post(
+      `${url}/calendar/62b77256748ecce00e66f578/event`,
+      code
+    );
     return dispatch({
       type: LOGIN,
-      payload: calendar.data
-    })
+      payload: calendar.data,
+    });
+  };
+}
+
+export function getUserById(id) {
+  return async function (dispatch) {
+    dispatch({ type: LOADING });
+    const user = await axios.get(`${url}/user/${id}`);
+    return dispatch({
+      type: GET_USER_BY_ID,
+      payload: user.data,
+    });
   };
 }

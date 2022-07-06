@@ -7,3 +7,4 @@ export const PROPERTY = "PROPERTY";
 export const FILTER = "FILTER";
 export const ALL_USERS = "ALL_USERS";
 export const USER = "USER";
+export const GET_USER_BY_ID = "GET_USER_BY_ID";
