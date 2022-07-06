@@ -4,16 +4,23 @@ import CardsContainer from "../../styledComponents/CardsContainer";
 import DivContainer from "../../styledComponents/DivContainer";
 import Filter from "../../components/Filters";
 import Loader from "../../pages/Loader";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./styles.module.css";
-import { clear } from "../../redux/actions";
+import { clear, getFavorites } from "../../redux/actions";
 
 const Home = () => {
   const dispatch = useDispatch();
+  const state = useSelector(state => state)
+
 
   useEffect(() => {
+    console.log(state)
+  }, [state]);
+
+  useEffect(() => {
+    dispatch(dispatch(getFavorites))
     return () => dispatch(clear());
-  });
+  }, []);
 
   return (
     <div>
