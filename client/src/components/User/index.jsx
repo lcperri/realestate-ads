@@ -208,7 +208,7 @@ export default function UserCreate(){
                                 <Input 
                                     className='addressCreateForm'
                                     name='Birthday:'
-                                    type='Date'
+                                    type='date'
                                     placeHolder={'Birthday'}
                                     /* errorLeyend={regExps.city.errorLeyend}
                                     regExp={regExps.city.regExp} */
