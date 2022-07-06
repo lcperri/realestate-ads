@@ -6,19 +6,20 @@ import Filter from "../../components/Filters";
 import Loader from "../../pages/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import styles from "./styles.module.css";
-import { clear, getFavorites } from "../../redux/actions";
+import { clear, GetUserById } from "../../redux/actions";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const state = useSelector(state => state)
+  const user = useSelector(state => state.user)
 
+  const userId = localStorage.getItem('id')
+  useEffect(() => {
+    dispatch(GetUserById(userId))
+  },[]);
+  console.log(user)
 
   useEffect(() => {
-    console.log(state)
-  }, [state]);
-
-  useEffect(() => {
-    dispatch(dispatch(getFavorites))
+    // dispatch(dispatch(getFavorites))
     return () => dispatch(clear());
   }, []);
 

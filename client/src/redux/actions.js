@@ -180,12 +180,12 @@ export function createEvent(id, code) {
 
 export function getFavorites() {
   return async function (dispatch) {
-    console.log(headers.auth-token)
-    // const favorite = await axios.get(`${url}/calendar/${id}`);
-    // return dispatch({
-    //   type: FAVORITE,
-    //   payload: favorite.data
-    // })
+    dispatch({ type: LOADING });
+    const favs = await axios.put(`${url}/user/addfavs/${id}`, property, headers);
+    return dispatch({
+      type: USER,
+      payload: favs.data
+    });
   };
 }
 
@@ -212,4 +212,26 @@ export function getownersphone(id){
       payload: resp.data
     })
   }
+}
+
+export function GetUserById(id) {
+  return async function (dispatch) {
+    dispatch({ type: LOADING });
+    const user = await axios.get(`${url}/user/${id}`);
+    return dispatch({
+      type: USER,
+      payload: user.data
+    });
+  };
+}
+
+export function getFavourites(id, property) {
+  return async function (dispatch) {
+    dispatch({ type: LOADING });
+    const favs = await axios.put(`${url}/user/addfavs/${id}`, property, headers);
+    return dispatch({
+      type: USER,
+      payload: favs.data
+    });
+  };
 }
