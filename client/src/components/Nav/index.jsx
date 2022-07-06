@@ -15,6 +15,7 @@ const Nav = () => {
   const location = useLocation();
 
   const range = localStorage.getItem('range');
+  const id = localStorage.getItem('id');
   var name = localStorage.getItem('name');
   var lastName = localStorage.getItem('last-name');
   
@@ -25,8 +26,7 @@ const Nav = () => {
 
 
   const logoutFunction = (e) => {
-    e.preventDefault();
-    dispatch(logout());
+    dispatch(logout(id));
     navigate('/home');
   }
 
@@ -73,7 +73,7 @@ const Nav = () => {
           <>
             <h1>¡Hola, {name} {lastName}!</h1>
             <StyledLink to={'/home'}>
-              <Button onClick={logoutFunction}>Cerrar Sesión</Button>
+              <Button onClick={(e) => logoutFunction(e)}>Cerrar Sesión</Button>
             </StyledLink>
           </>
         }
