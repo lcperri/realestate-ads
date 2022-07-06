@@ -407,7 +407,7 @@ export default function FormCreateProp() {
                                 </p>
                             </MensajeError>}
                             <SubmitContainer>
-                                <Button disabled={!formOk} className="submitCreateForm" type='submit'> Publicar </Button>
+                                <Button /* disabled={!formOk} */ className="submitCreateForm" type='submit'> Publicar </Button>
                             </SubmitContainer>
                         </>
                     }

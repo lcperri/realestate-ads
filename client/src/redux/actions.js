@@ -13,6 +13,7 @@ import {
   PAGE_SETTER,
   CLEAR,
   LOGOUT,
+  GET_OWNERPHONE,
 } from "./actionTypes";
 
 export function login(data) {
@@ -177,6 +178,17 @@ export function createEvent(id, code, headers) {
   };
 }
 
+// export function getFavorites() {
+//   return async function (dispatch) {
+//     dispatch({ type: LOADING });
+//     const favs = await axios.put(`${url}/user/addfavs/${id}`, property, headers);
+//     return dispatch({
+//       type: USER,
+//       payload: favs.data
+//     });
+//   };
+// }
+
 export function logout() {
   return async function (dispatch) {
     RemoveToken();
@@ -184,10 +196,42 @@ export function logout() {
     RemoveLastName();
     RemoveName();
     const id = localStorage.getItem('id');
-    await axios.get(`${url}/logout/${id}`);
     RemoveId();
+    await axios.get(`${url}/logout/${id}`);
     return dispatch({
       type: LOGOUT
+    });
+  };
+}
+
+export function getownersphone(id){
+  return async function(dispatch){
+    const resp = await axios.get(`${url}/property/getownersphone/${id}`);
+    return dispatch({
+      type: GET_OWNERPHONE,
+      payload: resp.data
+    })
+  }
+}
+
+export function GetUserById(id) {
+  return async function (dispatch) {
+    dispatch({ type: LOADING });
+    const user = await axios.get(`${url}/user/${id}`);
+    return dispatch({
+      type: USER,
+      payload: user.data
+    });
+  };
+}
+
+export function getFavourites(id, property, headers) {
+  return async function (dispatch) {
+    dispatch({ type: LOADING });
+    const favs = await axios.put(`${url}/user/addfavs/${id}`, property, headers);
+    return dispatch({
+      type: USER,
+      payload: favs.data
     });
   };
 }
