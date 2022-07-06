@@ -12,21 +12,24 @@ import { DivRow } from '../../styledComponents/DivRow'
 import { getFavourites } from '../../redux/actions'
 import { useDispatch, useSelector } from 'react-redux'
 // import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro'
-
+import LoginController from '../../localStorage/login'
 
 const Card = ({ _id, address, city, area, type, rooms, status, bathrooms, price, operation, pictures }) => {
   const dispatch = useDispatch()
   const userId = localStorage.getItem('id')
   const user = useSelector(state => state.user)
+  const headers = LoginController()
   const [fav, setFav] = useState(false)
 
   useEffect (() => {
-    if (user.favourites?.includes(_id)) {
-      console.log('estoy en fav', _id);
-      setFav(true)
-    } else {
-      console.log('ya no estoy en fav', _id);
-      setFav(false)
+    if (userId) {
+      if (user.favourites?.includes(_id)) {
+        console.log('estoy en fav', _id);
+        setFav(true)
+      } else {
+        console.log('ya no estoy en fav', _id);
+        setFav(false)
+      }
     }
   }, [user])
 
@@ -34,7 +37,7 @@ const Card = ({ _id, address, city, area, type, rooms, status, bathrooms, price,
     e.preventDefault()
     console.log('asasdas');
 
-    dispatch(getFavourites(userId, {property: _id}))
+    dispatch(getFavourites(userId, {property: _id}, headers))
   }
 
   return (
@@ -77,10 +80,10 @@ const Card = ({ _id, address, city, area, type, rooms, status, bathrooms, price,
       <blockquote>
         <StyledText className='statusCard'>{status === 'available' ? 'Disponible' : 'Reservado'}</StyledText>
       </blockquote>
-      <button onClick={(e) => setFavourite(e)}>
-        <Heart width='28' height='28' fill={fav ? 'red': 'white'} onHover='#E52F50' />
-        
-      </button>
+      { userId && 
+        <button onClick={(e) => setFavourite(e)}>
+          <Heart width='28' height='28' fill={fav ? 'red': 'white'} />
+        </button>}
     </>
   )
 }
