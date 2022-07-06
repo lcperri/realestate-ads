@@ -1,6 +1,5 @@
 import axios from "axios";
 import { url } from "../helpers/url";
-import headers from "../localStorage/login";
 import { SaveId, SaveRange, SaveLastName, SaveName } from './../localStorage/index';
 import { RemoveId, RemoveRange, RemoveLastName, RemoveName } from './../localStorage/index';
 import {
@@ -62,7 +61,7 @@ export function clear() {
   };
 }
 
-export function filterByOwner({ filters, location, max }, id) {
+export function filterByOwner({ filters, location, max }, id, headers) {
   return async function (dispatch) {
     dispatch({ type: LOADING });
     const filtered = await axios.post(
@@ -77,7 +76,7 @@ export function filterByOwner({ filters, location, max }, id) {
   };
 }
 
-export function filterByFollower({ filters, location, max }, id) {
+export function filterByFollower({ filters, location, max }, id, headers) {
   return async function (dispatch) {
     dispatch({ type: LOADING });
     const filtered = await axios.post(
@@ -177,13 +176,14 @@ export function createEvent(id, code) {
   };
 }
 
-export function logout(id) {
+export function logout() {
   return async function (dispatch) {
-    RemoveId();
     RemoveRange();
     RemoveLastName();
     RemoveName();
+    const id = localStorage.getItem('id');
     await axios.get(`${url}/logout/${id}`);
+    RemoveId();
     return dispatch({
       type: LOGOUT
     });

@@ -36,9 +36,11 @@ const StyledCard = styled.div`
   }
   
   &:hover {
+    transition: all .2s linear;
     margin-top: -3px;
     margin-bottom: 6px;
   }
+  transition: .3s;
 
 `
 export default StyledCard

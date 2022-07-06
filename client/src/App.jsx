@@ -13,8 +13,21 @@ import Favoritos from "./pages/Favoritos";
 import MisPropsPV from "./pages/MisPropPremiumVip";
 import ProfileDataUpdate from "./pages/ProfileDataUpdate/ProfileDataUpdate";
 import Calendar from "./libs/CalendarPost";
+import showCookies from "./functions/showCookies";
+import { useDispatch } from 'react-redux/es/exports';
+import { logout } from "./redux/actions";
+import { useEffect } from "react";
 
 const App = () => {
+  const dispatch = useDispatch();
+  const auth = showCookies('auth-token');
+
+  useEffect(() => {
+    if (!auth.length) {
+      return () => dispatch(logout());
+    }
+  }, [auth]);
+
   return (
     <>
       <Nav />

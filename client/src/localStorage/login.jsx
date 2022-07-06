@@ -1,22 +1,14 @@
+import showCookies from "../functions/showCookies";
+import { useEffect, useState } from 'react';
+
 function LoginController(){
    const id = localStorage.getItem('id');
+   var auth = '';
 
-   const showCookies = (cname) => {
-      let name = cname + "=";
-      let decodedCookie = decodeURIComponent(document.cookie);
-      let ca = decodedCookie.split(';');
-      for(let i = 0; i <ca.length; i++) {
-         let c = ca[i];
-         while (c.charAt(0) === ' ') {
-            c = c.substring(1);
-         }
-         if (c.indexOf(name) === 0) {
-            return c.substring(name.length, c.length);
-         }
-      }
-      return "";
+   if (id) {
+      auth = showCookies('auth-token');
    }
-   const auth = showCookies('auth-token');
+   
    return(
       {
          headers: { 
@@ -27,6 +19,4 @@ function LoginController(){
    )
 }
 
-const headers = LoginController();
-
-export default headers;
+export default LoginController;
