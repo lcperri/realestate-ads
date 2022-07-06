@@ -18,7 +18,7 @@ import {
 
 export function login(data) {
   return async function (dispatch) {
-    const login = await axios.post(`${url}/login`, data, { withCredentials: true });
+    const login = await axios.post(`${url}/login`, data);
     SaveToken(login.data[1]);
     SaveId(login.data[0]._id);
     SaveRange(login.data[0].range);
