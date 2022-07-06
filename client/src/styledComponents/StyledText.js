@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 const StyledText = styled.div`
-    /* background-color: azure; */
     border-radius: 30px;
     border: 1.5px solid #E52F50;
     z-index: 1;
@@ -14,9 +13,8 @@ const StyledText = styled.div`
         color: #fff;
         background-color: #E52F50;
         padding: 0px 4px 0px 4px;
-        position: relative;
         margin-right: 4px;
-        top: -39px;
+        
     }
 
     &.statusDetail {

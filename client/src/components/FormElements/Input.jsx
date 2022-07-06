@@ -9,7 +9,7 @@ const InputComponent = ({ className, type, min, max, name, placeHolder, regExp, 
     //Replaces: Quita multiples espacios y ceros al inicio:
     setState({
       ...state,
-      key: e.target.value.replace(/^0+/, '').replace(/\s\s+/g, ' ').toLowerCase()
+      key: e.target.value.replace(/^0+/, '').replace(/\s\s+/g, ' ')
     })
   }
 
@@ -18,12 +18,17 @@ const InputComponent = ({ className, type, min, max, name, placeHolder, regExp, 
     if (e.keyCode === 32 && state.key.length <= 1) {
       return setState({ ...state, key: '' })
     }
+
     //check min max value:
     if (min || max) {
       if (parseInt(e.target.value) < parseInt(min) || parseInt(e.target.value) > parseInt(max)) {
-        console.log(parseInt(e.target.value));
         return setState({ ...state, valid: 'false' })
       }
+    }
+
+    if (state.key.length === 0 ) {
+      console.log('soy cero');
+      return setState({ ...state, valid: null})
     }
     
     //valid true o false para que sea enviado por props al css que va a mostrar u ocultar los elementos de error:
@@ -49,7 +54,7 @@ const InputComponent = ({ className, type, min, max, name, placeHolder, regExp, 
           min={min}
           max={max}
           placeholder={placeHolder}
-          value={capitalize(state.key)}
+          value={state.key}
           onChange={handleOnChange}
           onKeyUp={validate}
           onBlur={validate}

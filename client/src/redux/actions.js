@@ -1,8 +1,7 @@
 import axios from "axios";
 import { url } from "../helpers/url";
-import headers from "../localStorage/login";
-import { SaveRefreshToken, SaveToken, SaveId, SaveRange, SaveLastName, SaveName } from './../localStorage/index';
-import { RemoveRefreshToken, RemoveToken, RemoveId, RemoveRange, RemoveLastName, RemoveName } from './../localStorage/index';
+import { SaveToken, SaveId, SaveRange, SaveLastName, SaveName, RemoveToken } from './../localStorage/index';
+import { RemoveId, RemoveRange, RemoveLastName, RemoveName } from './../localStorage/index';
 import {
   ALL_USERS,
   FILTER,
@@ -19,16 +18,14 @@ import {
 
 export function login(data) {
   return async function (dispatch) {
-    const login = await axios.post(`${url}/login`, data);
+    const login = await axios.post(`${url}/login`, data, { withCredentials: true });
     SaveToken(login.data[1]);
-    SaveRefreshToken(login.data[2]);
     SaveId(login.data[0]._id);
     SaveRange(login.data[0].range);
     SaveLastName(login.data[0].lastName);
     SaveName(login.data[0].name);
     return dispatch({
-      type: LOGIN,
-      payload: login.data
+      type: LOGIN
     })
   };
 }
@@ -66,7 +63,7 @@ export function clear() {
   };
 }
 
-export function filterByOwner({ filters, location, max }, id) {
+export function filterByOwner({ filters, location, max }, id, headers) {
   return async function (dispatch) {
     dispatch({ type: LOADING });
     const filtered = await axios.post(
@@ -81,16 +78,14 @@ export function filterByOwner({ filters, location, max }, id) {
   };
 }
 
-export function filterByFollower({ filters, location, max }, id) {
+export function filterByFollower({ filters, location, max }, id, headers) {
   return async function (dispatch) {
     dispatch({ type: LOADING });
-    //console.log("header:", headers)
     const filtered = await axios.post(
       `${url}/property/${id}/favourites/?location=${location}&max=${max}`,
       filters,
       headers
     );
-   
     return dispatch({
       type: PROPERTIES,
       payload: filtered.data,
@@ -184,13 +179,14 @@ export function createEvent(id, code) {
 }
 
 export function logout() {
-  return function (dispatch) {
+  return async function (dispatch) {
     RemoveToken();
-    RemoveRefreshToken();
-    RemoveId();
     RemoveRange();
     RemoveLastName();
     RemoveName();
+    const id = localStorage.getItem('id');
+    await axios.get(`${url}/logout/${id}`);
+    RemoveId();
     return dispatch({
       type: LOGOUT
     });
