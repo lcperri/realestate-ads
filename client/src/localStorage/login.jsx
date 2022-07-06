@@ -3,16 +3,17 @@ import { useEffect, useState } from 'react';
 
 function LoginController(){
    const id = localStorage.getItem('id');
-   var auth = '';
+   const token = localStorage.getItem('auth-token');
+   // var auth = '';
 
-   if (id) {
-      auth = showCookies('auth-token');
-   }
+   // if (id) {
+   //    auth = showCookies('auth-token');
+   // }
    
    return(
       {
          headers: { 
-            'auth-token': auth,
+            'auth-token': token,
             'id': id
          }
       }

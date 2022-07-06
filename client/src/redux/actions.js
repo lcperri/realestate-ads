@@ -1,6 +1,6 @@
 import axios from "axios";
 import { url } from "../helpers/url";
-import { SaveId, SaveRange, SaveLastName, SaveName } from './../localStorage/index';
+import { SaveToken, SaveId, SaveRange, SaveLastName, SaveName, RemoveToken } from './../localStorage/index';
 import { RemoveId, RemoveRange, RemoveLastName, RemoveName } from './../localStorage/index';
 import {
   ALL_USERS,
@@ -18,10 +18,11 @@ import {
 export function login(data) {
   return async function (dispatch) {
     const login = await axios.post(`${url}/login`, data, { withCredentials: true });
-    SaveId(login.data._id);
-    SaveRange(login.data.range);
-    SaveLastName(login.data.lastName);
-    SaveName(login.data.name);
+    SaveToken(login.data[1]);
+    SaveId(login[0].data._id);
+    SaveRange(login[0].data.range);
+    SaveLastName(login[0].data.lastName);
+    SaveName(login[0].data.name);
     return dispatch({
       type: LOGIN
     })
@@ -178,6 +179,7 @@ export function createEvent(id, code) {
 
 export function logout() {
   return async function (dispatch) {
+    RemoveToken();
     RemoveRange();
     RemoveLastName();
     RemoveName();

@@ -12,7 +12,6 @@ import { DivRow } from '../../styledComponents/DivRow'
 // import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro'
 
 const Card = ({ _id, address, city, area, type, rooms, status, bathrooms, price, operation, pictures }) => {
-  console.log(_id, status)
   return (
     <>
       <StyledLinkCard to={`/${_id}`}>
