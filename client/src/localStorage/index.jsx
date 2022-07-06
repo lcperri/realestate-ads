@@ -2,10 +2,6 @@ export function SaveToken(tokenHeader){
    localStorage.setItem('auth-token', tokenHeader);
 }
 
-export function SaveRefreshToken(tokenHeader){
-   localStorage.setItem('refresh-token', tokenHeader);
-}
-
 export function SaveId(idUser){
    localStorage.setItem('id', idUser);
 }
@@ -24,10 +20,6 @@ export function SaveName(name){
 
 export function RemoveToken(){
    localStorage.removeItem('auth-token');
-}
-
-export function RemoveRefreshToken(){
-   localStorage.removeItem('refresh-token');
 }
 
 export function RemoveId(){

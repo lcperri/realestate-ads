@@ -34,8 +34,8 @@ const Details = () => {
   const [coordenate, setCoordenate] = useState();
 
   const telephone = useSelector(state => state.user);
-  console.log("tel:", telephone)
   let tel = telephone;
+
 
   useEffect(() => {
     dispatch(getPropertyById(id));
