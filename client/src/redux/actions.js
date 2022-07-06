@@ -19,10 +19,10 @@ export function login(data) {
   return async function (dispatch) {
     const login = await axios.post(`${url}/login`, data, { withCredentials: true });
     SaveToken(login.data[1]);
-    SaveId(login[0].data._id);
-    SaveRange(login[0].data.range);
-    SaveLastName(login[0].data.lastName);
-    SaveName(login[0].data.name);
+    SaveId(login.data[0]._id);
+    SaveRange(login.data[0].range);
+    SaveLastName(login.data[0].lastName);
+    SaveName(login.data[0].name);
     return dispatch({
       type: LOGIN
     })
