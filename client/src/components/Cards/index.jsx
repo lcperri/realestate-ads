@@ -3,14 +3,16 @@ import { useSelector, useDispatch } from 'react-redux'
 import { filterByFollower, filterByOwner, propertyPagination } from '../../redux/actions'
 import CardsContainer from '../../styledComponents/CardsContainer'
 import Card from '../../dumb/Card'
-import { StyledLinkCard } from '../../styledComponents/StyledLink'
 import Pagination from '../Pagination'
 import CardMisPropsPremiumVip from '../../dumb/CardMisPropsPremiumVip';
 import Favorito from '../../dumb/CardFavorito'
 import StyledCard from '../../styledComponents/StyledCard'
+import LoginController from './../../localStorage/login';
 
 const Cards = ({ id, favourites }) => {
   const dispatch = useDispatch();
+
+  const headers = LoginController();
 
   const properties = useSelector((state) => state.properties);
   const pages = useSelector((state) => state.pages);
@@ -22,7 +24,7 @@ const Cards = ({ id, favourites }) => {
     } else if ((id) && (filter.location !== undefined && filter.max !== undefined)) {
       dispatch(filterByOwner(filter, id));
     } else if ((favourites) && (filter.location !== undefined && filter.max !== undefined)) {
-      dispatch(filterByFollower(filter, favourites));
+      dispatch(filterByFollower(filter, favourites, headers));
     }
   }, [filter]);
 
