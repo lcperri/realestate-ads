@@ -15,7 +15,7 @@ const PersonalData = () => {
   const userData = useSelector((state) => state.userById);
 
   const [input, setInput] = useState({
-    name: "",
+    email: "",
     lastName: "",
     birthday: "",
     dni: "",
