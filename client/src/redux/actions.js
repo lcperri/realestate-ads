@@ -147,9 +147,9 @@ export function filter(filters, location, max) {
   };
 }
 
-export function getCalendar(id) {
+export function getCalendar(id, headers) {
   return async function (dispatch) {
-    const calendar = await axios.get(`${url}/calendar/${id}`);
+    const calendar = await axios.get(`${url}/calendar/${id}`, headers);
     return dispatch({
       type: LOGIN,
       payload: calendar.data
@@ -157,9 +157,9 @@ export function getCalendar(id) {
   };
 }
 
-export function calendar(code, id) {
+export function calendar(code, id, headers) {
   return async function (dispatch) {
-    const calendar = await axios.post(`${url}/calendar/${id}`, code);
+    const calendar = await axios.post(`${url}/calendar/${id}`, code, headers);
     return dispatch({
       type: LOGIN,
       payload: calendar.data
@@ -167,9 +167,9 @@ export function calendar(code, id) {
   };
 }
 
-export function createEvent(id, code) {
+export function createEvent(id, code, headers) {
   return async function (dispatch) {
-    const calendar = await axios.post(`${url}/calendar/${id}/event`, code);
+    const calendar = await axios.post(`${url}/calendar/${id}/event`, code, headers);
     return dispatch({
       type: LOGIN,
       payload: calendar.data
