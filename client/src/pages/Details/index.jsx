@@ -18,7 +18,7 @@ import StyledText from "../../styledComponents/StyledText";
 import Map from "../../libs/Map";
 import Button from "../../styledComponents/Button";
 import styles from "./styles.module.css";
-
+import { getownersphone } from "../../redux/actions";
 import { getPropertyById, getAllUsers, clear } from "../../redux/actions";
 import getCoordenates from "../../functions/getCoordenates";
 import FormContacto from "../../components/FormContacto";
@@ -32,7 +32,10 @@ const Details = () => {
   const { id } = useParams();
   const property = useSelector((state) => state.property);
   const [coordenate, setCoordenate] = useState();
-   
+
+  const telephone = useSelector(state => state.user);
+  console.log("tel:", telephone)
+  let tel = telephone;
 
   useEffect(() => {
     dispatch(getPropertyById(id));
@@ -47,6 +50,9 @@ const Details = () => {
       .catch((err) => console.log(err));
   }, [property]);  
   
+  useEffect(()=>{
+    dispatch(getownersphone(id));
+ },[dispatch,id]);
 
   const handleClick = (item, index) => {
     setCurrentIndex(index);
@@ -162,9 +168,9 @@ const Details = () => {
               </div>
             </div>
           </div>
-
+          {/*formulario contacto */}
           <div className={styles.contact_subWrapper}>
-            <FormContacto />
+            <FormContacto tel={tel}/>
           </div>
         </div>
         <h1>Ubicación:</h1>
