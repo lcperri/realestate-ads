@@ -178,6 +178,17 @@ export function createEvent(id, code) {
   };
 }
 
+export function getFavorites() {
+  return async function (dispatch) {
+    console.log(headers.auth-token)
+    // const favorite = await axios.get(`${url}/calendar/${id}`);
+    // return dispatch({
+    //   type: FAVORITE,
+    //   payload: favorite.data
+    // })
+  };
+}
+
 export function logout() {
   return async function (dispatch) {
     RemoveToken();
