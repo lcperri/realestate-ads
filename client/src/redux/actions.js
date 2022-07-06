@@ -24,6 +24,7 @@ export function login(data) {
     SaveRange(login.data[0].range);
     SaveLastName(login.data[0].lastName);
     SaveName(login.data[0].name);
+    console.log(login.data[1])
     return dispatch({
       type: LOGIN
     })
