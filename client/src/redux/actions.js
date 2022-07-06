@@ -1,8 +1,8 @@
 import axios from "axios";
 import { url } from "../helpers/url";
 import headers from "../localStorage/login";
-import { SaveRefreshToken, SaveToken, SaveId, SaveRange, SaveLastName, SaveName } from './../localStorage/index';
-import { RemoveRefreshToken, RemoveToken, RemoveId, RemoveRange, RemoveLastName, RemoveName } from './../localStorage/index';
+import { SaveId, SaveRange, SaveLastName, SaveName } from './../localStorage/index';
+import { RemoveId, RemoveRange, RemoveLastName, RemoveName } from './../localStorage/index';
 import {
   ALL_USERS,
   FILTER,
@@ -18,16 +18,13 @@ import {
 
 export function login(data) {
   return async function (dispatch) {
-    const login = await axios.post(`${url}/login`, data);
-    SaveToken(login.data[1]);
-    SaveRefreshToken(login.data[2]);
-    SaveId(login.data[0]._id);
-    SaveRange(login.data[0].range);
-    SaveLastName(login.data[0].lastName);
-    SaveName(login.data[0].name);
+    const login = await axios.post(`${url}/login`, data, { withCredentials: true });
+    SaveId(login.data._id);
+    SaveRange(login.data.range);
+    SaveLastName(login.data.lastName);
+    SaveName(login.data.name);
     return dispatch({
-      type: LOGIN,
-      payload: login.data
+      type: LOGIN
     })
   };
 }
@@ -83,13 +80,11 @@ export function filterByOwner({ filters, location, max }, id) {
 export function filterByFollower({ filters, location, max }, id) {
   return async function (dispatch) {
     dispatch({ type: LOADING });
-    //console.log("header:", headers)
     const filtered = await axios.post(
       `${url}/property/${id}/favourites/?location=${location}&max=${max}`,
       filters,
       headers
     );
-   
     return dispatch({
       type: PROPERTIES,
       payload: filtered.data,
@@ -182,14 +177,13 @@ export function createEvent(id, code) {
   };
 }
 
-export function logout() {
-  return function (dispatch) {
-    RemoveToken();
-    RemoveRefreshToken();
+export function logout(id) {
+  return async function (dispatch) {
     RemoveId();
     RemoveRange();
     RemoveLastName();
     RemoveName();
+    await axios.get(`${url}/logout/${id}`);
     return dispatch({
       type: LOGOUT
     });
