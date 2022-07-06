@@ -32,10 +32,10 @@ const Input = styled.input`
 
     &:focus-within {
         &.controlLabel {
-            color: #ff765e;
+            color: #FFDF74;
         }
         color: #444;
-        border: 2px solid #ff765e;
+        border: 2px solid #FFDF74;
         outline: none;
         box-shadow: 3px 0px 20px rgba(163, 163, 163, 0.4);
     }
@@ -43,7 +43,6 @@ const Input = styled.input`
     ${(props) => props.valid === 'false' && css`
         border: 2px solid red !important;
     `}
-
     ${(props) => props.valid === 'true' && css`
         border: 2px solid #444;
         color: #333;

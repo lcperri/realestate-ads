@@ -1,7 +1,8 @@
-import { FILTER, LOADING, PROPERTIES, PROPERTY, ALL_USERS, USER, PAGE_SETTER, CLEAR } from "./actionTypes";
+import { FILTER, LOADING, PROPERTIES, PROPERTY, ALL_USERS, USER, PAGE_SETTER, CLEAR, LOGIN, LOGOUT, GET_OWNERPHONE } from "./actionTypes";
 
 const initialState = {
   loading: true,
+  logged: false,
   notFound: false,
   error: {},
   filter: { location: "", max: "", filters: {} },
@@ -45,6 +46,27 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         loading: true,
       };
+    case LOGIN:
+      return {
+        ...state,
+        logged: true
+      }
+    case LOGOUT:
+      return {
+        loading: true,
+        logged: false,
+        notFound: false,
+        error: {},
+        filter: { location: "", max: "", filters: {} },
+        properties: [],
+        pages: [1, 1, 10],
+        property: {},
+        city: "",
+        users:[],
+        user:{},
+        calendar: false,
+        cardsCalendary: []
+      }
     case PROPERTIES:
       return {
         ...state,
@@ -92,6 +114,11 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         user: payload,
         loading: false,
+      }
+    case GET_OWNERPHONE:
+      return{
+        ...state,
+        user:payload
       }
     default:
       return {

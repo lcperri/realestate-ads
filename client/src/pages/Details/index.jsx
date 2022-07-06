@@ -18,11 +18,11 @@ import StyledText from "../../styledComponents/StyledText";
 import Map from "../../libs/Map";
 import Button from "../../styledComponents/Button";
 import styles from "./styles.module.css";
-
+import { getownersphone } from "../../redux/actions";
 import { getPropertyById, getAllUsers, clear } from "../../redux/actions";
 import getCoordenates from "../../functions/getCoordenates";
 import FormContacto from "../../components/FormContacto";
-import capitalize from "../../functions/capitalize";
+//import capitalize from "../../functions/capitalize";
 
 const Details = () => {
   const navigate = useNavigate();
@@ -32,7 +32,10 @@ const Details = () => {
   const { id } = useParams();
   const property = useSelector((state) => state.property);
   const [coordenate, setCoordenate] = useState();
-   
+
+  const telephone = useSelector(state => state.user);
+  let tel = telephone;
+
 
   useEffect(() => {
     dispatch(getPropertyById(id));
@@ -47,6 +50,9 @@ const Details = () => {
       .catch((err) => console.log(err));
   }, [property]);  
   
+  useEffect(()=>{
+    dispatch(getownersphone(id));
+ },[dispatch,id]);
 
   const handleClick = (item, index) => {
     setCurrentIndex(index);
@@ -120,8 +126,8 @@ const Details = () => {
             </div>
             <h1>Dirección:</h1>
             <div className={styles.container}>
-              {capitalize(property.city)} <b> {` > `} </b> {capitalize(property.neighbourhood)}{" "}
-              <b>{" > "}</b> {capitalize(property.address)}
+              {property.city} <b> {` > `} </b> {property.neighbourhood}{" "}
+              <b>{" > "}</b> {property.address}
             </div>
             <h1>Características:</h1>
             <div className={styles.features}>
@@ -130,7 +136,7 @@ const Details = () => {
               </div>
               <div>
                 <TypeIcon /> <h3>Tipo:</h3>
-                {capitalize(property.type)}
+                {property.type}
               </div>
               <div>
                 <RoomIcon /> <h3>Nro de habitaciones:</h3> {property.rooms}
@@ -143,7 +149,7 @@ const Details = () => {
               <div>
                 <NeighborhoodIcon />
                 <h3>Vecindario:</h3>
-                {capitalize(property.neighbourhood)}
+                {property.neighbourhood}
               </div>
               <div>
                 <BuildIcon />
@@ -162,9 +168,9 @@ const Details = () => {
               </div>
             </div>
           </div>
-
+          {/*formulario contacto */}
           <div className={styles.contact_subWrapper}>
-            <FormContacto />
+            <FormContacto tel={tel}/>
           </div>
         </div>
         <h1>Ubicación:</h1>

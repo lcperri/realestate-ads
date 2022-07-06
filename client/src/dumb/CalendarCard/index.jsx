@@ -1,10 +1,8 @@
 
-import React from 'react'
-import StyledText from '../../styledComponents/StyledText'
 import StyledCard from '../../styledComponents/StyledCard'
 import styles from './styles.module.css'
 
-export default function CalendaryCard ({summary,location,colorId,start,end,attendees}){
+export default function CalendarCard ({summary,location,colorId,start,end,attendees}){
   return (
 
     <StyledCard className={styles.contenedorGral}>
