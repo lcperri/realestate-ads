@@ -26,7 +26,8 @@ const Nav = () => {
 
 
   const logoutFunction = (e) => {
-    dispatch(logout(id));
+    e.preventDefault();
+    dispatch(logout());
     navigate('/home');
   }
 
@@ -72,9 +73,7 @@ const Nav = () => {
         { range && 
           <>
             <h1>¡Hola, {name} {lastName}!</h1>
-            <StyledLink to={'/home'}>
-              <Button onClick={(e) => logoutFunction(e)}>Cerrar Sesión</Button>
-            </StyledLink>
+              <Button onClick={(e) => {logoutFunction(e)}}>Cerrar Sesión</Button>
           </>
         }
         { range && range !== 'free' &&

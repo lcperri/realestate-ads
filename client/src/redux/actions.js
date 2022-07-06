@@ -1,7 +1,6 @@
 import axios from "axios";
 import { url } from "../helpers/url";
-import headers from "../localStorage/login";
-import { SaveId, SaveRange, SaveLastName, SaveName } from './../localStorage/index';
+import { SaveToken, SaveId, SaveRange, SaveLastName, SaveName, RemoveToken } from './../localStorage/index';
 import { RemoveId, RemoveRange, RemoveLastName, RemoveName } from './../localStorage/index';
 import {
   ALL_USERS,
@@ -14,15 +13,17 @@ import {
   PAGE_SETTER,
   CLEAR,
   LOGOUT,
+  GET_OWNERPHONE,
 } from "./actionTypes";
 
 export function login(data) {
   return async function (dispatch) {
-    const login = await axios.post(`${url}/login`, data, { withCredentials: true });
-    SaveId(login.data._id);
-    SaveRange(login.data.range);
-    SaveLastName(login.data.lastName);
-    SaveName(login.data.name);
+    const login = await axios.post(`${url}/login`, data);
+    SaveToken(login.data[1]);
+    SaveId(login.data[0]._id);
+    SaveRange(login.data[0].range);
+    SaveLastName(login.data[0].lastName);
+    SaveName(login.data[0].name);
     return dispatch({
       type: LOGIN
     })
@@ -62,7 +63,7 @@ export function clear() {
   };
 }
 
-export function filterByOwner({ filters, location, max }, id) {
+export function filterByOwner({ filters, location, max }, id, headers) {
   return async function (dispatch) {
     dispatch({ type: LOADING });
     const filtered = await axios.post(
@@ -77,7 +78,7 @@ export function filterByOwner({ filters, location, max }, id) {
   };
 }
 
-export function filterByFollower({ filters, location, max }, id) {
+export function filterByFollower({ filters, location, max }, id, headers) {
   return async function (dispatch) {
     dispatch({ type: LOADING });
     const filtered = await axios.post(
@@ -177,6 +178,41 @@ export function createEvent(id, code) {
   };
 }
 
+export function getFavorites() {
+  return async function (dispatch) {
+    dispatch({ type: LOADING });
+    const favs = await axios.put(`${url}/user/addfavs/${id}`, property, headers);
+    return dispatch({
+      type: USER,
+      payload: favs.data
+    });
+  };
+}
+
+export function logout() {
+  return async function (dispatch) {
+    RemoveToken();
+    RemoveRange();
+    RemoveLastName();
+    RemoveName();
+    const id = localStorage.getItem('id');
+    await axios.get(`${url}/logout/${id}`);
+    RemoveId();
+    return dispatch({
+      type: LOGOUT
+    });
+  };
+}
+
+export function getownersphone(id){
+  return async function(dispatch){
+    const resp = await axios.get(`${url}/property/getownersphone/${id}`);
+    return dispatch({
+      type: GET_OWNERPHONE,
+      payload: resp.data
+    })
+  }
+}
 
 export function GetUserById(id) {
   return async function (dispatch) {
@@ -196,19 +232,6 @@ export function getFavourites(id, property) {
     return dispatch({
       type: USER,
       payload: favs.data
-    });
-  };
-}
-
-export function logout(id) {
-  return async function (dispatch) {
-    RemoveId();
-    RemoveRange();
-    RemoveLastName();
-    RemoveName();
-    await axios.get(`${url}/logout/${id}`);
-    return dispatch({
-      type: LOGOUT
     });
   };
 }
