@@ -1,18 +1,17 @@
 import styled from 'styled-components'
 
 const StyledCard = styled.div`
+  position: relative;
   background-color: #fff;
   cursor: pointer;
   min-height: 15rem;
   align-items: flex-start;
   display: flex;
   flex-direction: column; 
-  padding: 1px 1px 0 1px;
+  padding: 1px 1px 15px 1px;
   border-radius: 1rem;
   border: 1px solid #efefef;
-  /* box-shadow: 0 3px 15px rgba(0, 0, 0, 0.389); */
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  object-fit: cover;
 
   img {
     width: 300px;
@@ -26,8 +25,8 @@ const StyledCard = styled.div`
   }
 
   blockquote {
-    position: relative;
-    top: -342px;
+    position: absolute;
+    top: -425px;
     left: 5px;
   }
 
@@ -37,9 +36,11 @@ const StyledCard = styled.div`
   }
   
   &:hover {
+    transition: all .2s linear;
     margin-top: -3px;
-    /* margin-bottom: 20px; */
+    margin-bottom: 6px;
   }
+  transition: .3s;
 
 `
 export default StyledCard

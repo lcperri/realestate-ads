@@ -1,18 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserById } from "../../redux/actions";
+import { getUserById, updateUserById } from "../../redux/actions";
 
 import styles from "./PersonalData.module.css";
 import { validate } from "./validate";
 
-let datosIniniciales = {
-  name: "Julian",
-  lastname: "Meraviglia",
-  birth: "",
-  dni: 20000000,
-  tel: "0340715333957",
-  avatar: "",
-};
+let datosIniniciales = {};
 
 console.log(localStorage.getItem("id"), "*** ID del Usuario ***");
 const userId = localStorage.getItem("id");
@@ -60,7 +53,9 @@ const PersonalData = () => {
     e.preventDefault();
     // dispatch(postPoke(input))
     // alert('Pokemon creado.')
-    datosIniniciales = input;
+    //datosIniniciales = input;
+    //console.log(datosIniniciales);
+    dispatch(updateUserById(userId, input));
   }
 
   return (

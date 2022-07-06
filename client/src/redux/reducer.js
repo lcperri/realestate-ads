@@ -7,11 +7,16 @@ import {
   USER,
   PAGE_SETTER,
   CLEAR,
+  LOGIN,
+  LOGOUT,
+  GET_OWNERPHONE,
   GET_USER_BY_ID,
+  UPDATE_USER_BY_ID,
 } from "./actionTypes";
 
 const initialState = {
   loading: true,
+  logged: false,
   notFound: false,
   error: {},
   filter: { location: "", max: "", filters: {} },
@@ -57,6 +62,27 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         loading: true,
+      };
+    case LOGIN:
+      return {
+        ...state,
+        logged: true,
+      };
+    case LOGOUT:
+      return {
+        loading: true,
+        logged: false,
+        notFound: false,
+        error: {},
+        filter: { location: "", max: "", filters: {} },
+        properties: [],
+        pages: [1, 1, 10],
+        property: {},
+        city: "",
+        users: [],
+        user: {},
+        calendar: false,
+        cardsCalendary: [],
       };
     case PROPERTIES:
       return {
@@ -111,7 +137,17 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         userById: { ...payload, birthday: payload.birthday.slice(0, 10) },
-        loading: false,
+        //loading: false,
+      };
+    case UPDATE_USER_BY_ID:
+      return {
+        ...state,
+      };
+
+    case GET_OWNERPHONE:
+      return {
+        ...state,
+        user: payload,
       };
     default:
       return {

@@ -5,10 +5,17 @@ import { StyledHash, StyledLink } from '../../styledComponents/StyledLink';
 import './Nav.css';
 import { useLocation } from 'react-router-dom';
 import capitalize from './../../functions/capitalize';
+import { useDispatch } from 'react-redux/es/exports';
+import { logout } from '../../redux/actions';
+import { useNavigate } from 'react-router-dom';
 
 const Nav = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const location = useLocation();
+
   const range = localStorage.getItem('range');
+  const id = localStorage.getItem('id');
   var name = localStorage.getItem('name');
   var lastName = localStorage.getItem('last-name');
   
@@ -18,8 +25,10 @@ const Nav = () => {
   }
 
 
-  const logout = (e) => {
+  const logoutFunction = (e) => {
     e.preventDefault();
+    dispatch(logout());
+    navigate('/home');
   }
 
 
@@ -36,14 +45,13 @@ const Nav = () => {
             <>
               <StyledHash to={'#'}>Inicio</StyledHash>
               <StyledHash to="#how-it-works">Cómo funciona </StyledHash>
-              <StyledHash to="#agents">Acerca de </StyledHash>
+              <StyledHash to="#agents">Quiénes somos</StyledHash>
             </>
             : 
             <>
-              <StyledLink to={'/'}>Inicio</StyledLink>
               { range && <StyledLink to={'/perfil'}>Perfil</StyledLink> }
               { range && <NavLink to={'/favoritos'}>Mis Favoritos</NavLink> }
-              { range !== 'free' && <NavLink to={'/mispropiedades'}>Mis Propiedades</NavLink> }
+              { range && range !== 'free' && <NavLink to={'/mispropiedades'}>Mis Propiedades</NavLink> }
               { range && <NavLink to={'/planes'}>Planes</NavLink> }
               { range && <NavLink to={'/calendario'}>Calendario</NavLink> }
             </>
@@ -65,9 +73,7 @@ const Nav = () => {
         { range && 
           <>
             <h1>¡Hola, {name} {lastName}!</h1>
-            <StyledLink to={'/home'}>
-              <Button onClick={logout}>Cerrar Sesión</Button>
-            </StyledLink>
+              <Button onClick={(e) => {logoutFunction(e)}}>Cerrar Sesión</Button>
           </>
         }
         { range && range !== 'free' &&

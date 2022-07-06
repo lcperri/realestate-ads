@@ -6,7 +6,9 @@ const DivContainer = styled.div`
   background-color: #fff;
   border-radius: 20px;
   ${(props) => props.contact === true ? 'width: 100%; height: 100%;' :
-    'min-width: 100rem; min-height: 58rem; width: 75%; height: 75%;' }
+    props.home ? 'min-width: 100rem; min-height: 58rem; width: 75%; height: 75%;' : 
+    'width: 75%;'
+  }
   margin: 120px auto 15px auto;
   padding: 20px 60px 30px 60px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 18px;
@@ -56,5 +58,11 @@ const DivContainer = styled.div`
   div {
     margin: 1.3px 0 1.5px 0;
   }
+
+  aside {
+    padding-right: 10px;
+  }
 `;
 export default DivContainer;
+
+

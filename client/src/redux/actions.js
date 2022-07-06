@@ -1,13 +1,18 @@
 import axios from "axios";
 import { url } from "../helpers/url";
-import headers from "../localStorage/login";
 import {
-  SaveRefreshToken,
   SaveToken,
   SaveId,
   SaveRange,
   SaveLastName,
   SaveName,
+  RemoveToken,
+} from "./../localStorage/index";
+import {
+  RemoveId,
+  RemoveRange,
+  RemoveLastName,
+  RemoveName,
 } from "./../localStorage/index";
 import {
   ALL_USERS,
@@ -19,21 +24,24 @@ import {
   USER,
   PAGE_SETTER,
   CLEAR,
+  LOGOUT,
+  GET_OWNERPHONE,
   GET_USER_BY_ID,
+  UPDATE_USER_BY_ID,
 } from "./actionTypes";
 
 export function login(data) {
   return async function (dispatch) {
-    const login = await axios.post(`${url}/login`, data);
+    const login = await axios.post(`${url}/login`, data, {
+      withCredentials: true,
+    });
     SaveToken(login.data[1]);
-    SaveRefreshToken(login.data[2]);
     SaveId(login.data[0]._id);
     SaveRange(login.data[0].range);
     SaveLastName(login.data[0].lastName);
     SaveName(login.data[0].name);
     return dispatch({
       type: LOGIN,
-      payload: login.data,
     });
   };
 }
@@ -71,7 +79,7 @@ export function clear() {
   };
 }
 
-export function filterByOwner({ filters, location, max }, id) {
+export function filterByOwner({ filters, location, max }, id, headers) {
   return async function (dispatch) {
     dispatch({ type: LOADING });
     const filtered = await axios.post(
@@ -86,16 +94,14 @@ export function filterByOwner({ filters, location, max }, id) {
   };
 }
 
-export function filterByFollower({ filters, location, max }, id) {
+export function filterByFollower({ filters, location, max }, id, headers) {
   return async function (dispatch) {
     dispatch({ type: LOADING });
-
     const filtered = await axios.post(
       `${url}/property/${id}/favourites/?location=${location}&max=${max}`,
       filters,
       headers
     );
-
     return dispatch({
       type: PROPERTIES,
       payload: filtered.data,
@@ -158,6 +164,16 @@ export function filter(filters, location, max) {
   };
 }
 
+export function getCalendar(id) {
+  return async function (dispatch) {
+    const calendar = await axios.get(`${url}/calendar/${id}`);
+    return dispatch({
+      type: LOGIN,
+      payload: calendar.data,
+    });
+  };
+}
+
 export function calendar(code, id) {
   return async function (dispatch) {
     const calendar = await axios.post(`${url}/calendar/${id}`, code);
@@ -168,12 +184,9 @@ export function calendar(code, id) {
   };
 }
 
-export function createEvent(code) {
+export function createEvent(id, code) {
   return async function (dispatch) {
-    const calendar = await axios.post(
-      `${url}/calendar/62b77256748ecce00e66f578/event`,
-      code
-    );
+    const calendar = await axios.post(`${url}/calendar/${id}/event`, code);
     return dispatch({
       type: LOGIN,
       payload: calendar.data,
@@ -188,6 +201,42 @@ export function getUserById(id) {
     return dispatch({
       type: GET_USER_BY_ID,
       payload: user.data,
+    });
+  };
+}
+
+export function updateUserById(id, data) {
+  return async function (dispatch) {
+    dispatch({ type: LOADING });
+    const user = await axios.put(`${url}/user/${id}`, data);
+    return dispatch({
+      type: UPDATE_USER_BY_ID,
+      payload: user.data,
+    });
+  };
+}
+
+export function logout() {
+  return async function (dispatch) {
+    RemoveToken();
+    RemoveRange();
+    RemoveLastName();
+    RemoveName();
+    const id = localStorage.getItem("id");
+    await axios.get(`${url}/logout/${id}`);
+    RemoveId();
+    return dispatch({
+      type: LOGOUT,
+    });
+  };
+}
+
+export function getownersphone(id) {
+  return async function (dispatch) {
+    const resp = await axios.get(`${url}/property/getownersphone/${id}`);
+    return dispatch({
+      type: GET_OWNERPHONE,
+      payload: resp.data,
     });
   };
 }

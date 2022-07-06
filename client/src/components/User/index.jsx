@@ -1,131 +1,301 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import './UserCreate.css';
-import { getAllUsers, createUser } from '../../redux/actions';
+import React from "react";
+import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import styles from './styles.module.css';
+import { createUser } from '../../redux/actions';
 import DivContainer from "../../styledComponents/DivContainer";
+//import Cloudinary from "../Cloudinary";
+import Button from "../../styledComponents/Button"
+import Select from "../FormElements/Select";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { TermsAndConditions, SubmitContainer, MensajeError, Label } from "../../styledComponents/StyledFormElements";
+import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons'
+import Input from "../FormElements/Input";
+import { regExps } from "../FormElements/regExpressions";
+import Swal from "sweetalert2";
+import {useNavigate } from "react-router-dom";
 
-//---funcion validadora de errores en los inputs-----
-function validators(input){
-    const errors = {};
+//name,lastName,password,birthday,email,dni,telephone,range
 
-    if(!input.name){errors.name = "Pleace, name is required";}
-    if(!/^[a-zA-Z\s]*$/.test(input.name)){errors.name = "Pleace, enter only letters";}
-
-    if(!input.lastName){errors.lastName = "Pleace, lastName is required";} 
-    if(!/^[a-zA-Z\s]*$/.test(input.lastName)){errors.lastName = "Pleace, enter only letters";}
-
-    if(!input.password){errors.password = "Pleace, password is required";} 
-    
-    if(!input.birthday){errors.birthday = "Pleace, birthday is required";} 
-
-    if(!input.email){errors.email = "Pleace, email is required";} 
-
-    if(!input.dni){errors.dni = "Pleace, dni is required";} 
-
-    if(!input.telephone){errors.telephone = "Pleace, telephone is required";} 
-    
-    return errors;
-}
 export default function UserCreate(){
 
-    const inisitalState = {name:"", lastName:"", password:"", birthday:"", email:"", dni:"", telephone:"", avatar:""};
-    const [input, setInput] = useState(inisitalState);
-    const [error, setError] = useState(inisitalState);
-    const allUs = useSelector(state => state.users);   
-    const dispatch = useDispatch();
-    /* console.log(allUs)
-    let buskUser = allUs.find(u => u.dni !== '123')
-    console.log("data:",buskUser)
- */
-    useEffect(()=>{
-        dispatch(getAllUsers());
-    }, [dispatch]);
+    //para las tarjetas
+    const[contador,setContador] = useState(0);    
+    const [errorsFirstCard, setErrorsFirstCard] = useState(true);
+    const [errorsSecondCard, setErrorsSecondCard] = useState(true);
+    const [errorsThirdCard, setErrorsThirdCard] = useState(true);
+    //estado de c/input
+    const[name, setName] = useState({key: '', valid: null});
+    const[lastName, setLastName] = useState({key: '', valid: null});
+    const[dni, setDni] = useState({key: '', valid: null});
+    const[telephone, setTelephone] = useState({key: '', valid: null});
+    const[birthday, setBirthday] = useState({key: '', valid: null});
+    const[email, setEmail] = useState({key: '', valid: null});
+    const[password, setPassword] = useState({key: '', valid: null});
+    const[repitPassword,  setRepitPassword] = useState({key: '', valid: null});
+    const[range, setRange] = useState({key: '', valid: null});
+    
+    const [termsAndConditions, setTermsAndConditions] = useState(false)
+    const [userCreated, setUserCreated] = useState(false)
+    const [formOk, setFormOk] = useState(false)
+    const navigate = useNavigate();
+    const dispatch = useDispatch()
 
-    const handlerCH = (e) => {
-        setInput({...input, [e.target.id]: e.target.value});
-        setError(validators({...input, [e.target.id]: e.target.value}));
+    const cleanForm = () => {
+        setName({ key: '', valid: null });
+        setLastName({ key: '', valid: null });
+        setDni({ key: '', valid: null });
+        setTelephone({ key: '', valid: null });
+        setBirthday({ key: '', valid: null });
+        setEmail({ key: '', valid: null });
+        setPassword({ key: '', valid: null });
+        setRepitPassword({ key: '', valid: null });
+        setRange({ key: '', valid: null });
     };
-    const handlerS = (e) => {
+
+    const handleOnSubmit = (e) => {
         e.preventDefault();
+        setUserCreated(true);
+        setTermsAndConditions(false);
+        dispatch(createUser({
+            name: name.key.toLowerCase(),
+            lastName: lastName.key,
+            dni: dni.key,
+            telephone: telephone.key,
+            birthday: birthday.key,
+            email: email.key,
+            password: password.key,
+            range: range.key,
+        }))
+        .then(() => {
+            Swal.fire({
+                position: 'top-center',
+                icon: 'success',
+                title: 'Usuario/a creado/a exitosamente',
+                showConfirmButton: false,
+                timer: 1500
+            });
+            cleanForm();
+        })
+        .catch(() => {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Oops, algo no salió bien. Por favor intenta nuevamente.'
+            })
+            navigate('/signup')
+        })
+    }
+
+    //habilita botones siguiente de cards:
+    useEffect(() => {
+        //1ra card
+        if (name.valid === 'true' && lastName.valid === 'true' && email.valid === 'true')
+            setErrorsFirstCard(false)
+        else
+            setErrorsFirstCard(true)
+        //2da card
+        if ( dni.valid === 'true' && birthday.valid === 'true'  && telephone.valid === 'true')
+            setErrorsSecondCard(false)
+        else
+            setErrorsSecondCard(true)
+        //3da card
+        if ( range.valid === 'true' && password.valid === 'true' && repitPassword.valid === 'true')
+            setErrorsThirdCard(false)
+        else
+            setErrorsThirdCard(true)
         
-        if(!input.name || !input.lastName || !input.password || !input.birthday || !input.email || !input.dni || !input.telephone ){
-        }
-        dispatch(createUser(input));
-        dispatch(getAllUsers());
-        setInput({name:"", lastName:"", password:"", birthday:"", email:"", dni:"", telephone:"", avatar:""});
-        
-    };
+    },[name, lastName, dni, telephone, birthday, email, password, repitPassword, range]);
+
+    //términos y condiciones:
+    const onChangeTerms = (e) => {
+        setTermsAndConditions(e.target.checked)
+    }
+    
+    //valida todos los inputs y selects del form cuando hago click en términos:
+    useEffect (()=> {
+        if (
+            name.valid === 'true' &&
+            lastName.valid === 'true' &&
+            dni.valid === 'true' &&
+            telephone.valid === 'true' &&
+            birthday.valid === 'true' &&
+            email.valid === 'true' &&
+            password.valid === 'true' &&
+            range.valid === 'true' &&
+            termsAndConditions === true
+        ) setFormOk(true)
+        else setFormOk(false)
+    }, [termsAndConditions]);
 
     return(
-        <DivContainer>
-        <div className="cont-gral">
-
-            <div className="div-rec">
-                <form onSubmit={handlerS} className="cont-formulario">
-                    
-                    <div className="grupo1">
-                        <div className="nombre">
-                            <label className="label-g1">Nombre: </label>
-                            <input className={error.name ? "errorInput" : "itemInput"} type={'text'} id={'name'} value={input.name} onChange={handlerCH}/>
-                            {error.name && (<div><p className="p-error">{error.name}</p></div>)}                            
-                        </div>
-
-                        <div className="lastName">
-                            <label className="label-g1">LastName: </label>
-                            <input className={error.lastName ? "errorInput" : "itemInput"} type={'text'} id={'lastName'} value={input.lastName} onChange={handlerCH}/>
-                            {error.lastName && (<div><p className="p-error">{error.lastName}</p></div>)}
-                        </div>
-
-                        <div className="password">
-                            <label className="label-g1">Password: </label>
-                            <input className={error.password ? "errorInput" : "itemInput"} type='password' id={'password'} value={input.password} onChange={handlerCH}/>
-                            {error.password && (<div><p className="p-error">{error.password}</p></div>)}
-                        </div>
-
-                        <div className="birthday">
-                            <label className="label-g1">Birthday: </label>
-                            <input className={error.birthday ? "errorInput" : "itemInput"} type='date' id={'birthday'} value={input.birthday} onChange={handlerCH}/>
-                            {error.birthday && (<div><p className="p-error">{error.birthday}</p></div>)}
-                        </div>
-
-                    </div> 
-   
-                    <div className="grupo2">
-                        <div className="email">
-                            <label className="label-g2">Email: </label>
-                            <input className={error.email ? "errorInput" : "itemInput-g2"} type={'text'} id={'email'} value={input.email} onChange={handlerCH}/>
-                            {error.email && (<div><p className="p-error">{error.email}</p></div>)}
-                        </div>
-
-                        <div className="dni">
-                            <label className="label-g2">Dni: </label>
-                            <input className={error.dni ? "errorInput" : "itemInput-g2"} type={'number'} id={'dni'} value={input.dni} onChange={handlerCH}/>
-                            {error.dni && (<div><p className="p-error">{error.dni}</p></div>)}
-                            {/*muestro msj SI el poke a crear ya existe */}
-                            {/* {buskUser && (<div><p className="p-error">El Usuario ya existe!!</p></div>)}  */}
-                        </div>
-
-                        <div className="telephone">
-                            <label className="label-g2">Telephone: </label>
-                            <input className={error.email ? "errorInput" : "itemInput-g2"} type={'number'} id={'telephone'} value={input.telephone} onChange={handlerCH}/>
-                            {error.telephone && (<div><p className="p-error">{error.telephone}</p></div>)}
-                        </div>
-
-                        <div className="avatar">
-                            <label className="label-g2">Avatar: </label>
-                            <input className={error.avatar ? "errorInput" : "itemInput-g2"} type={'text'} id={'avatar'} value={input.avatar} onChange={handlerCH}/>
-                            {error.avatar && (<div><p className="p-error">{error.avatar}</p></div>)}
-                        </div>
-                    </div> 
-
-                    <div className="div-btn-create">
-                       <input className="btn-create" type={'submit'} value={'Create Poke'} />
+        <div className="createProperty">
+            <form onSubmit={handleOnSubmit} id='form'>
+                <div className="form">
+                    <div className='title'>
+                        Date de alta en nuestra app!!
                     </div>
-                </form>
-            </div>
-            
+                    {/*tarjeta 1 */}
+                    {
+                        contador === 0 &&
+                        <DivContainer className="create">
+                            <div className="subTitle">Dinos quien eres:</div>
+                            <div className="addressWrapper">
+                                <Input 
+                                    className='addressCreateForm'
+                                    name='Nombre:'
+                                    type='text'
+                                    placeHolder={'Nombre'}
+                                    /* errorLeyend={regExps.city.errorLeyend}
+                                    regExp={regExps.city.regExp} */
+                                    state={name}
+                                    setState={setName}
+                                />
+                                <Input 
+                                    className='addressCreateForm'
+                                    name='Apellido:'
+                                    type='text'
+                                    placeHolder={'Apellido'}
+                                    /* errorLeyend={regExps.city.errorLeyend}
+                                    regExp={regExps.city.regExp} */
+                                    state={lastName}
+                                    setState={setLastName}
+                                />
+                                
+                                <Input 
+                                    className='addressCreateForm'
+                                        name='Email:'
+                                        type='text'
+                                        placeHolder={'Email'}
+                                        /* errorLeyend={regExps.email.errorLeyend}
+                                        regExp={regExps.email.regExp} */
+                                        state={email}
+                                    setState={setEmail}
+                                />                                
+                            </div>
+                            <div className="buttonsNextBack">
+                                <Button /* disabled={errorsFirstCard} */ onClick={() => setContador(1)}> Siguiente</Button>
+                            </div>                            
+                        </DivContainer>
+                    }
+
+                    {/*tarjeta 2 */}
+                    {
+                        contador === 1 &&
+                        <DivContainer className="create">
+                            <div className="subTitle">Datos personales:</div>
+                            <div className="addressWrapper">
+                            <Input 
+                                    className='addressCreateForm'
+                                    name='Dni:'
+                                    type='number'
+                                    placeHolder={'Dni'}
+                                    /* errorLeyend={regExps.city.errorLeyend}
+                                    regExp={regExps.city.regExp} */
+                                    state={dni}
+                                    setState={setDni}
+                                />
+                                <Input 
+                                    className='addressCreateForm'
+                                    name='Telephone:'
+                                    type='number'
+                                    placeHolder={'Telephone'}
+                                    /* errorLeyend={regExps.city.errorLeyend}
+                                    regExp={regExps.city.regExp} */
+                                    state={telephone}
+                                    setState={setTelephone}
+                                />
+                                <Input 
+                                    className='addressCreateForm'
+                                    name='Birthday:'
+                                    type='Date'
+                                    placeHolder={'Birthday'}
+                                    /* errorLeyend={regExps.city.errorLeyend}
+                                    regExp={regExps.city.regExp} */
+                                    state={birthday}
+                                    setState={setBirthday}
+                                />
+                            </div>
+                            <div className="buttonsNextBack">
+                                <Button onClick={() => setContador(0)}>Anterior</Button>
+                                <Button /* disabled={errorsFirstCard} */ onClick={() => setContador(2)}> Siguiente</Button>
+                            </div>                            
+                        </DivContainer>
+                    }
+                    {/*tarjeta 3 */}
+                    {
+                        contador === 2 &&
+                        <>
+                           <div className={styles.create3}>
+                           <div className="subTitle">Datos de usuario:</div>
+                            <div className="ddressWrapper">
+                                <Select
+                                    className='adjustOperationSelect'
+                                    name='Tipo de Usuario'
+                                    /* errorLeyend={regExps.tipoUsuario.errorLeyend} */
+                                    state={range}
+                                    setState={setRange}
+                                    options={[
+                                        { description: 'Tipo Usuario:', value: null },
+                                        { description: 'Free', value: 'free' },
+                                        { description: 'Premium', value: 'premium' },
+                                        { description: 'Vip', value: 'vip' },
+                                        { description: 'Adim', value: 'admin' }
+                                    ]}
+                                // // onChange={handleChange} 
+                                />
+                                <Input 
+                                    className='addressCreateForm'
+                                        name='Contraseña:'
+                                        type='text'
+                                        placeHolder={'Password'}
+                                        /* errorLeyend={regExps.password.errorLeyend}
+                                        regExp={regExps.password.regExp} */
+                                        state={password}
+                                    setState={setPassword}
+                                />
+                                    
+                                    <Input 
+                                    className='addressCreateForm'
+                                        name='Repetir Contraseña:'
+                                        type='text'
+                                        placeHolder={'Repetir Contraseña'}
+                                        /* errorLeyend={regExps.password.errorLeyend}
+                                        regExp={regExps.password.regExp} */
+                                        state={repitPassword}
+                                    setState={setRepitPassword}
+                                />    
+                            </div>
+                                <div className="buttonsNextBack">
+                                   <Button onClick={() => setContador(1)}>Anterior</Button>                             
+                                </div>                            
+                           </div>
+
+                           <TermsAndConditions>
+                           <Label>
+                               <input
+                                   type='checkbox'
+                                   name='terms'
+                                   id='terms'
+                                   onChange={onChangeTerms}
+                                   checked={termsAndConditions} 
+                                />
+                                Acepto los términos y condiciones.
+                           </Label>
+                           </TermsAndConditions>
+                           {false && <MensajeError>
+                           <p>
+                               <FontAwesomeIcon icon={faCircleExclamation} />
+                               <b>Error:</b> Para darte de alta tienes que llenar el formulario correctamente.
+                           </p>
+                           </MensajeError>}
+                           <SubmitContainer>
+                               <Button /* disabled={!formOk} */ className="submitCreateForm" type='submit'> Submit </Button>
+                           </SubmitContainer>
+                        </>
+                    }                          
+                </div>
+            </form>
         </div>
-        </DivContainer>
     )
 }

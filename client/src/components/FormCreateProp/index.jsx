@@ -116,17 +116,26 @@ export default function FormCreateProp() {
         else
             setErrorsSecondCard(true)
         //3ra card
+        
+        //valida campos obligatorios
         if (
             type.valid === 'true' && 
             area.valid === 'true' && 
             rooms.valid === 'true' && 
             bathrooms.valid === 'true' && 
-            parkingSlot.valid === 'true' && 
-            constructionDate.valid === 'true' && 
-            renovationDate.valid === 'true'
+            parkingSlot.valid === 'true'
         )   setErrorsThirdCard(false)
         else
             setErrorsThirdCard(true)
+
+        //valida campos no obligatorios:
+        if (
+            constructionDate.valid === 'false' ||
+            renovationDate.valid === 'false'
+        )   setErrorsThirdCard(true)
+        
+
+        
 
     }, [city, neighbourhood, address, price, operation, type, area, rooms, bathrooms, parkingSlot, constructionDate, renovationDate])
 
@@ -398,7 +407,7 @@ export default function FormCreateProp() {
                                 </p>
                             </MensajeError>}
                             <SubmitContainer>
-                                <Button disabled={!formOk} className="submitCreateForm" type='submit'> Publicar </Button>
+                                <Button /* disabled={!formOk} */ className="submitCreateForm" type='submit'> Publicar </Button>
                             </SubmitContainer>
                         </>
                     }
