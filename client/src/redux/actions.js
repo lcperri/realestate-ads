@@ -13,6 +13,7 @@ import {
   PAGE_SETTER,
   CLEAR,
   LOGOUT,
+  GET_OWNERPHONE,
 } from "./actionTypes";
 
 export function login(data) {
@@ -190,4 +191,14 @@ export function logout() {
       type: LOGOUT
     });
   };
+}
+
+export function getownersphone(id){
+  return async function(dispatch){
+    const resp = await axios.get(`${url}/property/getownersphone/${id}`);
+    return dispatch({
+      type: GET_OWNERPHONE,
+      payload: resp.data
+    })
+  }
 }

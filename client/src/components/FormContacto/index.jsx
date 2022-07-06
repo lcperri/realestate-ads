@@ -1,14 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Button from "../../styledComponents/Button";
 import DivContainer from "../../styledComponents/DivContainer";
 import { Input } from "../../styledComponents/StyledFormElements";
 import styles from './styles.module.css'
 import imagw  from './whatsapp.png';
 
-export default function FormContacto(){
 
+export default function FormContacto({tel}){
     
-    let url = `https://wa.me/542281460124?text=Me%20gustaría%20saber%20el%20precio%20del%20coche` 
+    console.log("telForm:", tel)
+    let url = `https://wa.me/${tel}?text=Me%20gustaría%20saber%20el%20precio%20del%20coche` 
    
 
     return(

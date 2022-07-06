@@ -1,4 +1,4 @@
-import { FILTER, LOADING, PROPERTIES, PROPERTY, ALL_USERS, USER, PAGE_SETTER, CLEAR, LOGIN, LOGOUT } from "./actionTypes";
+import { FILTER, LOADING, PROPERTIES, PROPERTY, ALL_USERS, USER, PAGE_SETTER, CLEAR, LOGIN, LOGOUT, GET_OWNERPHONE } from "./actionTypes";
 
 const initialState = {
   loading: true,
@@ -114,6 +114,11 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         user: payload,
         loading: false,
+      }
+    case GET_OWNERPHONE:
+      return{
+        ...state,
+        user:payload
       }
     default:
       return {

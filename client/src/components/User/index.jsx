@@ -58,7 +58,7 @@ export default function UserCreate(){
         setUserCreated(true);
         setTermsAndConditions(false);
         dispatch(createUser({
-            name: name.key,
+            name: name.key.toLowerCase(),
             lastName: lastName.key,
             dni: dni.key,
             telephone: telephone.key,
@@ -290,7 +290,7 @@ export default function UserCreate(){
                            </p>
                            </MensajeError>}
                            <SubmitContainer>
-                               <Button disabled={!formOk} className="submitCreateForm" type='submit'> Submit </Button>
+                               <Button /* disabled={!formOk} */ className="submitCreateForm" type='submit'> Submit </Button>
                            </SubmitContainer>
                         </>
                     }                          
