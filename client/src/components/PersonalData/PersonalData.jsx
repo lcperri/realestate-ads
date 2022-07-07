@@ -9,17 +9,16 @@ import LoginController from "../../localStorage/login"
 
 
 
-const userId = localStorage.getItem("id");
 
 const PersonalData = () => {
   const dispatch = useDispatch();
   let userData = useSelector((state) => state.userById);
-
+  
   
   const isLoading = useSelector((state) => state.loading)
-
+  
   const headers = LoginController()
-
+  
   const [input, setInput] = useState({
     email: "",
     lastName: "",
@@ -29,11 +28,13 @@ const PersonalData = () => {
     // avatar: "",
   });
   const [errors, setErrors] = useState({});
-
-  useEffect(() => {
+  
+  const userId = localStorage.getItem("id");
+  useEffect(() => {    
+    
     if (userId) {
       dispatch(getUserById(userId));
-    }
+    }    
   }, [userId]);
 
   useEffect(() => {
