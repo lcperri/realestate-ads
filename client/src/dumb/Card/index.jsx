@@ -30,11 +30,11 @@ const Card = ({ _id, address, city, area, type, rooms, status, bathrooms, price,
       }
     }
   }, [user])
-  
-  const addtoUserFavorites = (e) => {
-    // e.preventDefault()
-    console.log(e.target.id);
-    dispatch(addToUserFavourites(userId, {property: _id}, headers))
+
+  const setFavourite = (e) => {
+    e.preventDefault()
+
+    dispatch(getFavourites(userId, {property: _id}, headers))
   }
 
   return (
@@ -78,7 +78,7 @@ const Card = ({ _id, address, city, area, type, rooms, status, bathrooms, price,
         <StyledText className='statusCard'>{status === 'available' ? 'Disponible' : 'Reservado'}</StyledText>
       </blockquote>
       { userId && 
-        <button onClick={(e) => addtoUserFavorites(e)} id='BTN PRUEBA'>
+        <button onClick={(e) => setFavourite(e)} id='BTN PRUEBA'>
           <Heart width='28' height='28' fill={fav ? 'red': 'white'} />
         </button>}
     </>

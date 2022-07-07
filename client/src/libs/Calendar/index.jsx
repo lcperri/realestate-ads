@@ -4,10 +4,13 @@ import { useDispatch } from 'react-redux/es/exports';
 import { GoogleLogin } from 'react-google-login';
 import { gapi } from 'gapi-script';
 import { calendar } from './../../redux/actions';
+import LoginController from './../../localStorage/login';
 
 export default function CalendarAuth () {
   const dispatch = useDispatch();
   const id = localStorage.getItem('id');
+  const headers = LoginController();
+
    useEffect(() => {
       function start() {
          gapi.client.init({
@@ -21,7 +24,7 @@ export default function CalendarAuth () {
 
 
    const successResponseGoogle = (response) => {
-      dispatch(calendar(response, id));
+      dispatch(calendar(response, id, headers));
    }
 
    const errorResponseGoogle = (response) => {

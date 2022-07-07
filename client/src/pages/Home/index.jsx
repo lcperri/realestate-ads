@@ -16,7 +16,6 @@ const Home = () => {
   useEffect(() => {
     dispatch(GetUserById(userId))
   },[]);
-  console.log(user)
 
   useEffect(() => {
     // dispatch(dispatch(getFavorites))

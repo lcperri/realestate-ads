@@ -27,8 +27,7 @@ const App = () => {
   useEffect(() => {
     // if (!auth.length) {
     if (!token) {
-      // navigate('/home')
-      return () => dispatch(logout());
+      dispatch(logout());
     }
   }, [token]);
 
