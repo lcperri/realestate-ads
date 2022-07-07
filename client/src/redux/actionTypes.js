@@ -10,4 +10,6 @@ export const ALL_USERS = "ALL_USERS";
 export const USER = "USER";
 export const GET_CALENDAR = "GET_CALENDAR";
 export const GET_OWNERPHONE = "GET_OWNERPHONE";
+export const GET_USER_BY_ID = "GET_USER_BY_ID";
+export const UPDATE_USER_BY_ID = "UPDATE_USER_BY_ID";
 export const CONTACT = "CONTACT";

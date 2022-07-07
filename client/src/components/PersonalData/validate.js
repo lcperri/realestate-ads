@@ -6,10 +6,10 @@ export const validate = (input) => {
     errors.name = "Nombre no valido";
   }
 
-  if (!input.lastname) {
-    errors.lastname = "Apellido no valido";
-  } else if (!/^[a-zA-Z\s]+$/.test(input.lastname)) {
-    errors.lastname = "Apellido no valido";
+  if (!input.lastName) {
+    errors.lastName = "Apellido no valido";
+  } else if (!/^[a-zA-Z\s]+$/.test(input.lastName)) {
+    errors.lastName = "Apellido no valido";
   }
 
   if (!Number.isInteger(parseInt(input.dni))) {
@@ -20,11 +20,11 @@ export const validate = (input) => {
     errors.dni = "Numero no valido";
   }
 
-  if (!/^[0-9]+$/.test(input.tel)) {
-    errors.tel = "Telefono no valido";
+  if (!/^[0-9]+$/.test(input.telephone)) {
+    errors.telephone = "Telefono no valido";
   }
 
-  if (!errors.name && !errors.lastname && !errors.dni && !errors.tel) {
+  if (!errors.name && !errors.lastName && !errors.dni && !errors.telephone) {
     errors.button = false;
   } else {
     errors.button = true;
