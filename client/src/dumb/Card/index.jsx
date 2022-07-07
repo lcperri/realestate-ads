@@ -78,7 +78,7 @@ const Card = ({ _id, address, city, area, type, rooms, status, bathrooms, price,
         <StyledText className='statusCard'>{status === 'available' ? 'Disponible' : 'Reservado'}</StyledText>
       </blockquote>
       { userId && 
-        <button onClick={(e) => setFavourite(e)}>
+        <button  key={_id} onClick={(e) => setFavourite(e)}>
           <Heart width='28' height='28' fill={fav ? 'red': 'white'} />
         </button>}
     </>

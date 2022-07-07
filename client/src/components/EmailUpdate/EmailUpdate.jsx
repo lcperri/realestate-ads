@@ -41,7 +41,6 @@ const EmailUpdate = () => {
       newemail: "",
       repeatemail: "",
     });
-    console.log(emailInicial);
   }
 
   return (
