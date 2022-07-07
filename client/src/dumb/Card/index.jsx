@@ -9,7 +9,7 @@ import { Heart } from '../Icons/Heart'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { StyledLinkCard } from '../../styledComponents/StyledLink'
 import { DivRow } from '../../styledComponents/DivRow'
-import { getFavourites } from '../../redux/actions'
+import { addToUserFavourites } from '../../redux/actions'
 import { useDispatch, useSelector } from 'react-redux'
 // import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro'
 import LoginController from '../../localStorage/login'
@@ -20,24 +20,21 @@ const Card = ({ _id, address, city, area, type, rooms, status, bathrooms, price,
   const user = useSelector(state => state.user)
   const headers = LoginController()
   const [fav, setFav] = useState(false)
-
+  
   useEffect (() => {
     if (userId) {
       if (user.favourites?.includes(_id)) {
-        console.log('estoy en fav', _id);
         setFav(true)
       } else {
-        console.log('ya no estoy en fav', _id);
         setFav(false)
       }
     }
   }, [user])
-
-  const setFavourite = (e) => {
-    e.preventDefault()
-    console.log('asasdas');
-
-    dispatch(getFavourites(userId, {property: _id}, headers))
+  
+  const addtoUserFavorites = (e) => {
+    // e.preventDefault()
+    console.log(e.target.id);
+    dispatch(addToUserFavourites(userId, {property: _id}, headers))
   }
 
   return (
@@ -81,7 +78,7 @@ const Card = ({ _id, address, city, area, type, rooms, status, bathrooms, price,
         <StyledText className='statusCard'>{status === 'available' ? 'Disponible' : 'Reservado'}</StyledText>
       </blockquote>
       { userId && 
-        <button onClick={(e) => setFavourite(e)}>
+        <button onClick={(e) => addtoUserFavorites(e)} id='BTN PRUEBA'>
           <Heart width='28' height='28' fill={fav ? 'red': 'white'} />
         </button>}
     </>
