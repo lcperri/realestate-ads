@@ -12,12 +12,13 @@ import Planes from "./components/Planes";
 import Favoritos from "./pages/Favoritos";
 import MisPropsPV from "./pages/MisPropPremiumVip";
 import ProfileDataUpdate from "./pages/ProfileDataUpdate/ProfileDataUpdate";
-import Calendar from "./libs/CalendarPost";
+import CalendarPost from "./libs/CalendarPost";
 // import showCookies from "./functions/showCookies";
 import { useDispatch } from 'react-redux/es/exports';
 import { logout } from "./redux/actions";
 import { useEffect } from "react";
 import Users from "./pages/Users";
+import CalendarCards from "./libs/CalendarCards";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -47,7 +48,8 @@ const App = () => {
         <Route path="/planes" element={<Planes />} />
         <Route path="/favoritos" element={<Favoritos />} />
         <Route path="/mispropiedades" element={<MisPropsPV />} />
-        <Route path="/calendario" element={<Calendar />} />
+        <Route path="/calendario" element={<CalendarPost />} />
+        <Route path="/calendarCards" element={<CalendarCards />} />
         <Route path="/administrador" element={<Users />} />
         <Route path="/perfil" element={<ProfileDataUpdate />} />
 
