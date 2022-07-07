@@ -95,12 +95,12 @@ export default function UserCreate(){
         else
             setErrorsFirstCard(true)
         //2da card
-        if ( dni.valid === 'true' && birthday.valid === 'true'  && telephone.valid === 'true')
+        if ( dni.valid === 'true' && telephone.valid === 'true')
             setErrorsSecondCard(false)
         else
             setErrorsSecondCard(true)
         //3da card
-        if ( range.valid === 'true' && password.valid === 'true' && repitPassword.valid === 'true')
+        if ( password.valid === 'true' && repitPassword.valid === 'true')
             setErrorsThirdCard(false)
         else
             setErrorsThirdCard(true)
@@ -119,10 +119,8 @@ export default function UserCreate(){
             lastName.valid === 'true' &&
             dni.valid === 'true' &&
             telephone.valid === 'true' &&
-            birthday.valid === 'true' &&
             email.valid === 'true' &&
             password.valid === 'true' &&
-            range.valid === 'true' &&
             termsAndConditions === true
         ) setFormOk(true)
         else setFormOk(false)
@@ -146,8 +144,8 @@ export default function UserCreate(){
                                     name='Nombre:'
                                     type='text'
                                     placeHolder={'Nombre'}
-                                    /* errorLeyend={regExps.city.errorLeyend}
-                                    regExp={regExps.city.regExp} */
+                                    errorLeyend={regExps.name.errorLeyend}
+                                    regExp={regExps.name.regExp}
                                     state={name}
                                     setState={setName}
                                 />
@@ -156,8 +154,8 @@ export default function UserCreate(){
                                     name='Apellido:'
                                     type='text'
                                     placeHolder={'Apellido'}
-                                    /* errorLeyend={regExps.city.errorLeyend}
-                                    regExp={regExps.city.regExp} */
+                                    errorLeyend={regExps.lastName.errorLeyend}
+                                    regExp={regExps.lastName.regExp}
                                     state={lastName}
                                     setState={setLastName}
                                 />
@@ -167,14 +165,14 @@ export default function UserCreate(){
                                         name='Email:'
                                         type='text'
                                         placeHolder={'Email'}
-                                        /* errorLeyend={regExps.email.errorLeyend}
-                                        regExp={regExps.email.regExp} */
+                                        errorLeyend={regExps.email.errorLeyend}
+                                        regExp={regExps.email.regExp}
                                         state={email}
                                     setState={setEmail}
                                 />                                
                             </div>
                             <div className="buttonsNextBack">
-                                <Button /* disabled={errorsFirstCard} */ onClick={() => setContador(1)}> Siguiente</Button>
+                                <Button disabled={errorsFirstCard} onClick={() => setContador(1)}> Siguiente</Button>
                             </div>                            
                         </DivContainer>
                     }
@@ -190,8 +188,8 @@ export default function UserCreate(){
                                     name='Dni:'
                                     type='number'
                                     placeHolder={'Dni'}
-                                    /* errorLeyend={regExps.city.errorLeyend}
-                                    regExp={regExps.city.regExp} */
+                                    errorLeyend={regExps.dni.errorLeyend}
+                                    regExp={regExps.dni.regExp}
                                     state={dni}
                                     setState={setDni}
                                 />
@@ -200,8 +198,8 @@ export default function UserCreate(){
                                     name='Telephone:'
                                     type='number'
                                     placeHolder={'Telephone'}
-                                    /* errorLeyend={regExps.city.errorLeyend}
-                                    regExp={regExps.city.regExp} */
+                                    errorLeyend={regExps.dni.errorLeyend}
+                                    regExp={regExps.dni.regExp}
                                     state={telephone}
                                     setState={setTelephone}
                                 />
@@ -210,15 +208,15 @@ export default function UserCreate(){
                                     name='Birthday:'
                                     type='date'
                                     placeHolder={'Birthday'}
-                                    /* errorLeyend={regExps.city.errorLeyend}
-                                    regExp={regExps.city.regExp} */
+                                    /* errorLeyend={regExps.birthday.errorLeyend}
+                                    regExp={regExps.birthday.regExp} */
                                     state={birthday}
                                     setState={setBirthday}
                                 />
                             </div>
                             <div className="buttonsNextBack">
                                 <Button onClick={() => setContador(0)}>Anterior</Button>
-                                <Button /* disabled={errorsFirstCard} */ onClick={() => setContador(2)}> Siguiente</Button>
+                                <Button disabled={errorsSecondCard} onClick={() => setContador(2)}> Siguiente</Button>
                             </div>                            
                         </DivContainer>
                     }
@@ -247,10 +245,10 @@ export default function UserCreate(){
                                 <Input 
                                     className='addressCreateForm'
                                         name='Contraseña:'
-                                        type='text'
+                                        type='password'
                                         placeHolder={'Password'}
-                                        /* errorLeyend={regExps.password.errorLeyend}
-                                        regExp={regExps.password.regExp} */
+                                        errorLeyend={regExps.password.errorLeyend}
+                                        regExp={regExps.password.regExp}
                                         state={password}
                                     setState={setPassword}
                                 />
@@ -260,8 +258,8 @@ export default function UserCreate(){
                                         name='Repetir Contraseña:'
                                         type='text'
                                         placeHolder={'Repetir Contraseña'}
-                                        /* errorLeyend={regExps.password.errorLeyend}
-                                        regExp={regExps.password.regExp} */
+                                        errorLeyend={regExps.password.errorLeyend}
+                                        regExp={regExps.password.regExp}
                                         state={repitPassword}
                                     setState={setRepitPassword}
                                 />    
@@ -290,7 +288,7 @@ export default function UserCreate(){
                            </p>
                            </MensajeError>}
                            <SubmitContainer>
-                               <Button /* disabled={!formOk} */ className="submitCreateForm" type='submit'> Submit </Button>
+                               <Button disabled={!formOk} className="submitCreateForm" type='submit'> Submit </Button>
                            </SubmitContainer>
                         </>
                     }                          

@@ -17,6 +17,7 @@ import Calendar from "./libs/CalendarPost";
 import { useDispatch } from 'react-redux/es/exports';
 import { logout } from "./redux/actions";
 import { useEffect } from "react";
+import Users from "./pages/Users";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -46,7 +47,7 @@ const App = () => {
         <Route path="/favoritos" element={<Favoritos />} />
         <Route path="/mispropiedades" element={<MisPropsPV />} />
         <Route path="/calendario" element={<Calendar />} />
-
+        <Route path="/administrador" element={<Users />} />
         <Route path="/perfil" element={<ProfileDataUpdate />} />
 
         {/* <Route path='*' element={<Home/>} />  */}

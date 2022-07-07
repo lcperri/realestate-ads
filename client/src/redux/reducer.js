@@ -10,7 +10,16 @@ const initialState = {
   pages: [1, 1, 10],
   property: {},
   city: "",
-  users:[],
+  users:[{
+    "name": "marcos",
+    "lastName": "forastiere",
+    "password": "1234",
+    "birthday": "1411983",
+    "email": "fmarcos.23@gmail.com",
+    "dni": "29979518",
+    "telephone": "2281460124",
+    "range": "vip"
+}],
   user:{},
   calendar: false,
   cardsCalendary: [{
