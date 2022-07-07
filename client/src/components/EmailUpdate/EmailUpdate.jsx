@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserById, updateUserById } from "../../redux/actions";
+import LoginController from "../../localStorage/login"
 
 import { validate } from "./validate";
 
 import styles from "./EmailUpdate.module.css";
 
-let emailInicial = {};
-console.log(localStorage.getItem("id"), "*** ID del Usuario ***");
 const userId = localStorage.getItem("id");
 
 const EmailUpdate = () => {
@@ -16,17 +15,23 @@ const EmailUpdate = () => {
   const [input, setInput] = useState({});
   const [errors, setErrors] = useState({});
 
+  const headers = LoginController()
+
   useEffect(() => {
     if (userId) {
       dispatch(getUserById(userId));
     }
   }, [userId]);
 
-  // useEffect(() => {
-  //   setInput(userData.email);
-  // }, [userData]);
-
-  //, birthday: "1979-10-15"
+  useEffect(() => {
+    setInput(
+      {
+        ...input,
+        inicialemail: userData.email,
+        newemail: "",
+        repeatemail: "",
+      });
+  }, [userData]);  
 
   function handleChange(e) {
     setInput({
@@ -43,47 +48,19 @@ const EmailUpdate = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    // dispatch(postPoke(input))
-    // alert('Pokemon creado.')
-    emailInicial = { email: input.newemail };
-    //console.log(emailInicial);
-    //dispatch(updateUserById(userId, { email: input.newemail }));
-    setInput({ newemail: "", repeatemail: "" });
+    dispatch(updateUserById(userId,{ email: input.newemail}, headers));
+    
+    
+    setInput({
+      ...input,
+      
+      newemail: "",
+      repeatemail: "",
+    });
+    alert('Email actualizado.')
+    dispatch(getUserById(userId));
   }
-
-  // useEffect(() => {
-  //   setInput(emailInicial);
-  // }, []);
-
-  // function handleChange(e) {
-  //   setInput({
-  //     ...input,
-  //     [e.target.name]: e.target.value,
-  //   });
-  //   setErrors(
-  //     validate({
-  //       ...input,
-  //       [e.target.name]: e.target.value,
-  //     })
-  //   );
-  // }
-
-  // function handleSubmit(e) {
-  //   e.preventDefault();
-  //   // dispatch(postPoke(input))
-  //   // alert('Pokemon creado.')
-  //   // passInicial = input;
-
-  //   emailInicial.inicialemail = input.newemail;
-  //   setInput({
-  //     ...input,
-  //     inicialemail: input.newemail,
-  //     newemail: "",
-  //     repeatemail: "",
-  //   });
-  //   console.log(emailInicial);
-  // }
-
+  
   return (
     <form
       className={styles.container}
@@ -104,7 +81,7 @@ const EmailUpdate = () => {
           placeholder="Email actual"
           className={styles.input}
           disabled={true}
-          value={userData.email}
+          value={input.inicialemail}
         />
       </div>
 

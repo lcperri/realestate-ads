@@ -27,7 +27,6 @@ const InputComponent = ({ className, type, min, max, name, placeHolder, regExp, 
     }
 
     if (state.key.length === 0 ) {
-      console.log('soy cero');
       return setState({ ...state, valid: null})
     }
     

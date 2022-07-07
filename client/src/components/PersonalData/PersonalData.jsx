@@ -4,15 +4,21 @@ import { getUserById, updateUserById } from "../../redux/actions";
 
 import styles from "./PersonalData.module.css";
 import { validate } from "./validate";
+import LoginController from "../../localStorage/login"
 
-let datosIniniciales = {};
 
-console.log(localStorage.getItem("id"), "*** ID del Usuario ***");
+
+
 const userId = localStorage.getItem("id");
 
 const PersonalData = () => {
   const dispatch = useDispatch();
-  const userData = useSelector((state) => state.userById);
+  let userData = useSelector((state) => state.userById);
+
+  
+  const isLoading = useSelector((state) => state.loading)
+
+  const headers = LoginController()
 
   const [input, setInput] = useState({
     email: "",
@@ -31,11 +37,12 @@ const PersonalData = () => {
   }, [userId]);
 
   useEffect(() => {
-    setInput({ ...userData });
+    
+    setInput({ ...userData })
+
   }, [userData]);
 
-  //, birthday: "1979-10-15"
-
+  
   function handleChange(e) {
     setInput({
       ...input,
@@ -50,12 +57,12 @@ const PersonalData = () => {
   }
 
   function handleSubmit(e) {
-    e.preventDefault();
-    // dispatch(postPoke(input))
-    // alert('Pokemon creado.')
-    //datosIniniciales = input;
-    //console.log(datosIniniciales);
-    dispatch(updateUserById(userId, input));
+    e.preventDefault();    
+    dispatch(updateUserById(userId, input, headers));
+    alert('Datos personales actualizados.')
+    dispatch(getUserById(userId))
+    
+   
   }
 
   return (

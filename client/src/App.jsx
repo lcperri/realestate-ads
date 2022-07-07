@@ -1,10 +1,10 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import Home from "./pages/Home";
 import Create from "./pages/Create";
 import Details from "./pages/Details";
 import Loader from "./pages/Loader";
-import UserCreate from "./components/User";
+import UserCreate from "./pages/User";
 import UserCard from "./dumb/CardUser";
 import Login from "./pages/Login";
 import Nav from "./components/Nav/index";
@@ -20,13 +20,14 @@ import { useEffect } from "react";
 
 const App = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   // const auth = showCookies('auth-token');
   const token = localStorage.getItem('auth-token');
 
   useEffect(() => {
     // if (!auth.length) {
     if (!token) {
-      return () => dispatch(logout());
+      dispatch(logout());
     }
   }, [token]);
 

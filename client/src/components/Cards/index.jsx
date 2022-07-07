@@ -22,7 +22,7 @@ const Cards = ({ id, favourites }) => {
     if ((!id && !favourites) && (filter.location !== undefined && filter.max !== undefined)) {
       dispatch(propertyPagination(filter));
     } else if ((id) && (filter.location !== undefined && filter.max !== undefined)) {
-      dispatch(filterByOwner(filter, id));
+      dispatch(filterByOwner(filter, id, headers));
     } else if ((favourites) && (filter.location !== undefined && filter.max !== undefined)) {
       dispatch(filterByFollower(filter, favourites, headers));
     }

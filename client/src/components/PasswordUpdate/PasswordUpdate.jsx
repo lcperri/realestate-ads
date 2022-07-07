@@ -1,14 +1,33 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserById, updateUserById } from "../../redux/actions";
+import LoginController from "../../localStorage/login"
 
 import styles from "./PasswordUpdate.module.css";
 import { validate } from "./validate";
 
-let passInicial = "123456";
+const userId = localStorage.getItem("id");
+
 
 const PasswordUpdate = () => {
+  const dispatch = useDispatch();
+  const userData = useSelector((state) => state.userById);
+
   const [input, setInput] = useState({});
   const [errors, setErrors] = useState({});
+
+  const headers = LoginController()
+  let passInicial = userData.password;
+
+  useEffect(() => {
+    if (userId) {
+      dispatch(getUserById(userId));
+    }
+  }, [userId]);
+
+
+
+
 
   // useEffect(() => {
   //   setInput(emailInicial);
@@ -32,8 +51,20 @@ const PasswordUpdate = () => {
     // dispatch(postPoke(input))
     // alert('Pokemon creado.')
     // passInicial = input;
-    passInicial = input.newpassword;
-    setInput({});
+    dispatch(updateUserById(userId,{ password: input.newpassword}, headers));  
+    
+    passInicial=input.newpassword
+    setInput({
+      
+        
+        actualpassword: "",
+        newpassword: "",
+        repeatnewpassword: "",
+      });
+      
+      alert('Email actualizado.')
+      dispatch(getUserById(userId));
+      
   }
 
   return (

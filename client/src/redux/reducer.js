@@ -137,11 +137,12 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         userById: { ...payload, birthday: payload.birthday.slice(0, 10) },
-        //loading: false,
+        loading: false,
       };
     case UPDATE_USER_BY_ID:
       return {
         ...state,
+        loading: false,
       };
 
     case GET_OWNERPHONE:
