@@ -14,6 +14,7 @@ import {
   CLEAR,
   LOGOUT,
   GET_OWNERPHONE,
+  CONTACT,
 } from "./actionTypes";
 
 export function login(data) {
@@ -178,16 +179,14 @@ export function createEvent(id, code, headers) {
   };
 }
 
-// export function getFavorites() {
-//   return async function (dispatch) {
-//     dispatch({ type: LOADING });
-//     const favs = await axios.put(`${url}/user/addfavs/${id}`, property, headers);
-//     return dispatch({
-//       type: USER,
-//       payload: favs.data
-//     });
-//   };
-// }
+export function contactForm(data, headers) {
+  return async function (dispatch) {
+    const favs = await axios.post(`${url}/contact`, data, headers);
+    return dispatch({
+      type: CONTACT
+    });
+  };
+}
 
 export function logout() {
   return async function (dispatch) {

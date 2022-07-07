@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import Create from "./pages/Create";
 import Details from "./pages/Details";
 import Loader from "./pages/Loader";
-import UserCreate from "./components/User";
+import UserCreate from "./pages/User";
 import UserCard from "./dumb/CardUser";
 import Login from "./pages/Login";
 import Nav from "./components/Nav/index";

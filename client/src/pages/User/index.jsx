@@ -6,12 +6,12 @@ import { createUser } from '../../redux/actions';
 import DivContainer from "../../styledComponents/DivContainer";
 //import Cloudinary from "../Cloudinary";
 import Button from "../../styledComponents/Button"
-import Select from "../FormElements/Select";
+import Select from "../../components/FormElements/Select";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { TermsAndConditions, SubmitContainer, MensajeError, Label } from "../../styledComponents/StyledFormElements";
 import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons'
-import Input from "../FormElements/Input";
-import { regExps } from "../FormElements/regExpressions";
+import Input from "../../components/FormElements/Input";
+import { regExps } from "../../components/FormElements/regExpressions";
 import Swal from "sweetalert2";
 import {useNavigate } from "react-router-dom";
 
