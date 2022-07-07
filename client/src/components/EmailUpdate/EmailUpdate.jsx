@@ -24,13 +24,15 @@ const EmailUpdate = () => {
   }, [userId]);
 
   useEffect(() => {
+    if(userData){
+    
     setInput(
       {
         ...input,
         inicialemail: userData.email,
         newemail: "",
         repeatemail: "",
-      });
+      });}
   }, [userData]);  
 
   function handleChange(e) {

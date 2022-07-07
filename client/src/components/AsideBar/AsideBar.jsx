@@ -13,9 +13,9 @@ const AsideBar = ({ setButton }) => {
         Cambiar contraseña
       </h1>
 
-      <h1 className={styles.button} onClick={() => setButton("email")}>
+      {/* <h1 className={styles.button} onClick={() => setButton("email")}>
         Cambiar email
-      </h1>
+      </h1> */}
     </aside>
   );
 };
