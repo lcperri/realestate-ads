@@ -1,15 +1,19 @@
 import { useDispatch } from 'react-redux/es/exports';
-import { login } from '../../redux/actions';
+import { login, signUpAction } from '../../redux/actions';
 
 import { GoogleLogin } from 'react-google-login';
 
 import styles from './styles.module.css';
 
-export default function GoogleAuthenticator () {
+export default function GoogleAuthenticator ({ signUp }) {
   const dispatch = useDispatch();
   
   const successResponseGoogle = (response) => {
-    dispatch(login(response));
+    if (signUp) {
+      dispatch(signUpAction(response));
+    } else {
+      dispatch(login(response));
+    }
   }
 
   const errorResponseGoogle = (response) => {
@@ -18,6 +22,15 @@ export default function GoogleAuthenticator () {
 
   return (
     <>
+    {
+      signUp ?
+      <GoogleLogin buttonClassName={styles.btnGoogle}
+        clientId="394343158069-32t8sde06fkbaib24hu1v95g1oqac8pm.apps.googleusercontent.com"
+        buttonText="Seguir con Google"
+        onSuccess={successResponseGoogle}
+        onFailure={errorResponseGoogle}
+        scope='openid email profile'
+      /> :
       <GoogleLogin buttonClassName={styles.btnGoogle}
         clientId="394343158069-32t8sde06fkbaib24hu1v95g1oqac8pm.apps.googleusercontent.com"
         buttonText="Ingresar con Google"
@@ -25,6 +38,8 @@ export default function GoogleAuthenticator () {
         onFailure={errorResponseGoogle}
         scope='openid email profile'
       />
+    }
+      
     </>
   );
 }

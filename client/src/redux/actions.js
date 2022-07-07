@@ -31,6 +31,20 @@ export function login(data) {
   };
 }
 
+export function signUpAction(data) {
+  return async function (dispatch) {
+    const login = await axios.post(`${url}/signup`, data);
+    SaveToken(login.data[1]);
+    SaveId(login.data[0]._id);
+    SaveRange(login.data[0].range);
+    SaveLastName(login.data[0].lastName);
+    SaveName(login.data[0].name);
+    return dispatch({
+      type: LOGIN
+    })
+  };
+}
+
 export function getAllProperties() {
   return async function (dispatch) {
     dispatch({ type: LOADING });
