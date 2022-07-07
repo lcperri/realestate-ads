@@ -18,7 +18,7 @@ import {
 
 export function login(data) {
   return async function (dispatch) {
-    const login = await axios.post(`${url}/login`, data, { withCredentials: true });
+    const login = await axios.post(`${url}/login`, data);
     SaveToken(login.data[1]);
     SaveId(login.data[0]._id);
     SaveRange(login.data[0].range);
@@ -148,9 +148,9 @@ export function filter(filters, location, max) {
   };
 }
 
-export function getCalendar(id) {
+export function getCalendar(id, headers) {
   return async function (dispatch) {
-    const calendar = await axios.get(`${url}/calendar/${id}`);
+    const calendar = await axios.get(`${url}/calendar/${id}`, headers);
     return dispatch({
       type: LOGIN,
       payload: calendar.data
@@ -158,9 +158,9 @@ export function getCalendar(id) {
   };
 }
 
-export function calendar(code, id) {
+export function calendar(code, id, headers) {
   return async function (dispatch) {
-    const calendar = await axios.post(`${url}/calendar/${id}`, code);
+    const calendar = await axios.post(`${url}/calendar/${id}`, code, headers);
     return dispatch({
       type: LOGIN,
       payload: calendar.data
@@ -168,15 +168,26 @@ export function calendar(code, id) {
   };
 }
 
-export function createEvent(id, code) {
+export function createEvent(id, code, headers) {
   return async function (dispatch) {
-    const calendar = await axios.post(`${url}/calendar/${id}/event`, code);
+    const calendar = await axios.post(`${url}/calendar/${id}/event`, code, headers);
     return dispatch({
       type: LOGIN,
       payload: calendar.data
     })
   };
 }
+
+// export function getFavorites() {
+//   return async function (dispatch) {
+//     dispatch({ type: LOADING });
+//     const favs = await axios.put(`${url}/user/addfavs/${id}`, property, headers);
+//     return dispatch({
+//       type: USER,
+//       payload: favs.data
+//     });
+//   };
+// }
 
 export function logout() {
   return async function (dispatch) {
@@ -185,8 +196,8 @@ export function logout() {
     RemoveLastName();
     RemoveName();
     const id = localStorage.getItem('id');
-    await axios.get(`${url}/logout/${id}`);
     RemoveId();
+    await axios.get(`${url}/logout/${id}`);
     return dispatch({
       type: LOGOUT
     });
@@ -201,4 +212,26 @@ export function getownersphone(id){
       payload: resp.data
     })
   }
+}
+
+export function GetUserById(id) {
+  return async function (dispatch) {
+    dispatch({ type: LOADING });
+    const user = await axios.get(`${url}/user/${id}`);
+    return dispatch({
+      type: USER,
+      payload: user.data
+    });
+  };
+}
+
+export function getFavourites(id, property, headers) {
+  return async function (dispatch) {
+    dispatch({ type: LOADING });
+    const favs = await axios.put(`${url}/user/addfavs/${id}`, property, headers);
+    return dispatch({
+      type: USER,
+      payload: favs.data
+    });
+  };
 }

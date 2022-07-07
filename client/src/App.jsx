@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import Home from "./pages/Home";
 import Create from "./pages/Create";
@@ -21,13 +21,14 @@ import Users from "./pages/Users";
 
 const App = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   // const auth = showCookies('auth-token');
   const token = localStorage.getItem('auth-token');
 
   useEffect(() => {
     // if (!auth.length) {
     if (!token) {
-      return () => dispatch(logout());
+      dispatch(logout());
     }
   }, [token]);
 

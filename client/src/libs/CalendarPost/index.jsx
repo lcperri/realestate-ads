@@ -6,10 +6,12 @@ import DivContainer from "../../styledComponents/DivContainer";
 
 import { createEvent } from "../../redux/actions";
 import CalendarCards from './../CalendarCards';
+import LoginController from './../../localStorage/login';
 
 export default function Calendar () {
    const dispatch = useDispatch();
    const id = localStorage.getItem('id');
+   const headers = LoginController();
 
    const [ summary, setSummary ] = useState('');
    const [ location, setLocation ] = useState('');
@@ -19,7 +21,7 @@ export default function Calendar () {
 
    const handleSubmit = (e) => {
       e.preventDefault();
-      dispatch(createEvent(id, { summary, location, startDateTime }));
+      dispatch(createEvent(id, { summary, location, startDateTime }, headers));
    }
 
    return (

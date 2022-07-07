@@ -20,10 +20,8 @@ const Cloudinary = ({ getImages }) => {
             }
         )
         const file = await res.json()
-        // console.log(res);
         setImage(file.secure_url)
         getImages(file.secure_url)
-        // console.log(file.secure_url);
         setloading(false)
     }
 
