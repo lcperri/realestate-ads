@@ -204,8 +204,8 @@ export function logout() {
     RemoveLastName();
     RemoveName();
     const id = localStorage.getItem('id');
-    await axios.get(`${url}/logout/${id}`);
     RemoveId();
+    await axios.get(`${url}/logout/${id}`);
     return dispatch({
       type: LOGOUT
     });
@@ -234,7 +234,6 @@ export function GetUserById(id) {
 
 export function addToUserFavourites(id, property, headers) {
   return async function (dispatch) {
-    dispatch({ type: LOADING });
     const favs = await axios.put(`${url}/user/addfavs/${id}`, property, headers);
     return dispatch({
       type: USER,

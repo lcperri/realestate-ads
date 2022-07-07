@@ -17,6 +17,8 @@ import Calendar from "./libs/CalendarPost";
 import { useDispatch } from 'react-redux/es/exports';
 import { logout } from "./redux/actions";
 import { useEffect } from "react";
+import FormContacto from "./components/FormContacto";
+
 
 const App = () => {
   const dispatch = useDispatch();
@@ -47,9 +49,8 @@ const App = () => {
         <Route path="/favoritos" element={<Favoritos />} />
         <Route path="/mispropiedades" element={<MisPropsPV />} />
         <Route path="/calendario" element={<Calendar />} />
-
+        <Route path="/contact" element={<FormContacto />} />
         <Route path="/perfil" element={<ProfileDataUpdate />} />
-
         {/* <Route path='*' element={<Home/>} />  */}
       </Routes>
     </>

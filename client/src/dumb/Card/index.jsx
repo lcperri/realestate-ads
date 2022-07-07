@@ -34,7 +34,7 @@ const Card = ({ _id, address, city, area, type, rooms, status, bathrooms, price,
   const setFavourite = (e) => {
     e.preventDefault()
 
-    dispatch(getFavourites(userId, {property: _id}, headers))
+    dispatch(addToUserFavourites(userId, {property: _id}, headers))
   }
 
   return (
@@ -79,7 +79,7 @@ const Card = ({ _id, address, city, area, type, rooms, status, bathrooms, price,
       </blockquote>
       { userId && 
         <button  key={_id} onClick={(e) => setFavourite(e)}>
-          <Heart width='28' height='28' fill={fav ? 'red': 'white'} />
+          <Heart width='28' height='28' fill={fav ? 'red': 'white'} onHover='red' />
         </button>}
     </>
   )

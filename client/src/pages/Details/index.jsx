@@ -18,10 +18,12 @@ import StyledText from "../../styledComponents/StyledText";
 import Map from "../../libs/Map";
 import Button from "../../styledComponents/Button";
 import styles from "./styles.module.css";
-import { getownersphone } from "../../redux/actions";
-import { getPropertyById, getAllUsers, clear } from "../../redux/actions";
+import { getownersphone, GetUserById } from "../../redux/actions";
+import { getPropertyById, clear } from "../../redux/actions";
 import getCoordenates from "../../functions/getCoordenates";
 import FormContacto from "../../components/FormContacto";
+import { DivRow } from "../../styledComponents/DivRow";
+import { StyledLink } from "../../styledComponents/StyledLink";
 //import capitalize from "../../functions/capitalize";
 
 const Details = () => {
@@ -29,21 +31,15 @@ const Details = () => {
   const dispatch = useDispatch();
   const [clickedImg, setClickedImg] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(null);
-  const { id } = useParams();
-  const property = useSelector((state) => state.property);
   const [coordenate, setCoordenate] = useState();
-
+  
+  const property = useSelector((state) => state.property);
   const userId = localStorage.getItem('id')
-  console.log(userId);
-  const user = useSelector(state => state.user);
-  // console.log(user);
-  let tel = user.telephone;
 
+  const { id } = useParams(); //id de propiedad
 
   useEffect(() => {
-    dispatch(getPropertyById(id));
-    // eslint-disable-next-line
-    dispatch(getAllUsers());
+    dispatch(getPropertyById(id));    
     return () => dispatch(clear());
   }, []);
 
@@ -171,9 +167,27 @@ const Details = () => {
               </div>
             </div>
           </div>
-          {/*formulario contacto */}
           <div className={styles.contact_subWrapper}>
-            <FormContacto tel={tel}/>
+            { userId 
+              ? <FormContacto/> 
+              : <div>
+                  <h4>
+                  Te gusta esta propiedad?
+                  No pierdas la oportunidad de {property.operation === 'rent' ? 'alquilarla.' : 'adquirirla.'} <br/>
+                  Inicia sesión o regístrate gratis para comunicarte con el propietario.
+                  </h4>
+                  <DivRow padding='10px 10px 10px 10px' justCont='center'>
+                  <StyledLink to='/sesion' url={id}>
+                    <Button>
+                      Iniciar sesión
+                    </Button>
+                  </StyledLink>
+                  <StyledLink to='/registro'>
+                    registrarse
+                  </StyledLink>
+                  </DivRow>
+              </div>
+            }
           </div>
         </div>
         <h1>Ubicación:</h1>
@@ -187,7 +201,7 @@ const Details = () => {
       <div className={styles.btnBackTop}>
         <Button
           className="btnBackTopDetail"
-          onClick={() => navigate("/home", { replace: true })}
+          onClick={() => navigate(-1, { replace: true })}
         >
           {"<"}
         </Button>
