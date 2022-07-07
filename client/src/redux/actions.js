@@ -215,7 +215,6 @@ export function getownersphone(id){
 
 export function GetUserById(id) {
   return async function (dispatch) {
-    dispatch({ type: LOADING });
     const user = await axios.get(`${url}/user/${id}`);
     return dispatch({
       type: USER,
