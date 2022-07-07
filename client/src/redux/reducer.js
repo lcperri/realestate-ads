@@ -113,7 +113,6 @@ const reducer = (state = initialState, { type, payload }) => {
       return{
         ...state,
         user: payload,
-        loading: false,
       }
     case GET_OWNERPHONE:
       return{

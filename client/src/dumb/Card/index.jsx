@@ -9,7 +9,7 @@ import { Heart } from '../Icons/Heart'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { StyledLinkCard } from '../../styledComponents/StyledLink'
 import { DivRow } from '../../styledComponents/DivRow'
-import { getFavourites } from '../../redux/actions'
+import { addToUserFavourites } from '../../redux/actions'
 import { useDispatch, useSelector } from 'react-redux'
 // import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro'
 import LoginController from '../../localStorage/login'
@@ -20,7 +20,7 @@ const Card = ({ _id, address, city, area, type, rooms, status, bathrooms, price,
   const user = useSelector(state => state.user)
   const headers = LoginController()
   const [fav, setFav] = useState(false)
-
+  
   useEffect (() => {
     if (userId) {
       if (user.favourites?.includes(_id)) {

@@ -33,8 +33,11 @@ const Details = () => {
   const property = useSelector((state) => state.property);
   const [coordenate, setCoordenate] = useState();
 
-  const telephone = useSelector(state => state.user);
-  let tel = telephone;
+  const userId = localStorage.getItem('id')
+  console.log(userId);
+  const user = useSelector(state => state.user);
+  // console.log(user);
+  let tel = user.telephone;
 
 
   useEffect(() => {

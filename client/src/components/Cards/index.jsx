@@ -11,7 +11,6 @@ import LoginController from './../../localStorage/login';
 
 const Cards = ({ id, favourites }) => {
   const dispatch = useDispatch();
-
   const headers = LoginController();
 
   const properties = useSelector((state) => state.properties);
