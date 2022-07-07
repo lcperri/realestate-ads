@@ -183,6 +183,15 @@ export function contactForm(data, headers) {
   return async function (dispatch) {
     const favs = await axios.post(`${url}/contact`, data, headers);
     return dispatch({
+      // type: CONTACT
+    });
+  };
+}
+
+export function seeContactsByProperty(id, headers) {
+  return async function (dispatch) {
+    const favs = await axios.get(`${url}/contact/${id}`, headers);
+    return dispatch({
       type: CONTACT
     });
   };
