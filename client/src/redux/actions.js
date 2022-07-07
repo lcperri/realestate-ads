@@ -218,8 +218,8 @@ export function logout() {
     RemoveLastName();
     RemoveName();
     const id = localStorage.getItem('id');
-    await axios.get(`${url}/logout/${id}`);
     RemoveId();
+    await axios.get(`${url}/logout/${id}`);
     return dispatch({
       type: LOGOUT
     });
