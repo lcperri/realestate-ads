@@ -10,3 +10,4 @@ export const ALL_USERS = "ALL_USERS";
 export const USER = "USER";
 export const GET_CALENDAR = "GET_CALENDAR";
 export const GET_OWNERPHONE = "GET_OWNERPHONE";
+export const CONTACT = "CONTACT";
