@@ -22,7 +22,7 @@ export default function FormContacto({tel}){
     
     
     console.log("telForm:", tel)
-    let url = `https://wa.me/${tel}?text=Me%20gustaría%20saber%20el%20precio%20de%20la%20propiedad` 
+    let url = `https://wa.me/${tel}?text=Me%20gustaría%20saber%20el%20precio%20de%20%20propiedad` 
    
 
     return(
