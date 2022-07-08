@@ -1,19 +1,27 @@
 import styled from "styled-components";
 
 const DivContainer = styled.div`
-  /* cursor: pointer; */
-  /* min-height: 15rem; */
   border-radius: 20px;
-  ${(props) => props.contact === true ? 'width: 100%; height: 100%;' :
-    props.home ? 'min-width: 100rem; min-height: 58rem; width: 75%; height: 75%;' : 
-    'width: 75%;'
-  }
-
   margin: 120px auto 15px auto;
   padding: 20px 60px 30px 60px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 18px;
-  /* width: max-content; */
-  transition: .3s ease all;
+  transition: .2s ease all;
+
+  ${(props) => props.home ? 'min-width: 100rem; min-height: 58rem; width: 75%; height: 75%;' : 
+    'width: 75%;'
+  }
+
+  &.contactForm {
+    /* margin: 20px auto 15px auto; */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    height: 610px;
+    width: 80%;
+    background-color: #FAFAFA;
+  }
   
   &.plansCard {
     max-width: 320px;

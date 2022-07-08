@@ -67,13 +67,15 @@
 
 .addresFeatures_contact_wrapper {
   display: grid;
-  grid-template-columns: 60% 40%;
+  grid-template-columns: 55% 45%;
   border-radius: 20px;
+  height: 570px;
+  justify-content: flex-end;
 }
 
-/* .contact_subWrapper {
-  background-color: #5ee7ff;
-} */
+.contact_subWrapper {
+  /* background-color: #5ee7ff; */
+}
 
 /*Modal: */
 .overlay {
