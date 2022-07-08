@@ -26,6 +26,7 @@ export default function UserCreate(){
     const [errorsFirstCard, setErrorsFirstCard] = useState(true);
     const [errorsSecondCard, setErrorsSecondCard] = useState(true);
     const [errorsThirdCard, setErrorsThirdCard] = useState(true);
+    const [errorPass, setErrorPass] = useState({});
     //estado de c/input
     const[name, setName] = useState({key: '', valid: null});
     const[lastName, setLastName] = useState({key: '', valid: null});
@@ -43,6 +44,15 @@ export default function UserCreate(){
     const navigate = useNavigate();
     const dispatch = useDispatch()
 
+    function comparaPass(password, repitPassword){
+        let result = '';
+
+        if(password !== repitPassword){
+            result = 0;            
+        }else{result=1}
+
+        return result;
+    }
     const cleanForm = () => {
         setName({ key: '', valid: null });
         setLastName({ key: '', valid: null });
@@ -180,13 +190,7 @@ export default function UserCreate(){
                                 />                                
                             </div>
                             <div className="buttonsNextBack">
-<<<<<<< HEAD:client/src/components/UserCreate/index.jsx
                                 <Button disabled={errorsFirstCard} onClick={() => setContador(1)}> Siguiente</Button>
-=======
-                                <Button /* disabled={errorsFirstCard} */ onClick={() => setContador(1)}> Siguiente</Button>
-                                <h1>ó</h1>
-                                <GoogleAuthenticator signUp={true} ></GoogleAuthenticator>
->>>>>>> d78c5be180ef4af18f079e8bb31c1b187d81e764:client/src/pages/User/index.jsx
                             </div>                            
                         </DivContainer>
                     }
@@ -270,13 +274,14 @@ export default function UserCreate(){
                                     <Input 
                                     className='addressCreateForm'
                                         name='Repetir Contraseña:'
-                                        type='text'
+                                        type='password'
                                         placeHolder={'Repetir Contraseña'}
                                         errorLeyend={regExps.password.errorLeyend}
                                         regExp={regExps.password.regExp}
                                         state={repitPassword}
                                     setState={setRepitPassword}
-                                />    
+                                />  
+                                {comparaPass(password.key,repitPassword.key) === 0 && (<p>La Contraseñas no coinciden!!</p>)}  
                             </div>
                                 <div className="buttonsNextBack">
                                    <Button onClick={() => setContador(1)}>Anterior</Button>                             
