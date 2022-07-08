@@ -15,7 +15,7 @@ export default function CardFavorito({ id, type, address, price, city, area, roo
     return (
         <div className={styles.contenedorFav}>
 
-            <div className={styles.divFotos} >
+            <div className={styles.divFotos}>
                 <img src={pictures[0]} alt={"not found"} className={styles.foto} />
             </div>
             <div className={styles.divCaracteristicas}>
