@@ -1,32 +1,49 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserById, updateUserById } from "../../redux/actions";
 
 import styles from "./PersonalData.module.css";
 import { validate } from "./validate";
+import LoginController from "../../localStorage/login"
 
-let datosIniniciales = {
-  name: "Julian",
-  lastname: "Meraviglia",
-  birth: "",
-  dni: 20000000,
-  tel: "0340715333957",
-  avatar: "",
-};
+
+
+
 
 const PersonalData = () => {
+  const dispatch = useDispatch();
+  let userData = useSelector((state) => state.userById);
+  
+  
+  const isLoading = useSelector((state) => state.loading)
+  
+  const headers = LoginController()
+  
   const [input, setInput] = useState({
-    name: "",
-    lastname: "",
-    birth: "",
+    email: "",
+    lastName: "",
+    birthday: "",
     dni: "",
-    tel: "",
-    avatar: "",
+    telephone: "",
+    // avatar: "",
   });
   const [errors, setErrors] = useState({});
+  
+  const userId = localStorage.getItem("id");
+  useEffect(() => {    
+    
+    if (userId) {
+      dispatch(getUserById(userId));
+    }    
+  }, [userId]);
 
   useEffect(() => {
-    setInput(datosIniniciales);
-  }, []);
+    if(userData){
+    setInput({ ...input, ...userData })}
 
+  }, [userData]);
+
+  
   function handleChange(e) {
     setInput({
       ...input,
@@ -41,10 +58,12 @@ const PersonalData = () => {
   }
 
   function handleSubmit(e) {
-    e.preventDefault();
-    // dispatch(postPoke(input))
-    // alert('Pokemon creado.')
-    datosIniniciales = input;
+    e.preventDefault();    
+    dispatch(updateUserById(userId, input, headers));
+    alert('Datos personales actualizados.')
+    dispatch(getUserById(userId))
+    
+   
   }
 
   return (
@@ -77,29 +96,30 @@ const PersonalData = () => {
         <label className={styles.label}>Apellido:</label>
         <input
           type="text"
-          name="lastname"
+          name="lastName"
           placeholder="Apellido"
           className={styles.input}
-          value={input.lastname}
+          value={input.lastName}
           onChange={handleChange}
         />
       </div>
-      {errors.lastname && (
-        <span className={styles.errospan}>{errors.lastname}</span>
+      {errors.lastName && (
+        <span className={styles.errospan}>{errors.lastName}</span>
       )}
-      <div className={styles.inputcontainer}>
+      {/* <div className={styles.inputcontainer}>
         <label className={styles.label}>Cumpleaños:</label>
         <input
           type="date"
-          name="birth"
+          name="birthday"
           placeholder="Cumpleaños"
           className={styles.input}
-          disabled={true}
-          value={input.birth}
+          // disabled={true}
+          value={input.birthday}
+          onChange={handleChange}
         />
-      </div>
+      </div> */}
 
-      <div className={styles.inputcontainer}>
+      {/* <div className={styles.inputcontainer}>
         <label className={styles.label}>DNI:</label>
         <input
           type="number"
@@ -109,20 +129,22 @@ const PersonalData = () => {
           value={input.dni}
           onChange={handleChange}
         />
-      </div>
+      </div> */}
       {errors.dni && <span className={styles.errospan}>{errors.dni}</span>}
       <div className={styles.inputcontainer}>
         <label className={styles.label}>Telefono:</label>
         <input
           type="number"
-          name="tel"
+          name="telephone"
           placeholder="Telefono"
           className={styles.input}
-          value={input.tel}
+          value={input.telephone}
           onChange={handleChange}
         />
       </div>
-      {errors.tel && <span className={styles.errospan}>{errors.tel}</span>}
+      {errors.telephone && (
+        <span className={styles.errospan}>{errors.telephone}</span>
+      )}
       <div className={styles.inputcontainer}>
         <label className={styles.label}>Avatar:</label>
         <input

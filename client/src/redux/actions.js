@@ -1,7 +1,19 @@
 import axios from "axios";
 import { url } from "../helpers/url";
-import { SaveToken, SaveId, SaveRange, SaveLastName, SaveName, RemoveToken } from './../localStorage/index';
-import { RemoveId, RemoveRange, RemoveLastName, RemoveName } from './../localStorage/index';
+import {
+  SaveToken,
+  SaveId,
+  SaveRange,
+  SaveLastName,
+  SaveName,
+  RemoveToken,
+} from "./../localStorage/index";
+import {
+  RemoveId,
+  RemoveRange,
+  RemoveLastName,
+  RemoveName,
+} from "./../localStorage/index";
 import {
   ALL_USERS,
   FILTER,
@@ -14,11 +26,28 @@ import {
   CLEAR,
   LOGOUT,
   GET_OWNERPHONE,
+  GET_USER_BY_ID,
+  UPDATE_USER_BY_ID,
+  CONTACT,
 } from "./actionTypes";
 
 export function login(data) {
   return async function (dispatch) {
     const login = await axios.post(`${url}/login`, data);
+    SaveToken(login.data[1]);
+    SaveId(login.data[0]._id);
+    SaveRange(login.data[0].range);
+    SaveLastName(login.data[0].lastName);
+    SaveName(login.data[0].name);
+    return dispatch({
+      type: LOGIN,
+    });
+  };
+}
+
+export function signUpAction(data) {
+  return async function (dispatch) {
+    const login = await axios.post(`${url}/signup`, data);
     SaveToken(login.data[1]);
     SaveId(login.data[0]._id);
     SaveRange(login.data[0].range);
@@ -58,7 +87,7 @@ export function propertyPagination({ filters, location, max }) {
 export function clear() {
   return function (dispatch) {
     return dispatch({
-      type: CLEAR
+      type: CLEAR,
     });
   };
 }
@@ -113,7 +142,7 @@ export function getPropertyById(id) {
 
 export function createProperty(info) {
   return async function (dispatch) {
-    const id = localStorage.getItem('id');
+    const id = localStorage.getItem("id");
     dispatch({ type: LOADING });
     const property = await axios.post(`${url}/property/${id}`, info);
     return dispatch({
@@ -123,14 +152,14 @@ export function createProperty(info) {
   };
 }
 
-export function getAllUsers() {
+export function getAllUsers(headers) {
   return async function (dispatch) {
     dispatch({ type: LOADING });
-    const resp = await axios.get(`${url}/user`);
+    const resp = await axios.get(`${url}/user`, headers);
     return dispatch({ type: ALL_USERS, payload: resp.data });
   };
 }
-
+export function deleteUser(){}
 export function createUser(data) {
   return async function (dispatch) {
     dispatch({ type: LOADING });
@@ -153,8 +182,8 @@ export function getCalendar(id, headers) {
     const calendar = await axios.get(`${url}/calendar/${id}`, headers);
     return dispatch({
       type: LOGIN,
-      payload: calendar.data
-    })
+      payload: calendar.data,
+    });
   };
 }
 
@@ -163,8 +192,8 @@ export function calendar(code, id, headers) {
     const calendar = await axios.post(`${url}/calendar/${id}`, code, headers);
     return dispatch({
       type: LOGIN,
-      payload: calendar.data
-    })
+      payload: calendar.data,
+    });
   };
 }
 
@@ -173,8 +202,48 @@ export function createEvent(id, code, headers) {
     const calendar = await axios.post(`${url}/calendar/${id}/event`, code, headers);
     return dispatch({
       type: LOGIN,
-      payload: calendar.data
-    })
+      payload: calendar.data,
+    });
+  };
+}
+
+export function getUserById(id) {
+  return async function (dispatch) {
+    dispatch({ type: LOADING });
+    const user = await axios.get(`${url}/user/${id}`);
+    return dispatch({
+      type: GET_USER_BY_ID,
+      payload: user.data,
+    });
+  };
+}
+
+export function updateUserById(id, data, headers) {
+  return async function (dispatch) {
+    dispatch({ type: LOADING });
+    const user = await axios.put(`${url}/user/${id}`, data, headers);
+    return dispatch({
+      type: UPDATE_USER_BY_ID,
+      payload: user.data,
+    });
+  };
+}
+
+export function contactForm(data, headers) {
+  return async function (dispatch) {
+    const favs = await axios.post(`${url}/contact`, data, headers);
+    return dispatch({
+      // type: CONTACT
+    });
+  };
+}
+
+export function seeContactsByProperty(id, headers) {
+  return async function (dispatch) {
+    const favs = await axios.get(`${url}/contact/${id}`, headers);
+    return dispatch({
+      type: CONTACT
+    });
   };
 }
 
@@ -185,20 +254,40 @@ export function logout() {
     RemoveLastName();
     RemoveName();
     const id = localStorage.getItem('id');
-    await axios.get(`${url}/logout/${id}`);
     RemoveId();
+    await axios.get(`${url}/logout/${id}`);
     return dispatch({
-      type: LOGOUT
+      type: LOGOUT,
     });
   };
 }
 
-export function getownersphone(id){
-  return async function(dispatch){
+export function getownersphone(id) {
+  return async function (dispatch) {
     const resp = await axios.get(`${url}/property/getownersphone/${id}`);
     return dispatch({
       type: GET_OWNERPHONE,
       payload: resp.data
     })
   }
+}
+
+export function GetUserById(id) {
+  return async function (dispatch) {
+    const user = await axios.get(`${url}/user/${id}`);
+    return dispatch({
+      type: USER,
+      payload: user.data
+    });
+  };
+}
+
+export function addToUserFavourites(id, property, headers) {
+  return async function (dispatch) {
+    const favs = await axios.put(`${url}/user/addfavs/${id}`, property, headers);
+    return dispatch({
+      type: USER,
+      payload: favs.data
+    });
+  };
 }

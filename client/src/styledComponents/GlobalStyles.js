@@ -4,7 +4,15 @@ export default createGlobalStyle`
         scroll-behavior: smooth;
     }
 
+    body {
+        /* background: #FF416C;  
+        background: -webkit-linear-gradient(to right, #FF416C 0%, #ff765e 100%); 
+        background: linear-gradient(0deg, #FF416C 0%, #ff765e 100%);
+        height: 100vh; */
+    }
+
     * {
+        
         box-sizing: border-box;
         margin: 0;
         outline: 0;

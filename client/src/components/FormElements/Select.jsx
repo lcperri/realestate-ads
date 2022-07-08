@@ -17,7 +17,6 @@ const SelectComponent = ({ className, name, options, regExp, errorLeyend, state,
     //Busca el valor seleccionado con el correspondiente en options para que setee su propiedad value hacia key:
     while (i < options.length) {
       if (e.target.value === capitalize(options[i].description)) {
-        // console.log(e.target.value, options[i].value);
         
         //Revisar no toma el valor de false, por el momento se arregla con esto:
         if(options[i].value === false)
@@ -39,10 +38,6 @@ const SelectComponent = ({ className, name, options, regExp, errorLeyend, state,
       i ++
     }
   }
-
-  useEffect(() => {
-    console.log(state);
-  },[state])
 
   return (
     <div className="group">

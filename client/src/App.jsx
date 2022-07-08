@@ -1,10 +1,10 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import LandingPage from "./pages/LandingPage";
 import Home from "./pages/Home";
 import Create from "./pages/Create";
 import Details from "./pages/Details";
 import Loader from "./pages/Loader";
-import UserCreate from "./components/User";
+import UserCreate from "./components/UserCreate";
 import UserCard from "./dumb/CardUser";
 import Login from "./pages/Login";
 import Nav from "./components/Nav/index";
@@ -12,21 +12,25 @@ import Planes from "./components/Planes";
 import Favoritos from "./pages/Favoritos";
 import MisPropsPV from "./pages/MisPropPremiumVip";
 import ProfileDataUpdate from "./pages/ProfileDataUpdate/ProfileDataUpdate";
-import Calendar from "./libs/CalendarPost";
+import CalendarPost from "./libs/CalendarPost";
 // import showCookies from "./functions/showCookies";
 import { useDispatch } from 'react-redux/es/exports';
 import { logout } from "./redux/actions";
 import { useEffect } from "react";
+import Users from "./pages/Users";
+import CalendarCards from "./libs/CalendarCards";
+import Contact from "./pages/Contact";
 
 const App = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate()
   // const auth = showCookies('auth-token');
   const token = localStorage.getItem('auth-token');
 
   useEffect(() => {
     // if (!auth.length) {
     if (!token) {
-      return () => dispatch(logout());
+      dispatch(logout());
     }
   }, [token]);
 
@@ -45,8 +49,10 @@ const App = () => {
         <Route path="/planes" element={<Planes />} />
         <Route path="/favoritos" element={<Favoritos />} />
         <Route path="/mispropiedades" element={<MisPropsPV />} />
-        <Route path="/calendario" element={<Calendar />} />
-
+        <Route path="/calendario/:id" element={<CalendarPost />} />
+        <Route path="/calendarCards" element={<CalendarCards />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/administrador" element={<Users />} />
         <Route path="/perfil" element={<ProfileDataUpdate />} />
 
         {/* <Route path='*' element={<Home/>} />  */}

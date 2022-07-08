@@ -1,4 +1,18 @@
-import { FILTER, LOADING, PROPERTIES, PROPERTY, ALL_USERS, USER, PAGE_SETTER, CLEAR, LOGIN, LOGOUT, GET_OWNERPHONE } from "./actionTypes";
+import {
+  FILTER,
+  LOADING,
+  PROPERTIES,
+  PROPERTY,
+  ALL_USERS,
+  USER,
+  PAGE_SETTER,
+  CLEAR,
+  LOGIN,
+  LOGOUT,
+  GET_OWNERPHONE,
+  GET_USER_BY_ID,
+  UPDATE_USER_BY_ID,
+} from "./actionTypes";
 
 const initialState = {
   loading: true,
@@ -13,30 +27,33 @@ const initialState = {
   users:[],
   user:{},
   calendar: false,
-  cardsCalendary: [{
-    summary: 'Alquiler',
-    location: 'dirección de tu casa',
-    colorId: 1, 
-    star: '2022-07-03',
-    end: '2022-07-03',
-    attendees: 'tumail@gmail.com' ,    
-  },
-  {
-    summary: 'Venta',
-    location: 'Acá iría la dirección de tu casa',
-    colorId: '2', 
-    star: '2022-07-03',
-    end: '2022-07-03',
-    attendees: 'tumail@gmail.com' ,    
-  },
-  {
-    summary: 'Venta',
-    location: 'Acá iría la dirección de tu casa',
-    colorId: '2', 
-    star: '2022-07-03',
-    end: '2022-07-03',
-    attendees: 'tumail@gmail.com' ,    
-  }]
+  cardsCalendary: [
+    {
+      summary: "Alquiler",
+      location: "dirección de tu casa",
+      colorId: 1,
+      star: "2022-07-03",
+      end: "2022-07-03",
+      attendees: "tumail@gmail.com",
+    },
+    {
+      summary: "Venta",
+      location: "Acá iría la dirección de tu casa",
+      colorId: "2",
+      star: "2022-07-03",
+      end: "2022-07-03",
+      attendees: "tumail@gmail.com",
+    },
+    {
+      summary: "Venta",
+      location: "Acá iría la dirección de tu casa",
+      colorId: "2",
+      star: "2022-07-03",
+      end: "2022-07-03",
+      attendees: "tumail@gmail.com",
+    },
+  ],
+  userById: {},
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -49,8 +66,8 @@ const reducer = (state = initialState, { type, payload }) => {
     case LOGIN:
       return {
         ...state,
-        logged: true
-      }
+        logged: true,
+      };
     case LOGOUT:
       return {
         loading: true,
@@ -62,22 +79,22 @@ const reducer = (state = initialState, { type, payload }) => {
         pages: [1, 1, 10],
         property: {},
         city: "",
-        users:[],
-        user:{},
+        users: [],
+        user: {},
         calendar: false,
-        cardsCalendary: []
-      }
+        cardsCalendary: [],
+      };
     case PROPERTIES:
       return {
         ...state,
         properties: payload,
-        loading: false
+        loading: false,
       };
     case PAGE_SETTER:
       return {
         ...state,
-        pages: payload
-      }
+        pages: payload,
+      };
     case CLEAR:
       return {
         loading: true,
@@ -88,38 +105,51 @@ const reducer = (state = initialState, { type, payload }) => {
         pages: [1, 1, 10],
         property: {},
         city: "",
-        users:[],
-        user:{},
+        users: [],
+        user: {},
         calendar: false,
-        cardsCalendary: []
-      }
+        cardsCalendary: [],
+      };
     case PROPERTY:
       return {
         ...state,
-        property: payload
+        property: payload,
       };
     case FILTER:
       return {
         ...state,
-        filter: payload
-      }
+        filter: payload,
+      };
     case ALL_USERS:
-      return{
+      return {
         ...state,
         users: payload,
         loading: false,
-      }
+      };
     case USER:
-      return{
+      return {
         ...state,
         user: payload,
         loading: false,
-      }
-    case GET_OWNERPHONE:
-      return{
+      };
+
+    case GET_USER_BY_ID:
+      return {
         ...state,
-        user:payload
-      }
+        userById: { ...payload, birthday: payload.birthday.slice(0, 10) },
+        loading: false,
+      };
+    case UPDATE_USER_BY_ID:
+      return {
+        ...state,
+        loading: false,
+      };
+
+    case GET_OWNERPHONE:
+      return {
+        ...state,
+        user: payload,
+      };
     default:
       return {
         ...state,

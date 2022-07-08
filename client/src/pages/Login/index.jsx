@@ -44,7 +44,7 @@ export default function Login() {
 
         <div className="form">
           <div className='title'>
-            FORMULARIO PARA LOGUEARTE
+            INICIAR SESIÓN
           </div>
 
           <DivContainer className="login">
