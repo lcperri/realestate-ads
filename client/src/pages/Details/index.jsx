@@ -24,7 +24,10 @@ import getCoordenates from "../../functions/getCoordenates";
 import FormContacto from "../../components/FormContacto";
 import { DivRow } from "../../styledComponents/DivRow";
 import { StyledLink } from "../../styledComponents/StyledLink";
-//import capitalize from "../../functions/capitalize";
+import BackButton from "../../dumb/BackButton";
+import capitalize from "../../functions/capitalize";
+import house from '../../assets/house.png'
+import apartment from '../../assets/apartment.png'
 
 const Details = () => {
   const navigate = useNavigate();
@@ -32,14 +35,14 @@ const Details = () => {
   const [clickedImg, setClickedImg] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(null);
   const [coordenate, setCoordenate] = useState();
-  
+
   const property = useSelector((state) => state.property);
   const userId = localStorage.getItem('id')
 
   const { id } = useParams(); //id de propiedad
 
   useEffect(() => {
-    dispatch(getPropertyById(id));    
+    dispatch(getPropertyById(id));
     return () => dispatch(clear());
   }, []);
 
@@ -47,11 +50,11 @@ const Details = () => {
     getCoordenates(property.address + " " + property.city)
       .then((data) => setCoordenate(data))
       .catch((err) => console.log(err));
-  }, [property]);  
-  
-  useEffect(()=>{
+  }, [property]);
+
+  useEffect(() => {
     dispatch(getownersphone(id));
- },[dispatch,id]);
+  }, [dispatch, id]);
 
   const handleClick = (item, index) => {
     setCurrentIndex(index);
@@ -97,15 +100,19 @@ const Details = () => {
       <DivContainer className="detail">
         <h1>Imágenes:</h1>
         <GalleryDetailsContainer>
-          {property.pictures?.map((e, index) => (
-            <GalleryDetails key={e}>
-              <img
-                src={e}
-                alt="Propiedad en venta o alquiler"
-                onClick={() => handleClick(e, index)}
-              />
-            </GalleryDetails>
-          ))}
+          {property.pictures?.length > 0 
+            ? property.pictures.map((e, index) => (
+              <GalleryDetails key={e}>
+                {console.log(e)}
+                <img
+                  src={e === '' ? property.type.toLowerCase().includes('casa') ? house : apartment : e}
+                  alt="Propiedad en venta o alquiler"
+                  onClick={() => handleClick(e, index)}
+                />
+              </GalleryDetails>
+            ))
+            : <img src={property.type === 'Casa' ? house : apartment} />
+          }
         </GalleryDetailsContainer>
         <div className={styles.statusOperation}>
           <StyledText className="operationDetail">
@@ -120,7 +127,7 @@ const Details = () => {
             <div className={styles.priceWrapper}>
               Desde: $
               {property.operation === "rent"
-                ? ` ${property.price} USD/Mes    ¡Alquílalo ahora!`
+                ? ` ${property.price} USD/Mes ¡Alquílalo ahora!`
                 : ` ${property.price} ¡Adquiérelo ahora!`}
             </div>
             <h1>Dirección:</h1>
@@ -168,15 +175,15 @@ const Details = () => {
             </div>
           </div>
           <div className={styles.contact_subWrapper}>
-            { userId 
-              ? <FormContacto/> 
+            {userId
+              ? <FormContacto />
               : <div>
-                  <h4>
+                <h4>
                   Te gusta esta propiedad?
-                  No pierdas la oportunidad de {property.operation === 'rent' ? 'alquilarla.' : 'adquirirla.'} <br/>
+                  No pierdas la oportunidad de {property.operation === 'rent' ? 'alquilarla.' : 'adquirirla.'} <br />
                   Inicia sesión o regístrate gratis para comunicarte con el propietario.
-                  </h4>
-                  <DivRow padding='10px 10px 10px 10px' justCont='center'>
+                </h4>
+                <DivRow padding='10px 10px 10px 10px' justCont='center'>
                   <StyledLink to='/sesion' url={id}>
                     <Button>
                       Iniciar sesión
@@ -185,7 +192,7 @@ const Details = () => {
                   <StyledLink to='/registro'>
                     registrarse
                   </StyledLink>
-                  </DivRow>
+                </DivRow>
               </div>
             }
           </div>
@@ -199,12 +206,7 @@ const Details = () => {
         </Button>
       </div>
       <div className={styles.btnBackTop}>
-        <Button
-          className="btnBackTopDetail"
-          onClick={() => navigate(-1, { replace: true })}
-        >
-          {"<"}
-        </Button>
+        <BackButton />
       </div>
       {clickedImg && (
         <Modal

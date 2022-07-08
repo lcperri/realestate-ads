@@ -13,6 +13,8 @@ import { addToUserFavourites } from '../../redux/actions'
 import { useDispatch, useSelector } from 'react-redux'
 // import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro'
 import LoginController from '../../localStorage/login'
+import house from '../../assets/house.png'
+import apartment from '../../assets/apartment.png'
 
 const Card = ({ _id, address, city, area, type, rooms, status, bathrooms, price, operation, pictures }) => {
   const dispatch = useDispatch()
@@ -40,7 +42,7 @@ const Card = ({ _id, address, city, area, type, rooms, status, bathrooms, price,
   return (
     <>
       <StyledLinkCard to={`/${_id}`}>
-        <img src={pictures[0]} />
+        <img src={pictures[0] || (type.toLowerCase().includes('casa') ? house : apartment) } />
         <DivRow justCont='space-between'>
           <DivRow>
             <h2>

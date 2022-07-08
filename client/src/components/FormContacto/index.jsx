@@ -69,7 +69,7 @@ export default function FormContacto({ tel }) {
             <br></br>
             Nombres:
             <Input className={styles.nombre} type={'text'} placeholder={'Nombre'} value={capitalize(user.name + ' ' + (user.lastName))} disabled='true' />
-            <br></br>
+            <br></br>cd
             Teléfono:
             <Input className={styles.tel} type={'text'} placeholder={'Telefono'} value={user.telephone} disabled='true' />
             <br></br>
@@ -83,14 +83,6 @@ export default function FormContacto({ tel }) {
                 <Button className={styles.contactar} onClick={onSubmit}>Contactar</Button>
                 <Toaster />
             </div>
-            <Button
-                className="btnBackTopDetail"
-                onClick={() => navigate(-1)}
-            >
-                {"<"}
-            </Button>
-
-
         </DivContainer>
     )
 }

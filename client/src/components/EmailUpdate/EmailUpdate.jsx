@@ -1,19 +1,37 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getUserById, updateUserById } from "../../redux/actions";
+import LoginController from "../../localStorage/login"
 
 import { validate } from "./validate";
 
 import styles from "./EmailUpdate.module.css";
 
-let emailInicial = { inicialemail: "julian@gmail.com" };
+const userId = localStorage.getItem("id");
 
 const EmailUpdate = () => {
+  const dispatch = useDispatch();
+  const userData = useSelector((state) => state.userById);
   const [input, setInput] = useState({});
   const [errors, setErrors] = useState({});
 
+  const headers = LoginController()
+
   useEffect(() => {
-    setInput(emailInicial);
-  }, []);
+    if (userId) {
+      dispatch(getUserById(userId));
+    }
+  }, [userId]);
+
+  useEffect(() => {
+    setInput(
+      {
+        ...input,
+        inicialemail: userData.email,
+        newemail: "",
+        repeatemail: "",
+      });
+  }, [userData]);  
 
   function handleChange(e) {
     setInput({
@@ -30,19 +48,19 @@ const EmailUpdate = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    // dispatch(postPoke(input))
-    // alert('Pokemon creado.')
-    // passInicial = input;
-
-    emailInicial.inicialemail = input.newemail;
+    dispatch(updateUserById(userId,{ email: input.newemail}, headers));
+    
+    
     setInput({
       ...input,
-      inicialemail: input.newemail,
+      
       newemail: "",
       repeatemail: "",
     });
+    alert('Email actualizado.')
+    dispatch(getUserById(userId));
   }
-
+  
   return (
     <form
       className={styles.container}

@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styles from './styles.module.css';
 import { createUser } from '../../redux/actions';
 import DivContainer from "../../styledComponents/DivContainer";
@@ -14,11 +14,13 @@ import Input from "../../components/FormElements/Input";
 import { regExps } from "../../components/FormElements/regExpressions";
 import Swal from "sweetalert2";
 import {useNavigate } from "react-router-dom";
+import GoogleAuthenticator from "../../libs/GoogleAuthentication";
 
 //name,lastName,password,birthday,email,dni,telephone,range
 
 export default function UserCreate(){
-
+    const logged = useSelector((state) => state.logged);
+    
     //para las tarjetas
     const[contador,setContador] = useState(0);    
     const [errorsFirstCard, setErrorsFirstCard] = useState(true);
@@ -128,6 +130,12 @@ export default function UserCreate(){
         else setFormOk(false)
     }, [termsAndConditions]);
 
+    useEffect(() => {
+        if (logged) {
+          navigate('/home');
+        }
+      }, [logged]);
+
     return(
         <div className="createProperty">
             <form onSubmit={handleOnSubmit} id='form'>
@@ -175,6 +183,8 @@ export default function UserCreate(){
                             </div>
                             <div className="buttonsNextBack">
                                 <Button /* disabled={errorsFirstCard} */ onClick={() => setContador(1)}> Siguiente</Button>
+                                <h1>ó</h1>
+                                <GoogleAuthenticator signUp={true} ></GoogleAuthenticator>
                             </div>                            
                         </DivContainer>
                     }
