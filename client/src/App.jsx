@@ -17,6 +17,8 @@ import Calendar from "./libs/CalendarPost";
 import { useDispatch } from 'react-redux/es/exports';
 import { logout } from "./redux/actions";
 import { useEffect } from "react";
+import Contact from "./pages/Contact";
+
 
 const App = () => {
   const dispatch = useDispatch();
@@ -35,21 +37,20 @@ const App = () => {
     <>
       <Nav />
       <Routes>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/home" element={<Home />} />
-        <Route path="/publicar" element={<Create />} />
-        <Route path="/:id" element={<Details />} />
-        <Route path="/loader" element={<Loader />} />
-        <Route path="/registro" element={<UserCreate />} />
-        <Route path="/user" element={<UserCard />} />
-        <Route path="/sesion" element={<Login />} />
-        <Route path="/planes" element={<Planes />} />
-        <Route path="/favoritos" element={<Favoritos />} />
-        <Route path="/mispropiedades" element={<MisPropsPV />} />
-        <Route path="/calendario" element={<Calendar />} />
-
-        <Route path="/perfil" element={<ProfileDataUpdate />} />
-
+        <Route path="/" element={<LandingPage/>} />
+        <Route path="/home" element={<Home/>} />
+        <Route path="/publicar" element={<Create/>} />
+        <Route path="/:id" element={<Details/>} />
+        <Route path="/loader" element={<Loader/>} />
+        <Route path="/registro" element={<UserCreate/>} />
+        <Route path="/user" element={<UserCard/>} />
+        <Route path="/sesion" element={<Login/>} />
+        <Route path="/planes" element={<Planes/>} />
+        <Route path="/favoritos" element={<Favoritos/>} />
+        <Route path="/mispropiedades" element={<MisPropsPV/>} />
+        <Route path="/calendario" element={<Calendar/>} />
+        <Route path="/contact" element={<Contact/>} />
+        <Route path="/perfil" element={<ProfileDataUpdate/>} />
         {/* <Route path='*' element={<Home/>} />  */}
       </Routes>
     </>

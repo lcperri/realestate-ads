@@ -9,10 +9,12 @@ import { Heart } from '../Icons/Heart'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { StyledLinkCard } from '../../styledComponents/StyledLink'
 import { DivRow } from '../../styledComponents/DivRow'
-import { getFavourites } from '../../redux/actions'
+import { addToUserFavourites } from '../../redux/actions'
 import { useDispatch, useSelector } from 'react-redux'
 // import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro'
 import LoginController from '../../localStorage/login'
+import house from '../../assets/house.png'
+import apartment from '../../assets/apartment.png'
 
 const Card = ({ _id, address, city, area, type, rooms, status, bathrooms, price, operation, pictures }) => {
   const dispatch = useDispatch()
@@ -20,7 +22,7 @@ const Card = ({ _id, address, city, area, type, rooms, status, bathrooms, price,
   const user = useSelector(state => state.user)
   const headers = LoginController()
   const [fav, setFav] = useState(false)
-
+  
   useEffect (() => {
     if (userId) {
       if (user.favourites?.includes(_id)) {
@@ -34,13 +36,13 @@ const Card = ({ _id, address, city, area, type, rooms, status, bathrooms, price,
   const setFavourite = (e) => {
     e.preventDefault()
 
-    dispatch(getFavourites(userId, {property: _id}, headers))
+    dispatch(addToUserFavourites(userId, {property: _id}, headers))
   }
 
   return (
     <>
       <StyledLinkCard to={`/${_id}`}>
-        <img src={pictures[0]} />
+        <img src={pictures[0] || (type.toLowerCase().includes('casa') ? house : apartment) } />
         <DivRow justCont='space-between'>
           <DivRow>
             <h2>
@@ -79,7 +81,7 @@ const Card = ({ _id, address, city, area, type, rooms, status, bathrooms, price,
       </blockquote>
       { userId && 
         <button  key={_id} onClick={(e) => setFavourite(e)}>
-          <Heart width='28' height='28' fill={fav ? 'red': 'white'} />
+          <Heart width='28' height='28' fill={fav ? 'red': 'white'} onHover='red' />
         </button>}
     </>
   )
