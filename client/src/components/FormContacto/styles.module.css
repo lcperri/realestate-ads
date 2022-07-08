@@ -1,24 +1,22 @@
-.contFormContacto{
+.input {
+    margin: 4px 0;
+}
+
+.input:hover {
+    border: 2px solid #ff765e;
+}
+
+.inputWrapper {
+    display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 520px;
-    height: 500px;
+    padding: 2px 0;
+    width: 100%;
+    
 }
-.titulo{
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-.email{
-    width: 300px;
-}
-.nombre,.tel, .descrip{
-    margin-top: 20px;
-    width: 300px;
-}
+
 .descrip{
-    max-width: 300px;
-    max-height: 120px;
+    display: flex;
+    min-height: 120px;
     color: #666;
     font-size: 18px;
     padding: 9px;

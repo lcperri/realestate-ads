@@ -103,7 +103,6 @@ const Details = () => {
           {property.pictures?.length > 0 
             ? property.pictures.map((e, index) => (
               <GalleryDetails key={e}>
-                {console.log(e)}
                 <img
                   src={e === '' ? property.type.toLowerCase().includes('casa') ? house : apartment : e}
                   alt="Propiedad en venta o alquiler"

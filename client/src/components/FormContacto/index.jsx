@@ -12,7 +12,7 @@ import toast, { Toaster } from "react-hot-toast";
 import capitalize from "../../functions/capitalize";
 import './toast.css'
 
-export default function FormContacto({ tel }) {
+export default function FormContacto() {
     const [message, setMessage] = useState('Hola, he visto la propiedad y me interesa, quiero comunicarme contigo.')
     const { id } = useParams() //params solo trae id de propiedad
     const dispatch = useDispatch()
@@ -60,24 +60,28 @@ export default function FormContacto({ tel }) {
     }
 
     return (
-        <DivContainer contact={true} className={styles.contFormContacto}>
-
+        <DivContainer className='contactForm'>
             <h1 className={styles.titulo}>Formulario de contacto</h1>
-            <br></br>
-            Email:
-            <Input className={styles.email} type={'text'} placeholder={'Email'} value={user.email} disabled='true'></Input>
-            <br></br>
-            Nombres:
-            <Input className={styles.nombre} type={'text'} placeholder={'Nombre'} value={capitalize(user.name + ' ' + (user.lastName))} disabled='true' />
-            <br></br>cd
-            Teléfono:
-            <Input className={styles.tel} type={'text'} placeholder={'Telefono'} value={user.telephone} disabled='true' />
-            <br></br>
-            Mensaje:
-            <textarea className={styles.descrip} type={'text'} placeholder={'Mensaje:'} value={message} onChange={handleOnChange} />
-            <br></br>
-            Solicitar fecha de visita:
-            <input type='date' />
+            <div className={styles.inputWrapper}>
+                <label> Email:</label>
+                <Input className={styles.input} type={'text'} placeholder={'Email'} value={user.email} disabled='true'></Input>
+            </div>
+            <div className={styles.inputWrapper}>
+                <label> Nombres:</label>
+                <Input className={styles.input} type={'text'} placeholder={'Nombre'} value={capitalize(user.name + ' ' + (user.lastName))} disabled='true' />
+            </div>
+            <div className={styles.inputWrapper}>
+               <label>Teléfono:</label> 
+                <Input className={styles.input} type={'text'} placeholder={'Telefono'} value={user.telephone} disabled='true' />
+            </div>
+            <div className={styles.inputWrapper}>
+                <label>Mensaje:</label> 
+                <textarea className={styles.descrip} type={'text'} placeholder={'Mensaje:'} value={message} onChange={handleOnChange} />
+            </div>
+            <div className={styles.inputWrapper}>
+                <label>Solicitar fecha de visita:</label>
+                <Input className={styles.input} type='date' />
+            </div>
             <div className={styles.container}>
                 <a href={url}><img src={imagw} className={styles.whatsapp} /></a>
                 <Button className={styles.contactar} onClick={onSubmit}>Contactar</Button>
