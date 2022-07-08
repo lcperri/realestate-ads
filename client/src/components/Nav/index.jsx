@@ -65,12 +65,18 @@ const Nav = () => {
       <div className='subContainerRight'>
         {!range &&
           <>
+          {
+            location.pathname.split('/')[1] !== 'sesion' &&
             <StyledLink to={'/sesion'}>
               <Button>Iniciar Sesión</Button>
             </StyledLink>
+          }
+          {
+            location.pathname.split('/')[1] !== 'registro' &&
             <StyledLink to={'/registro'}>
               <Button>Registrarse</Button>
             </StyledLink>
+          }
           </>
         }
         {range &&
