@@ -56,10 +56,7 @@ const App = () => {
         <Route path="/contact" element={<Contact />} />
         <Route path="/administrador" element={<Users />} />
         <Route path="/perfil" element={<ProfileDataUpdate />} />
-        <Route path="/contact" element={<Contact/>} />
-        
         <Route path="/terms" element={<Terms/>} />
-
         {/* <Route path='*' element={<Home/>} />  */}
       </Routes>
     </>
