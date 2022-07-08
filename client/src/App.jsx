@@ -22,6 +22,7 @@ import Terms from "./components/TermsConditions/Terms";
 
 import Users from "./pages/Users";
 import CalendarCards from "./libs/CalendarCards";
+import Contact from "./pages/Contact";
 
 const App = () => {
   const dispatch = useDispatch();
