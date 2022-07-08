@@ -9,50 +9,9 @@ import { StyledLink } from '../../styledComponents/StyledLink';
 import { DivRow } from "../../styledComponents/DivRow";
 
 export default function CardFavorito({ id, type, address, price, city, area, rooms, bathrooms, pictures, neighbourhood }) {
-    const [clickedImg, setClickedImg] = useState(null);
-    const [currentIndex, setCurrentIndex] = useState(null);
     const handleConectar = (e) => { };
     const handleElim = (e) => { };
-
-    const handleClick = (item, index) => {
-        setCurrentIndex(index);
-        setClickedImg(item);
-    };
-
-    const handelRotationRight = () => {
-        const totalLength = property.pictures.length;
-        if (currentIndex + 1 >= totalLength) {
-          setCurrentIndex(0);
-          const newUrl = property.pictures[0];
-          setClickedImg(newUrl);
-          return;
-        }
-        const newIndex = currentIndex + 1;
-        const newUrl = property.pictures.filter((item) => {
-          return property.pictures.indexOf(item) === newIndex;
-        });
-        const newItem = newUrl[0];
-        setClickedImg(newItem);
-        setCurrentIndex(newIndex);
-      };
     
-      const handelRotationLeft = () => {
-        const totalLength = property.pictures.length;
-        if (currentIndex === 0) {
-          setCurrentIndex(totalLength - 1);
-          const newUrl = property.pictures[totalLength - 1];
-          setClickedImg(newUrl);
-          return;
-        }
-        const newIndex = currentIndex - 1;
-        const newUrl = property.pictures.filter((item) => {
-          return property.pictures.indexOf(item) === newIndex;
-        });
-        const newItem = newUrl[0];
-        setClickedImg(newItem);
-        setCurrentIndex(newIndex);
-      };
-
     return (
         <div className={styles.contenedorFav}>
 
