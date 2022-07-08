@@ -4,20 +4,22 @@ import styles from './styles.module.css';
 import UserCard from "../../dumb/CardUser";
 import {useSelector, useDispatch} from 'react-redux';
 import {getAllUsers} from '../../redux/actions';
-
+import CardsContainer from "../../styledComponents/CardsContainer";
+import LoginController from "../../localStorage/login";
 
 export default function Users(){
 
     const allUsers = useSelector(state => state.users);
     const dispatch = useDispatch();
+    const headers = LoginController()
 
     useEffect(()=>{
-        dispatch(getAllUsers());
+        dispatch(getAllUsers(headers));
     },[dispatch]);
 
     return(
         <DivContainer className={styles.home}>
-
+          <CardsContainer>
             {
                 allUsers.length ?
                 allUsers.map(u => {
@@ -29,6 +31,7 @@ export default function Users(){
                 }) :
                 <div>Not found</div>
             }
+            </CardsContainer>
         </DivContainer>
     )
 }

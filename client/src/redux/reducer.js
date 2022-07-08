@@ -24,22 +24,8 @@ const initialState = {
   pages: [1, 1, 10],
   property: {},
   city: "",
-<<<<<<< HEAD
-  users:[{
-    "name": "marcos",
-    "lastName": "forastiere",
-    "password": "1234",
-    "birthday": "1411983",
-    "email": "fmarcos.23@gmail.com",
-    "dni": "29979518",
-    "telephone": "2281460124",
-    "range": "vip"
-}],
+  users:[],
   user:{},
-=======
-  users: [],
-  user: {},
->>>>>>> d78c5be180ef4af18f079e8bb31c1b187d81e764
   calendar: false,
   cardsCalendary: [
     {

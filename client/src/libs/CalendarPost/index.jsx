@@ -25,19 +25,42 @@ export default function Calendar () {
    
    // const authorized = useSelector((state) => state.calendar);
    const authorized = true;
+
+   //-------------creo dato startDateTime
+   const modifDia = dia.replace('/', '-');//paso de 2022/12/12 a 2022-12-12
+   let startDateTime = modifDia+hora;//unifico dia + hora y obtengo startDateTime
+
+   //-----funcion suma 30'
+   function sumaMinutos(hora){
+      let result = '';
+      if(hora === 'T09:00:00.000Z')return result = 'T09:30:00.000Z';
+      if(hora === 'T09:30:00.000Z')return result = 'T10:00:00.000Z';
+      if(hora === 'T10:00:00.000Z')return result = 'T10:30:00.000Z';
+      if(hora === 'T10:30:00.000Z')return result = 'T11:00:00.000Z';
+      if(hora === 'T11:00:00.000Z')return result = 'T11:30:00.000Z';
+      if(hora === 'T11:30:00.000Z')return result = 'T12:00:00.000Z';
+      if(hora === 'T12:00:00.000Z')return result = 'T12:30:00.000Z';
+      if(hora === 'T12:30:00.000Z')return result = 'T13:00:00.000Z';
+      if(hora === 'T13:00:00.000Z')return result = 'T13:30:00.000Z';
+      if(hora === 'T13:30:00.000Z')return result = 'T14:00:00.000Z';
+      if(hora === 'T14:00:00.000Z')return result = 'T14:30:00.000Z'; 
+   
+   }
+   //----creo dato endDateTime
+   let endH = sumaMinutos(hora);
+   let endDateTime = modifDia+endH;//obtengo  endDateTime -->2022-07-06T11:30:00.000Z
+   //console.log("startDateTime:", startDateTime + '|-|' + endDateTime);
    
    const handleSubmit = (e) => {
       e.preventDefault();
-      let startDateTime = '';
-      let endDateTime = '';
-
+      
       dispatch(createEvent(id, { summary, location, startDateTime, endDateTime }, headers));
    };
 
    
    return (
 
-      <div className="createProperty">
+      <div className={styles.createProperty}>
          <form onSubmit={handleSubmit} id='form'>
             <div className="form">
                   <div className='title'>

@@ -1,15 +1,13 @@
-.contened{   
-    position: relative;
+.contened{ 
     background-color: #fff;
-    min-height: 15rem;
-    align-items: flex-start;
-    display: flex;
-    flex-direction: column; 
+    
+    /* flex-direction: column; */ 
     border-radius: 1rem;
     border: 1px solid #efefef;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    width: 30%;
-    height: 400px;
-    margin-left: 20px;
-    margin-top: 150px;
+    
+    width: 40%;
+}
+.datos{
+    margin-top: 5px;
 }

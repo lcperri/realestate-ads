@@ -1,48 +1,28 @@
 import React from 'react'
 import styles from './styles.module.css'
 import Button from '../../styledComponents/Button'
-import {h2} from '../../styledComponents/GlobalStyles';
+import StyledCard from '../../styledComponents/StyledCard'
 
 export default function UserCard({id, name, lastName, birthday, email, dni, telephone, avatar}){
 
     
     return(
-       <div className={styles.contened}>
+       <StyledCard>
       
         <div className={styles.items}>
            <img src={avatar} />
-        </div>
-                
-        <div>
-           <h2>pepe</h2>         
-        </div>
-        
-        <div>
-          <h1 className='typeCard'>lopez</h1>
-        </div>
+        </div>                
+       
+        <h1 className={styles.nomb}>{name} {lastName}</h1>
+        <h1 className={styles.datos}>{email}</h1>
+        <h1 className={styles.datos}>{dni}</h1>
+        <h1 className={styles.datos}> {telephone}</h1>
+        <h1 className={styles.datos}>{birthday}</h1>
 
-        <div>
-          <h1>dasd@dadasdas.com</h1>
-        </div>
-
-        <div>
-          <h1>29979518</h1>
-        </div>
-
-        <div>
-            <h1> 2281460124</h1>
-        </div>
-
-        <div>
-            <h1>
-               14/01/1983 hab
-            </h1>          
-        </div>
-
-        <div>
+        <div className={styles.datos}>
           <Button>Eliminar</Button>
         </div>
 
-      </div>
+      </StyledCard>
     )
 }
