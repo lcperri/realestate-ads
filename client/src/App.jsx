@@ -18,6 +18,7 @@ import { useDispatch } from 'react-redux/es/exports';
 import { logout } from "./redux/actions";
 import { useEffect } from "react";
 import Contact from "./pages/Contact";
+import Terms from "./components/TermsConditions/Terms";
 
 
 const App = () => {
@@ -51,6 +52,7 @@ const App = () => {
         <Route path="/calendario" element={<Calendar/>} />
         <Route path="/contact" element={<Contact/>} />
         <Route path="/perfil" element={<ProfileDataUpdate/>} />
+        <Route path="/terms" element={<Terms/>} />
         {/* <Route path='*' element={<Home/>} />  */}
       </Routes>
     </>
