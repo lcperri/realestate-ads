@@ -13,10 +13,12 @@ import capitalize from "../../functions/capitalize";
 import './toast.css'
 
 export default function FormContacto() {
-    const [message, setMessage] = useState('Hola, he visto la propiedad y me interesa, quiero comunicarme contigo.')
+    const [input, setInput] = useState({
+        message: 'Hola, he visto la propiedad y me interesa, quiero comunicarme contigo.',
+        date: ''
+    })
     const { id } = useParams() //params solo trae id de propiedad
     const dispatch = useDispatch()
-
     const headers = LoginController()
 
     const userId = localStorage.getItem('id')
@@ -27,14 +29,22 @@ export default function FormContacto() {
     const data = {
         name: user.name + user.lastName,
         email: user.email,
-        message: message,
-        property: id
+        message: input.message,
+        property: id,
+        visitDate: input.date,
     }
 
     useEffect(() => {
         dispatch(GetUserById(userId))
         return () => { dispatch(clear()) }
     }, [])
+    
+    const handleOnChange = (e) => {
+        setInput({
+            ...input,
+            [e.target.name]: e.target.value
+        })
+    }
 
     const onSubmit = () => {
         // toast('Here is your toast.')
@@ -42,22 +52,17 @@ export default function FormContacto() {
         toast.success('¡Le hemos notificado al propietario que deseas comunicarte con él. Pronto recibirás noticias!',
             {
                 icon: '👏',
+                duration: 4000,
                 style: {
                     padding: '20px 20px 20px 20px',
                     borderRadius: '20px',
                     position: 'bottom-center',
-                    background: '#333',
-                    color: '#fff',
                 },
                 className: 'toast'
             }
         )
     }
 
-    const handleOnChange = (e) => {
-        setMessage(e.target.value)
-        toast
-    }
 
     return (
         <DivContainer className='contactForm'>
@@ -76,11 +81,11 @@ export default function FormContacto() {
             </div>
             <div className={styles.inputWrapper}>
                 <label>Mensaje:</label> 
-                <textarea className={styles.descrip} type={'text'} placeholder={'Mensaje:'} value={message} onChange={handleOnChange} />
+                <textarea className={styles.descrip} name='message' type={'text'} placeholder={'Mensaje:'} value={input.message} onChange={handleOnChange} />
             </div>
             <div className={styles.inputWrapper}>
                 <label>Solicitar fecha de visita:</label>
-                <Input className={styles.input} type='date' />
+                <Input className={styles.input} name='date' type='date' value={input.date}/>
             </div>
             <div className={styles.container}>
                 <a href={url}><img src={imagw} className={styles.whatsapp} /></a>
