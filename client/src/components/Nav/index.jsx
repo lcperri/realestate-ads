@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import { NavLink } from 'react-router-dom';
 import Button from '../../styledComponents/Button';
 import { StyledHash, StyledLink } from '../../styledComponents/StyledLink';
@@ -10,11 +10,31 @@ import { logout } from '../../redux/actions';
 import { useNavigate } from 'react-router-dom';
 import Logo from '../../dumb/Icons/Logo';
 
+import {useSelector } from "react-redux";
+
 
 const Nav = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
+
+
+  //Este es un cambio para forzar un renderizado cuando se cambia nombre o apellido en Perfil
+
+  var [ChangeInNavBarName, setChangeInNavBarName] = useState("")
+  let userData = useSelector((state) => state.userById);
+
+  useEffect(() => {    
+    
+    
+    setChangeInNavBarName(userData)
+   
+  }, [userData]);
+
+  //************************ */
+
+
+
 
   const range = localStorage.getItem('range');
   const id = localStorage.getItem('id');
@@ -65,12 +85,18 @@ const Nav = () => {
       <div className='subContainerRight'>
         {!range &&
           <>
+          {
+            location.pathname.split('/')[1] !== 'sesion' &&
             <StyledLink to={'/sesion'}>
               <Button>Iniciar Sesión</Button>
             </StyledLink>
+          }
+          {
+            location.pathname.split('/')[1] !== 'registro' &&
             <StyledLink to={'/registro'}>
               <Button>Registrarse</Button>
             </StyledLink>
+          }
           </>
         }
         {range &&

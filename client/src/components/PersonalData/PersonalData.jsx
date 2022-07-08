@@ -4,23 +4,21 @@ import { getUserById, updateUserById } from "../../redux/actions";
 
 import styles from "./PersonalData.module.css";
 import { validate } from "./validate";
-import LoginController from "../../localStorage/login"
+import LoginController from "../../localStorage/login";
 
-
-
-
+import capitalize from "./../../functions/capitalize";
 
 const PersonalData = () => {
   const dispatch = useDispatch();
   let userData = useSelector((state) => state.userById);
-  
-  
-  const isLoading = useSelector((state) => state.loading)
-  
-  const headers = LoginController()
-  
+
+  const isLoading = useSelector((state) => state.loading);
+
+  const headers = LoginController();
+
   const [input, setInput] = useState({
     email: "",
+    name: "",
     lastName: "",
     birthday: "",
     dni: "",
@@ -28,22 +26,20 @@ const PersonalData = () => {
     // avatar: "",
   });
   const [errors, setErrors] = useState({});
-  
+
   const userId = localStorage.getItem("id");
-  useEffect(() => {    
-    
+  useEffect(() => {
     if (userId) {
       dispatch(getUserById(userId));
-    }    
+    }
   }, [userId]);
 
   useEffect(() => {
-    if(userData){
-    setInput({ ...input, ...userData })}
-
+    if (userData) {
+      setInput({ ...input, ...userData });
+    }
   }, [userData]);
 
-  
   function handleChange(e) {
     setInput({
       ...input,
@@ -58,12 +54,17 @@ const PersonalData = () => {
   }
 
   function handleSubmit(e) {
-    e.preventDefault();    
+    e.preventDefault();
+
+    input.name = input.name.toLowerCase();
+    input.lastName = input.lastName.toLowerCase();
+
     dispatch(updateUserById(userId, input, headers));
-    alert('Datos personales actualizados.')
-    dispatch(getUserById(userId))
-    
-   
+    alert("Datos personales actualizados.");
+
+    dispatch(getUserById(userId));
+    localStorage.setItem("name", input.name);
+    localStorage.setItem("last-name", input.lastName);
   }
 
   return (
@@ -87,7 +88,7 @@ const PersonalData = () => {
           name="name"
           placeholder="Nombre"
           className={styles.input}
-          value={input.name}
+          value={capitalize(input.name)}
           onChange={handleChange}
         />
       </div>
@@ -99,7 +100,7 @@ const PersonalData = () => {
           name="lastName"
           placeholder="Apellido"
           className={styles.input}
-          value={input.lastName}
+          value={capitalize(input.lastName)}
           onChange={handleChange}
         />
       </div>
