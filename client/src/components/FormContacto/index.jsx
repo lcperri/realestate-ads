@@ -72,7 +72,7 @@ export default function FormContacto() {
             </div>
             <div className={styles.inputWrapper}>
                 <label> Nombres:</label>
-                <Input className={styles.input} type={'text'} placeholder={'Nombre'} value={capitalize(user.name + ' ' + (user.lastName))} disabled='true' />
+                <Input className={styles.input} type={'text'} placeholder={'Nombre'} value={capitalize(user.name + ' ' + user.lastName)} disabled='true' />
             </div>
             <div className={styles.inputWrapper}>
                <label>Teléfono:</label> 
