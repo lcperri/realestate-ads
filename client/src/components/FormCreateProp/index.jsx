@@ -15,6 +15,7 @@ import { regExps } from "../FormElements/regExpressions";
 import toast, { Toaster } from 'react-hot-toast';
 import Swal from "sweetalert2";
 import {useNavigate } from "react-router-dom";
+import Title from "../../styledComponents/Title";
 
 export default function FormCreateProp() {
     //para las cards:
@@ -110,13 +111,14 @@ export default function FormCreateProp() {
             setErrorsFirstCard(false)
         else
             setErrorsFirstCard(true)
+        
         //2da card
         if (price.valid === 'true' && operation.valid === 'true')
             setErrorsSecondCard(false)
         else
             setErrorsSecondCard(true)
+
         //3ra card
-        
         //valida campos obligatorios
         if (
             type.valid === 'true' && 
@@ -134,9 +136,6 @@ export default function FormCreateProp() {
             renovationDate.valid === 'false'
         )   setErrorsThirdCard(true)
         
-
-        
-
     }, [city, neighbourhood, address, price, operation, type, area, rooms, bathrooms, parkingSlot, constructionDate, renovationDate])
 
     //términos y condiciones:
@@ -153,13 +152,10 @@ export default function FormCreateProp() {
                         valid: 'false'    
                     }
                 })
-                console.log('falsee');
             } else {
                 console.log('renovation es mayor');
             }
         }
-        
-
     }
 
     //valida todos los inputs y selects del form cuando hago click en términos:
@@ -184,12 +180,12 @@ export default function FormCreateProp() {
     }, [termsAndConditions])
     
     return (
-        <div className="createProperty">
+        <div className="bodyCreateProperty">
             <form onSubmit={handleOnSubmit} id='form'>
                 <div className="form">
-                    <div className='title'>
+                    <Title>
                         PUBLICA TU INMUEBLE
-                    </div>
+                    </Title>
                     {contador === 0 &&
                         <DivContainer className="create">
                             {/* <div className='subContainerCreate'> */}

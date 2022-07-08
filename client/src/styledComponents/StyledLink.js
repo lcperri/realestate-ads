@@ -3,17 +3,18 @@ import { Link } from 'react-router-dom'
 import { HashLink } from 'react-router-hash-link'
 
 export const StyledLink = styled(Link)`
-    color: #fff;
+    color: #ff765e;
     text-decoration: none;
-    font-size: 15px;    
+    font-size: 15px;
+    padding: 4px;
     &:visited {
-        color:#fff;
+        color:#ff765e;
     }
     &:link {
-        color:#fff;
+        color:#ff765e;
     }
     &:hover {
-        color: #ff765e;
+        font-weight: 600;
     }
 `
 
