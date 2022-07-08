@@ -1,10 +1,7 @@
 import React from 'react'
-import StyledText from '../../styledComponents/StyledText'
-import StyledCard from '../../styledComponents/StyledCard'
-import BathIcon from '../Icons/Bath'
-import RoomIcon from '../Icons/Room'
-import AreaIcon from '../Icons/Area'
 import styles from './styles.module.css'
+import Button from '../../styledComponents/Button'
+import {h2} from '../../styledComponents/GlobalStyles';
 
 export default function UserCard({id, name, lastName, birthday, email, dni, telephone, avatar}){
 
@@ -17,7 +14,7 @@ export default function UserCard({id, name, lastName, birthday, email, dni, tele
         </div>
                 
         <div>
-           <h1>pepe</h1>         
+           <h2>pepe</h2>         
         </div>
         
         <div>
@@ -40,6 +37,10 @@ export default function UserCard({id, name, lastName, birthday, email, dni, tele
             <h1>
                14/01/1983 hab
             </h1>          
+        </div>
+
+        <div>
+          <Button>Eliminar</Button>
         </div>
 
       </div>

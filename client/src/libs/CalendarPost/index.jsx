@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
 
 import styles from './styles.module.css';
@@ -11,23 +11,30 @@ import DivContainer from "../../styledComponents/DivContainer";
 import { createEvent } from "../../redux/actions"; 
 /*import CalendarCards from './../CalendarCards'; */
 import LoginController from './../../localStorage/login';
+import { useParams } from 'react-router-dom';
 
 export default function Calendar () {
    const dispatch = useDispatch();
    const id = localStorage.getItem('id');
    const headers = LoginController();
-
-   const [ summary, setSummary ] = useState('');
-   const [ location, setLocation ] = useState('');
-   const [ startDateTime, setStartDateTime ] = useState('');
-   const [ time, setTime ] = useState('');
+   const {id:location} = useParams();
+   
+   const [ summary, setSummary ] = useState('');      
+   const [ dia, setDia ] = useState('');
+   const [ hora, setHora ] = useState('');
+   
    // const authorized = useSelector((state) => state.calendar);
    const authorized = true;
    
    const handleSubmit = (e) => {
       e.preventDefault();
-      dispatch(createEvent(id, { summary, location, startDateTime }, headers));
-   }
+      let startDateTime = '';
+      let endDateTime = '';
+
+      dispatch(createEvent(id, { summary, location, startDateTime, endDateTime }, headers));
+   };
+
+   
    return (
 
       <div className="createProperty">
@@ -43,48 +50,47 @@ export default function Calendar () {
                            <>
                
                               <Label className={styles.label}>Motivo</Label>
-                              <Select  className={styles.selectMotivo}                     
-                                 type='text'
+                              <Select  className={styles.selectMotivo}                
                                  id='summary'
                                  value={summary}
-                                 onChange={(e) => setSummary(e.target.value)}>
-                                 <option value="Visita venta Mikasa Nueva">Compra</option>
-                                 <option value="Visita alquiler Mikasa Nueva">Alquiler</option>
-                              </Select>
+                                 onChange={(e) => setSummary(e.target.value)}
+                              >
+                                 <option value={null}>Motivo</option>
+                                 <option value={"Visita venta Mikasa Nueva"}>Vender</option>
+                                 <option value={"Visita alquiler Mikasa Nueva"}>Rentar</option>
+                                                                 
+                              </Select>                            
 
-                              <Label  className={styles.label}>Propiedad</Label>
-                              <Input  className={styles.input}
-                                 type='text'
-                                 id='location'
-                                 value={location}
-                                 onChange={(e) => setLocation(e.target.value)}>
-                              </Input>                              
-
-                              <Label className={styles.horarioLabel}>Horario de visita: de 09 a 18hs - 30min por Visita</Label>
+                              <Label className={styles.horarioLabel}>Horario de visita: de 09 a 14hs - 30min por Visita</Label>
                               
                               <Label className={styles.label}>Seleccione día de la visita:</Label>
-                              <Input className={styles.input}
+                              <Input className={styles.inputDia}
                                  type= "date"/* "datetime-local" */ 
-                                 id='startDateTime'
-                                 value={startDateTime}
-                                 onChange={(e) => setStartDateTime(e.target.value)}>
+                                 id='dia'
+                                 value={dia}
+                                 onChange={(e) => setDia(e.target.value)}>
                               </Input>
                                                
-                              <Label className={styles.input}>Seleccione horario: </Label>
-                              {/* <Input className={styles.input}
-                                 type="time" name="hora" min="09:00" max="18:00" step="1800" 
-                                 id='time'
-                                 value={time}
-                                 onChange={(e) => setTime(e.target.value)}>
-                              </Input> */}
-                              <Select className={styles.selectHorario}
+                              <Label className={styles.input}>Seleccione horario: </Label>                              
+                              <Select  className={styles.selectHorario}
                                  type='text'
-                                 id='time'
-                                 value={time}
-                                 onChange={(e) => setTime(e.target.value)}>
-                                 <option value="09:00:00">09:00:00</option>
-                                 <option value="09:30:00">09:30:00</option>
-                                 <option value="10:00:00">10:00:00</option>
+                                 id='hora'
+                                 value={hora}
+                                 onChange={(e) => {setHora(e.target.value)}}
+                              >
+                                 <option value={null}>Horarios</option>
+                                 <option value={"T09:00:00.000Z"}>09:00:00</option>
+                                 <option value={"T09:30:00.000Z"}>09:30:00</option>
+                                 <option value={"T10:00:00.000Z"}>10:00:00</option>
+                                 <option value={"T10:30:00.000Z"}>10:30:00</option>
+                                 <option value={"T11:00:00.000Z"}>11:00:00</option>
+                                 <option value={"T11:30:00.000Z"}>11:30:00</option>
+                                 <option value={"T12:00:00.000Z"}>12:00:00</option>
+                                 <option value={"T12:30:00.000Z"}>12:30:00</option>
+                                 <option value={"T13:00:00.000Z"}>13:00:00</option>
+                                 <option value={"T13:30:00.000Z"}>13:30:00</option>
+                                 <option value={"T14:00:00.000Z"}>14:00:00</option>
+                                                                 
                               </Select>
 
                               <br/>

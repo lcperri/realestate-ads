@@ -1,6 +1,14 @@
 
-
+.selectMotivo, .selectHorario, .inputDia{
+    width: 430px;
+}
+.horarioLabel{
+    margin-top: 10px;
+    color: rgb(230, 38, 51);
+    font-size: 20px;
+}
 .btnVisita {
     position: relative;
+    margin-top: 30px;
     margin-left: 230px;        
 }

@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import Create from "./pages/Create";
 import Details from "./pages/Details";
 import Loader from "./pages/Loader";
-import UserCreate from "./components/User";
+import UserCreate from "./components/UserCreate";
 import UserCard from "./dumb/CardUser";
 import Login from "./pages/Login";
 import Nav from "./components/Nav/index";
@@ -48,7 +48,7 @@ const App = () => {
         <Route path="/planes" element={<Planes />} />
         <Route path="/favoritos" element={<Favoritos />} />
         <Route path="/mispropiedades" element={<MisPropsPV />} />
-        <Route path="/calendario" element={<CalendarPost />} />
+        <Route path="/calendario/:id" element={<CalendarPost />} />
         <Route path="/calendarCards" element={<CalendarCards />} />
         <Route path="/administrador" element={<Users />} />
         <Route path="/perfil" element={<ProfileDataUpdate />} />
