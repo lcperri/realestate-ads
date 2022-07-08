@@ -19,6 +19,7 @@ import { logout } from "./redux/actions";
 import { useEffect } from "react";
 import Users from "./pages/Users";
 import CalendarCards from "./libs/CalendarCards";
+import Contact from "./pages/Contact";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -50,6 +51,7 @@ const App = () => {
         <Route path="/mispropiedades" element={<MisPropsPV />} />
         <Route path="/calendario/:id" element={<CalendarPost />} />
         <Route path="/calendarCards" element={<CalendarCards />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/administrador" element={<Users />} />
         <Route path="/perfil" element={<ProfileDataUpdate />} />
 
