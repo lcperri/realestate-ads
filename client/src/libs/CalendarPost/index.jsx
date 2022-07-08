@@ -23,8 +23,8 @@ export default function Calendar () {
    const [ dia, setDia ] = useState('');
    const [ hora, setHora ] = useState('');
    
-   // const authorized = useSelector((state) => state.calendar);
-   const authorized = true;
+   const authorized = useSelector((state) => state.calendar);
+   // const authorized = true;
 
    //-------------creo dato startDateTime
    const modifDia = dia.replace('/', '-');//paso de 2022/12/12 a 2022-12-12
@@ -49,7 +49,6 @@ export default function Calendar () {
    //----creo dato endDateTime
    let endH = sumaMinutos(hora);
    let endDateTime = modifDia+endH;//obtengo  endDateTime -->2022-07-06T11:30:00.000Z
-   //console.log("startDateTime:", startDateTime + '|-|' + endDateTime);
    
    const handleSubmit = (e) => {
       e.preventDefault();
