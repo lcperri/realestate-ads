@@ -152,7 +152,6 @@ export default function FormCreateProp() {
                         valid: 'false'    
                     }
                 })
-                console.log('falsee');
             } else {
                 console.log('renovation es mayor');
             }
