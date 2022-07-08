@@ -58,7 +58,6 @@ export default function FormContacto() {
                     borderRadius: '20px',
                     position: 'bottom-center',
                 },
-                className: 'toast'
             }
         )
     }

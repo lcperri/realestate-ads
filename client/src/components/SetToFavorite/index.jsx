@@ -17,18 +17,30 @@ const SetToFavortie = ({ idProperty, user }) => {
 
     const setFavourite = (userId, idProperty) => {
         if (fav) {
-            toast.success('Se ha quitado de tus favoritos.')
+            toast.success('Se ha quitado de tus favoritos.',
+            {
+                style: {
+                    padding: '10px',
+                    borderRadius: '20px',
+                },
+            })
             setFav(false)
         } else {
+            toast.success('Se ha añadido a tus favoritos!',
+            {
+                style: {
+                    padding: '10px',
+                    borderRadius: '20px',
+                },
+            })
             setFav(true)
-            toast.success('Se ha añadido a tus favoritos!')
         }
         dispatch(addToUserFavourites(userId, { property: idProperty }, headers))
     }
 
     return (
         <button key={idProperty} onClick={() => setFavourite(user._id, idProperty)}>
-            <Heart width='28' height='28' fill={fav ? 'red' : 'white'} onHover='red' />
+            <Heart width='28' height='28' fill={fav ? '#ff274e' : 'white'} onHover='#ff274e' />
             <Toaster />
         </button>
     )
