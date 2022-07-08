@@ -1,36 +1,28 @@
-import React, { useEffect } from "react";
-import './UserCard.css'
-import { useDispatch, useSelector } from "react-redux/es/exports";
-import { getAllUsers } from '../../redux/actions';
+import React from 'react'
+import styles from './styles.module.css'
+import Button from '../../styledComponents/Button'
+import StyledCard from '../../styledComponents/StyledCard'
 
-export default function UserCard(/* {id, name, lastName, birthday, email, dni, telephone, avatar} */){
+export default function UserCard({id, name, lastName, birthday, email, dni, telephone, avatar}){
 
-    const allUsers = useSelector(state => state.users);
-    const dispatch = useDispatch();
-    //-------------------------
-    const id_user = "62b74bb91ac8e14f67b57b87";
-    let user = allUsers.find(u => u._id === id_user);
-    //------------------------
-
-    useEffect(()=>{
-        dispatch(getAllUsers());
-    },[dispatch]);
-
+    
     return(
-        <div className="cont-gral">
-        {
-            user ? 
-            (<div className="cont-pokeCard">
-                <p className="user">{user.name.toUpperCase()} {user.lastName.toUpperCase()}</p>
-                <img src={user.avatar} alt={"Img not found"} className={"foto"}/>       
-                <p className="user">{user.birthday}</p>
-                <p className="user">{user.email}</p>
-                <p className="user">{user.dni}</p>
-                <p className="user">{user.telephone}</p>   
-            </div>) : 
-            (<div><h1>Not found</h1></div>)
-            
-        }            
+       <StyledCard>
+      
+        <div className={styles.items}>
+           <img src={avatar} />
+        </div>                
+       
+        <h1 className={styles.nomb}>{name} {lastName}</h1>
+        <h1 className={styles.datos}>{email}</h1>
+        <h1 className={styles.datos}>{dni}</h1>
+        <h1 className={styles.datos}> {telephone}</h1>
+        <h1 className={styles.datos}>{birthday}</h1>
+
+        <div className={styles.datos}>
+          <Button>Eliminar</Button>
         </div>
+
+      </StyledCard>
     )
 }
