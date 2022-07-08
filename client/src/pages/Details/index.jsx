@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
 import AreaIcon from "../../dumb/Icons/Area";
 import BathIcon from "../../dumb/Icons/Bath";
 import RoomIcon from "../../dumb/Icons/Room";
@@ -38,7 +37,6 @@ const Details = () => {
 
   const property = useSelector((state) => state.property);
   const userId = localStorage.getItem('id')
-
   const { id } = useParams(); //id de propiedad
 
   useEffect(() => {

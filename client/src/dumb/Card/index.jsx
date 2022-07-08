@@ -8,11 +8,10 @@ import { DivRow } from '../../styledComponents/DivRow'
 import { useDispatch, useSelector } from 'react-redux'
 import house from '../../assets/house.png'
 import apartment from '../../assets/apartment.png'
-import SetToFavortie from '../SetToFavorite'
+import SetToFavortie from '../../components/SetToFavorite'
 
-const Card = ({ _id, address, city, area, type, rooms, status, bathrooms, price, operation, pictures }) => {
-  const userId = localStorage.getItem('id')
-
+const Card = ({ _id, user, address, city, area, type, rooms, status, bathrooms, price, operation, pictures }) => {
+  
   return (
     <>
       <StyledLinkCard to={`/${_id}`}>
@@ -53,7 +52,7 @@ const Card = ({ _id, address, city, area, type, rooms, status, bathrooms, price,
       <blockquote>
         <StyledText className='statusCard'>{status === 'available' ? 'Disponible' : 'Reservado'}</StyledText>
       </blockquote>
-      { userId && <SetToFavortie idProperty={_id} userId={userId}/>}
+      { user._id && <SetToFavortie idProperty={_id} user={user}/> }
     </>
   )
 }
