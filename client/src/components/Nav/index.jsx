@@ -29,7 +29,7 @@ const Nav = () => {
   const logoutFunction = (e) => {
     e.preventDefault();
     dispatch(logout());
-    navigate('/home');
+    navigate('/');
   }
 
   return (
