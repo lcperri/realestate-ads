@@ -1,24 +1,26 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import styles from './styles.module.css';
 import { createUser } from '../../redux/actions';
 import DivContainer from "../../styledComponents/DivContainer";
 //import Cloudinary from "../Cloudinary";
 import Button from "../../styledComponents/Button"
-import Select from "../FormElements/Select";
+import Select from "../../components/FormElements/Select";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { TermsAndConditions, SubmitContainer, MensajeError, Label } from "../../styledComponents/StyledFormElements";
 import { faCircleExclamation } from '@fortawesome/free-solid-svg-icons'
-import Input from "../FormElements/Input";
-import { regExps } from "../FormElements/regExpressions";
+import Input from "../../components/FormElements/Input";
+import { regExps } from "../../components/FormElements/regExpressions";
 import Swal from "sweetalert2";
 import {useNavigate } from "react-router-dom";
+import GoogleAuthenticator from "../../libs/GoogleAuthentication";
 
 //name,lastName,password,birthday,email,dni,telephone,range
 
 export default function UserCreate(){
-
+    const logged = useSelector((state) => state.logged);
+    
     //para las tarjetas
     const[contador,setContador] = useState(0);    
     const [errorsFirstCard, setErrorsFirstCard] = useState(true);
@@ -125,6 +127,12 @@ export default function UserCreate(){
         ) setFormOk(true)
         else setFormOk(false)
     }, [termsAndConditions]);
+
+    useEffect(() => {
+        if (logged) {
+          navigate('/home');
+        }
+      }, [logged]);
 
     return(
         <div className="createProperty">

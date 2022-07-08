@@ -1,46 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import StyledText from '../../styledComponents/StyledText'
-import StyledCard from '../../styledComponents/StyledCard'
 import BathIcon from '../Icons/Bath'
 import RoomIcon from '../Icons/Room'
 import AreaIcon from '../Icons/Area'
-import styles from './styles.module.css'
-import { Heart } from '../Icons/Heart'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { StyledLinkCard } from '../../styledComponents/StyledLink'
 import { DivRow } from '../../styledComponents/DivRow'
-import { getFavourites } from '../../redux/actions'
 import { useDispatch, useSelector } from 'react-redux'
-// import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro'
-import LoginController from '../../localStorage/login'
+import house from '../../assets/house.png'
+import apartment from '../../assets/apartment.png'
+import SetToFavortie from '../../components/SetToFavorite'
 
-const Card = ({ _id, address, city, area, type, rooms, status, bathrooms, price, operation, pictures }) => {
-  const dispatch = useDispatch()
-  const userId = localStorage.getItem('id')
-  const user = useSelector(state => state.user)
-  const headers = LoginController()
-  const [fav, setFav] = useState(false)
-
-  useEffect (() => {
-    if (userId) {
-      if (user.favourites?.includes(_id)) {
-        setFav(true)
-      } else {
-        setFav(false)
-      }
-    }
-  }, [user])
-
-  const setFavourite = (e) => {
-    e.preventDefault()
-
-    dispatch(getFavourites(userId, {property: _id}, headers))
-  }
-
+const Card = ({ _id, user, address, city, area, type, rooms, status, bathrooms, price, operation, pictures }) => {
+  
   return (
     <>
       <StyledLinkCard to={`/${_id}`}>
-        <img src={pictures[0]} />
+        <img src={pictures[0] || (type.toLowerCase().includes('casa') ? house : apartment) } />
         <DivRow justCont='space-between'>
           <DivRow>
             <h2>
@@ -77,10 +52,7 @@ const Card = ({ _id, address, city, area, type, rooms, status, bathrooms, price,
       <blockquote>
         <StyledText className='statusCard'>{status === 'available' ? 'Disponible' : 'Reservado'}</StyledText>
       </blockquote>
-      { userId && 
-        <button onClick={(e) => setFavourite(e)}>
-          <Heart width='28' height='28' fill={fav ? 'red': 'white'} />
-        </button>}
+      { user._id && <SetToFavortie idProperty={_id} user={user}/> }
     </>
   )
 }

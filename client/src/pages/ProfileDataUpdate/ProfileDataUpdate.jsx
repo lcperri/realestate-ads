@@ -17,7 +17,7 @@ const ProfileDataUpdate = () => {
 
         {isButton === "Data" && <PersonalData />}
         {isButton === "Pass" && <PasswordUpdate />}
-        {isButton === "email" && <EmailUpdate />}
+        {/* {isButton === "email" && <EmailUpdate />} */}
       </div>
     </div>
   );

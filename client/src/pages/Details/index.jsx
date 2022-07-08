@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
 import AreaIcon from "../../dumb/Icons/Area";
 import BathIcon from "../../dumb/Icons/Bath";
 import RoomIcon from "../../dumb/Icons/Room";
@@ -18,29 +17,30 @@ import StyledText from "../../styledComponents/StyledText";
 import Map from "../../libs/Map";
 import Button from "../../styledComponents/Button";
 import styles from "./styles.module.css";
-import { getownersphone } from "../../redux/actions";
-import { getPropertyById, getAllUsers, clear } from "../../redux/actions";
+import { getownersphone, GetUserById } from "../../redux/actions";
+import { getPropertyById, clear } from "../../redux/actions";
 import getCoordenates from "../../functions/getCoordenates";
 import FormContacto from "../../components/FormContacto";
-//import capitalize from "../../functions/capitalize";
+import { DivRow } from "../../styledComponents/DivRow";
+import { StyledLink } from "../../styledComponents/StyledLink";
+import BackButton from "../../dumb/BackButton";
+import capitalize from "../../functions/capitalize";
+import house from '../../assets/house.png'
+import apartment from '../../assets/apartment.png'
 
 const Details = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [clickedImg, setClickedImg] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(null);
-  const { id } = useParams();
-  const property = useSelector((state) => state.property);
   const [coordenate, setCoordenate] = useState();
 
-  const telephone = useSelector(state => state.user);
-  let tel = telephone;
-
+  const property = useSelector((state) => state.property);
+  const userId = localStorage.getItem('id')
+  const { id } = useParams(); //id de propiedad
 
   useEffect(() => {
     dispatch(getPropertyById(id));
-    // eslint-disable-next-line
-    dispatch(getAllUsers());
     return () => dispatch(clear());
   }, []);
 
@@ -48,11 +48,11 @@ const Details = () => {
     getCoordenates(property.address + " " + property.city)
       .then((data) => setCoordenate(data))
       .catch((err) => console.log(err));
-  }, [property]);  
-  
-  useEffect(()=>{
+  }, [property]);
+
+  useEffect(() => {
     dispatch(getownersphone(id));
- },[dispatch,id]);
+  }, [dispatch, id]);
 
   const handleClick = (item, index) => {
     setCurrentIndex(index);
@@ -98,15 +98,18 @@ const Details = () => {
       <DivContainer className="detail">
         <h1>Imágenes:</h1>
         <GalleryDetailsContainer>
-          {property.pictures?.map((e, index) => (
-            <GalleryDetails key={e}>
-              <img
-                src={e}
-                alt="Propiedad en venta o alquiler"
-                onClick={() => handleClick(e, index)}
-              />
-            </GalleryDetails>
-          ))}
+          {property.pictures?.length > 0 
+            ? property.pictures.map((e, index) => (
+              <GalleryDetails key={e}>
+                <img
+                  src={e === '' ? property.type.toLowerCase().includes('casa') ? house : apartment : e}
+                  alt="Propiedad en venta o alquiler"
+                  onClick={() => handleClick(e, index)}
+                />
+              </GalleryDetails>
+            ))
+            : <img src={property.type === 'Casa' ? house : apartment} />
+          }
         </GalleryDetailsContainer>
         <div className={styles.statusOperation}>
           <StyledText className="operationDetail">
@@ -121,7 +124,7 @@ const Details = () => {
             <div className={styles.priceWrapper}>
               Desde: $
               {property.operation === "rent"
-                ? ` ${property.price} USD/Mes    ¡Alquílalo ahora!`
+                ? ` ${property.price} USD/Mes ¡Alquílalo ahora!`
                 : ` ${property.price} ¡Adquiérelo ahora!`}
             </div>
             <h1>Dirección:</h1>
@@ -168,9 +171,27 @@ const Details = () => {
               </div>
             </div>
           </div>
-          {/*formulario contacto */}
           <div className={styles.contact_subWrapper}>
-            <FormContacto tel={tel}/>
+            {userId
+              ? <FormContacto />
+              : <div>
+                <h4>
+                  Te gusta esta propiedad?
+                  No pierdas la oportunidad de {property.operation === 'rent' ? 'alquilarla.' : 'adquirirla.'} <br />
+                  Inicia sesión o regístrate gratis para comunicarte con el propietario.
+                </h4>
+                <DivRow padding='10px 10px 10px 10px' justCont='center'>
+                  <StyledLink to='/sesion' url={id}>
+                    <Button>
+                      Iniciar sesión
+                    </Button>
+                  </StyledLink>
+                  <StyledLink to='/registro'>
+                    registrarse
+                  </StyledLink>
+                </DivRow>
+              </div>
+            }
           </div>
         </div>
         <h1>Ubicación:</h1>
@@ -182,12 +203,7 @@ const Details = () => {
         </Button>
       </div>
       <div className={styles.btnBackTop}>
-        <Button
-          className="btnBackTopDetail"
-          onClick={() => navigate("/home", { replace: true })}
-        >
-          {"<"}
-        </Button>
+        <BackButton />
       </div>
       {clickedImg && (
         <Modal

@@ -1,0 +1,7 @@
+.toast {
+    font-size: '40px';
+    border-radius: '20px';
+    position: 'bottom-center';
+    background: '#333';
+    color: '#fff';
+}
