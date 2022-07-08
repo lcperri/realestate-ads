@@ -9,17 +9,16 @@ import LoginController from "../../localStorage/login"
 
 
 
-const userId = localStorage.getItem("id");
 
 const PersonalData = () => {
   const dispatch = useDispatch();
   let userData = useSelector((state) => state.userById);
-
+  
   
   const isLoading = useSelector((state) => state.loading)
-
+  
   const headers = LoginController()
-
+  
   const [input, setInput] = useState({
     email: "",
     lastName: "",
@@ -29,16 +28,18 @@ const PersonalData = () => {
     // avatar: "",
   });
   const [errors, setErrors] = useState({});
-
-  useEffect(() => {
+  
+  const userId = localStorage.getItem("id");
+  useEffect(() => {    
+    
     if (userId) {
       dispatch(getUserById(userId));
-    }
+    }    
   }, [userId]);
 
   useEffect(() => {
-    
-    setInput({ ...userData })
+    if(userData){
+    setInput({ ...input, ...userData })}
 
   }, [userData]);
 
@@ -105,7 +106,7 @@ const PersonalData = () => {
       {errors.lastName && (
         <span className={styles.errospan}>{errors.lastName}</span>
       )}
-      <div className={styles.inputcontainer}>
+      {/* <div className={styles.inputcontainer}>
         <label className={styles.label}>Cumpleaños:</label>
         <input
           type="date"
@@ -116,9 +117,9 @@ const PersonalData = () => {
           value={input.birthday}
           onChange={handleChange}
         />
-      </div>
+      </div> */}
 
-      <div className={styles.inputcontainer}>
+      {/* <div className={styles.inputcontainer}>
         <label className={styles.label}>DNI:</label>
         <input
           type="number"
@@ -128,7 +129,7 @@ const PersonalData = () => {
           value={input.dni}
           onChange={handleChange}
         />
-      </div>
+      </div> */}
       {errors.dni && <span className={styles.errospan}>{errors.dni}</span>}
       <div className={styles.inputcontainer}>
         <label className={styles.label}>Telefono:</label>

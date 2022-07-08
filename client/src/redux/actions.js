@@ -152,14 +152,14 @@ export function createProperty(info) {
   };
 }
 
-export function getAllUsers() {
+export function getAllUsers(headers) {
   return async function (dispatch) {
     dispatch({ type: LOADING });
-    const resp = await axios.get(`${url}/user`);
+    const resp = await axios.get(`${url}/user`, headers);
     return dispatch({ type: ALL_USERS, payload: resp.data });
   };
 }
-
+export function deleteUser(){}
 export function createUser(data) {
   return async function (dispatch) {
     dispatch({ type: LOADING });

@@ -6,7 +6,7 @@ import LoginController from "../../localStorage/login"
 import styles from "./PasswordUpdate.module.css";
 import { validate } from "./validate";
 
-const userId = localStorage.getItem("id");
+
 
 
 const PasswordUpdate = () => {
@@ -15,23 +15,32 @@ const PasswordUpdate = () => {
 
   const [input, setInput] = useState({});
   const [errors, setErrors] = useState({});
+  const [passInicial, setpassInicial] = useState("");
 
   const headers = LoginController()
-  let passInicial = userData.password;
+  const userId = localStorage.getItem("id");
+
+  
+
+
 
   useEffect(() => {
-    if (userId) {
+    
       dispatch(getUserById(userId));
-    }
+    
   }, [userId]);
 
 
 
 
 
-  // useEffect(() => {
-  //   setInput(emailInicial);
-  // }, []);
+  useEffect(() => {
+    if(userData){
+      setpassInicial(userData.password);
+     ;
+    }
+
+  }, [userData]);
 
   function handleChange(e) {
     setInput({
@@ -48,12 +57,10 @@ const PasswordUpdate = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    // dispatch(postPoke(input))
-    // alert('Pokemon creado.')
-    // passInicial = input;
+    
     dispatch(updateUserById(userId,{ password: input.newpassword}, headers));  
     
-    passInicial=input.newpassword
+    
     setInput({
       
         

@@ -24,8 +24,8 @@ const initialState = {
   pages: [1, 1, 10],
   property: {},
   city: "",
-  users: [],
-  user: {},
+  users:[],
+  user:{},
   calendar: false,
   cardsCalendary: [
     {

@@ -52,7 +52,20 @@ const regExps = {
     password: {
         regExp: /^.{6,24}$/,
         errorLeyend: 'La contraseña debe tener entre 6 y 24 caracteres.'
-    }
+    },
+    name: {
+        regExp: /^[a-zA-Z\s]*$/,
+        errorLeyend: 'Ingrese solo caracteres.'
+    },
+    lastName: {
+        regExp: /^[a-zA-Z\s]*$/,
+        errorLeyend: 'Ingrese solo caracteres.'
+    },
+    dni: { 
+        regExp: /^[0-9][0-9]{1,}$/, //solo numeros
+        errorLeyend: 'Sólo se permiten números y hasta 8 digitos.'
+    },
+    
 }
 
 export { regExps } 

@@ -12,7 +12,11 @@ const userId = localStorage.getItem("id");
 const EmailUpdate = () => {
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.userById);
-  const [input, setInput] = useState({});
+  const [input, setInput] = useState({  inicialemail:"",
+                                        newemail: "",
+                                        repeatemail: "",
+                                      });
+                                      
   const [errors, setErrors] = useState({});
 
   const headers = LoginController()
@@ -24,13 +28,15 @@ const EmailUpdate = () => {
   }, [userId]);
 
   useEffect(() => {
+    if(userData){
+    
     setInput(
       {
         ...input,
         inicialemail: userData.email,
         newemail: "",
         repeatemail: "",
-      });
+      });}
   }, [userData]);  
 
   function handleChange(e) {
