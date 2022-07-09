@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "../../styledComponents/Button";
 import DivContainer from "../../styledComponents/DivContainer";
@@ -10,13 +10,18 @@ import { clear, GetUserById, contactForm } from "../../redux/actions";
 import LoginController from "../../localStorage/login";
 import toast, { Toaster } from "react-hot-toast";
 import capitalize from "../../functions/capitalize";
+import LabelRed from '../../styledComponents/LabelRed'
+import StyledText from "../../styledComponents/StyledText";
 import './toast.css'
+import { StyledLink } from "../../styledComponents/StyledLink";
 
 export default function FormContacto() {
+    const ref = useRef(null);
     const [input, setInput] = useState({
         message: 'Hola, he visto la propiedad y me interesa, quiero comunicarme contigo.',
         date: ''
     })
+    const [telephone, setTelephone] = useState(true) //habilita o deshabilita input telephone
     const { id } = useParams() //params solo trae id de propiedad
     const dispatch = useDispatch()
     const headers = LoginController()
@@ -30,15 +35,34 @@ export default function FormContacto() {
         name: user.name + user.lastName,
         email: user.email,
         message: input.message,
-        property: id,
-        visitDate: input.date,
+        property: id
     }
 
     useEffect(() => {
         dispatch(GetUserById(userId))
         return () => { dispatch(clear()) }
     }, [])
-    
+
+    useEffect(() => {
+        if (user.telephone && user.telephone !== 0 ){
+            setTelephone(true)
+            setInput({
+                ...input,
+                phoneNumber: user.telephone
+            })
+        } else if (user.telephone === 0) {
+            setTelephone(false)
+            setInput({
+                ...input,
+                phoneNumber: ''
+            })
+        }
+    }, [user])
+
+    useEffect(() => {
+        telephone === false && ref.current.focus();
+    }, [telephone])
+
     const handleOnChange = (e) => {
         setInput({
             ...input,
@@ -46,15 +70,18 @@ export default function FormContacto() {
         })
     }
 
+    const editPhone = () => {
+        setTelephone(false)
+    }
+
     const onSubmit = () => {
-        // toast('Here is your toast.')
         dispatch(contactForm(data, headers))
         toast.success('¡Le hemos notificado al propietario que deseas comunicarte con él. Pronto recibirás noticias!',
             {
                 icon: '👏',
                 duration: 4000,
                 style: {
-                    padding: '20px 20px 20px 20px',
+                    padding: '20px 25px 20px 25px',
                     borderRadius: '20px',
                     position: 'bottom-center',
                 },
@@ -62,34 +89,35 @@ export default function FormContacto() {
         )
     }
 
-
     return (
         <DivContainer className='contactForm'>
             <h1 className={styles.titulo}>Formulario de contacto</h1>
             <div className={styles.inputWrapper}>
-                <label> Email:</label>
+                <label> Email: <LabelRed><LabelRed>*</LabelRed></LabelRed></label>
                 <Input className={styles.input} type={'text'} placeholder={'Email'} value={user.email} disabled='true'></Input>
             </div>
             <div className={styles.inputWrapper}>
-                <label> Nombres:</label>
-                <Input className={styles.input} type={'text'} placeholder={'Nombre'} value={capitalize(user.name + ' ' + (user.lastName))} disabled='true' />
+                <label> Nombres: <LabelRed>*</LabelRed></label>
+                <Input className={styles.input} type={'text'} placeholder={'Nombre'} value={capitalize(user.name + ' ' + user.lastName)} disabled='true' />
             </div>
             <div className={styles.inputWrapper}>
-               <label>Teléfono:</label> 
-                <Input className={styles.input} type={'text'} placeholder={'Telefono'} value={user.telephone} disabled='true' />
+                <label>Teléfono:
+                    <LabelRed>*</LabelRed>
+                    { user.telephone && user.telephone !== 0 && <Button onClick={() => editPhone()}>Editar</Button> }
+                </label>
+                <Input className={styles.input} ref={ref} name='phoneNumber' type='number' placeholder={'Teléfono'} value={input.phoneNumber} disabled={telephone} onChange={handleOnChange} />
             </div>
             <div className={styles.inputWrapper}>
-                <label>Mensaje:</label> 
+                <label>Mensaje:</label>
                 <textarea className={styles.descrip} name='message' type={'text'} placeholder={'Mensaje:'} value={input.message} onChange={handleOnChange} />
-            </div>
-            <div className={styles.inputWrapper}>
-                <label>Solicitar fecha de visita:</label>
-                <Input className={styles.input} name='date' type='date' value={input.date}/>
             </div>
             <div className={styles.container}>
                 <a href={url}><img src={imagw} className={styles.whatsapp} /></a>
                 <Button className={styles.contactar} onClick={onSubmit}>Contactar</Button>
                 <Toaster />
+                <StyledLink to={`/calendario/${id}/${userId}/${input.phoneNumber}`}>
+                    <Button className={styles.contactar}>Agendar Visita</Button>
+                </StyledLink>
             </div>
         </DivContainer>
     )

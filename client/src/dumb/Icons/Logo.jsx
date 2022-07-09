@@ -14,7 +14,7 @@ const Logo = (fill, height, width, hover) => {
 
 const Svg = styled.svg`
     position: relative;
-    left: -30px;
+    left: -15px;
     /* top: 62%; */
     cursor: pointer;
     fill: ${(props) => props.fill};

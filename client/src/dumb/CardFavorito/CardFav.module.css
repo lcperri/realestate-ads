@@ -1,9 +1,12 @@
 .contenedorFav{   
+    position: relative;
     background-color: #fff;
     border-radius: 20px;
-    margin: 14px auto;
-    width: 60%;
-    margin-top: 100px;
+    top: 120px;
+    margin: 10px auto 10px auto;
+    width: 50%;
+    height: 240px;
+    /* margin-top: 100px; */
     /* align-items: flex-start; 
     display: flex; 
     flex-direction: column; */      
@@ -13,21 +16,19 @@
     justify-content: flex;
     align-items:flex-start;
 }
-.divFotos{
-    margin-top: 20px;
-    margin-left: 30px;
-    margin-right: 80px;
-    margin-bottom: 40px;
+
+img {
+    margin: 1px;
     width: 300px;
-    height: 200px;
+    height: 237px;
+    object-fit: cover;
+    border-radius: 15px;
+
 }
 .divCaracteristicas{  
-    width: 350px;  
-    height: 200px;
-    margin-top: 20px;
-    margin-bottom: 40px;
-    margin-right: 80px;
-    margin-bottom: 20px;
+    display:flex;
+    flex-direction: column;
+    align-items: space-between;
 }
 .divBotones{
     align-items: flex-start; 
@@ -38,10 +39,7 @@
     margin-top: 20px;
     margin-left: 50px;
 }
-.foto{
-    width: 300px;
-    height: 200px;       
-}
+
 .typo, .direcc, .areaRoomBath{
     margin-top: 40px;    
 }

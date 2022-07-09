@@ -17,11 +17,10 @@ import CalendarPost from "./libs/CalendarPost";
 import { useDispatch } from 'react-redux/es/exports';
 import { logout } from "./redux/actions";
 import { useEffect } from "react";
-import Contact from "./pages/Contact";
 import Terms from "./components/TermsConditions/Terms";
-
 import Users from "./pages/Users";
 import CalendarCards from "./libs/CalendarCards";
+import Contact from "./pages/Contact";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -51,14 +50,12 @@ const App = () => {
         <Route path="/planes" element={<Planes />} />
         <Route path="/favoritos" element={<Favoritos />} />
         <Route path="/mispropiedades" element={<MisPropsPV />} />
-        <Route path="/calendario/:id" element={<CalendarPost />} />
+        <Route path="/calendario/:id/:idUser/:phone" element={<CalendarPost />} />
         <Route path="/calendarCards" element={<CalendarCards />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/administrador" element={<Users />} />
         <Route path="/perfil" element={<ProfileDataUpdate />} />
-        <Route path="/contact" element={<Contact/>} />
-        
         <Route path="/terms" element={<Terms/>} />
-
         {/* <Route path='*' element={<Home/>} />  */}
       </Routes>
     </>
