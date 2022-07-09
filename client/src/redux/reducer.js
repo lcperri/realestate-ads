@@ -10,7 +10,6 @@ import {
   LOGIN,
   LOGOUT,
   GET_OWNERPHONE,
-  GET_USER_BY_ID,
   UPDATE_USER_BY_ID,
   UPDATE_FAV,
 } from "./actionTypes";
@@ -133,12 +132,6 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         user: payload,
-        loading: false,
-      };
-
-    case GET_USER_BY_ID:
-      return {
-        ...state,
         loading: false,
       };
     case UPDATE_USER_BY_ID:

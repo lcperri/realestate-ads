@@ -26,11 +26,10 @@ import {
   CLEAR,
   LOGOUT,
   GET_OWNERPHONE,
-  GET_USER_BY_ID,
   UPDATE_USER_BY_ID,
   CONTACT,
   UPDATE_FAV,
-  DELETE_USER
+  SWITCH_BETWEEN_FORMS
 } from "./actionTypes";
 
 export function login(data) {
@@ -221,7 +220,7 @@ export function getUserById(id) {
     dispatch({ type: LOADING });
     const user = await axios.get(`${url}/user/${id}`);
     return dispatch({
-      type: GET_USER_BY_ID,
+      type: USER,
       payload: user.data,
     });
   };
@@ -299,6 +298,14 @@ export function addToUserFavourites(id, property, headers) {
       payload: favs.data
     });
   };
+}
+
+export function switchBetweenForms(){
+  return function (dispatch) {
+    return dispatch({
+      type: SWITCH_BETWEEN_FORMS
+    })
+  }
 }
 
 export function updateFavorites () {

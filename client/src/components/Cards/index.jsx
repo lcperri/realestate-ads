@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { filterByFollower, filterByOwner, GetUserById, propertyPagination, updateFavorites } from '../../redux/actions'
+import { filterByFollower, filterByOwner, getUserById, propertyPagination, updateFavorites } from '../../redux/actions'
 import CardsContainer from '../../styledComponents/CardsContainer'
 import Card from '../../dumb/Card'
 import Pagination from '../Pagination'
@@ -20,7 +20,7 @@ const Cards = ({ id, favourites }) => {
   const userId = localStorage.getItem('id')
 
   useEffect(() => {
-    dispatch(GetUserById(userId))
+    dispatch(getUserById(userId))
   }, [])
 
   useEffect(() => {
