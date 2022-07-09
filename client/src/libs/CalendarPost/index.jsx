@@ -72,7 +72,7 @@ export default function Calendar ({summary, location, description }) {
                               <Select  className={styles.selectMotivo}                
                                  id='summary'
                                  value={summary}
-                                 onChange={(e) => setSummary(e.target.value)}
+                                 /* onChange={(e) => setSummary(e.target.value)} */
                               >
                                  <option value={null}>Motivo</option>
                                  <option value={"Visita venta Mikasa Nueva"}>Vender</option>
