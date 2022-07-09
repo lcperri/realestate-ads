@@ -7,62 +7,49 @@ import AreaIcon from '../Icons/Area';
 import Button from '../../styledComponents/Button';
 import { StyledLink } from '../../styledComponents/StyledLink';
 import { DivRow } from "../../styledComponents/DivRow";
+import SetToFavortie from "../../components/SetToFavorite";
+import { getUserById } from "../../redux/actions";
+import { useDispatch, useSelector } from "react-redux";
 
-export default function CardFavorito({ _id, type, address, price, city, area, rooms, bathrooms, pictures, neighbourhood }) {
+export default function CardFavorito({ _id, user, operation, type, address, price, city, area, rooms, bathrooms, pictures, neighbourhood }) {
 
     const handleConectar = (e) => { };
-    const handleElim = (e) => {
-       
-    };
 
     return (
-        <div className={styles.contenedorFav}>
-
-            <div className={styles.divFotos}>
-                <img src={pictures[0]} alt={"not found"} className={styles.foto} />
-            </div>
-            <div className={styles.divCaracteristicas}>
-                <div>
-                    <h2 className={styles.Precio}>
-                        $ {price} USD
-                    </h2>
+        <div className={styles.mainContainer}>
+            <div className={styles.contenedorFav}>
+                <div className={styles.divFotos}>
+                    <img src={pictures[0]} alt={"not found"} className={styles.foto} />
                 </div>
-
-                <DivRow>
-                    <div>
-                        <h3 className={styles.typeCard}>{type}</h3>
-                    </div>
-                </DivRow>
-
-                <div>
-                    <h3  className={styles.direcc}>{address} - {neighbourhood} - {city}</h3>
-                </div>
-
-                <div>
-                    <h3 className={styles.direcc}>
+                <div className={styles.divCaracteristicas}>
+                    <h2> $ {price} USD </h2>
+                    {operation === 'sell' ? 'En venta' : 'En alquiler'}
+                    <DivRow>
+                        <StyledText className='typeCard'>{type}</StyledText>
+                    </DivRow>
+                    <h4>
+                        {address} {neighbourhood} - {city}
+                    </h4>
+                    <h5>
                         <AreaIcon /> {area}m2
                         <RoomIcon /> {rooms} hab
                         <BathIcon /> {bathrooms} baños
-                    </h3>
+                    </h5>
+                </div>
+                <div className={styles.divBotones}>
+                    <Button className={styles.botonConetar} onClick={handleConectar}>
+                        <StyledLink to='/contact'>
+                            Solicitar Contacto
+                        </StyledLink>
+                    </Button>
+
+                    <StyledLink to={`/${_id}`}>
+                        <Button className={styles.botonDet}>Ver detalle</Button>
+                    </StyledLink>
+
+                    <SetToFavortie idProperty={_id} user={user} />
                 </div>
             </div>
-
-            <div className={styles.divBotones}>
-                
-                    <StyledLink to='/contact'>
-                        <Button className={styles.botonContacto} onClick={handleConectar}>
-                           Solicitar Contacto
-                        </Button>
-                    </StyledLink>
-                
-
-                <StyledLink to={`/${_id}`}> {/*62b7e86c0c65fc9fbc1e18e7*/}
-                    <Button className={styles.botonDet}>Ver detalle</Button>
-                </StyledLink>
-
-                <Button className={styles.botonQuitar} onClick={handleElim}>Quitar de favoritos</Button>
-            </div>
-
         </div>
     )
 }

@@ -1,38 +1,62 @@
+.mainContainer {
+    /* background-color: aqua; */
+    /* PROBAR PONER OFNDE EN CARDS */
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center ;
+}
+
 .contenedorFav{   
     position: relative;
-    background-color: #fff;
+    background-color: rgb(243, 247, 248);
     border-radius: 20px;
-    margin: 14px auto;
-    width: 65%;
-    height: 300px;
-    margin-top: 100px;
+    top: 120px;
+    margin: 10px auto 10px auto;
+    width: 45%;
+    padding-right: 40px;
+    height: 250px;
+    /* margin-top: 100px; */
     /* align-items: flex-start; 
     display: flex; 
     flex-direction: column; */      
-    border: 1px solid #efefef;
+    border: 6px solid #efefef;
     box-shadow: 0 3px 15px rgba(0, 0, 0, 0.159);  
+    display: flex; /*con display, justify-content, aling-items -> dejo centrados los filtros*/
+    justify-content: space-between;
+    align-items:center;
+}
+
+.divFotos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+img {
+    margin: 2px;
+    width: 300px;
+    height: 237px;
+    object-fit: cover;
+    border-radius: 15px;
+
+}
+.divCaracteristicas{
+    /* background-color: aqua; */
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    width: 35%;
+}
+.divBotones{
+    /* background-color: aquamarine; */
+    align-items: flex-start; 
     display: flex; 
-    justify-content: flex;
-    align-items:flex-start;
-}
-.divFotos{
-    margin-top: 20px;
-    margin-left: 30px;
-    margin-right: 80px;
-    margin-bottom: 40px;
-    width: 400px;
-    height: 300px;
-}
-.foto{
-    width: 380px;
-    height: 280px;
-    margin-top: 10px;      
-    margin-left: 10px;
-    border-radius: 20px;
-}
-.divCaracteristicas{  
-    width: 350px;  
+    flex-direction: column;
+    width: 200px;  
     height: 200px;
+    /* margin-left: 50px; */
 }
 .Precio{
     margin-top: 50px;

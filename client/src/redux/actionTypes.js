@@ -13,3 +13,4 @@ export const GET_OWNERPHONE = "GET_OWNERPHONE";
 export const GET_USER_BY_ID = "GET_USER_BY_ID";
 export const UPDATE_USER_BY_ID = "UPDATE_USER_BY_ID";
 export const CONTACT = "CONTACT";
+export const UPDATE_FAV = "UPDATE_FAV";
