@@ -21,7 +21,7 @@ const Cards = ({ id, favourites }) => {
 
   useEffect(() => {
     dispatch(getUserById(userId))
-}, [dispatch])
+  }, [])
 
 
   useEffect(() => {

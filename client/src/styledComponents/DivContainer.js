@@ -16,6 +16,7 @@ const DivContainer = styled.div`
     position: relative;
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     /* justify-content: center; */
     align-items: center;
     height: 610px;

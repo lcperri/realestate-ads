@@ -15,7 +15,7 @@ export default function Users(){
 
     useEffect(()=>{
         dispatch(getAllUsers(headers));
-    },[dispatch]);
+    },[]);
 
     return(
         <DivContainer className={styles.home}>
