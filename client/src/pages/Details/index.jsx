@@ -27,6 +27,7 @@ import BackButton from "../../dumb/BackButton";
 import capitalize from "../../functions/capitalize";
 import house from '../../assets/house.png'
 import apartment from '../../assets/apartment.png'
+import Calendar from "../../libs/CalendarPost";
 
 const Details = () => {
   const navigate = useNavigate();
@@ -34,7 +35,8 @@ const Details = () => {
   const [clickedImg, setClickedImg] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(null);
   const [coordenate, setCoordenate] = useState();
-
+  const [form, setForm] = useState(0);
+  
   const property = useSelector((state) => state.property);
   const userId = localStorage.getItem('id')
   const { id } = useParams(); //id de propiedad
@@ -172,8 +174,10 @@ const Details = () => {
             </div>
           </div>
           <div className={styles.contact_subWrapper}>
-            {userId
+            { userId && form === 1
               ? <FormContacto />
+              : userId && form === 0 && property.operation ?
+              <Calendar operation={property.operation} />
               : <div>
                 <h4>
                   Te gusta esta propiedad?
