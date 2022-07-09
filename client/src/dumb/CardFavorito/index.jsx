@@ -49,7 +49,6 @@ export default function CardFavorito({ _id, user, operation, type, address, pric
 
                     <SetToFavortie idProperty={_id} user={user} />
                 </div>
-
             </div>
         </div>
     )

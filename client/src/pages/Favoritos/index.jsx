@@ -3,6 +3,8 @@ import Cards from "../../components/Cards";
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { clear } from "../../redux/actions";
+import CardsContainer from "../../styledComponents/CardsContainer";
+import DivContainer from "../../styledComponents/DivContainer";
 
 export default function Favoritos(){
   const dispatch = useDispatch();
@@ -13,12 +15,17 @@ export default function Favoritos(){
   });
 
   return(      
-    <div>
+    <div >
       <div>
         <Filter />
       </div>
-      {/* <Loader /> */}
-      <Cards favourites={id} />
+
+      <DivContainer home={true} className="home">
+        {/* <Loader /> */}
+        <CardsContainer>
+          <Cards favourites={id} />
+        </CardsContainer>      
+      </DivContainer>
     </div>
   )
 }

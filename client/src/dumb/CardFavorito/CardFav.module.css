@@ -58,22 +58,32 @@ img {
     height: 200px;
     /* margin-left: 50px; */
 }
-
+.Precio{
+    margin-top: 50px;
+    margin-bottom: 30px;
+    margin-left: 20px;
+}
 .typo, .direcc, .areaRoomBath{
-    margin-top: 40px;    
+    margin-top: 30px; 
+    margin-left: 20px;   
 }
-
-.botonConetar{
-    width: 200px;
-    margin-top: 0px;
-    margin-bottom: 40px;
+.typeCard{
+    border-radius: 30px;
+    border: 1.5px solid #E52F50;
+    z-index: 1;
+    padding: 0 6px 1px 6px;
+    margin-left: 20px; 
+    
 }
-.botonDet{
-    width: 200px;
-    margin-top: 15px;
-    margin-bottom: 40px;
+.divBotones{
+    align-items: flex-start; 
+    display: flex; 
+    flex-direction: column;    
 }
-.botonQuitar{
-    width: 200px;
-    margin-top: 15px;
+.botonContacto, .botonDet, .botonQuitar{
+   width: 200px;
+   margin-top: 50px;
+   margin-left: 60px;
+   width: 270px;
+   
 }
