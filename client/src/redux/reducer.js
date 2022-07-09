@@ -27,6 +27,7 @@ const initialState = {
   users:[],
   user:{},
   calendar: false,
+  telephone: 0,
   cardsCalendary: [
     {
       summary: "Alquiler",
@@ -136,7 +137,6 @@ const reducer = (state = initialState, { type, payload }) => {
     case GET_USER_BY_ID:
       return {
         ...state,
-        userById: { ...payload, birthday: payload.birthday.slice(0, 10) },
         loading: false,
       };
     case UPDATE_USER_BY_ID:
@@ -144,11 +144,10 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         loading: false,
       };
-
     case GET_OWNERPHONE:
       return {
         ...state,
-        user: payload,
+        telephone: payload,
       };
     default:
       return {

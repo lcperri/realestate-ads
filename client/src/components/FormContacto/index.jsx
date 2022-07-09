@@ -6,7 +6,7 @@ import { Input } from "../../styledComponents/StyledFormElements";
 import styles from './styles.module.css'
 import imagw from './whatsapp.png';
 import { useParams } from 'react-router-dom';
-import { clear, GetUserById, contactForm } from "../../redux/actions";
+import { clear, GetUserById, contactForm, getownersphone } from "../../redux/actions";
 import LoginController from "../../localStorage/login";
 import toast, { Toaster } from "react-hot-toast";
 import capitalize from "../../functions/capitalize";
@@ -28,8 +28,14 @@ export default function FormContacto() {
 
     const userId = localStorage.getItem('id')
     const user = useSelector(state => state.user);
+    const phone = useSelector(state => state.telephone);
 
-    let url = `https://wa.me/${user.telephone}?text=Me%20gustaría%20saber%20el%20precio%20de%20la%20propiedad`
+
+    useEffect(() => {
+        dispatch(getownersphone(id));
+    }, [])
+
+    let url = `https://wa.me/${phone}?text=Me%20gustaría%20saber%20el%20precio%20de%20la%20propiedad`
 
     const data = {
         name: user.name + user.lastName,
