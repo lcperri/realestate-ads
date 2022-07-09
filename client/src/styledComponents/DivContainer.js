@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const DivContainer = styled.div`
   border-radius: 20px;
-  margin: 120px auto 15px auto;
+  margin: 140px auto 15px auto;
   padding: 20px 60px 30px 60px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 18px;
   transition: .2s ease all;
@@ -52,6 +52,7 @@ const DivContainer = styled.div`
     background-color: #fff;
     border: 1px solid #efefef;
     box-shadow: 0 3px 15px rgba(0, 0, 0, 0.159);
+    width: 70%;
   }
 
   &.home {
