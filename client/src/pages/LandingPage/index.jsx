@@ -3,23 +3,23 @@ import { Link } from "react-router-dom";
 import styles from "./Landing.module.css";
 import fotoJuanCarlos from "./img/Juan Carlos.jpg";
 import { useDispatch } from "react-redux";
-import { filter } from "../../redux/actions"
+import { filter } from "../../redux/actions";
 
 const LandingPage = () => {
-  const dispatch = useDispatch()
-  const [location, setLocation] = useState("")
+  const dispatch = useDispatch();
+  const [location, setLocation] = useState("");
 
   const onCLickBtnSearch = (e) => {
-    setLocation(location)
-  }
-  
-  const handleInputChange = (e) => {
-    setLocation(e.target.value)
-  }
+    setLocation(location);
+  };
 
-  useEffect(()=> {
-    dispatch(filter({}, location, ""))
-  }, [location])
+  const handleInputChange = (e) => {
+    setLocation(e.target.value);
+  };
+
+  useEffect(() => {
+    dispatch(filter({}, location, ""));
+  }, [location]);
 
   return (
     <>
@@ -38,12 +38,18 @@ const LandingPage = () => {
                   </h1>
                   <form className={styles.formgroup}>
                     <i className={styles.fasfasearch}></i>
-                    <input type="text" name="location" placeholder="Ciudad" value={location} onChange={handleInputChange}/>
+                    <input
+                      type="text"
+                      name="location"
+                      placeholder="Ciudad"
+                      value={location}
+                      onChange={handleInputChange}
+                    />
                     <Link to={"/home"}>
                       <input
                         className={`${styles.btn} ${styles.searchbtn}`}
                         type="submit"
-                        value='buscar'
+                        value="buscar"
                         onClick={(e) => onCLickBtnSearch(e)}
                       />
                     </Link>
@@ -65,14 +71,13 @@ const LandingPage = () => {
           </div>
         </header>
 
-
         <section id="how-it-works" className={styles.howitworks}>
           <div className={styles.container}>
             <div className={styles.content}>
-              <h1 >¿Cómo Publico mi Propiedad?</h1>
+              <h1>¿Cómo Publico mi Propiedad?</h1>
               <p className={styles.pHowToPublicDescription}>
-                Publica el alquiler o la venta de: departamentos, casas, terrenos
-                u otras propiedades.
+                Publica el alquiler o la venta de: departamentos, casas,
+                terrenos u otras propiedades.
               </p>
             </div>
             <div className={styles.boxes}>
@@ -95,7 +100,9 @@ const LandingPage = () => {
               </div>
               <div className={styles.box}>
                 <h3>03. Contactate con tu cliente</h3>
-                <p>Los clientes te contactaran a los medios que tu prefieras.</p>
+                <p>
+                  Los clientes te contactaran a los medios que tu prefieras.
+                </p>
                 <p className={styles.strong}>Contacta a tu Cliente</p>
               </div>
             </div>
@@ -118,7 +125,7 @@ const LandingPage = () => {
                 </div>
                 <div className={styles.agentcardcontent}>
                   <div className={styles.agentname}>
-                    <h3>Presidente</h3>
+                    <h3>Full Stack Developer</h3>
                     <p>Luis Carlos Perez Rios</p>
                   </div>
                 </div>
@@ -132,7 +139,7 @@ const LandingPage = () => {
                 </div>
                 <div className={styles.agentcardcontent}>
                   <div className={styles.agentname}>
-                    <h3>Vicepresidente Junior</h3>
+                    <h3>Full Stack Developer</h3>
                     <p>Emilio Conde</p>
                   </div>
                 </div>
@@ -146,7 +153,7 @@ const LandingPage = () => {
                 </div>
                 <div className={styles.agentcardcontent}>
                   <div className={styles.agentname}>
-                    <h3>Director de Seguridad</h3>
+                    <h3>Full Stack Developer</h3>
                     <p>Julian Meraviglia</p>
                   </div>
                 </div>
@@ -160,7 +167,7 @@ const LandingPage = () => {
                 </div>
                 <div className={styles.agentcardcontent}>
                   <div className={styles.agentname}>
-                    <h3>Director de Sistemas</h3>
+                    <h3>Full Stack Developer</h3>
                     <p>Marcos Forasteire</p>
                   </div>
                 </div>
@@ -174,28 +181,30 @@ const LandingPage = () => {
             <div className={styles.footerinner}>
               <div className={styles.footercopyright}>
                 <div className={styles.logo}>
-                  <h3>Henrystate</h3>
-                  <p>© 2022 - Henrystate, Marca Registrada</p>
+                  <h3>Mikasa Nueva</h3>
+                  <p>© 2022 - Mikasa Nueva, Marca Registrada</p>
                 </div>
               </div>
               <div className={styles.footerluxestate}>
-                <h3>Henrystate</h3>
+                <h3>Mikasa Nueva</h3>
                 <ul>
-                  <li>
+                  {/* <li>
                     <a href>Staff</a>
-                  </li>
+                  </li> */}
                   {/* <li>
                   <a href>Hunters</a>
                 </li> */}
                 </ul>
               </div>
               <div className={styles.footercompany}>
-                <h3>Empresa</h3>
+                {/* <h3>Empresa</h3> */}
                 <ul>
-                  <li>
-                    <a href>Acerca</a>
-                  </li>
-                  <li>
+                  
+                    {/* <li>
+                      <a href>Acerca</a>
+                    </li> */}
+                 
+                  {/* <li>
                     <a href>FAQ</a>
                   </li>
                   <li>
@@ -203,15 +212,17 @@ const LandingPage = () => {
                   </li>
                   <li>
                     <a href>Social</a>
-                  </li>
+                  </li> */}
                 </ul>
               </div>
               <div className={styles.footerproduct}>
                 <h3>Productos</h3>
                 <ul>
+                <Link to={"/terms"}>
                   <li>
-                    <a href>Publicaciones</a>
+                    <a href>Terminos y Condiciones</a>
                   </li>
+                  </Link>
                   {/* <li>
                   <a href>How It Works</a>
                 </li> */}

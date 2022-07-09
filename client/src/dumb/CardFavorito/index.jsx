@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from './CardFav.module.css';
 import StyledText from '../../styledComponents/StyledText';
 import BathIcon from '../Icons/Bath';
@@ -6,7 +6,6 @@ import RoomIcon from '../Icons/Room';
 import AreaIcon from '../Icons/Area';
 import Button from '../../styledComponents/Button';
 import { StyledLink } from '../../styledComponents/StyledLink';
-import { useParams } from "react-router-dom";
 import { DivRow } from "../../styledComponents/DivRow";
 
 export default function CardFavorito({ _id, type, address, price, city, area, rooms, bathrooms, pictures, neighbourhood }) {
@@ -20,9 +19,8 @@ export default function CardFavorito({ _id, type, address, price, city, area, ro
         <div className={styles.contenedorFav}>
 
             <div className={styles.divFotos}>
-                <img src={pictures} alt={"not found"} className={styles.foto} />
+                <img src={pictures[0]} alt={"not found"} className={styles.foto} />
             </div>
-
             <div className={styles.divCaracteristicas}>
                 <div>
                     <h2 className={styles.Precio}>

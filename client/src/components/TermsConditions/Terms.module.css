@@ -1,0 +1,55 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  background: #ba5370; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #ff416c 0%,
+    #ff765e 100%
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    0deg,
+    #ff416c 0%,
+    #ff765e 100%
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  width: 50%;
+  height: auto;
+  margin: 0px auto;
+  margin-top: 100px;
+  min-height: 1000px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 40px;
+  padding-top: 20px;
+  font-family: sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 400;
+  color: black;
+  border-radius: 1rem;
+}
+.letter {
+  font-size: 15px;
+  white-space: breack-spaces;
+  line-height: 1.53;
+  word-wrap: break-word;
+}
+
+.tittle {
+  margin-top: 0;
+  text-align: left;
+  font-size: 22px;
+  margin: 0 0 17px;
+  line-height: 1.24;
+  font-weight: 400;
+}
+
+.claustittle {
+  font-size: 15px;
+  line-height: 3;
+}
+
+.claustext {
+  font-size: 15px;
+  line-height: 2;
+}

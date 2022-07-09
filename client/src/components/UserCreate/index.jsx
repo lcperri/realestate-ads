@@ -192,6 +192,8 @@ export default function UserCreate(){
                             </div>
                             <div className="buttonsNextBack">
                                 <Button disabled={errorsFirstCard} onClick={() => setContador(1)}> Siguiente</Button>
+                                <h1>ó</h1>
+                                <GoogleAuthenticator signUp={true} ></GoogleAuthenticator>
                             </div>                            
                         </DivContainer>
                     }

@@ -13,18 +13,18 @@ import { createEvent } from "../../redux/actions";
 import LoginController from './../../localStorage/login';
 import { useParams } from 'react-router-dom';
 
-export default function Calendar () {
+export default function Calendar ({summary, location, description }) {
    const dispatch = useDispatch();
    const id = localStorage.getItem('id');
    const headers = LoginController();
-   const {id:location} = useParams();
+   // const {id:location} = useParams();
    
-   const [ summary, setSummary ] = useState('');      
+   // const [ summary, setSummary ] = useState('');      
    const [ dia, setDia ] = useState('');
    const [ hora, setHora ] = useState('');
    
-   // const authorized = useSelector((state) => state.calendar);
-   const authorized = true;
+   const authorized = useSelector((state) => state.calendar);
+   // const authorized = true;
 
    //-------------creo dato startDateTime
    const modifDia = dia.replace('/', '-');//paso de 2022/12/12 a 2022-12-12
@@ -44,20 +44,16 @@ export default function Calendar () {
       if(hora === 'T13:00:00.000Z')return result = 'T13:30:00.000Z';
       if(hora === 'T13:30:00.000Z')return result = 'T14:00:00.000Z';
       if(hora === 'T14:00:00.000Z')return result = 'T14:30:00.000Z'; 
-   
    }
    //----creo dato endDateTime
    let endH = sumaMinutos(hora);
    let endDateTime = modifDia+endH;//obtengo  endDateTime -->2022-07-06T11:30:00.000Z
-   //console.log("startDateTime:", startDateTime + '|-|' + endDateTime);
    
    const handleSubmit = (e) => {
       e.preventDefault();
-      
-      dispatch(createEvent(id, { summary, location, startDateTime, endDateTime }, headers));
+      dispatch(createEvent({summary, location, startDateTime, endDateTime }, headers));
    };
 
-   
    return (
 
       <div className={styles.createProperty}>

@@ -1,4 +1,5 @@
 .contenedorFav{   
+    position: relative;
     background-color: #fff;
     border-radius: 20px;
     margin: 14px auto;
