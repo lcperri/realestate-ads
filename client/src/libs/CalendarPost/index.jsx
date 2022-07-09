@@ -8,7 +8,7 @@ import Button from "../../styledComponents/Button";
 import CalendarAuth from "../Calendar";
 import DivContainer from "../../styledComponents/DivContainer";
 
-import { createEvent } from "../../redux/actions"; 
+import { createEvent, switchBetweenForms } from "../../redux/actions"; 
 /*import CalendarCards from './../CalendarCards'; */
 import LoginController from './../../localStorage/login';
 import { useParams } from 'react-router-dom';
@@ -54,6 +54,10 @@ export default function Calendar ({ operation }) {
       dispatch(createEvent({ summary, location, startDateTime, endDateTime }, headers));
    };
 
+   const switchButton = () => {
+      dispatch(switchBetweenForms());
+   }
+
    return (
 
       <div className={styles.createProperty}>
@@ -62,7 +66,7 @@ export default function Calendar ({ operation }) {
                   <div className='title'>
                       Programá una visita...
                   </div>
-                  <DivContainer className="create">
+                  <DivContainer laConchaDeEsteDivDeMierda={true} >
                      <div className="addressWrapper"></div>
                      { !authorized ? (<CalendarAuth></CalendarAuth>) :
                         (
@@ -122,6 +126,7 @@ export default function Calendar ({ operation }) {
                   </DivContainer>
             </div>
          </form> 
+                     <Button type="button" className={styles.contactar} onClick={switchButton}>Contactar</Button>
       </div>  
    )
 }

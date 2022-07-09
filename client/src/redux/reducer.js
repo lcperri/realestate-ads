@@ -11,6 +11,7 @@ import {
   LOGOUT,
   GET_OWNERPHONE,
   UPDATE_USER_BY_ID,
+  SWITCH_BETWEEN_FORMS,
   UPDATE_FAV,
 } from "./actionTypes";
 
@@ -28,6 +29,7 @@ const initialState = {
   user: {},
   calendar: false,
   telephone: 0,
+  forms: true,
   updateFavorites: false,
   cardsCalendary: [
     {
@@ -99,6 +101,7 @@ const reducer = (state = initialState, { type, payload }) => {
       };
     case CLEAR:
       return {
+        ...state,
         loading: true,
         notFound: false,
         error: {},
@@ -110,7 +113,7 @@ const reducer = (state = initialState, { type, payload }) => {
         users: [],
         user: {},
         calendar: false,
-        cardsCalendary: [],
+        cardsCalendary: []
       };
     case PROPERTY:
       return {
@@ -139,6 +142,13 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         loading: false,
       };
+    case SWITCH_BETWEEN_FORMS:
+      payload = state.forms
+      payload === false ? payload = true : payload = false
+      return {
+        ...state,
+        forms: payload
+      }
     case GET_OWNERPHONE:
       return {
         ...state,

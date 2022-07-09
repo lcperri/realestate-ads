@@ -35,9 +35,9 @@ const Details = () => {
   const [clickedImg, setClickedImg] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(null);
   const [coordenate, setCoordenate] = useState();
-  const [form, setForm] = useState(1);
   
   const property = useSelector((state) => state.property);
+  const form = useSelector((state) => state.forms);
   const userId = localStorage.getItem('id')
   const { id } = useParams(); //id de propiedad
 
@@ -174,11 +174,7 @@ const Details = () => {
             </div>
           </div>
           <div className={styles.contact_subWrapper}>
-            { userId && form === 1
-              ? <FormContacto />
-              : userId && form === 0 && property.operation ?
-              <Calendar operation={property.operation} />
-              : <div>
+            { !userId ? <div>
                 <h4>
                   Te gusta esta propiedad?
                   No pierdas la oportunidad de {property.operation === 'rent' ? 'alquilarla.' : 'adquirirla.'} <br />
@@ -194,8 +190,13 @@ const Details = () => {
                     registrarse
                   </StyledLink>
                 </DivRow>
-              </div>
-            }
+                </div> : null }
+              {
+                userId && form === false && <FormContacto /> 
+              }
+              {
+                userId && form === true && <Calendar operation={property?.operation} />
+              }
           </div>
         </div>
         <h1>Ubicación:</h1>
