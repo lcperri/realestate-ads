@@ -67,6 +67,19 @@ export default function Calendar ({ operation }) {
                      { !authorized ? (<CalendarAuth></CalendarAuth>) :
                         (
                            <>
+               
+                              <Label className={styles.label}>Motivo</Label>
+                              <Select  className={styles.selectMotivo}                
+                                 id='summary'
+                                 value={summary}
+                                 /* onChange={(e) => setSummary(e.target.value)} */
+                              >
+                                 <option value={null}>Motivo</option>
+                                 <option value={"Visita venta Mikasa Nueva"}>Vender</option>
+                                 <option value={"Visita alquiler Mikasa Nueva"}>Rentar</option>
+                                                                 
+                              </Select>                            
+
                               <Label className={styles.horarioLabel}>Horario de visita: de 09 a 14hs - 30min por Visita</Label>
                               
                               <Label className={styles.label}>Seleccione día de la visita:</Label>

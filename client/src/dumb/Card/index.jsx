@@ -11,7 +11,6 @@ import apartment from '../../assets/apartment.png'
 import SetToFavortie from '../../components/SetToFavorite'
 
 const Card = ({ _id, user, address, city, area, type, rooms, status, bathrooms, price, operation, pictures }) => {
-  
   return (
     <>
       <StyledLinkCard to={`/${_id}`}>
@@ -52,7 +51,7 @@ const Card = ({ _id, user, address, city, area, type, rooms, status, bathrooms, 
       <blockquote>
         <StyledText className='statusCard'>{status === 'available' ? 'Disponible' : 'Reservado'}</StyledText>
       </blockquote>
-      { user._id && <SetToFavortie idProperty={_id} user={user}/> }
+      { user._id && <SetToFavortie idProperty={_id} user={user} top='252px' right='2px' /> }
     </>
   )
 }

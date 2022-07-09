@@ -29,6 +29,7 @@ import {
   GET_USER_BY_ID,
   UPDATE_USER_BY_ID,
   CONTACT,
+  UPDATE_FAV
 } from "./actionTypes";
 
 export function login(data) {
@@ -289,5 +290,12 @@ export function addToUserFavourites(id, property, headers) {
       type: USER,
       payload: favs.data
     });
+  };
+}
+
+
+export function updateFavorites () {
+  return {
+    type: UPDATE_FAV
   };
 }

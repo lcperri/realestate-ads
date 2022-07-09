@@ -4,6 +4,7 @@
     background: -webkit-linear-gradient(to right, #FF416C 0%, #ff765e 100%); 
         background: linear-gradient(0deg, #FF416C 0%, #ff765e 100%); 
 } */
+
 .selectMotivo, .selectHorario, .inputDia{
     width: 430px;
 }

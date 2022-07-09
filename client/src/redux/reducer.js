@@ -12,6 +12,7 @@ import {
   GET_OWNERPHONE,
   GET_USER_BY_ID,
   UPDATE_USER_BY_ID,
+  UPDATE_FAV,
 } from "./actionTypes";
 
 const initialState = {
@@ -24,10 +25,11 @@ const initialState = {
   pages: [1, 1, 10],
   property: {},
   city: "",
-  users:[],
-  user:{},
+  users: [],
+  user: {},
   calendar: false,
   telephone: 0,
+  updateFavorites: false,
   cardsCalendary: [
     {
       summary: "Alquiler",
@@ -148,6 +150,11 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         telephone: payload,
+      };
+    case UPDATE_FAV:
+      return {
+        ...state,
+        updateFavorites: !state.updateFavorites
       };
     default:
       return {
