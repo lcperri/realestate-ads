@@ -29,7 +29,8 @@ import {
   GET_USER_BY_ID,
   UPDATE_USER_BY_ID,
   CONTACT,
-  UPDATE_FAV
+  UPDATE_FAV,
+  DELETE_USER
 } from "./actionTypes";
 
 export function login(data) {
@@ -160,7 +161,14 @@ export function getAllUsers(headers) {
     return dispatch({ type: ALL_USERS, payload: resp.data });
   };
 }
-export function deleteUser(){}
+
+export function deleteUser(id){
+  return async function(dispatch){
+    const resp = await axios.delete(`${url}/user`);
+
+  }
+}
+
 export function createUser(data) {
   return async function (dispatch) {
     dispatch({ type: LOADING });
@@ -292,7 +300,6 @@ export function addToUserFavourites(id, property, headers) {
     });
   };
 }
-
 
 export function updateFavorites () {
   return {
