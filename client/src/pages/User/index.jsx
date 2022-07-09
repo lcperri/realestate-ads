@@ -180,13 +180,9 @@ export default function UserCreate(){
                                 />                                
                             </div>
                             <div className="buttonsNextBack">
-<<<<<<< HEAD:client/src/components/UserCreate/index.jsx
                                 <Button disabled={errorsFirstCard} onClick={() => setContador(1)}> Siguiente</Button>
-=======
-                                <Button /* disabled={errorsFirstCard} */ onClick={() => setContador(1)}> Siguiente</Button>
                                 <h1>ó</h1>
                                 <GoogleAuthenticator signUp={true} ></GoogleAuthenticator>
->>>>>>> d78c5be180ef4af18f079e8bb31c1b187d81e764:client/src/pages/User/index.jsx
                             </div>                            
                         </DivContainer>
                     }
