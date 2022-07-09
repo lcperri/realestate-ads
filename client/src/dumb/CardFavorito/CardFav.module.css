@@ -53,8 +53,7 @@
 .divBotones{
     align-items: flex-start; 
     display: flex; 
-    flex-direction: column;
-    
+    flex-direction: column;    
 }
 .botonContacto, .botonDet, .botonQuitar{
    width: 200px;

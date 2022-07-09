@@ -12,7 +12,9 @@ import { DivRow } from "../../styledComponents/DivRow";
 export default function CardFavorito({ _id, type, address, price, city, area, rooms, bathrooms, pictures, neighbourhood }) {
 
     const handleConectar = (e) => { };
-    const handleElim = (e) => { };
+    const handleElim = (e) => {
+       
+    };
 
     return (
         <div className={styles.contenedorFav}>
