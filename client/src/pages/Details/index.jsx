@@ -35,7 +35,7 @@ const Details = () => {
   const [clickedImg, setClickedImg] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(null);
   const [coordenate, setCoordenate] = useState();
-  const [form, setForm] = useState(0);
+  const [form, setForm] = useState(1);
   
   const property = useSelector((state) => state.property);
   const userId = localStorage.getItem('id')
@@ -54,7 +54,7 @@ const Details = () => {
 
   useEffect(() => {
     dispatch(getownersphone(id));
-  }, [dispatch, id]);
+  }, [id]);
 
   const handleClick = (item, index) => {
     setCurrentIndex(index);
