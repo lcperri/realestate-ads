@@ -80,7 +80,8 @@ const reducer = (state = initialState, { type, payload }) => {
       console.log(payload)
       return {
         ...state,
-        calendar: payload
+        calendar: payload,
+        authorized: true
       }
     case CLEAR:
       return {
