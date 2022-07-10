@@ -279,15 +279,17 @@ export default function FormCreateProp() {
                                             { description: 'tengo un(a)' },
                                             { description: 'casa' },
                                             { description: 'departamento' },
-                                            { description: 'local Comercial' },
+                                            { description: 'local comercial' },
+                                            { description: 'oficina' },
                                             { description: 'casa de campo' },
-                                            { description: 'cochera' },
+                                            { description: 'casa de playa' },
+                                            { description: 'garage' },
                                             { description: 'habitación' },
                                             { description: 'hotel' },
-                                            { description: 'local Industrial' },
-                                            { description: 'oficina' },
-                                            { description: 'terreno/Lote' },
+                                            { description: 'local industrial' },
+                                            { description: 'terreno/lote' },
                                             { description: 'terreno agricola' },
+                                            { description: 'otros' },
                                         ]}
                                     />
                                     <div className="caracteristicasSubWrapper">

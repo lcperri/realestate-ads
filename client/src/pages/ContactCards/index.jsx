@@ -1,20 +1,21 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import CalendarCard from '../../dumb/CalendarCard';
 import CardsContainer from '../../styledComponents/CardsContainer';
 import DivContainer from '../../styledComponents/DivContainer';
-import { getCalendar, getUserById } from '../../redux/actions';
+import { getUserById, seeContactsByProperty } from '../../redux/actions';
 import LoginController from '../../localStorage/login';
+import { useParams } from 'react-router-dom';
+import ContactCard from '../../dumb/CardContact';
 
 export default function ContactCards() {
   const dispatch = useDispatch();
-  const id = localStorage.getItem('id');
+  const { id } = useParams();
   const headers = LoginController();
-  const calendar = useSelector((state) => state.calendar);
+  const contacts = useSelector((state) => state.contacts);
 
   useEffect(() => {
     dispatch(getUserById(id, headers));
-    dispatch(getCalendar(id, headers));
+    dispatch(seeContactsByProperty(id, headers));
   }, []);
 
   return (
@@ -22,17 +23,16 @@ export default function ContactCards() {
     <DivContainer className="calendaris">
       <CardsContainer>
         {
-         calendar.length ?
-         calendar.map(c => {
+         contacts.length ?
+         contacts.map(c => {
             return(
                 <div key={c.id}>
-                    <CalendarCard
+                    <ContactCard
                       key={c.id}
-                      summary={c.summary}
-                      location={c.location}
-                      start={c.start.dateTime}
-                      end={c.end.dateTime}
-                      attendees={c.attendees[0].email}
+                      name={c.name}
+                      email={c.email}
+                      telephone={c.telephone}
+                      message={c.message}
                     />
                 </div>
             )

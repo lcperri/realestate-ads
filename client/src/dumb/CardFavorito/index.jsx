@@ -45,9 +45,11 @@ export default function CardFavorito({ _id, user, operation, type, address, pric
                         </StyledLink>
                     </Button>
 
-                    <StyledLink to={`/${_id}`}>
-                        <Button >Ver detalle</Button>
-                    </StyledLink>
+                    <Button >
+                        <StyledLink to={`/${_id}`}>
+                            Ver detalle
+                        </StyledLink>
+                    </Button>
 
                     <SetToFavortie idProperty={_id} user={user} />
                 </div>
