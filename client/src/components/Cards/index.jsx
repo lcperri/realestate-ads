@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { filterByFollower, filterByOwner, getUserById, propertyPagination, updateFavorites } from '../../redux/actions'
+import { filterByFollower, filterByOwner, getUserById, propertyPagination} from '../../redux/actions'
 import CardsContainer from '../../styledComponents/CardsContainer'
 import Card from '../../dumb/Card'
 import Pagination from '../Pagination'
@@ -16,7 +16,7 @@ const Cards = ({ id, favourites }) => {
   const pages = useSelector((state) => state.pages);
   const filter = useSelector((state) => state.filter);
   const user = useSelector(state => state.user)
-  const updateFavorites = useSelector(state => state.updateFavorites)
+  const updateCurrentPage = useSelector(state => state.updateCurrentPage)
   const userId = localStorage.getItem('id')
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const Cards = ({ id, favourites }) => {
     } else if ((favourites) && (filter.location !== undefined && filter.max !== undefined)) {
       dispatch(filterByFollower(filter, favourites, headers));
     }
-  }, [filter, updateFavorites]);
+  }, [filter, updateCurrentPage]);
 
   return (
     <>

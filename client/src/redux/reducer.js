@@ -11,7 +11,9 @@ import {
   LOGOUT,
   GET_OWNERPHONE,
   UPDATE_USER_BY_ID,
-  UPDATE_FAV,
+  SWITCH_BETWEEN_FORMS,
+  UPDATE_PAGE,
+  GET_CALENDAR,
 } from "./actionTypes";
 
 const initialState = {
@@ -28,34 +30,10 @@ const initialState = {
   user: {},
   calendar: false,
   telephone: 0,
-  updateFavorites: false,
-  cardsCalendary: [
-    {
-      summary: "Alquiler",
-      location: "dirección de tu casa",
-      colorId: 1,
-      star: "2022-07-03",
-      end: "2022-07-03",
-      attendees: "tumail@gmail.com",
-    },
-    {
-      summary: "Venta",
-      location: "Acá iría la dirección de tu casa",
-      colorId: "2",
-      star: "2022-07-03",
-      end: "2022-07-03",
-      attendees: "tumail@gmail.com",
-    },
-    {
-      summary: "Venta",
-      location: "Acá iría la dirección de tu casa",
-      colorId: "2",
-      star: "2022-07-03",
-      end: "2022-07-03",
-      attendees: "tumail@gmail.com",
-    },
-  ],
-  userById: {},
+  forms: true,
+  updateCurrentPage: false,
+  calendar: [],
+  authroized: false
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -69,11 +47,12 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         logged: true,
+        authorized: payload
       };
     case LOGOUT:
       return {
-        loading: true,
         logged: false,
+        loading: true,
         notFound: false,
         error: {},
         filter: { location: "", max: "", filters: {} },
@@ -97,8 +76,15 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         pages: payload,
       };
+    case GET_CALENDAR:
+      console.log(payload)
+      return {
+        ...state,
+        calendar: payload
+      }
     case CLEAR:
       return {
+        ...state,
         loading: true,
         notFound: false,
         error: {},
@@ -110,7 +96,7 @@ const reducer = (state = initialState, { type, payload }) => {
         users: [],
         user: {},
         calendar: false,
-        cardsCalendary: [],
+        cardsCalendary: []
       };
     case PROPERTY:
       return {
@@ -132,6 +118,7 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         user: payload,
+        authorized: payload.authorized,
         loading: false,
       };
     case UPDATE_USER_BY_ID:
@@ -139,15 +126,22 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         loading: false,
       };
+    case SWITCH_BETWEEN_FORMS:
+      payload = state.forms
+      payload === false ? payload = true : payload = false
+      return {
+        ...state,
+        forms: payload
+      }
     case GET_OWNERPHONE:
       return {
         ...state,
         telephone: payload,
       };
-    case UPDATE_FAV:
+    case UPDATE_PAGE:
       return {
         ...state,
-        updateFavorites: !state.updateFavorites
+        updateCurrentPage: !state.updateCurrentPage
       };
     default:
       return {

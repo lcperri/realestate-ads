@@ -1,5 +1,5 @@
 .navbar {
-  height: 90px;
+  height: auto;
   width: 100%;
   background: #333; /* fallback for old browsers */
   background: -webkit-linear-gradient(
@@ -14,20 +14,23 @@
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   display: flex;
   flex-wrap: wrap;
-  grid-template-columns: 60% 40%;
+  flex-direction: row;
+  /* grid-template-columns: 60% 40%; */
   position: fixed;
-  justify-content: center;
+  justify-content: space-between;
   top: 0px;
   align-items: center;
-  /* box-sizing: border-box; */
   z-index: 5;
   border-bottom: 8px solid #ff416c;
+  padding: 0 40px;
 }
 
-.subContainer {
+.subContainerCenter {
+  /* background-color: aqua; */
   display: flex;
-  justify-content: flex-start;
-  width: 70%;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 .items {
@@ -49,8 +52,11 @@
   background-color: #fff;
   font-weight: 500;
 }
-.subContainerRight {
-  display: flex;
+
+.subContainerRight div {
+  display:flex;
+  flex-direction: row;
   align-items: center;
-  gap: 15px;
+  justify-content: center ;
+  gap: 10px;
 }
