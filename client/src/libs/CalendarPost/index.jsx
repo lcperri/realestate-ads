@@ -51,6 +51,7 @@ export default function Calendar ({ operation }) {
    
    const handleSubmit = (e) => {
       e.preventDefault();
+      console.log(location)
       dispatch(createEvent({ summary, location, startDateTime, endDateTime }, headers));
    };
 

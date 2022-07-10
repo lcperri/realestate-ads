@@ -209,7 +209,7 @@ export function calendar(code, id, headers) {
   };
 }
 
-export function createEvent(id, code, headers) {
+export function createEvent(code, headers) {
   return async function (dispatch) {
     const calendar = await axios.post(`${url}/calendar/event`, code, headers);
     return dispatch({
