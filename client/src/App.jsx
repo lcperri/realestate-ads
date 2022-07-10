@@ -12,7 +12,6 @@ import Planes from "./components/Planes";
 import Favoritos from "./pages/Favoritos";
 import MisPropsPV from "./pages/MisPropPremiumVip";
 import ProfileDataUpdate from "./pages/ProfileDataUpdate/ProfileDataUpdate";
-import CalendarPost from "./libs/CalendarPost";
 // import showCookies from "./functions/showCookies";
 import { useDispatch } from 'react-redux/es/exports';
 import { logout } from "./redux/actions";
@@ -21,10 +20,10 @@ import Terms from "./components/TermsConditions/Terms";
 import Users from "./pages/Users";
 import CalendarCards from "./libs/CalendarCards";
 import Contact from "./pages/Contact";
+import ContactCards from "./pages/ContactCards";
 
 const App = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate()
   // const auth = showCookies('auth-token');
   const token = localStorage.getItem('auth-token');
   const id = localStorage.getItem('id');
@@ -56,7 +55,7 @@ const App = () => {
         <Route path="/administrador" element={<Users />} />
         <Route path="/perfil" element={<ProfileDataUpdate />} />
         <Route path="/terms" element={<Terms/>} />
-        
+        <Route path="/contacto/:id" element={<ContactCards />} />
         {/* <Route path='*' element={<Home/>} />  */}
       </Routes>
     </>

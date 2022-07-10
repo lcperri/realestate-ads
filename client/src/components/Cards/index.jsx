@@ -39,7 +39,7 @@ const Cards = ({ id, favourites }) => {
         {
           id ?
             properties && properties.slice(pages[1] - 1, pages[2]).map(e => (
-              <CardMisPropsPremiumVip key={e.id} user={user} type={e.type} address={e.address} price={e.price}
+              <CardMisPropsPremiumVip key={e.id} id={e._id} user={user} type={e.type} address={e.address} price={e.price}
                 area={e.area} rooms={e.rooms} bathrooms={e.bathrooms} pictures={e.pictures[0]} />
             )) : favourites ?
               properties && properties.slice(pages[1] - 1, pages[2]).map(e => (

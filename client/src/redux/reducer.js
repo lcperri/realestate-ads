@@ -14,6 +14,7 @@ import {
   SWITCH_BETWEEN_FORMS,
   UPDATE_PAGE,
   GET_CALENDAR,
+  CONTACT,
 } from "./actionTypes";
 
 const initialState = {
@@ -31,6 +32,7 @@ const initialState = {
   calendar: false,
   telephone: 0,
   forms: true,
+  contacts: [],
   updateCurrentPage: false,
   calendar: [],
   authroized: false
@@ -76,11 +78,16 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         pages: payload,
       };
-    case GET_CALENDAR:
-      console.log(payload)
+    case CONTACT:
       return {
         ...state,
-        calendar: payload
+        contacts: payload
+      }
+    case GET_CALENDAR:
+      return {
+        ...state,
+        calendar: payload,
+        authorized: true
       }
     case CLEAR:
       return {

@@ -109,19 +109,19 @@ export default function Filter() {
             onChange={(e) => handleChange(e)}
           >
             <option value="">Sin Preferencias</option>
-            <option value="Departamento">Departamento</option>
-            <option value="Casa">Casa</option>
-            <option value="Casa de Campo">Casa de Campo</option>
-            <option value="Casa de Playa">Casa de Playa</option>
-            <option value="Garage">Grarage</option>
-            <option value="Habitacion">Habitacion</option>
-            <option value="Hotel">Hotel</option>
-            <option value="Local Comercial">Local Comercial</option>
-            <option value="Local Industrial">Local Industrial</option>
-            <option value="Oficina">Oficina</option>
-            <option value="Otros">Otros</option>
-            <option value="Terreno/Lote">Terreno/Lote</option>
-            <option value="Terreno agricola">Terreno agricola</option>
+            <option value="casa">Casa</option>
+            <option value="departamento">Departamento</option>
+            <option value="local comercial">Local Comercial</option>
+            <option value="oficina">Oficina</option>
+            <option value="casa de campo">Casa de Campo</option>
+            <option value="casa de playa">Casa de Playa</option>
+            <option value="garage">Grarage</option>
+            <option value="habitacion">Habitacion</option>
+            <option value="hotel">Hotel</option>
+            <option value="local industrial">Local Industrial</option>
+            <option value="terreno/lote">Terreno/Lote</option>
+            <option value="terreno agricola">Terreno agricola</option>
+            <option value="otros">Otros</option>
           </Select>
         </Label>
         <Label>
