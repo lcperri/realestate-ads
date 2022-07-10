@@ -9,5 +9,5 @@ export default async function getCoordenates(address) {
       dataType: 'json'
     }
   })
-  return coordenates.data.results[0].geometry.location
+  return coordenates.data.results[0]?.geometry.location
 }

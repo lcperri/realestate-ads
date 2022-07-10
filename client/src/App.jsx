@@ -27,11 +27,12 @@ const App = () => {
   const navigate = useNavigate()
   // const auth = showCookies('auth-token');
   const token = localStorage.getItem('auth-token');
+  const id = localStorage.getItem('id');
 
   useEffect(() => {
     // if (!auth.length) {
     if (!token) {
-      dispatch(logout());
+      dispatch(logout(id));
     }
   }, [token]);
 
@@ -50,8 +51,7 @@ const App = () => {
         <Route path="/planes" element={<Planes />} />
         <Route path="/favoritos" element={<Favoritos />} />
         <Route path="/mispropiedades" element={<MisPropsPV />} />
-        <Route path="/calendario/:id/:idUser/:phone" element={<CalendarPost />} />
-        <Route path="/calendarCards" element={<CalendarCards />} />
+        <Route path="/calendario" element={<CalendarCards />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/administrador" element={<Users />} />
         <Route path="/perfil" element={<ProfileDataUpdate />} />

@@ -12,7 +12,7 @@ import Cloudinary from "../../libs/Cloudinary";
 
 const PersonalData = () => {
   const dispatch = useDispatch();
-  let userData = useSelector((state) => state.userById);
+  let userData = useSelector((state) => state.user);
 
   const isLoading = useSelector((state) => state.loading);
 

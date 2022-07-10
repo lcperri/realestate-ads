@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import house from '../../assets/house.png'
 import apartment from '../../assets/apartment.png'
 import SetToFavortie from '../../components/SetToFavorite'
+import capitalize from '../../functions/capitalize'
 
 const Card = ({ _id, user, address, city, area, type, rooms, status, bathrooms, price, operation, pictures }) => {
   return (
@@ -24,13 +25,13 @@ const Card = ({ _id, user, address, city, area, type, rooms, status, bathrooms, 
           </DivRow>
         </DivRow>
         <DivRow>
-          <StyledText className='typeCard'>{type}</StyledText>
+          <StyledText className='typeCard'>{capitalize(type)}</StyledText>
         </DivRow>
         <div>
-          <h4>{address}</h4>
+          <h4>{capitalize(address)}</h4>
         </div>
         <div>
-          <h3>{city}</h3>
+          <h3>{capitalize(city)}</h3>
         </div>
         <DivRow alignIt='baseline'>
           <aside>

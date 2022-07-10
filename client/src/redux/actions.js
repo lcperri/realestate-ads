@@ -28,8 +28,9 @@ import {
   GET_OWNERPHONE,
   UPDATE_USER_BY_ID,
   CONTACT,
-  UPDATE_FAV,
-  SWITCH_BETWEEN_FORMS
+  UPDATE_PAGE,
+  SWITCH_BETWEEN_FORMS,
+  GET_CALENDAR
 } from "./actionTypes";
 
 export function login(data) {
@@ -40,8 +41,10 @@ export function login(data) {
     SaveRange(login.data[0].range);
     SaveLastName(login.data[0].lastName);
     SaveName(login.data[0].name);
+    const payload = login.data[0].authorized
     return dispatch({
       type: LOGIN,
+      payload
     });
   };
 }
@@ -180,25 +183,33 @@ export function filter(filters, location, max) {
 
 export function getCalendar(id, headers) {
   return async function (dispatch) {
-    const calendar = await axios.get(`${url}/calendar/${id}`, headers);
-    return dispatch({
-      type: LOGIN,
-      payload: calendar.data,
-    });
-  };
+    try {
+      const calendar = await axios.get(`${url}/calendar/${id}`, headers);
+      return dispatch({
+        type: GET_CALENDAR,
+        payload: calendar.data,
+      });
+    } catch (error) {
+      return dispatch({
+        type: USER,
+        payload: error.response.data
+      })
+    }
+  }
 }
 
 export function calendar(code, id, headers) {
   return async function (dispatch) {
     const calendar = await axios.post(`${url}/calendar/${id}`, code, headers);
+    console.log(calendar.data)
     return dispatch({
-      type: LOGIN,
+      type: USER,
       payload: calendar.data,
     });
   };
 }
 
-export function createEvent(id, code, headers) {
+export function createEvent(code, headers) {
   return async function (dispatch) {
     const calendar = await axios.post(`${url}/calendar/event`, code, headers);
     return dispatch({
@@ -248,13 +259,12 @@ export function seeContactsByProperty(id, headers) {
   };
 }
 
-export function logout() {
+export function logout(id) {
   return async function (dispatch) {
     RemoveToken();
     RemoveRange();
     RemoveLastName();
     RemoveName();
-    const id = localStorage.getItem('id');
     RemoveId();
     await axios.get(`${url}/logout/${id}`);
     return dispatch({
@@ -301,8 +311,8 @@ export function switchBetweenForms(){
   }
 }
 
-export function updateFavorites () {
+export function updateCurrentPage () {
   return {
-    type: UPDATE_FAV
+    type: UPDATE_PAGE
   };
 }
