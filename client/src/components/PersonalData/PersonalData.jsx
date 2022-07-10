@@ -8,6 +8,8 @@ import LoginController from "../../localStorage/login";
 
 import capitalize from "./../../functions/capitalize";
 
+import Cloudinary from "../../libs/Cloudinary";
+
 const PersonalData = () => {
   const dispatch = useDispatch();
   let userData = useSelector((state) => state.userById);
@@ -16,6 +18,10 @@ const PersonalData = () => {
 
   const headers = LoginController();
 
+  
+
+
+
   const [input, setInput] = useState({
     email: "",
     name: "",
@@ -23,8 +29,14 @@ const PersonalData = () => {
     birthday: "",
     dni: "",
     telephone: "",
-    // avatar: "",
+    avatar: "",
   });
+
+  const getImagesResultsCloudinary = (images) => {
+    setInput({avatar:images})
+}
+
+
   const [errors, setErrors] = useState({});
 
   const userId = localStorage.getItem("id");
@@ -95,6 +107,8 @@ const PersonalData = () => {
       {errors.name && <span className={styles.errospan}>{errors.name}</span>}
       <div className={styles.inputcontainer}>
         <label className={styles.label}>Apellido:</label>
+
+        
         <input
           type="text"
           name="lastName"
@@ -148,14 +162,16 @@ const PersonalData = () => {
       )}
       <div className={styles.inputcontainer}>
         <label className={styles.label}>Avatar:</label>
-        <input
+
+        <Cloudinary getImages={getImagesResultsCloudinary} />
+        {/* <input
           type="text"
           name="avatar"
           placeholder="avatar"
           className={styles.input}
           value={input.avatar}
           disabled={true}
-        />
+        /> */}
       </div>
       <button
         className={styles.savebutton}

@@ -83,10 +83,11 @@ export default function UserCreate(){
             Swal.fire({
                 position: 'top-center',
                 icon: 'success',
-                title: 'Usuario/a creado/a exitosamente',
+                title: 'Usuario/a creado/a exitosamente...ahora inici sesion',
                 showConfirmButton: false,
                 timer: 1500
             });
+            navigate('/sesion')
             cleanForm();
         })
         .catch(() => {

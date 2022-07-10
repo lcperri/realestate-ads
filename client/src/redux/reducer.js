@@ -10,8 +10,8 @@ import {
   LOGIN,
   LOGOUT,
   GET_OWNERPHONE,
-  GET_USER_BY_ID,
   UPDATE_USER_BY_ID,
+  UPDATE_FAV,
 } from "./actionTypes";
 
 const initialState = {
@@ -24,9 +24,11 @@ const initialState = {
   pages: [1, 1, 10],
   property: {},
   city: "",
-  users:[],
-  user:{},
+  users: [],
+  user: {},
   calendar: false,
+  telephone: 0,
+  updateFavorites: false,
   cardsCalendary: [
     {
       summary: "Alquiler",
@@ -132,23 +134,20 @@ const reducer = (state = initialState, { type, payload }) => {
         user: payload,
         loading: false,
       };
-
-    case GET_USER_BY_ID:
-      return {
-        ...state,
-        userById: { ...payload, birthday: payload.birthday.slice(0, 10) },
-        loading: false,
-      };
     case UPDATE_USER_BY_ID:
       return {
         ...state,
         loading: false,
       };
-
     case GET_OWNERPHONE:
       return {
         ...state,
-        user: payload,
+        telephone: payload,
+      };
+    case UPDATE_FAV:
+      return {
+        ...state,
+        updateFavorites: !state.updateFavorites
       };
     default:
       return {
