@@ -73,7 +73,6 @@ const reducer = (state = initialState, { type, payload }) => {
         logged: true,
       };
     case LOGOUT:
-      console.log('entré')
       return {
         logged: false,
         loading: true,

@@ -248,16 +248,14 @@ export function seeContactsByProperty(id, headers) {
   };
 }
 
-export function logout() {
-  return function (dispatch) {
+export function logout(id) {
+  return async function (dispatch) {
+    await axios.get(`${url}/logout/${id}`);
     RemoveToken();
     RemoveRange();
     RemoveLastName();
     RemoveName();
-    const id = localStorage.getItem('id');
     RemoveId();
-    axios.get(`${url}/logout/${id}`);
-    console.log(`${url}/logout/}`)
     return dispatch({
       type: LOGOUT,
     });

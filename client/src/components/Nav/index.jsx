@@ -18,7 +18,6 @@ const Nav = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-
   //Este es un cambio para forzar un renderizado cuando se cambia nombre o apellido en Perfil
 
   var [ChangeInNavBarName, setChangeInNavBarName] = useState("")
@@ -48,8 +47,7 @@ const Nav = () => {
 
   const logoutFunction = (e) => {
     e.preventDefault();
-    console.log('hola')
-    dispatch(logout());
+    dispatch(logout(id));
     navigate('/');
   }
 

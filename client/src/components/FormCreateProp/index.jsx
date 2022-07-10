@@ -153,7 +153,6 @@ export default function FormCreateProp() {
                     }
                 })
             } else {
-                console.log('renovation es mayor');
             }
         }
     }

@@ -27,11 +27,12 @@ const App = () => {
   const navigate = useNavigate()
   // const auth = showCookies('auth-token');
   const token = localStorage.getItem('auth-token');
+  const id = localStorage.getItem('id');
 
   useEffect(() => {
     // if (!auth.length) {
     if (!token) {
-      dispatch(logout());
+      dispatch(logout(id));
     }
   }, [token]);
 

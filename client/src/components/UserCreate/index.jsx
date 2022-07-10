@@ -141,7 +141,6 @@ export default function UserCreate(){
 
     useEffect(() => {
         if (logged) {
-            console.log(logged)
           navigate('/home');
         }
       }, [logged]);
