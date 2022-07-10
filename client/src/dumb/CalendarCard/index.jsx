@@ -8,24 +8,25 @@ export default function CalendarCard ({summary,location,start,end,attendees}){
     <StyledCard className={styles.contenedorGral}>
         
         <div>
-          <h2 className={styles.datos}>{summary}</h2>
+          <h2 className={styles.datos}>Operación {summary}</h2>
         </div>
 
         <div>
-          <h2 className={styles.datos}>{location}</h2>          
+          <h2 className={styles.datos}>Propiedad: {location}</h2>          
         </div>
 
         <div>
-          <h2 className={styles.datos}>{start}</h2> 
+          <h2 className={styles.datos}>Interesado: {attendees}</h2>
+        </div>
+        
+        <div>
+          <h2 className={styles.datos}>Comienzo de la visita: {start}</h2> 
         </div>
 
         <div>
-          <h2 className={styles.datos}>{end}</h2>
+          <h2 className={styles.datos}>Final de la visita: {end}</h2>
         </div>
 
-        <div>
-          <h2 className={styles.datos}>{attendees}</h2>
-        </div>
 
     </StyledCard>
   )
