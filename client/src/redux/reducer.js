@@ -13,6 +13,7 @@ import {
   UPDATE_USER_BY_ID,
   SWITCH_BETWEEN_FORMS,
   UPDATE_FAV,
+  GET_CALENDAR,
 } from "./actionTypes";
 
 const initialState = {
@@ -31,33 +32,9 @@ const initialState = {
   telephone: 0,
   forms: true,
   updateFavorites: false,
-  cardsCalendary: [
-    {
-      summary: "Alquiler",
-      location: "dirección de tu casa",
-      colorId: 1,
-      star: "2022-07-03",
-      end: "2022-07-03",
-      attendees: "tumail@gmail.com",
-    },
-    {
-      summary: "Venta",
-      location: "Acá iría la dirección de tu casa",
-      colorId: "2",
-      star: "2022-07-03",
-      end: "2022-07-03",
-      attendees: "tumail@gmail.com",
-    },
-    {
-      summary: "Venta",
-      location: "Acá iría la dirección de tu casa",
-      colorId: "2",
-      star: "2022-07-03",
-      end: "2022-07-03",
-      attendees: "tumail@gmail.com",
-    },
-  ],
+  calendar: [],
   userById: {},
+  authroized: false
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -71,6 +48,7 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         logged: true,
+        authorized: payload
       };
     case LOGOUT:
       return {
@@ -99,6 +77,11 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         pages: payload,
       };
+    case GET_CALENDAR:
+      return {
+        ...state,
+        calendar: payload
+      }
     case CLEAR:
       return {
         ...state,
@@ -135,6 +118,7 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         user: payload,
+        authorized: payload.authorized,
         loading: false,
       };
     case UPDATE_USER_BY_ID:
