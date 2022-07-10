@@ -33,7 +33,6 @@ const initialState = {
   forms: true,
   updateCurrentPage: false,
   calendar: [],
-  userById: {},
   authroized: false
 };
 
@@ -78,6 +77,7 @@ const reducer = (state = initialState, { type, payload }) => {
         pages: payload,
       };
     case GET_CALENDAR:
+      console.log(payload)
       return {
         ...state,
         calendar: payload

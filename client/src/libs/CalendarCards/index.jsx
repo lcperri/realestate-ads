@@ -12,7 +12,7 @@ export default function CalendarCards() {
   const authorized = useSelector((state) => state.authorized);
   const id = localStorage.getItem('id');
   const headers = LoginController();
-  const calendaryC = useSelector((state) => state.calendar);
+  const calendar = useSelector((state) => state.calendar);
 
   useEffect(() => {
     dispatch(getCalendar(id, headers));
@@ -24,11 +24,11 @@ export default function CalendarCards() {
       { !authorized ? (<CalendarAuth></CalendarAuth>) :
       <CardsContainer>
         {
-         calendaryC.length ?
-         calendaryC.map(c => {
+         calendar.length ?
+         calendar.map(c => {
             return(
                 <div key={c.id}>
-                    <CalendarCard key={c.id} summary={c.summary} location={c.location} colorId={c.colorId} start={c.start} end={c.end} attendees={c.attendees}/>
+                    <CalendarCard key={c.id} summary={c.summary} location={c.location} />
                 </div>
             )
          }) : <div></div>

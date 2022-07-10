@@ -6,30 +6,28 @@ import './Nav.css';
 import { useLocation } from 'react-router-dom';
 import capitalize from './../../functions/capitalize';
 import { useDispatch } from 'react-redux/es/exports';
-import { logout } from '../../redux/actions';
+import { getUserById, logout } from '../../redux/actions';
 import { useNavigate } from 'react-router-dom';
 import Logo from '../../dumb/Icons/Logo';
 import Title from '../../styledComponents/Title'
 import { useSelector } from "react-redux";
+import LoginController from '../../localStorage/login';
 const Nav = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
 
-  //Este es un cambio para forzar un renderizado cuando se cambia nombre o apellido en Perfil
-  var [ChangeInNavBarName, setChangeInNavBarName] = useState("")
-  let userData = useSelector((state) => state.userById);
-
-  useEffect(() => {
-    setChangeInNavBarName(userData)
-  }, [userData]);
-
   //************************ */
 
+  const headers = LoginController();
   const range = localStorage.getItem('range');
   const id = localStorage.getItem('id');
   var name = localStorage.getItem('name');
   var lastName = localStorage.getItem('last-name');
+
+  useEffect(() => {
+    getUserById(id, headers);
+  }, [name, lastName, range]);
 
   if (name) {
     name = capitalize(name);
@@ -94,7 +92,7 @@ const Nav = () => {
         {range &&
           <div>
             <Title fontSize='20px' color='#ff765e'>
-              {capitalize(range)},
+              {capitalize(range)}
             </Title>
             <Title fontSize='20px'>
               ¡Hola, {name} {lastName}!

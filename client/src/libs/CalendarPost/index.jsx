@@ -51,6 +51,7 @@ export default function Calendar ({ operation }) {
    
    const handleSubmit = (e) => {
       e.preventDefault();
+      console.log(location)
       dispatch(createEvent({ summary, location, startDateTime, endDateTime }, headers));
    };
 
@@ -67,18 +68,7 @@ export default function Calendar ({ operation }) {
                       Programá una visita...
                   </div>
                   <DivContainer contacto={true} >
-                     <div className="addressWrapper"></div>               
-                     <Label className={styles.label}>Motivo</Label>
-                     <Select  className={styles.selectMotivo}                
-                        id='summary'
-                        value={summary}
-                        /* onChange={(e) => setSummary(e.target.value)} */
-                     >
-                        <option value={null}>Motivo</option>
-                        <option value={"Visita venta Mikasa Nueva"}>Vender</option>
-                        <option value={"Visita alquiler Mikasa Nueva"}>Rentar</option>
-                                                         
-                     </Select>                            
+                     <div className="addressWrapper"></div>                                
 
                      <Label className={styles.horarioLabel}>Horario de visita: de 09 a 14hs - 30min por Visita</Label>
                      
