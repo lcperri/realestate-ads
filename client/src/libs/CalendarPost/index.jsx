@@ -67,8 +67,7 @@ export default function Calendar ({ operation }) {
                       Programá una visita...
                   </div>
                   <DivContainer contacto={true} >
-                     <div className="addressWrapper"></div>               
-                     <Label className={styles.label}>Motivo</Label>                         
+                     <div className="addressWrapper"></div>                                
 
                      <Label className={styles.horarioLabel}>Horario de visita: de 09 a 14hs - 30min por Visita</Label>
                      
