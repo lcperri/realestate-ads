@@ -3,13 +3,11 @@ import { useSelector, useDispatch } from 'react-redux'
 import CalendarCard from '../../dumb/CalendarCard';
 import CardsContainer from '../../styledComponents/CardsContainer';
 import DivContainer from '../../styledComponents/DivContainer';
-import { getCalendar, getUserById } from './../../redux/actions';
-import LoginController from './../../localStorage/login';
-import CalendarAuth from '../Calendar';
+import { getCalendar, getUserById } from '../../redux/actions';
+import LoginController from '../../localStorage/login';
 
-export default function CalendarCards() {
+export default function ContactCards() {
   const dispatch = useDispatch();
-  const authorized = useSelector((state) => state.authorized);
   const id = localStorage.getItem('id');
   const headers = LoginController();
   const calendar = useSelector((state) => state.calendar);
@@ -22,7 +20,6 @@ export default function CalendarCards() {
   return (
     <>
     <DivContainer className="calendaris">
-      { !authorized ? (<CalendarAuth></CalendarAuth>) :
       <CardsContainer>
         {
          calendar.length ?
@@ -41,10 +38,8 @@ export default function CalendarCards() {
             )
          }) : <div></div>
         }
-
-      </CardsContainer> }
+      </CardsContainer>
       </DivContainer>
     </>
   )
 }
-

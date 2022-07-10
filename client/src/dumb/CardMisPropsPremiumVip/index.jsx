@@ -6,9 +6,9 @@ import BathIcon from '../Icons/Bath'
 import RoomIcon from '../Icons/Room'
 import AreaIcon from '../Icons/Area'
 import Button from '../../styledComponents/Button';
+import { StyledLink } from "../../styledComponents/StyledLink";
 
-export default function CardMisPropPremiumVip({type, address, price, area, rooms, bathrooms, pictures}){
-
+export default function CardMisPropPremiumVip({id, type, address, price, area, rooms, bathrooms, pictures}){
 
     return(
         <div className={styles.contenedorMP}>
@@ -46,7 +46,9 @@ export default function CardMisPropPremiumVip({type, address, price, area, rooms
             <div className={styles.divBotones}>
                 <p className={styles.visto}>Visto: </p>
                 <p>Marcado Favorito: </p>
-                <Button className={styles.botonConetar}>Ver solicitudes de contacto</Button>      
+                <Button className={styles.botonConetar}>
+                    <StyledLink to={`/contacto/${id}`}>Ver solicitudes de contacto</StyledLink>
+                </Button>
                 <Button className={styles.botonDet}>Ver comentarios</Button>      
                 <Button className={styles.botonQuitar}>Rentado/Vendido/Reservado</Button>
             </div>
