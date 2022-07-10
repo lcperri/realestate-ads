@@ -11,7 +11,7 @@ import {
   LOGOUT,
   GET_OWNERPHONE,
   UPDATE_USER_BY_ID,
-  UPDATE_FAV,
+  UPDATE_PAGE,
 } from "./actionTypes";
 
 const initialState = {
@@ -28,7 +28,7 @@ const initialState = {
   user: {},
   calendar: false,
   telephone: 0,
-  updateFavorites: false,
+  updateCurrentPage: false,
   cardsCalendary: [
     {
       summary: "Alquiler",
@@ -144,10 +144,10 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         telephone: payload,
       };
-    case UPDATE_FAV:
+    case UPDATE_PAGE:
       return {
         ...state,
-        updateFavorites: !state.updateFavorites
+        updateCurrentPage: !state.updateCurrentPage
       };
     default:
       return {

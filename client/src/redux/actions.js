@@ -28,7 +28,7 @@ import {
   GET_OWNERPHONE,
   UPDATE_USER_BY_ID,
   CONTACT,
-  UPDATE_FAV,
+  UPDATE_PAGE,
   SWITCH_BETWEEN_FORMS
 } from "./actionTypes";
 
@@ -301,8 +301,8 @@ export function switchBetweenForms(){
   }
 }
 
-export function updateFavorites () {
+export function updateCurrentPage () {
   return {
-    type: UPDATE_FAV
+    type: UPDATE_PAGE
   };
 }

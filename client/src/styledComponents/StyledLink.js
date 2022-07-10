@@ -7,14 +7,28 @@ export const StyledLink = styled(Link)`
     text-decoration: none;
     font-size: 15px;
     padding: 4px;
+
+    &.perfil {
+        color: #fff;
+        background-color: #3e4b56;
+        border-radius: 20px;
+        padding: 3px 8px;
+        &:visited {
+            color:#fff;
+        }
+        &:link {
+            color:#fff;
+        }
+        &:hover {
+            color:#E52F50;
+        }
+    }
+
     &:visited {
         color:#ff765e;
     }
     &:link {
         color:#ff765e;
-    }
-    &:hover {
-        font-weight: 600;
     }
 `
 
