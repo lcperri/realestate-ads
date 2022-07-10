@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import LoginController from '../../localStorage/login'
-import { addToUserFavourites, getUserById, updateFavorites } from '../../redux/actions'
+import { addToUserFavourites, updateCurrentPage } from '../../redux/actions'
 import toast, { Toaster } from 'react-hot-toast';
 import { Heart } from '../../dumb/Icons/Heart'
 
@@ -36,7 +36,7 @@ const SetToFavortie = ({ idProperty, user, top, right }) => {
             setFav(true)
         }
         dispatch(addToUserFavourites(userId, { property: idProperty }, headers))
-        dispatch(updateFavorites())
+        dispatch(updateCurrentPage())
     }
 
     return (

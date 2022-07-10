@@ -131,8 +131,8 @@ const Details = () => {
             </div>
             <h1>Dirección:</h1>
             <div className={styles.container}>
-              {property.city} <b> {` > `} </b> {property.neighbourhood}{" "}
-              <b>{" > "}</b> {property.address}
+              {capitalize(property.city)} <b> {` > `} </b> {capitalize(property.neighbourhood)}{" "}
+              <b>{" > "}</b> {capitalize(property.address)}
             </div>
             <h1>Características:</h1>
             <div className={styles.features}>
@@ -141,7 +141,7 @@ const Details = () => {
               </div>
               <div>
                 <TypeIcon /> <h3>Tipo:</h3>
-                {property.type}
+                {capitalize(property.type)}
               </div>
               <div>
                 <RoomIcon /> <h3>Nro de habitaciones:</h3> {property.rooms}
@@ -154,7 +154,7 @@ const Details = () => {
               <div>
                 <NeighborhoodIcon />
                 <h3>Vecindario:</h3>
-                {property.neighbourhood}
+                {capitalize(property.neighbourhood)}
               </div>
               <div>
                 <BuildIcon />
