@@ -1,5 +1,5 @@
 import { Route, Routes, useNavigate } from "react-router-dom";
-import LandingPage from "./pages/LandingPage";
+import Landing from "./pages/LandingPage/index"
 import Home from "./pages/Home";
 import Create from "./pages/Create";
 import Details from "./pages/Details";
@@ -39,7 +39,7 @@ const App = () => {
     <>
       <Nav />
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route path="/" element={<Landing />} />
         <Route path="/home" element={<Home />} />
         <Route path="/publicar" element={<Create />} />
         <Route path="/:id" element={<Details />} />

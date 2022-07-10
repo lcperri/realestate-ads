@@ -61,6 +61,7 @@ const Nav = () => {
             <>
               <StyledHash to={'#'}>Inicio</StyledHash>
               <StyledHash to="#how-it-works">Cómo funciona </StyledHash>
+              <StyledHash to="#Technologies">Tecnologias usadas </StyledHash>
               <StyledHash to="#agents">Quiénes somos</StyledHash>
             </>
             :
