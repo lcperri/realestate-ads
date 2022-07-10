@@ -10,7 +10,7 @@ export const StyledLink = styled(Link)`
 
     &.perfil {
         color: #fff;
-        background-color: #313f4b;
+        background-color: #3e4b56;
         border-radius: 20px;
         padding: 3px 8px;
         &:visited {

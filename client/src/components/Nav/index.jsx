@@ -16,21 +16,15 @@ const Nav = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-
   //Este es un cambio para forzar un renderizado cuando se cambia nombre o apellido en Perfil
-
   var [ChangeInNavBarName, setChangeInNavBarName] = useState("")
   let userData = useSelector((state) => state.userById);
 
   useEffect(() => {
-
-
     setChangeInNavBarName(userData)
-
   }, [userData]);
 
   //************************ */
-
 
   const range = localStorage.getItem('range');
   const id = localStorage.getItem('id');
@@ -56,7 +50,6 @@ const Nav = () => {
         </StyledLink>
       </div>
       <div className='subContainerCenter'>
-
         <li className="items">
           {!location.pathname.split('/')[1] ?
             <>
@@ -66,8 +59,8 @@ const Nav = () => {
             </>
             :
             <>
-              {range && <NavLink to={'/favoritos'}>Mis Favoritos</NavLink>}
               {range && range !== 'free' && <NavLink to={'/mispropiedades'}>Mis Propiedades</NavLink>}
+              {range && <NavLink to={'/favoritos'}>Mis Favoritos</NavLink>}
               {range && <NavLink to={'/calendario'}>Calendario</NavLink>}
             </>
           }
