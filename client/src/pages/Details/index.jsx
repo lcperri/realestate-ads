@@ -17,7 +17,7 @@ import StyledText from "../../styledComponents/StyledText";
 import Map from "../../libs/Map";
 import Button from "../../styledComponents/Button";
 import styles from "./styles.module.css";
-import { getownersphone, GetUserById } from "../../redux/actions";
+import { getownersphone, GetUserById, switchBetweenForms } from "../../redux/actions";
 import { getPropertyById, clear } from "../../redux/actions";
 import getCoordenates from "../../functions/getCoordenates";
 import FormContacto from "../../components/FormContacto";
@@ -27,6 +27,7 @@ import BackButton from "../../dumb/BackButton";
 import capitalize from "../../functions/capitalize";
 import house from '../../assets/house.png'
 import apartment from '../../assets/apartment.png'
+import Calendar from "../../libs/CalendarPost";
 
 const Details = () => {
   const navigate = useNavigate();
@@ -34,12 +35,14 @@ const Details = () => {
   const [clickedImg, setClickedImg] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(null);
   const [coordenate, setCoordenate] = useState();
-
+  
   const property = useSelector((state) => state.property);
+  const form = useSelector((state) => state.forms);
   const userId = localStorage.getItem('id')
   const { id } = useParams(); //id de propiedad
 
   useEffect(() => {
+    dispatch(switchBetweenForms());
     dispatch(getPropertyById(id));
     return () => dispatch(clear());
   }, []);
@@ -52,7 +55,7 @@ const Details = () => {
 
   useEffect(() => {
     dispatch(getownersphone(id));
-  }, [dispatch, id]);
+  }, [id]);
 
   const handleClick = (item, index) => {
     setCurrentIndex(index);
@@ -129,8 +132,8 @@ const Details = () => {
             </div>
             <h1>Dirección:</h1>
             <div className={styles.container}>
-              {property.city} <b> {` > `} </b> {property.neighbourhood}{" "}
-              <b>{" > "}</b> {property.address}
+              {capitalize(property.city)} <b> {` > `} </b> {capitalize(property.neighbourhood)}{" "}
+              <b>{" > "}</b> {capitalize(property.address)}
             </div>
             <h1>Características:</h1>
             <div className={styles.features}>
@@ -139,7 +142,7 @@ const Details = () => {
               </div>
               <div>
                 <TypeIcon /> <h3>Tipo:</h3>
-                {property.type}
+                {capitalize(property.type)}
               </div>
               <div>
                 <RoomIcon /> <h3>Nro de habitaciones:</h3> {property.rooms}
@@ -152,7 +155,7 @@ const Details = () => {
               <div>
                 <NeighborhoodIcon />
                 <h3>Vecindario:</h3>
-                {property.neighbourhood}
+                {capitalize(property.neighbourhood)}
               </div>
               <div>
                 <BuildIcon />
@@ -172,9 +175,7 @@ const Details = () => {
             </div>
           </div>
           <div className={styles.contact_subWrapper}>
-            {userId
-              ? <FormContacto />
-              : <div>
+            { !userId ? <div>
                 <h4>
                   Te gusta esta propiedad?
                   No pierdas la oportunidad de {property.operation === 'rent' ? 'alquilarla.' : 'adquirirla.'} <br />
@@ -190,8 +191,10 @@ const Details = () => {
                     registrarse
                   </StyledLink>
                 </DivRow>
-              </div>
-            }
+                </div> :
+                form === false || form === undefined ? <FormContacto /> : 
+                form === true && <Calendar operation={property?.operation} />
+              }
           </div>
         </div>
         <h1>Ubicación:</h1>

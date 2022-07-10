@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const DivContainer = styled.div`
   border-radius: 20px;
-  margin: 120px auto 15px auto;
+  margin: 140px auto 15px auto;
   padding: 20px 60px 30px 60px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 18px;
   transition: .2s ease all;
@@ -11,11 +11,14 @@ const DivContainer = styled.div`
     'width: 75%;'
   }
 
+  ${(props) => props.contacto ? 'min-width: 40rem;' : null }
+
   &.contactForm {
     /* margin: 20px auto 15px auto; */
     position: relative;
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
     /* justify-content: center; */
     align-items: center;
     height: 610px;
@@ -52,6 +55,7 @@ const DivContainer = styled.div`
     background-color: #fff;
     border: 1px solid #efefef;
     box-shadow: 0 3px 15px rgba(0, 0, 0, 0.159);
+    width: 70%;
   }
 
   &.home {

@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import LoginController from '../../localStorage/login'
-import { addToUserFavourites, getUserById } from '../../redux/actions'
+import { addToUserFavourites, updateCurrentPage } from '../../redux/actions'
 import toast, { Toaster } from 'react-hot-toast';
 import { Heart } from '../../dumb/Icons/Heart'
 
-const SetToFavortie = ({ idProperty, user }) => {
+const SetToFavortie = ({ idProperty, user, top, right }) => {
     const dispatch = useDispatch()
     const headers = LoginController()
 
     const [fav, setFav] = useState(false)
 
     useEffect(() => {
-        user.favourites?.includes(idProperty) ? setFav(true) : setFav(false)
+        user && user.favourites?.includes(idProperty) ? setFav(true) : setFav(false)
     }, [])
 
     const setFavourite = (userId, idProperty) => {
@@ -36,11 +36,12 @@ const SetToFavortie = ({ idProperty, user }) => {
             setFav(true)
         }
         dispatch(addToUserFavourites(userId, { property: idProperty }, headers))
+        dispatch(updateCurrentPage())
     }
 
     return (
         <button key={idProperty} onClick={() => setFavourite(user._id, idProperty)}>
-            <Heart width='28' height='28' fill={fav ? '#ff274e' : 'white'} onHover='#ff274e' />
+            <Heart width='28' height='28' fill={fav ? '#ff274e' : 'white'} onHover='#ff274e' top={top} right={right} />
             <Toaster />
         </button>
     )

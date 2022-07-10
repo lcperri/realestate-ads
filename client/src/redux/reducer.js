@@ -10,8 +10,11 @@ import {
   LOGIN,
   LOGOUT,
   GET_OWNERPHONE,
-  GET_USER_BY_ID,
   UPDATE_USER_BY_ID,
+  SWITCH_BETWEEN_FORMS,
+  UPDATE_PAGE,
+  GET_CALENDAR,
+  CONTACT,
 } from "./actionTypes";
 
 const initialState = {
@@ -24,36 +27,15 @@ const initialState = {
   pages: [1, 1, 10],
   property: {},
   city: "",
-  users:[],
-  user:{},
+  users: [],
+  user: {},
   calendar: false,
-  cardsCalendary: [
-    {
-      summary: "Alquiler",
-      location: "dirección de tu casa",
-      colorId: 1,
-      star: "2022-07-03",
-      end: "2022-07-03",
-      attendees: "tumail@gmail.com",
-    },
-    {
-      summary: "Venta",
-      location: "Acá iría la dirección de tu casa",
-      colorId: "2",
-      star: "2022-07-03",
-      end: "2022-07-03",
-      attendees: "tumail@gmail.com",
-    },
-    {
-      summary: "Venta",
-      location: "Acá iría la dirección de tu casa",
-      colorId: "2",
-      star: "2022-07-03",
-      end: "2022-07-03",
-      attendees: "tumail@gmail.com",
-    },
-  ],
-  userById: {},
+  telephone: 0,
+  forms: true,
+  contacts: [],
+  updateCurrentPage: false,
+  calendar: [],
+  authroized: false
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -67,11 +49,12 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         logged: true,
+        authorized: payload
       };
     case LOGOUT:
       return {
-        loading: true,
         logged: false,
+        loading: true,
         notFound: false,
         error: {},
         filter: { location: "", max: "", filters: {} },
@@ -95,8 +78,20 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         pages: payload,
       };
+    case CONTACT:
+      return {
+        ...state,
+        contacts: payload
+      }
+    case GET_CALENDAR:
+      return {
+        ...state,
+        calendar: payload,
+        authorized: true
+      }
     case CLEAR:
       return {
+        ...state,
         loading: true,
         notFound: false,
         error: {},
@@ -108,7 +103,7 @@ const reducer = (state = initialState, { type, payload }) => {
         users: [],
         user: {},
         calendar: false,
-        cardsCalendary: [],
+        cardsCalendary: []
       };
     case PROPERTY:
       return {
@@ -130,13 +125,7 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         user: payload,
-        loading: false,
-      };
-
-    case GET_USER_BY_ID:
-      return {
-        ...state,
-        userById: { ...payload, birthday: payload.birthday.slice(0, 10) },
+        authorized: payload.authorized,
         loading: false,
       };
     case UPDATE_USER_BY_ID:
@@ -144,11 +133,22 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         loading: false,
       };
-
+    case SWITCH_BETWEEN_FORMS:
+      payload = state.forms
+      payload === false ? payload = true : payload = false
+      return {
+        ...state,
+        forms: payload
+      }
     case GET_OWNERPHONE:
       return {
         ...state,
-        user: payload,
+        telephone: payload,
+      };
+    case UPDATE_PAGE:
+      return {
+        ...state,
+        updateCurrentPage: !state.updateCurrentPage
       };
     default:
       return {

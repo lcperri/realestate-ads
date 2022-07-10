@@ -26,9 +26,11 @@ import {
   CLEAR,
   LOGOUT,
   GET_OWNERPHONE,
-  GET_USER_BY_ID,
   UPDATE_USER_BY_ID,
   CONTACT,
+  UPDATE_PAGE,
+  SWITCH_BETWEEN_FORMS,
+  GET_CALENDAR
 } from "./actionTypes";
 
 export function login(data) {
@@ -39,8 +41,10 @@ export function login(data) {
     SaveRange(login.data[0].range);
     SaveLastName(login.data[0].lastName);
     SaveName(login.data[0].name);
+    const payload = login.data[0].authorized
     return dispatch({
       type: LOGIN,
+      payload
     });
   };
 }
@@ -179,27 +183,34 @@ export function filter(filters, location, max) {
 
 export function getCalendar(id, headers) {
   return async function (dispatch) {
-    const calendar = await axios.get(`${url}/calendar/${id}`, headers);
-    return dispatch({
-      type: LOGIN,
-      payload: calendar.data,
-    });
-  };
+    try {
+      const calendar = await axios.get(`${url}/calendar/${id}`, headers);
+      return dispatch({
+        type: GET_CALENDAR,
+        payload: calendar.data,
+      });
+    } catch (error) {
+      return dispatch({
+        type: USER,
+        payload: error.response.data
+      })
+    }
+  }
 }
 
 export function calendar(code, id, headers) {
   return async function (dispatch) {
     const calendar = await axios.post(`${url}/calendar/${id}`, code, headers);
     return dispatch({
-      type: LOGIN,
+      type: USER,
       payload: calendar.data,
     });
   };
 }
 
-export function createEvent(id, code, headers) {
+export function createEvent(code, headers) {
   return async function (dispatch) {
-    const calendar = await axios.post(`${url}/calendar/${id}/event`, code, headers);
+    const calendar = await axios.post(`${url}/calendar/event`, code, headers);
     return dispatch({
       type: LOGIN,
       payload: calendar.data,
@@ -212,7 +223,7 @@ export function getUserById(id) {
     dispatch({ type: LOADING });
     const user = await axios.get(`${url}/user/${id}`);
     return dispatch({
-      type: GET_USER_BY_ID,
+      type: USER,
       payload: user.data,
     });
   };
@@ -240,20 +251,20 @@ export function contactForm(data, headers) {
 
 export function seeContactsByProperty(id, headers) {
   return async function (dispatch) {
-    const favs = await axios.get(`${url}/contact/${id}`, headers);
+    const contacts = await axios.get(`${url}/contact/${id}`, headers);
     return dispatch({
-      type: CONTACT
+      type: CONTACT,
+      payload: contacts.data
     });
   };
 }
 
-export function logout() {
+export function logout(id) {
   return async function (dispatch) {
     RemoveToken();
     RemoveRange();
     RemoveLastName();
     RemoveName();
-    const id = localStorage.getItem('id');
     RemoveId();
     await axios.get(`${url}/logout/${id}`);
     return dispatch({
@@ -289,5 +300,19 @@ export function addToUserFavourites(id, property, headers) {
       type: USER,
       payload: favs.data
     });
+  };
+}
+
+export function switchBetweenForms(){
+  return function (dispatch) {
+    return dispatch({
+      type: SWITCH_BETWEEN_FORMS
+    })
+  }
+}
+
+export function updateCurrentPage () {
+  return {
+    type: UPDATE_PAGE
   };
 }
