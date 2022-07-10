@@ -6,9 +6,10 @@ import BathIcon from '../Icons/Bath'
 import RoomIcon from '../Icons/Room'
 import AreaIcon from '../Icons/Area'
 import Button from '../../styledComponents/Button';
+import { StyledLink } from "../../styledComponents/StyledLink";
+import capitalize from './../../functions/capitalize';
 
-export default function CardMisPropPremiumVip({type, address, price, area, rooms, bathrooms, pictures}){
-
+export default function CardMisPropPremiumVip({id, type, address, price, area, rooms, bathrooms, pictures}){
 
     return(
         <div className={styles.contenedorMP}>
@@ -27,11 +28,11 @@ export default function CardMisPropPremiumVip({type, address, price, area, rooms
                 </div>                   
         
                 <div className={styles.typo}>
-                   <StyledText className='typeCard'>{type}</StyledText> 
+                   <StyledText className='typeCard'>{capitalize(type)}</StyledText> 
                 </div>
                 
                 <div className={styles.direcc}>
-                   <h4>{address}</h4> 
+                   <h4>{capitalize(address)}</h4> 
                 </div>
                 
                 <div className={styles.areaRoomBath}>
@@ -46,7 +47,9 @@ export default function CardMisPropPremiumVip({type, address, price, area, rooms
             <div className={styles.divBotones}>
                 <p className={styles.visto}>Visto: </p>
                 <p>Marcado Favorito: </p>
-                <Button className={styles.botonConetar}>Ver solicitudes de contacto</Button>      
+                <Button className={styles.botonConetar}>
+                    <StyledLink to={`/contacto/${id}`}>Ver solicitudes de contacto</StyledLink>
+                </Button>
                 <Button className={styles.botonDet}>Ver comentarios</Button>      
                 <Button className={styles.botonQuitar}>Rentado/Vendido/Reservado</Button>
             </div>
