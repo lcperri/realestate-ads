@@ -284,7 +284,7 @@ export default function FormCreateProp() {
                                             { description: 'casa de campo' },
                                             { description: 'casa de playa' },
                                             { description: 'garage' },
-                                            { description: 'habitación' },
+                                            { description: 'habitacion' },
                                             { description: 'hotel' },
                                             { description: 'local industrial' },
                                             { description: 'terreno/lote' },
