@@ -42,10 +42,18 @@ const Nav = () => {
 
   return (
     <div className="navbar">
-      <div className='subContainerLeft'>
+      <div className='subContainerCenter'>
         <StyledLink to='/'>
           <Logo height='20px' width='20px' />
         </StyledLink>
+      <StyledLink to={'/home'}>
+      <Button>Ver Propiedades</Button>
+      </StyledLink>
+      {range && range !== 'free' &&
+        <StyledLink to={'/publicar'}>
+          <Button>Publicar</Button>
+        </StyledLink>
+      }
       </div>
       <div className='subContainerCenter'>
         <li className="items">
@@ -63,14 +71,6 @@ const Nav = () => {
             </>
           }
         </li>
-        <StyledLink to={'/home'}>
-          <Button>Ver Propiedades</Button>
-        </StyledLink>
-        {range && range !== 'free' &&
-          <StyledLink to={'/publicar'}>
-            <Button>Publicar</Button>
-          </StyledLink>
-        }
       </div>
       <div className='subContainerRight'>
         {!range &&
