@@ -17,7 +17,7 @@ import StyledText from "../../styledComponents/StyledText";
 import Map from "../../libs/Map";
 import Button from "../../styledComponents/Button";
 import styles from "./styles.module.css";
-import { getownersphone, GetUserById } from "../../redux/actions";
+import { getownersphone, GetUserById, switchBetweenForms } from "../../redux/actions";
 import { getPropertyById, clear } from "../../redux/actions";
 import getCoordenates from "../../functions/getCoordenates";
 import FormContacto from "../../components/FormContacto";
@@ -42,6 +42,7 @@ const Details = () => {
   const { id } = useParams(); //id de propiedad
 
   useEffect(() => {
+    dispatch(switchBetweenForms());
     dispatch(getPropertyById(id));
     return () => dispatch(clear());
   }, []);
@@ -190,12 +191,9 @@ const Details = () => {
                     registrarse
                   </StyledLink>
                 </DivRow>
-                </div> : null }
-              {
-                userId && form === false && <FormContacto /> 
-              }
-              {
-                userId && form === true && <Calendar operation={property?.operation} />
+                </div> :
+                form === false || form === undefined ? <FormContacto /> : 
+                form === true && <Calendar operation={property?.operation} />
               }
           </div>
         </div>
