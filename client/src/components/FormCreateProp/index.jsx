@@ -73,8 +73,8 @@ export default function FormCreateProp() {
     setRooms({ key: "", valid: null });
     setBathrooms({ key: "", valid: null });
     setParkingSlot({ key: "", valid: null });
-    setConstructionDate({ key: "", valid: null });
-    setRenovationDate({ key: "", valid: null });
+    setConstructionDate({ key: "", valid: "true" });
+    setRenovationDate({ key: "", valid: "true" });
     setPictures([]);
   };
 
@@ -201,8 +201,6 @@ export default function FormCreateProp() {
       area.valid === "true" &&
       rooms.valid === "true" &&
       bathrooms.valid === "true" &&
-      constructionDate.valid === "true" &&
-      renovationDate.valid === "true" &&
       neighbourhood.valid === "true" &&
       parkingSlot.valid === "true" &&
       // pictures.valid === 'true' &&
