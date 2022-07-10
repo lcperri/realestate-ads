@@ -1,6 +1,6 @@
 const regExps = {
     city: { 
-        regExp: /^[a-zA-ZÀ-ÿ0-9\s]{3,48}$/, //puede llevar letras min, May, acentos, diéresis, números y espacios. De 3 a 48 caracteres.
+        regExp: /^[a-zA-ZÀ-ÿ0-9\/\s]{3,48}$/, //puede llevar letras min, May, acentos, diéresis, números y espacios. De 3 a 48 caracteres.
         errorLeyend: 'El nombre de la ciudad debe tener entre 3 a 48 caracteres. Sólo pueden ser letras o números.'
     },
     neighbourhood : {

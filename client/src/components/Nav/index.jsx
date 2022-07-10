@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom';
 import Button from '../../styledComponents/Button';
 import { StyledHash, StyledLink } from '../../styledComponents/StyledLink';
@@ -9,10 +9,8 @@ import { useDispatch } from 'react-redux/es/exports';
 import { logout } from '../../redux/actions';
 import { useNavigate } from 'react-router-dom';
 import Logo from '../../dumb/Icons/Logo';
-
-import {useSelector } from "react-redux";
-
-
+import Title from '../../styledComponents/Title'
+import { useSelector } from "react-redux";
 const Nav = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -24,16 +22,14 @@ const Nav = () => {
   var [ChangeInNavBarName, setChangeInNavBarName] = useState("")
   let userData = useSelector((state) => state.userById);
 
-  useEffect(() => {    
-    
-    
+  useEffect(() => {
+
+
     setChangeInNavBarName(userData)
-   
+
   }, [userData]);
 
   //************************ */
-
-
 
 
   const range = localStorage.getItem('range');
@@ -53,65 +49,70 @@ const Nav = () => {
   }
 
   return (
-
     <div className="navbar">
-      <StyledLink to='/'>
-        <Logo height='20px' width='20px' />
-      </StyledLink>
-      <div className='subContainer'>
+      <div className='subContainerLeft'>
+        <StyledLink to='/'>
+          <Logo height='20px' width='20px' />
+        </StyledLink>
+      </div>
+      <div className='subContainerCenter'>
+
+        <li className="items">
+          {!location.pathname.split('/')[1] ?
+            <>
+              <StyledHash to={'#'}>Inicio</StyledHash>
+              <StyledHash to="#how-it-works">Cómo funciona </StyledHash>
+              <StyledHash to="#agents">Quiénes somos</StyledHash>
+            </>
+            :
+            <>
+              {range && <NavLink to={'/favoritos'}>Mis Favoritos</NavLink>}
+              {range && range !== 'free' && <NavLink to={'/mispropiedades'}>Mis Propiedades</NavLink>}
+              {range && <NavLink to={'/calendario'}>Calendario</NavLink>}
+            </>
+          }
+        </li>
         <StyledLink to={'/home'}>
           <Button>Ver Propiedades</Button>
         </StyledLink>
-        <div className='subContainerLeft'>
-          <li className="items">
-            {!location.pathname.split('/')[1] ?
-              <>
-                <StyledHash to={'#'}>Inicio</StyledHash>
-                <StyledHash to="#how-it-works">Cómo funciona </StyledHash>
-                <StyledHash to="#agents">Quiénes somos</StyledHash>
-              </>
-              :
-              <>
-                {range && <StyledLink to={'/perfil'}>Perfil</StyledLink>}
-                {range && <NavLink to={'/favoritos'}>Mis Favoritos</NavLink>}
-                {range && range !== 'free' && <NavLink to={'/mispropiedades'}>Mis Propiedades</NavLink>}
-                {range && <NavLink to={'/planes'}>Planes</NavLink>}
-                {range && <NavLink to={'/calendario'}>Calendario</NavLink>}
-              </>
-            }
-          </li>
-        </div>
-      </div>
-      <div className='subContainerRight'>
-        {!range &&
-          <>
-          {
-            location.pathname.split('/')[1] !== 'sesion' &&
-            <StyledLink to={'/sesion'}>
-              <Button>Iniciar Sesión</Button>
-            </StyledLink>
-          }
-          {
-            location.pathname.split('/')[1] !== 'registro' &&
-            <StyledLink to={'/registro'}>
-              <Button>Registrarse</Button>
-            </StyledLink>
-          }
-          </>
-        }
-        {range &&
-          <>
-            <h1>¡Hola, {name} {lastName}!</h1>
-            <Button onClick={(e) => { logoutFunction(e) }}>Cerrar Sesión</Button>
-          </>
-        }
         {range && range !== 'free' &&
           <StyledLink to={'/publicar'}>
             <Button>Publicar</Button>
           </StyledLink>
         }
       </div>
-    </div>
+      <div className='subContainerRight'>
+        {!range &&
+          <div>
+            {
+              location.pathname.split('/')[1] !== 'sesion' &&
+              <StyledLink to={'/sesion'}>
+                <Button>Iniciar Sesión</Button>
+              </StyledLink>
+            }
+            {
+              location.pathname.split('/')[1] !== 'registro' &&
+              <StyledLink to={'/registro'}>
+                <Button>Registrarse</Button>
+              </StyledLink>
+            }
+          </div>
+        }
+        {range &&
+          <div>
+            <Title fontSize='20px' color='#ff765e'>
+              {capitalize(range)},
+            </Title>
+            <Title fontSize='20px'>
+              ¡Hola, {name} {lastName}!
+            </Title>
+            {range && <StyledLink to={'/planes'} className='perfil'>Subscripción</StyledLink>}
+            {range && <StyledLink to={'/perfil'} className='perfil'>Perfil</StyledLink>}
+            <Button onClick={(e) => { logoutFunction(e) }}>Cerrar Sesión</Button>
+          </div>
+        }
+      </div>
+    </div >
   )
 }
 
