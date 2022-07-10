@@ -86,7 +86,7 @@ export default function FormCreateProp() {
                 showConfirmButton: false,
                 timer: 1500
             })            
-            navigate('/mipropsvip')
+            navigate('/mispropiedades')
             cleanForm()   
         })
         .catch(() => {
@@ -153,7 +153,6 @@ export default function FormCreateProp() {
                     }
                 })
             } else {
-                console.log('renovation es mayor');
             }
         }
     }

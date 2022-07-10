@@ -11,6 +11,8 @@ const DivContainer = styled.div`
     'width: 75%;'
   }
 
+  ${(props) => props.contacto ? 'min-width: 40rem;' : null }
+
   &.contactForm {
     /* margin: 20px auto 15px auto; */
     position: relative;

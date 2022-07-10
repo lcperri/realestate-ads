@@ -3,18 +3,25 @@ import { useSelector, useDispatch } from 'react-redux'
 import CalendarCard from '../../dumb/CalendarCard';
 import CardsContainer from '../../styledComponents/CardsContainer';
 import DivContainer from '../../styledComponents/DivContainer';
+import { getCalendar } from './../../redux/actions';
+import LoginController from './../../localStorage/login';
+import CalendarAuth from '../Calendar';
 
 export default function CalendarCards() {
+  const dispatch = useDispatch();
+  const authorized = useSelector((state) => state.authorized);
+  const id = localStorage.getItem('id');
+  const headers = LoginController();
+  const calendaryC = useSelector((state) => state.calendar);
 
-  const calendaryC = useSelector((state) => state.cardsCalendary);
-
- /*  useEffect(() => {
-   
-  }, []); */
+  useEffect(() => {
+    dispatch(getCalendar(id, headers));
+  }, []);
 
   return (
     <>
     <DivContainer className="calendaris">
+      { !authorized ? (<CalendarAuth></CalendarAuth>) :
       <CardsContainer>
         {
          calendaryC.length ?
@@ -27,7 +34,7 @@ export default function CalendarCards() {
          }) : <div></div>
         }
 
-      </CardsContainer>
+      </CardsContainer> }
       </DivContainer>
     </>
   )

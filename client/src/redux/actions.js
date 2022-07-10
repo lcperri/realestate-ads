@@ -29,7 +29,8 @@ import {
   UPDATE_USER_BY_ID,
   CONTACT,
   UPDATE_PAGE,
-  SWITCH_BETWEEN_FORMS
+  SWITCH_BETWEEN_FORMS,
+  GET_CALENDAR
 } from "./actionTypes";
 
 export function login(data) {
@@ -40,8 +41,10 @@ export function login(data) {
     SaveRange(login.data[0].range);
     SaveLastName(login.data[0].lastName);
     SaveName(login.data[0].name);
+    const payload = login.data[0].authorized
     return dispatch({
       type: LOGIN,
+      payload
     });
   };
 }
@@ -180,19 +183,27 @@ export function filter(filters, location, max) {
 
 export function getCalendar(id, headers) {
   return async function (dispatch) {
-    const calendar = await axios.get(`${url}/calendar/${id}`, headers);
-    return dispatch({
-      type: LOGIN,
-      payload: calendar.data,
-    });
-  };
+    try {
+      const calendar = await axios.get(`${url}/calendar/${id}`, headers);
+      return dispatch({
+        type: GET_CALENDAR,
+        payload: calendar.data,
+      });
+    } catch (error) {
+      return dispatch({
+        type: USER,
+        payload: error.response.data
+      })
+    }
+  }
 }
 
 export function calendar(code, id, headers) {
   return async function (dispatch) {
     const calendar = await axios.post(`${url}/calendar/${id}`, code, headers);
+    console.log(calendar.data)
     return dispatch({
-      type: LOGIN,
+      type: USER,
       payload: calendar.data,
     });
   };
@@ -248,15 +259,14 @@ export function seeContactsByProperty(id, headers) {
   };
 }
 
-export function logout() {
+export function logout(id) {
   return async function (dispatch) {
+    await axios.get(`${url}/logout/${id}`);
     RemoveToken();
     RemoveRange();
     RemoveLastName();
     RemoveName();
-    const id = localStorage.getItem('id');
     RemoveId();
-    await axios.get(`${url}/logout/${id}`);
     return dispatch({
       type: LOGOUT,
     });

@@ -38,7 +38,7 @@ const Nav = () => {
 
   const logoutFunction = (e) => {
     e.preventDefault();
-    dispatch(logout());
+    dispatch(logout(id));
     navigate('/');
   }
 
