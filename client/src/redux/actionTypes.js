@@ -12,5 +12,5 @@ export const GET_CALENDAR = "GET_CALENDAR";
 export const GET_OWNERPHONE = "GET_OWNERPHONE";
 export const UPDATE_USER_BY_ID = "UPDATE_USER_BY_ID";
 export const CONTACT = "CONTACT";
-export const UPDATE_FAV = "UPDATE_FAV";
+export const UPDATE_PAGE = "UPDATE_PAGE";
 export const SWITCH_BETWEEN_FORMS = "SWITCH_BETWEEN_FORMS";

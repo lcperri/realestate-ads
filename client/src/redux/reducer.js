@@ -12,7 +12,7 @@ import {
   GET_OWNERPHONE,
   UPDATE_USER_BY_ID,
   SWITCH_BETWEEN_FORMS,
-  UPDATE_FAV,
+  UPDATE_PAGE,
   GET_CALENDAR,
 } from "./actionTypes";
 
@@ -31,7 +31,7 @@ const initialState = {
   calendar: false,
   telephone: 0,
   forms: true,
-  updateFavorites: false,
+  updateCurrentPage: false,
   calendar: [],
   userById: {},
   authroized: false
@@ -138,10 +138,10 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         telephone: payload,
       };
-    case UPDATE_FAV:
+    case UPDATE_PAGE:
       return {
         ...state,
-        updateFavorites: !state.updateFavorites
+        updateCurrentPage: !state.updateCurrentPage
       };
     default:
       return {

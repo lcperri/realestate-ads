@@ -10,6 +10,8 @@ import { DivRow } from "../../styledComponents/DivRow";
 import SetToFavortie from "../../components/SetToFavorite";
 import { getUserById } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
+import house from '../../assets/house.png'
+import apartment from '../../assets/apartment.png'
 
 export default function CardFavorito({ _id, user, operation, type, address, price, city, area, rooms, bathrooms, pictures, neighbourhood }) {
 
@@ -19,7 +21,7 @@ export default function CardFavorito({ _id, user, operation, type, address, pric
         <div className={styles.mainContainer}>
             <div className={styles.contenedorFav}>
                 <div className={styles.divFotos}>
-                    <img src={pictures[0]} alt={"not found"} className={styles.foto} />
+                    <img src={pictures[0] || (type.toLowerCase().includes('casa') ? house : apartment) }/>
                 </div>
                 <div className={styles.divCaracteristicas}>
                     <h2> $ {price} USD </h2>
@@ -37,18 +39,19 @@ export default function CardFavorito({ _id, user, operation, type, address, pric
                     </h5>
                 </div>
                 <div className={styles.divBotones}>
-                    <Button className={styles.botonConetar} onClick={handleConectar}>
+                    <Button onClick={handleConectar}>
                         <StyledLink to='/contact'>
                             Solicitar Contacto
                         </StyledLink>
                     </Button>
 
                     <StyledLink to={`/${_id}`}>
-                        <Button className={styles.botonDet}>Ver detalle</Button>
+                        <Button >Ver detalle</Button>
                     </StyledLink>
 
                     <SetToFavortie idProperty={_id} user={user} />
                 </div>
+
             </div>
         </div>
     )

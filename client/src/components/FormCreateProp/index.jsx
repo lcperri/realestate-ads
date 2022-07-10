@@ -93,9 +93,9 @@ export default function FormCreateProp() {
             Swal.fire({
                 icon: 'error',
                 title: 'Oops...',
-                text: 'Oops, algo no salió bien. Por favor intenta nuevamente.'
+                text: 'Algo no salió bien. Por favor intenta nuevamente.'
             })
-            navigate('/create')
+            navigate('/publicar')
         })        
     }
 
@@ -402,7 +402,7 @@ export default function FormCreateProp() {
                                 </p>
                             </MensajeError>}
                             <SubmitContainer>
-                                <Button /* disabled={!formOk} */ className="submitCreateForm" type='submit'> Publicar </Button>
+                                <Button disabled={!formOk} className="submitCreateForm" type='submit'> Publicar </Button>
                             </SubmitContainer>
                         </>
                     }
