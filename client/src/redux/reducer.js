@@ -33,7 +33,6 @@ const initialState = {
   forms: true,
   updateCurrentPage: false,
   calendar: [],
-  userById: {},
   authroized: false
 };
 
