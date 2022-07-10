@@ -116,7 +116,7 @@ export default function Filter() {
             <option value="casa de campo">Casa de Campo</option>
             <option value="casa de playa">Casa de Playa</option>
             <option value="garage">Grarage</option>
-            <option value="habitación">Habitacion</option>
+            <option value="habitacion">Habitacion</option>
             <option value="hotel">Hotel</option>
             <option value="local industrial">Local Industrial</option>
             <option value="terreno/lote">Terreno/Lote</option>
