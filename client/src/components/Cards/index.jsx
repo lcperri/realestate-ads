@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { filterByFollower, filterByOwner, getUserById, propertyPagination, updateFavorites } from '../../redux/actions'
+import { filterByFollower, filterByOwner, getUserById, propertyPagination} from '../../redux/actions'
 import CardsContainer from '../../styledComponents/CardsContainer'
 import Card from '../../dumb/Card'
 import Pagination from '../Pagination'
