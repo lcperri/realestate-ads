@@ -66,7 +66,7 @@ export default function Calendar ({ operation }) {
                   <div className='title'>
                       Programá una visita...
                   </div>
-                  <DivContainer laConchaDeEsteDivDeMierda={true} >
+                  <DivContainer contacto={true} >
                      <div className="addressWrapper"></div>
                      { !authorized ? (<CalendarAuth></CalendarAuth>) :
                         (
@@ -123,10 +123,10 @@ export default function Calendar ({ operation }) {
                            </>
                         )
                      }
+                     <Button type="button" className={styles.contactar} onClick={switchButton}>Contactar</Button>
                   </DivContainer>
             </div>
          </form> 
-                     <Button type="button" className={styles.contactar} onClick={switchButton}>Contactar</Button>
       </div>  
    )
 }

@@ -249,14 +249,15 @@ export function seeContactsByProperty(id, headers) {
 }
 
 export function logout() {
-  return async function (dispatch) {
+  return function (dispatch) {
     RemoveToken();
     RemoveRange();
     RemoveLastName();
     RemoveName();
     const id = localStorage.getItem('id');
     RemoveId();
-    await axios.get(`${url}/logout/${id}`);
+    axios.get(`${url}/logout/${id}`);
+    console.log(`${url}/logout/}`)
     return dispatch({
       type: LOGOUT,
     });

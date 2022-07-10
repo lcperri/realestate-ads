@@ -48,6 +48,7 @@ const Nav = () => {
 
   const logoutFunction = (e) => {
     e.preventDefault();
+    console.log('hola')
     dispatch(logout());
     navigate('/');
   }

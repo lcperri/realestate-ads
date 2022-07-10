@@ -11,7 +11,7 @@ const DivContainer = styled.div`
     'width: 75%;'
   }
 
-  ${(props) => props.laConchaDeEsteDivDeMierda ? 'min-width: 40rem;' : null }
+  ${(props) => props.contacto ? 'min-width: 40rem;' : null }
 
   &.contactForm {
     /* margin: 20px auto 15px auto; */

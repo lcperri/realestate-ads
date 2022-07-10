@@ -86,7 +86,7 @@ export default function FormCreateProp() {
                 showConfirmButton: false,
                 timer: 1500
             })            
-            navigate('/mipropsvip')
+            navigate('/mispropiedades')
             cleanForm()   
         })
         .catch(() => {
