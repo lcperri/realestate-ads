@@ -7,6 +7,7 @@ import RoomIcon from '../Icons/Room'
 import AreaIcon from '../Icons/Area'
 import Button from '../../styledComponents/Button';
 import { StyledLink } from "../../styledComponents/StyledLink";
+import capitalize from './../../functions/capitalize';
 
 export default function CardMisPropPremiumVip({id, type, address, price, area, rooms, bathrooms, pictures}){
 
@@ -27,11 +28,11 @@ export default function CardMisPropPremiumVip({id, type, address, price, area, r
                 </div>                   
         
                 <div className={styles.typo}>
-                   <StyledText className='typeCard'>{type}</StyledText> 
+                   <StyledText className='typeCard'>{capitalize(type)}</StyledText> 
                 </div>
                 
                 <div className={styles.direcc}>
-                   <h4>{address}</h4> 
+                   <h4>{capitalize(address)}</h4> 
                 </div>
                 
                 <div className={styles.areaRoomBath}>

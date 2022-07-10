@@ -12,6 +12,7 @@ import { getUserById } from "../../redux/actions";
 import { useDispatch, useSelector } from "react-redux";
 import house from '../../assets/house.png'
 import apartment from '../../assets/apartment.png'
+import capitalize from './../../functions/capitalize';
 
 export default function CardFavorito({ _id, user, operation, type, address, price, city, area, rooms, bathrooms, pictures, neighbourhood }) {
 
@@ -27,10 +28,10 @@ export default function CardFavorito({ _id, user, operation, type, address, pric
                     <h2> $ {price} USD </h2>
                     {operation === 'sell' ? 'En venta' : 'En alquiler'}
                     <DivRow>
-                        <StyledText className='typeCard'>{type}</StyledText>
+                        <StyledText className='typeCard'>{capitalize(type)}</StyledText>
                     </DivRow>
                     <h4>
-                        {address} {neighbourhood} - {city}
+                        {capitalize(address)}  —  {capitalize(neighbourhood)}  —  {capitalize(city)}
                     </h4>
                     <h5>
                         <AreaIcon /> {area}m2
