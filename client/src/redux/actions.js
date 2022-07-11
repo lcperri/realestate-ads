@@ -31,8 +31,7 @@ import {
   UPDATE_PAGE,
   SWITCH_BETWEEN_FORMS,
   GET_CALENDAR,
-  PAY_LINK,
-  DELETE_USER
+  PAY_LINK
 } from "./actionTypes";
 
 export function login(data) {
@@ -168,9 +167,11 @@ export function getAllUsers(headers) {
 
 export function deleteUser(id, headers){
   return async function(dispatch){
-    await axios.delete(`${url}/user`, headers, id);
+    const users = await axios.delete(`${url}/user/${id}`, headers);
+    console.log(users.data)
     return dispatch({
-      // type: DELETE_USER
+      type: ALL_USERS,
+      payload: users.data
     });
   }
 }
