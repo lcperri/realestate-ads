@@ -30,7 +30,8 @@ import {
   CONTACT,
   UPDATE_PAGE,
   SWITCH_BETWEEN_FORMS,
-  GET_CALENDAR
+  GET_CALENDAR,
+  DELETE_USER
 } from "./actionTypes";
 
 export function login(data) {
@@ -164,9 +165,9 @@ export function getAllUsers(headers) {
   };
 }
 
-export function deleteUser(id){
-  return async function(dispatch){
-    const resp = await axios.delete(`${url}/user`);
+export function deleteUser(id,headers){
+  return async function(){
+     await axios.delete(`${url}/user`,id,headers);
 
   }
 }

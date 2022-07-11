@@ -57,6 +57,7 @@ const App = () => {
         <Route path="/perfil" element={<ProfileDataUpdate />} />
         <Route path="/terms" element={<Terms/>} />
         {/* <Route path='*' element={<Home/>} />  */}
+        <Route path="/calendarPost" element={<CalendarPost/>} />
       </Routes>
     </>
   );

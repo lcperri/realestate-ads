@@ -4,16 +4,18 @@ import Button from '../../styledComponents/Button'
 import StyledCard from '../../styledComponents/StyledCard'
 import {useDispatch} from "react-redux";
 import { deleteUser } from '../../redux/actions';
+import LoginController from "../../localStorage/login";
 
-
-export default function UserCard({name, lastName, birthday, email, dni, telephone, avatar}){
+export default function UserCard({id,name, lastName, birthday, email, dni, telephone, avatar}){
 
   const range = localStorage.getItem('range');
   //const id = localStorage.getItem('id');
   const dispatch = useDispatch();
+  const headers = LoginController()
 
   const handleElim = (e) =>{
-    //dispatch(deleteUser(id));
+    dispatch(deleteUser(id,headers));
+    console.log("id:",id)
   }
     
   return(
@@ -30,19 +32,12 @@ export default function UserCard({name, lastName, birthday, email, dni, telephon
       <h1 className={styles.datos}> {telephone}</h1>
       <h1 className={styles.datos}>{birthday}</h1>
 
-     {/*  <div className={styles.datos}>
+      <div className={styles.datos}>
         {
-          range === 'premium' && (
+          range === 'admin' && (
             <Button onClick={handleElim}>Eliminar</Button>
           )
         }
-        
-      </div> */}
-
-      <div className={styles.datos}>
-        
-            <Button onClick={handleElim}>Eliminar</Button>
-        
         
       </div>
 
