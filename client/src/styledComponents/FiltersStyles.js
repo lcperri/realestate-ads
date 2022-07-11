@@ -10,8 +10,11 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h1`
-  padding-top: 1em;
-  font-size: 1.5em;
+  /* padding-top: 1em; */
+  font-size: ${props => props.fSize || '1.5em'};
+  color: ${props => props.color || '#333'};
+  margin: ${props => props.margin || '4px'};
+  padding: ${props => props.padding || '4px'};
   font-weight: bold;
   text-align: center;
 `;

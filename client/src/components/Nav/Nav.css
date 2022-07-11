@@ -1,6 +1,6 @@
 .navbar {
   height: auto;
-  width: 100%;
+  width: 100vw;
   background: #333; /* fallback for old browsers */
   background: -webkit-linear-gradient(
     to right,
@@ -13,16 +13,14 @@
     #5f798e
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   display: flex;
-  flex-wrap: wrap;
   flex-direction: row;
-  /* grid-template-columns: 60% 40%; */
   position: fixed;
   justify-content: space-between;
   top: 0px;
   align-items: center;
   z-index: 5;
   border-bottom: 8px solid #ff416c;
-  padding: 0 40px;
+  padding: 0 20px;
 }
 
 .subContainerCenter {

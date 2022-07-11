@@ -9,7 +9,8 @@
   /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(0deg, #FF416C 0%, #ff765e 100%);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  margin: 0;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .priceWrapper {
@@ -50,14 +51,14 @@
 .btnBackTop {
   position: absolute;
   top: 160px;
-  left: 150px;
+  left: 170px;
 }
 
 .btnContainer {
   margin: 20px;
   display: flex;
   justify-content: center;
-}
+}c dclient
 
 .statusOperation {
   display: flex;
