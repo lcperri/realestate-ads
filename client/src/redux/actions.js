@@ -31,7 +31,7 @@ import {
   UPDATE_PAGE,
   SWITCH_BETWEEN_FORMS,
   GET_CALENDAR,
-  PAY_LINK
+  PAY_LINK,
   DELETE_USER
 } from "./actionTypes";
 
