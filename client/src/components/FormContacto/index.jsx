@@ -28,12 +28,14 @@ export default function FormContacto() {
 
     const userId = localStorage.getItem('id')
     const user = useSelector(state => state.user);
+    const phone = useSelector(state => state.telephone);
+
 
     useEffect(() => {
         dispatch(getownersphone(id));
     }, [])
 
-    let url = `https://wa.me/${input.phoneNumber}?text=Me%20gustaría%20saber%20el%20precio%20de%20la%20propiedad`
+    let url = `https://wa.me/${phone}?text=Me%20gustaría%20saber%20el%20precio%20de%20la%20propiedad`
 
     const data = {
         name: user.name + user.lastName,
