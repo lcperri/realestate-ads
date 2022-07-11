@@ -10,13 +10,12 @@ export default function Planes() {
 
     return (
         <div className="bodyPlanes">
-            orale orale oorale
             <div className="subWrapper">
-            <Title> COMPRAR PLANES</Title>
-                <DivRow alignIt='space-between' justCont='space-between'>
-                    <Premium />
-                    <Vip />
-                </DivRow>
+            <Title>¡Suscribite para publicar!</Title>
+            <DivRow alignIt='space-between' justCont='space-between'>
+                <Premium />
+                <Vip />
+            </DivRow>
             </div>
         </div>
     )

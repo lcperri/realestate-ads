@@ -25,6 +25,10 @@ export const StyledLink = styled(Link)`
     }
 
     &:visited {
+        color:#fff;
+    }
+    &:hover {
+        font-weight: bolder;
         color:#ff765e;
     }
     &:link {
