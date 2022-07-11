@@ -62,42 +62,47 @@ export default function Calendar({ operation }) {
    }
 
    return (
-         <form onSubmit={handleSubmit} id='form'>
-      <DivContainer classNme='calendarPost'>
-            <Label className={styles.horarioLabel}>Horario de visita: de 09 a 14hs - 30min por Visita</Label>
-            <Label >Seleccione día de la visita:</Label>
-            <Input 
-               type="date"/* "datetime-local" */
-               id='dia'
-               value={dia}
-               onChange={(e) => setDia(e.target.value)}>
-            </Input>
-            <Label className={styles.input}>Seleccione horario: </Label>
-            <Select className={styles.selectHorario}
-               type='text'
-               id='hora'
-               value={hora}
-               onChange={(e) => { setHora(e.target.value) }}
-            >
-               <option value={null}>Horarios</option>
-               <option value={"T12:00:00.000Z"}>09:00:00</option>
-               <option value={"T12:30:00.000Z"}>09:30:00</option>
-               <option value={"T13:00:00.000Z"}>10:00:00</option>
-               <option value={"T13:30:00.000Z"}>10:30:00</option>
-               <option value={"T14:00:00.000Z"}>11:00:00</option>
-               <option value={"T14:30:00.000Z"}>11:30:00</option>
-               <option value={"T15:00:00.000Z"}>12:00:00</option>
-               <option value={"T15:30:00.000Z"}>12:30:00</option>
-               <option value={"T16:00:00.000Z"}>13:00:00</option>
-               <option value={"T16:30:00.000Z"}>13:30:00</option>
-               <option value={"T17:00:00.000Z"}>14:00:00</option>
-            </Select>
-            <Button type="submit">Programar visita</Button>
-
-            {/* <CalendarCards/> */}
-            <Button type="button" onClick={switchButton}>Contactar</Button>
-      </DivContainer>
-         </form>
+      <form onSubmit={handleSubmit} id='form'>
+         <DivContainer className='calendarPost'>
+            <h1>
+               Solicite una visita
+            </h1>
+            <div>
+               <Label >Seleccione el día:</Label>
+               <Input width='100%'
+                  type="date"/* "datetime-local" */
+                  id='dia'
+                  value={dia}
+                  onChange={(e) => setDia(e.target.value)}>
+               </Input>
+               <Label className={styles.input}>Seleccione horario: </Label>
+               <Select width='100%' className={styles.selectHorario}
+                  type='text'
+                  id='hora'
+                  value={hora}
+                  onChange={(e) => { setHora(e.target.value) }}
+               >
+                  <option value={null}>Horarios</option>
+                  <option value={"T12:00:00.000Z"}>09:00:00</option>
+                  <option value={"T12:30:00.000Z"}>09:30:00</option>
+                  <option value={"T13:00:00.000Z"}>10:00:00</option>
+                  <option value={"T13:30:00.000Z"}>10:30:00</option>
+                  <option value={"T14:00:00.000Z"}>11:00:00</option>
+                  <option value={"T14:30:00.000Z"}>11:30:00</option>
+                  <option value={"T15:00:00.000Z"}>12:00:00</option>
+                  <option value={"T15:30:00.000Z"}>12:30:00</option>
+                  <option value={"T16:00:00.000Z"}>13:00:00</option>
+                  <option value={"T16:30:00.000Z"}>13:30:00</option>
+                  <option value={"T17:00:00.000Z"}>14:00:00</option>
+               </Select>
+               <Label className={styles.horarioLabel}>Horario de visita: de 09 a 14hs - 30min por Visita</Label>
+            </div>
+            <div>
+               <Button margin='0 20px 0 0' type="submit">Programar visita</Button>
+               <Button type="button" onClick={switchButton}>Contactar</Button>
+            </div>
+         </DivContainer>
+      </form>
    )
 }
 /*
