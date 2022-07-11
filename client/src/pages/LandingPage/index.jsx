@@ -73,7 +73,7 @@ const LandingPage = () => {
             </p>
           </article>
           <div className={styles.howitworksboxesContainer}>
-            <div className={styles.firstStep}>
+            <div className={styles.nextStep}>
               <h3 className={styles.stepTittle}>
                 01. Debes Registrarte en la Pagina
               </h3>
