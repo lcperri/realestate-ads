@@ -14,4 +14,5 @@ export const UPDATE_USER_BY_ID = "UPDATE_USER_BY_ID";
 export const CONTACT = "CONTACT";
 export const UPDATE_PAGE = "UPDATE_PAGE";
 export const SWITCH_BETWEEN_FORMS = "SWITCH_BETWEEN_FORMS";
+export const PAY_LINK = "PAY_LINK";
 export const DELETE_USER = "DELETE_USER";

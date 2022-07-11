@@ -48,6 +48,10 @@ const Details = () => {
   }, []);
 
   useEffect(() => {
+    dispatch(getPropertyById(id));
+  }, [form])
+
+  useEffect(() => {
     getCoordenates(property.address + " " + property.city)
       .then((data) => setCoordenate(data))
       .catch((err) => console.log(err));
