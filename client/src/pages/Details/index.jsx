@@ -110,7 +110,6 @@ const Details = () => {
               <GalleryDetails key={e}>
                 <img
                   src={e === '' ? property.type.toLowerCase().includes('casa') ? house : apartment : e}
-                  alt="Propiedad en venta o alquiler"
                   onClick={() => handleClick(e, index)}
                 />
               </GalleryDetails>
@@ -118,14 +117,16 @@ const Details = () => {
             : <img src={property.type === 'Casa' ? house : apartment} />
           }
         </GalleryDetailsContainer>
-        <div className={styles.statusOperation}>
+        <DivRow>
           <StyledText className="operationDetail">
             {property.operation === "rent" ? "En alquiler" : "En venta"}
           </StyledText>
           <StyledText className="statusDetail">
             {property.status === "available" ? "Disponible" : "Reservado"}
           </StyledText>
-        </div>
+        </DivRow>
+        {/* <div className={styles.statusOperation}> */}
+        {/* </div> */}
         <div className={styles.addresFeatures_contact_wrapper}>
           <div>
             <div className={styles.priceWrapper}>
