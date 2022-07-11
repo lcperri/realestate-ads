@@ -166,9 +166,10 @@ export function getAllUsers(headers) {
   };
 }
 
-export function deleteUser(id,headers){
+export function deleteUser(id, headers){
   return async function(dispatch){
-    await axios.delete(`${url}/user`,id,headers);
+    console.log(headers)
+    await axios.delete(`${url}/user`, headers, id);
     return dispatch({
       // type: DELETE_USER
     });
