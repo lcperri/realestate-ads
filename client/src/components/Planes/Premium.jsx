@@ -7,9 +7,8 @@ const Premium = () => {
         <DivContainer className='plansCard'>
             <div>
                 <Title color='#FF416C'>PREMIUM</Title> 
-                <p>350 USD al mes</p>
-                <p>2 publicaciones</p>
-                <p>Descripción:</p>
+                <p>ARS 1.500 al mes</p>
+                <p>3 publicaciones</p>
             </div>
         </DivContainer>
     )
