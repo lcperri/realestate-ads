@@ -1,4 +1,19 @@
-.datos{
+.contenedorVenta{
+    background-image: radial-gradient(circle at 50% -20.71%, #feffff 0, #efffff 12.5%, #ddfffd 25%, #cafbf7 37.5%, #b5f2f2 50%, #9fe9ee 62.5%, #8ae1ec 75%, #76d9eb 87.5%, #62d1eb 100%);
+    border-color: black;
+}
+.contenedorAlq{
+    background-image: radial-gradient(circle at 50% -20.71%, #ffffa1 0, #f5ffa0 6.25%, #e4ffa0 12.5%, #d2ffa1 18.75%, #bdffa3 25%, #a7fda6 31.25%, #8cfaaa 37.5%, #6cf7af 43.75%, #3cf2b5 50%, #00edbc 56.25%, #00e8c6 62.5%, #00e4d0 68.75%, #00dfdc 75%, #00dbe9 81.25%, #00d7f5 87.5%, #00d3ff 93.75%, #00d0ff 100%);
+}
+.mail{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 17px;
+}
+.operacion{
+    color: black;
+    font-size: 20px;
+}
+.datos, .operacion{
     width: 350px;
     margin-top: 5px;
 }
