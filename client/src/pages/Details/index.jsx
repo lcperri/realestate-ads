@@ -35,7 +35,7 @@ const Details = () => {
   const [clickedImg, setClickedImg] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(null);
   const [coordenate, setCoordenate] = useState();
-  
+
   const property = useSelector((state) => state.property);
   const form = useSelector((state) => state.forms);
   const userId = localStorage.getItem('id')
@@ -105,7 +105,7 @@ const Details = () => {
       <DivContainer className="detail">
         <h1>Imágenes:</h1>
         <GalleryDetailsContainer>
-          {property.pictures?.length > 0 
+          {property.pictures?.length > 0
             ? property.pictures.map((e, index) => (
               <GalleryDetails key={e}>
                 <img
@@ -117,7 +117,7 @@ const Details = () => {
             : <img src={property.type === 'Casa' ? house : apartment} />
           }
         </GalleryDetailsContainer>
-        <DivRow>
+        <DivRow padding='20px 0 0 0'>
           <StyledText className="operationDetail">
             {property.operation === "rent" ? "En alquiler" : "En venta"}
           </StyledText>
@@ -180,26 +180,29 @@ const Details = () => {
             </div>
           </div>
           <div className={styles.contact_subWrapper}>
-            { !userId ? <div>
-                <h4>
-                  Te gusta esta propiedad?
-                  No pierdas la oportunidad de {property.operation === 'rent' ? 'alquilarla.' : 'adquirirla.'} <br />
-                  Inicia sesión o regístrate gratis para comunicarte con el propietario.
-                </h4>
-                <DivRow padding='10px 10px 10px 10px' justCont='center'>
-                  <StyledLink to='/sesion' url={id}>
-                    <Button>
-                      Iniciar sesión
-                    </Button>
-                  </StyledLink>
-                  <StyledLink to='/registro'>
-                    registrarse
-                  </StyledLink>
-                </DivRow>
-                </div> :
-                form === false || form === undefined ? <FormContacto /> : 
-                form === true && <Calendar operation={property?.operation} />
-              }
+            { !userId
+              ? <div>
+                  <h4>
+                    Te gusta esta propiedad?
+                    No pierdas la oportunidad de {property.operation === 'rent' ? 'alquilarla.' : 'adquirirla.'} <br />
+                    Inicia sesión o regístrate gratis para comunicarte con el propietario.
+                  </h4>
+                  <DivRow padding='10px 10px 10px 10px' justCont='center'>
+                    <StyledLink to='/sesion' url={id}>
+                      <Button>
+                        Iniciar sesión
+                      </Button>
+                    </StyledLink>
+                    <StyledLink to='/registro'>
+                      registrarse
+                    </StyledLink>
+                  </DivRow>
+                </div>
+              :
+                form === false || form === undefined 
+                ? <FormContacto /> 
+                : form === true && <Calendar operation={property?.operation} />
+            }
           </div>
         </div>
         <h1>Ubicación:</h1>
