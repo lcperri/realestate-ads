@@ -8,7 +8,7 @@ import Button from "../../styledComponents/Button";
 import CalendarAuth from "../Calendar";
 import DivContainer from "../../styledComponents/DivContainer";
 
-import { createEvent, switchBetweenForms } from "../../redux/actions"; 
+import { createEvent, getUserById, switchBetweenForms } from "../../redux/actions"; 
 /*import CalendarCards from './../CalendarCards'; */
 import LoginController from './../../localStorage/login';
 import { useParams } from 'react-router-dom';
@@ -16,14 +16,17 @@ import { useParams } from 'react-router-dom';
 export default function Calendar ({ operation }) {
    const dispatch = useDispatch();
    const headers = LoginController();
+   const id = localStorage.getItem('id');
    const {id:location} = useParams();
+   const email = useSelector((state) => state.user?.email);
 
    const summary = operation === 'rent' ? 'Alquiler' : 'Venta'; 
    const [ dia, setDia ] = useState('');
    const [ hora, setHora ] = useState('');
    
-   // const authorized = useSelector((state) => state.calendar);
-   const authorized = true;
+   useEffect(() => {
+      dispatch(getUserById(id, headers));
+   }, [id]);
 
    //-------------creo dato startDateTime
    const modifDia = dia.replace('/', '-');//paso de 2022/12/12 a 2022-12-12
@@ -51,8 +54,7 @@ export default function Calendar ({ operation }) {
    
    const handleSubmit = (e) => {
       e.preventDefault();
-      console.log(location)
-      dispatch(createEvent({ summary, location, startDateTime, endDateTime }, headers));
+      dispatch(createEvent({ email, summary, location, startDateTime, endDateTime }, headers));
    };
 
    const switchButton = () => {

@@ -10,11 +10,11 @@ const StyledText = styled.div`
     }
 
     &.statusCard {
+        ${props => props.status === 'available' ? "background-color: #E52F50;" : "background-color: green;" }
         color: #fff;
-        background-color: #E52F50;
         padding: 0px 4px 0px 4px;
         margin-right: 4px;
-        
+        margin-top:  32rem;
     }
 
     &.statusDetail {

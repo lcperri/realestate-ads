@@ -209,7 +209,6 @@ export function getCalendar(id, headers) {
 export function calendar(code, id, headers) {
   return async function (dispatch) {
     const calendar = await axios.post(`${url}/calendar/${id}`, code, headers);
-    console.log(calendar.data)
     return dispatch({
       type: USER,
       payload: calendar.data,
@@ -260,9 +259,10 @@ export function contactForm(data, headers) {
 
 export function seeContactsByProperty(id, headers) {
   return async function (dispatch) {
-    const favs = await axios.get(`${url}/contact/${id}`, headers);
+    const contacts = await axios.get(`${url}/contact/${id}`, headers);
     return dispatch({
-      type: CONTACT
+      type: CONTACT,
+      payload: contacts.data
     });
   };
 }

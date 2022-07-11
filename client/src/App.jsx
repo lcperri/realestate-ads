@@ -1,5 +1,5 @@
 import { Route, Routes, useNavigate } from "react-router-dom";
-import LandingPage from "./pages/LandingPage";
+import Landing from "./pages/LandingPage/index"
 import Home from "./pages/Home";
 import Create from "./pages/Create";
 import Details from "./pages/Details";
@@ -12,7 +12,6 @@ import Planes from "./components/Planes";
 import Favoritos from "./pages/Favoritos";
 import MisPropsPV from "./pages/MisPropPremiumVip";
 import ProfileDataUpdate from "./pages/ProfileDataUpdate/ProfileDataUpdate";
-import CalendarPost from "./libs/CalendarPost";
 // import showCookies from "./functions/showCookies";
 import { useDispatch } from 'react-redux/es/exports';
 import { logout } from "./redux/actions";
@@ -21,10 +20,10 @@ import Terms from "./components/TermsConditions/Terms";
 import Users from "./pages/Users";
 import CalendarCards from "./libs/CalendarCards";
 import Contact from "./pages/Contact";
+import ContactCards from "./pages/ContactCards";
 
 const App = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate()
   // const auth = showCookies('auth-token');
   const token = localStorage.getItem('auth-token');
   const id = localStorage.getItem('id');
@@ -40,7 +39,7 @@ const App = () => {
     <>
       <Nav />
       <Routes>
-        <Route path="/" element={<LandingPage />} />
+        <Route path="/" element={<Landing />} />
         <Route path="/home" element={<Home />} />
         <Route path="/publicar" element={<Create />} />
         <Route path="/:id" element={<Details />} />
@@ -56,6 +55,7 @@ const App = () => {
         <Route path="/administrador" element={<Users />} />
         <Route path="/perfil" element={<ProfileDataUpdate />} />
         <Route path="/terms" element={<Terms/>} />
+        <Route path="/contacto/:id" element={<ContactCards />} />
         {/* <Route path='*' element={<Home/>} />  */}
         <Route path="/calendarPost" element={<CalendarPost/>} />
       </Routes>
