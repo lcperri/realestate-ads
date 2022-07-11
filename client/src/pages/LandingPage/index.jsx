@@ -78,7 +78,7 @@ const LandingPage = () => {
                 01. Debes Registrarte en la Pagina
               </h3>
               <p className={styles.stepDescrpt}>
-                Haz click en la opcion Registrase de la barra de navegacion.
+                Haz click en la opcion Registrarse de la barra de navegacion.
                 Completa tu perfil.
               </p>
               <p className={styles.firststepKeyWord}>Registrate</p>
