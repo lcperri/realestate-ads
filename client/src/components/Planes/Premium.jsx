@@ -11,7 +11,6 @@ const Premium = () => {
             <DivRow justCont='center'>
                 <Title color='#FF416C'>PREMIUM</Title>
             </DivRow>
-            {/* <div> */}
                 <DivRow gap='16px'>
                     <img src={features} /><p>ARS 1.500 al mes.</p>
                 </DivRow>
@@ -21,12 +20,9 @@ const Premium = () => {
                 <DivRow gap='16px'>
                     <img src={features} /><p className="descripcion-plan">Cancela cuando quieras.</p>
                 </DivRow>
-            {/* </div> */}
-            {/* <div> */}
                 <Button margin='20px 0 0 0'>
                     ¡Lo quiero!
                 </Button>
-            {/* </div> */}
         </DivContainer>
     )
 }

@@ -16,6 +16,15 @@ const Button = styled.button`
         border: 2px solid #E52F50;
     }
 
+    &.planes {
+        background-color: transparent;
+        border: none;
+        color: #fff;
+        &:hover {
+            color: #555;
+        }
+    }
+
     &.paginationHome {
         background-color: #fff;
         border: 4px solid #ff765e;

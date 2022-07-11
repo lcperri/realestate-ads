@@ -5,7 +5,7 @@ import './planes.css';
 import Premium from "./Premium";
 import Vip from "./Vip";
 import capitalize from '../../functions/capitalize'
-import { StyledLink } from '../../styledComponents/StyledLink'
+import Button from '../../styledComponents/Button'
 import BackButton from '../../dumb/BackButton'
 
 export default function Planes() {
@@ -29,8 +29,7 @@ export default function Planes() {
                         <Vip />
                     </DivRow>
                     <h2>Tu subscripción actual es: {capitalize(range)}</h2>
-                    <StyledLink margin='10px 0 0 0' to='/#'>Mejorar</StyledLink>
-                    <StyledLink margin='5px 0 0 0' to='/#'>Cancelar subscripción</StyledLink>
+                    <Button className='planes' margin='20px 0 0 0' to='/#'>Cancelar subscripción</Button>
                 </>}
                 {range === 'vip' && <>
                     <Title margin='60px 0 0 0'>¡Tu cuenta está con los máximos beneficios. Continúa disfrutando de ella!</Title>
@@ -38,10 +37,10 @@ export default function Planes() {
                         <BackButton>{'<'}</BackButton>
                     </DivRow>
                     <h2>Tu subscripción actual es: {capitalize(range)}</h2>   
-                    <StyledLink margin='10px 0 0 0' to='/#' onClick={()=> alert('funciona')}>
+                    <Button className='planes' margin='20px 0 0 0' to='/#' onClick={()=> alert('voy a pasarela')}>
                         Bajar a premium
-                    </StyledLink>
-                    <StyledLink margin='5px 0 0 0' to='/#'>Cancelar subscripción</StyledLink>
+                    </Button>
+                    <Button className='planes' margin='10px 0 0 0' to='/#'>Cancelar subscripción</Button>
                 </>}
             </div>
         </div>
