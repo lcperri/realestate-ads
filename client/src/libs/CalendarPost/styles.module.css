@@ -1,11 +1,4 @@
-.contactForm{
-    display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .selectMotivo, .selectHorario, .inputDia{
-    width: 430px;
     display: flex;
 }
 .horarioLabel{

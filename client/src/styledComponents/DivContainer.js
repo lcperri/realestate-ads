@@ -13,7 +13,18 @@ const DivContainer = styled.div`
     'width: 75%;'
   }
 
-  ${(props) => props.contacto ? 'min-width: 40rem;' : null }
+  &.calendarPost {
+    background-color: #BA5370;
+    margin: 0;
+    padding: 0 35px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap; 
+    justify-content: center;
+    align-items: center;
+    min-height: 550px;
+    width: 400px
+  }
 
   &.contactForm {
     margin: 0;
