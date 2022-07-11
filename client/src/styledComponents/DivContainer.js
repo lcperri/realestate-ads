@@ -16,16 +16,15 @@ const DivContainer = styled.div`
   ${(props) => props.contacto ? 'min-width: 40rem;' : null }
 
   &.contactForm {
-    /* margin: 20px auto 15px auto; */
-    position: relative;
+    margin: 0;
+    padding: 0 35px;
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
-    /* justify-content: center; */
+    flex-wrap: wrap; 
+    justify-content: center;
     align-items: center;
-    height: 610px;
-    width: 80%;
-    background-color: #FAFAFA;
+    min-height: 550px;
+    width: 100%;
   }
   
   &.plansCard {
@@ -67,7 +66,6 @@ const DivContainer = styled.div`
     grid-template-columns: 35% 65%;
     transition: width 2s;
   }
-
   
   &.detail {
     background-color: #fff;

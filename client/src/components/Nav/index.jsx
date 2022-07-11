@@ -66,9 +66,9 @@ const Nav = () => {
             </>
             :
             <>
-              {range && range !== 'free' && <NavLink to={'/mispropiedades'}>Mis Propiedades</NavLink>}
-              {range && <NavLink to={'/favoritos'}>Mis Favoritos</NavLink>}
-              {range && <NavLink to={'/calendario'}>Calendario</NavLink>}
+              {range && range !== 'free' && <StyledLink to={'/mispropiedades'}>Mis Propiedades</StyledLink>}
+              {range && <StyledLink to={'/favoritos'}>Mis Favoritos</StyledLink>}
+              {range && <StyledLink to={'/calendario'}>Calendario</StyledLink>}
             </>
           }
         </li>

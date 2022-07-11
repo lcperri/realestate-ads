@@ -5,7 +5,7 @@ import { HashLink } from 'react-router-hash-link'
 export const StyledLink = styled(Link)`
     color: #fff;
     text-decoration: none;
-    font-size: 13.5px;
+    font-size: 13px;
     padding: 4px;
     margin: ${props => props.margin};
 
@@ -40,7 +40,7 @@ export const StyledLink = styled(Link)`
 export const StyledHash = styled(HashLink)`
     color: #fff;
     text-decoration: none;
-    font-size: 13.5px;    
+    font-size: 13px;    
     &:visited {
         color:#fff;
     }
@@ -54,7 +54,7 @@ export const StyledHash = styled(HashLink)`
 export const StyledLinkCard = styled(Link)`
     color: #333;
     text-decoration: none;
-    font-size: 15px;    
+    font-size: 13px;    
     &:visited {
         color:#333;
     }
