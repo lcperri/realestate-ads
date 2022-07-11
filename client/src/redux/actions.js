@@ -30,7 +30,8 @@ import {
   CONTACT,
   UPDATE_PAGE,
   SWITCH_BETWEEN_FORMS,
-  GET_CALENDAR
+  GET_CALENDAR,
+  DELETE_USER
 } from "./actionTypes";
 
 export function login(data) {
@@ -163,7 +164,16 @@ export function getAllUsers(headers) {
     return dispatch({ type: ALL_USERS, payload: resp.data });
   };
 }
-export function deleteUser(){}
+
+export function deleteUser(id,headers){
+  return async function(dispatch){
+    await axios.delete(`${url}/user`,id,headers);
+    return dispatch({
+      // type: DELETE_USER
+    });
+  }
+}
+
 export function createUser(data) {
   return async function (dispatch) {
     dispatch({ type: LOADING });
