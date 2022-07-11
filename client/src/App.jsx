@@ -22,6 +22,7 @@ import CalendarCards from "./libs/CalendarCards";
 import Contact from "./pages/Contact";
 import ContactCards from "./pages/ContactCards";
 
+
 const App = () => {
   const dispatch = useDispatch();
   // const auth = showCookies('auth-token');
@@ -57,7 +58,6 @@ const App = () => {
         <Route path="/terms" element={<Terms/>} />
         <Route path="/contacto/:id" element={<ContactCards />} />
         {/* <Route path='*' element={<Home/>} />  */}
-        <Route path="/calendarPost" element={<CalendarPost/>} />
       </Routes>
     </>
   );

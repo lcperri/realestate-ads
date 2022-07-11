@@ -74,9 +74,9 @@
   justify-content: flex-end;
 }
 
-/* .contact_subWrapper {
-  background-color: #5ee7ff; 
-} */
+.contact_subWrapper {
+  /*background-color: #5ee7ff; */
+}
 
 /*Modal: */
 .overlay {

@@ -34,7 +34,7 @@ export default function UserCard({id,name, lastName, birthday, email, dni, telep
 
       <div className={styles.datos}>
         {
-          range === 'admin' && (
+          range === 'premium' && (
             <Button onClick={handleElim}>Eliminar</Button>
           )
         }

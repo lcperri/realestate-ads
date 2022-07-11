@@ -100,7 +100,7 @@ export default function FormContacto() {
     }
 
     return (
-        <DivContainer className='contactForm'>
+        <DivContainer className={styles.contactForm}>
             <h1 className={styles.titulo}>Formulario de contacto</h1>
             <div className={styles.inputWrapper}>
                 <label> Email: <LabelRed><LabelRed>*</LabelRed></LabelRed></label>
@@ -125,7 +125,7 @@ export default function FormContacto() {
                 <a href={url}><img src={imagw} className={styles.whatsapp} /></a>
                 <Button className={styles.contactar} onClick={onSubmit}>Contactar</Button>
                 <Toaster />
-                    <Button className={styles.contactar} onClick={switchButton}>Agendar Visita</Button>
+                <Button className={styles.contactar} onClick={switchButton}>Agendar Visita</Button>
             </div>
         </DivContainer>
     )

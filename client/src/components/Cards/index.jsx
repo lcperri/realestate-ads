@@ -36,6 +36,7 @@ const Cards = ({ id, favourites }) => {
   return (
     <>
       <CardsContainer>
+      
         {
           id ?
             properties && properties.slice(pages[1] - 1, pages[2]).map(e => (
