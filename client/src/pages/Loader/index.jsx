@@ -1,4 +1,5 @@
 import styles from "./loader.module.css";
+import imagenProp from "../../assets/apartment.png"
 
 export default function Loader() {
   return (
@@ -17,9 +18,9 @@ export default function Loader() {
           <div></div>
           <div></div>
           <div></div>
-        </div>
-        <span>Cargando...</span>
-      </div>
+        </div>        
+        <span>Cargando...</span>  
+      </div>      
     </div>
   );
 }

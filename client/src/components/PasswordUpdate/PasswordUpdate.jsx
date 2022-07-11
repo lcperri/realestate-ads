@@ -20,6 +20,8 @@ const PasswordUpdate = () => {
   const headers = LoginController()
   const userId = localStorage.getItem("id");
 
+  console.log(passInicial,"password inicial ******")
+
   
 
 
@@ -37,6 +39,7 @@ const PasswordUpdate = () => {
   useEffect(() => {
     if(userData){
       setpassInicial(userData.password);
+      console.log(passInicial," dentro del use efect password inicial ******")
      ;
     }
 

@@ -1,3 +1,5 @@
+
+
 .input {
     margin: 4px 0;
 }
@@ -25,24 +27,13 @@
     font-weight: 500;
    
 }
+
 .descrip:hover {
     color: #444;
     border: 2px solid #ff765e;
 }
-.container{
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-}
-.contactar{
-    margin-top: 1rem;
-    width: 10rem;
-    height: 2.9rem;
-    margin-left: 2rem;
-}
+
 .whatsapp{
-    margin-top: 1rem;
-    margin-left: 2rem;
     width: 3rem;
     height: 3rem;
 }

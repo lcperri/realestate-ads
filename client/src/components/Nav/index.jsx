@@ -46,14 +46,14 @@ const Nav = () => {
         <StyledLink to='/'>
           <Logo height='20px' width='20px' />
         </StyledLink>
-      <StyledLink to={'/home'}>
-      <Button>Ver Propiedades</Button>
-      </StyledLink>
-      {range && range !== 'free' &&
-        <StyledLink to={'/publicar'}>
-          <Button>Publicar</Button>
+        <StyledLink to={'/home'}>
+          <Button>Ver Propiedades</Button>
         </StyledLink>
-      }
+        {range && range !== 'free' &&
+          <StyledLink to={'/publicar'}>
+            <Button>Publicar</Button>
+          </StyledLink>
+        }
       </div>
       <div className='subContainerCenter'>
         <li className="items">
@@ -66,9 +66,9 @@ const Nav = () => {
             </>
             :
             <>
-              {range && range !== 'free' && <NavLink to={'/mispropiedades'}>Mis Propiedades</NavLink>}
-              {range && <NavLink to={'/favoritos'}>Mis Favoritos</NavLink>}
-              {range && <NavLink to={'/calendario'}>Calendario</NavLink>}
+              {range && range !== 'free' && <StyledLink to={'/mispropiedades'}>Mis Propiedades</StyledLink>}
+              {range && <StyledLink to={'/favoritos'}>Mis Favoritos</StyledLink>}
+              {range && <StyledLink to={'/calendario'}>Calendario</StyledLink>}
             </>
           }
         </li>
@@ -96,7 +96,7 @@ const Nav = () => {
               {capitalize(range)}
             </Title>
             <Title fontSize='20px'>
-              ¡Hola, {name} {lastName}!
+              ¡Hola, {name}!
             </Title>
             {range && <StyledLink to={'/planes'} className='perfil'>Subscripción</StyledLink>}
             {range && <StyledLink to={'/perfil'} className='perfil'>Perfil</StyledLink>}

@@ -30,7 +30,8 @@ import {
   CONTACT,
   UPDATE_PAGE,
   SWITCH_BETWEEN_FORMS,
-  GET_CALENDAR
+  GET_CALENDAR,
+  PAY_LINK
 } from "./actionTypes";
 
 export function login(data) {
@@ -163,7 +164,18 @@ export function getAllUsers(headers) {
     return dispatch({ type: ALL_USERS, payload: resp.data });
   };
 }
-export function deleteUser(){}
+
+export function deleteUser(id, headers){
+  return async function(dispatch){
+    const users = await axios.delete(`${url}/user/${id}`, headers);
+    console.log(users.data)
+    return dispatch({
+      type: ALL_USERS,
+      payload: users.data
+    });
+  }
+}
+
 export function createUser(data) {
   return async function (dispatch) {
     dispatch({ type: LOADING });
@@ -314,5 +326,15 @@ export function switchBetweenForms(){
 export function updateCurrentPage () {
   return {
     type: UPDATE_PAGE
+  };
+}
+
+export function subscription (data) {
+  return async function (dispatch) {
+    const link = await axios.post(`${url}/subscription`, data);
+    return dispatch({
+      type: PAY_LINK,
+      payload: link.data,
+    });
   };
 }

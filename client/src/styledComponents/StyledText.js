@@ -10,25 +10,23 @@ const StyledText = styled.div`
     }
 
     &.statusCard {
+        ${props => props.status === 'available' ? "background-color: #E52F50;" : "background-color: green;" }
         color: #fff;
-        background-color: #E52F50;
         padding: 0px 4px 0px 4px;
         margin-right: 4px;
-        
+        margin-top:  32rem;
     }
 
     &.statusDetail {
-        margin-top: 22px;
+        align-items: center;
+        border:none;
         background-color: #E52F50;
         color: #fff;
-        padding: 9px 30px;
-        font-size: 16px;
+        font-size: 14px;
         font-weight: 500;
         display: flex;
-        /* justify-content: center; */
-        min-width: 110px;
-        max-width:auto;
-        z-index: 1;
+        justify-content: center;
+        padding: 8px 12px;
     }
 
     &.operationCard {
@@ -41,17 +39,15 @@ const StyledText = styled.div`
     }
 
     &.operationDetail {
+        align-items: center;
         border:none;
-        margin-top: 22px;
         background-color: #999;
         color: #fff;
-        padding: 11px 30px;
-        font-size: 16px;
+        font-size: 14px;
         font-weight: 500;
         display: flex;
         justify-content: center;
-        min-width: 100px;
-        max-width:180px;
+        padding: 8px 12px;
     }
 `
 export default StyledText

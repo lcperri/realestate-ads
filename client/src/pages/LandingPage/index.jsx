@@ -73,7 +73,7 @@ const LandingPage = () => {
             </p>
           </article>
           <div className={styles.howitworksboxesContainer}>
-            <div className={styles.firstStep}>
+            <div className={styles.nextStep}>
               <h3 className={styles.stepTittle}>
                 01. Debes Registrarte en la Pagina
               </h3>
@@ -86,7 +86,7 @@ const LandingPage = () => {
             <div className={styles.nextStep}>
               <h3 className={styles.stepTittle}>02. Ingresa a tu Perfil</h3>
               <p className={styles.stepDescrpt}>
-                Haz click en la opcion Ingresar de la barra de navegacion.
+                Haz click en la opcion Iniciar Sesion de la barra de navegacion.
                 Compra el plan de publicacion que mas te convenga y completa el
                 formulario de tu propiedad.
               </p>

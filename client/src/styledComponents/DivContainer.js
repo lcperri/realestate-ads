@@ -2,34 +2,62 @@ import styled from "styled-components";
 
 const DivContainer = styled.div`
   border-radius: 20px;
-  margin: 140px auto 15px auto;
-  padding: 20px 60px 30px 60px;
+  margin: ${props => props.margin || '140px auto 15px auto'};
+  padding: ${props => props.padding || '20px 60px 30px 60px'};
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 18px;
   transition: .2s ease all;
+  width: ${props => props.width};
+  /* gap: ${props => props.gap || '2px'}; */
 
   ${(props) => props.home ? 'min-width: 100rem; min-height: 58rem; width: 75%; height: 75%;' : 
     'width: 75%;'
   }
 
-  ${(props) => props.contacto ? 'min-width: 40rem;' : null }
-
-  &.contactForm {
-    /* margin: 20px auto 15px auto; */
-    position: relative;
+  &.calendarPost {
+    background-color: #BA5370;
+    margin: 0;
+    padding: 0 35px;
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
-    /* justify-content: center; */
+    flex-wrap: wrap; 
+    justify-content: center;
     align-items: center;
-    height: 610px;
-    width: 80%;
-    background-color: #FAFAFA;
+    min-height: 550px;
+    width: 400px
+  }
+
+  &.contactForm {
+    margin: 0;
+    padding: 0 35px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap; 
+    justify-content: center;
+    align-items: center;
+    min-height: 550px;
+    width: 100%;
   }
   
   &.plansCard {
-    max-width: 320px;
-    min-width: 140px;
     background-color: #fff;
+    max-width: 280px;
+    min-width: 240px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: stretch;
+    gap: 8px;
+    cursor: pointer;
+    &:hover {
+      margin: 34px 40px 46px 40px;
+    }
+    /* align-items: space-between; */
+
+    img {
+      height: 22px;
+      width: 22px;
+    }
   }
 
   &.create {
@@ -49,7 +77,6 @@ const DivContainer = styled.div`
     grid-template-columns: 35% 65%;
     transition: width 2s;
   }
-
   
   &.detail {
     background-color: #fff;

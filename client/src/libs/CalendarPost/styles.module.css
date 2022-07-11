@@ -1,20 +1,12 @@
-/* .createProperty{
-    height: 800px;
-    background: #BA5370;  
-    background: -webkit-linear-gradient(to right, #FF416C 0%, #ff765e 100%); 
-        background: linear-gradient(0deg, #FF416C 0%, #ff765e 100%); 
-} */
-
 .selectMotivo, .selectHorario, .inputDia{
-    width: 430px;
+    display: flex;
 }
 .horarioLabel{
     margin-top: 10px;
     color: rgb(230, 38, 51);
     font-size: 20px;
+    display: flex;
 }
 .btnVisita {
-    position: relative;
-    margin-top: 30px;
-    margin-left: 230px;        
+    margin-top: 30px;       
 }
