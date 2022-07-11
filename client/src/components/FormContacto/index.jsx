@@ -28,8 +28,6 @@ export default function FormContacto() {
 
     const userId = localStorage.getItem('id')
     const user = useSelector(state => state.user);
-    const phone = useSelector(state => state.telephone);
-
 
     useEffect(() => {
         dispatch(getownersphone(id));
@@ -41,7 +39,8 @@ export default function FormContacto() {
         name: user.name + user.lastName,
         email: user.email,
         message: input.message,
-        property: id
+        property: id,
+        telephone: input.phoneNumber
     }
 
     useEffect(() => {
