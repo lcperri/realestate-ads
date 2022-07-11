@@ -29,6 +29,7 @@ const Input = styled.input`
     border: 2px solid #999;
     font-weight: 500;
     transition: .3s ease all;
+    width: ${props => props.width};
 
     &:focus-within {
         &.controlLabel {
@@ -91,6 +92,8 @@ const Select = styled.select`
     border: 2px solid #999;
     font-weight: 500;
     border-radius: 10px;
+    width: ${props => props.width};
+
     &:hover {
         color: #555;
         border: 2px solid #ff765e;
