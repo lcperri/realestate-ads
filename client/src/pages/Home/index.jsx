@@ -10,7 +10,6 @@ import { clear, GetUserById } from "../../redux/actions";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const user = useSelector(state => state.user)
 
   const userId = localStorage.getItem('id')
   useEffect(() => {

@@ -62,14 +62,10 @@ export default function Calendar ({ operation }) {
    }
 
    return (
-
-      <div className={styles.createProperty}>
          <form onSubmit={handleSubmit} id='form'>
-            <div className="form">
-                  <div className='title'>
-                      Programá una visita...
-                  </div>
-                  <DivContainer contacto={true} >
+            <div className={styles.contactForm}>
+                 
+                  <DivContainer contacto={true}>
                      <div className="addressWrapper"></div>                                
 
                      <Label className={styles.horarioLabel}>Horario de visita: de 09 a 14hs - 30min por Visita</Label>
@@ -111,8 +107,7 @@ export default function Calendar ({ operation }) {
                      <Button type="button" className={styles.contactar} onClick={switchButton}>Contactar</Button>
                   </DivContainer>
             </div>
-         </form> 
-      </div>  
+         </form>  
    )
 }
 /*
