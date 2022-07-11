@@ -9,10 +9,20 @@ const Button = styled.button`
     border: 2px solid #E52F50;
     font-weight: 500;
     border-radius: 30px;
+    margin: ${props => props.margin};
     &:hover {
         background-color: #fff;
         color: #444;
         border: 2px solid #E52F50;
+    }
+
+    &.planes {
+        background-color: transparent;
+        border: none;
+        color: #fff;
+        &:hover {
+            color: #555;
+        }
     }
 
     &.paginationHome {

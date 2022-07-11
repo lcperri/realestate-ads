@@ -5,5 +5,7 @@ export const DivRow = styled.div`
     flex-direction: row;
     justify-content: ${props => props.justCont};
     align-items: ${props => props.alignIt || 'center'};
-    padding: ${props => props.padding}; 
+    padding: ${props => props.padding || '2px'};
+    margin: ${props => props.margin || '2px'}; 
+    gap: ${props => props.gap || '4px'}; 
 `

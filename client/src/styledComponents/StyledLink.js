@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom'
 import { HashLink } from 'react-router-hash-link'
 
 export const StyledLink = styled(Link)`
-    color: #ff765e;
+    color: #fff;
     text-decoration: none;
-    font-size: 15px;
+    font-size: 13.5px;
     padding: 4px;
+    margin: ${props => props.margin};
 
     &.perfil {
         color: #fff;
@@ -39,7 +40,7 @@ export const StyledLink = styled(Link)`
 export const StyledHash = styled(HashLink)`
     color: #fff;
     text-decoration: none;
-    font-size: 15px;    
+    font-size: 13.5px;    
     &:visited {
         color:#fff;
     }
