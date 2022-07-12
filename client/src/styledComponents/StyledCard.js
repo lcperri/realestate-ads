@@ -29,14 +29,13 @@ const StyledCard = styled.div`
     top: -440px;
     left: 5px;
   }
-
-  * {
-    transition: all .2s linear;
-    -webkit-transition: all .2s linear;
-  }
   
   &:hover {
-    margin: -3px 0 6px 0;
+    transition: all .2s;
+    -webkit-transition: all .2s;
+    margin: -4px 0 6px 0;
   }
+
+  transition: all .2s;
 `
 export default StyledCard

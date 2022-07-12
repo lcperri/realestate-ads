@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect } from "react";
 import { DivRow } from "../../styledComponents/DivRow";
 import { Title } from "../../styledComponents/FiltersStyles";
 import './planes.css';
@@ -7,9 +7,20 @@ import Vip from "./Vip";
 import capitalize from '../../functions/capitalize'
 import Button from '../../styledComponents/Button'
 import BackButton from '../../dumb/BackButton'
+import { useSelector, useDispatch } from 'react-redux/es/exports';
+import { deleteLink } from "../../redux/actions";
 
 export default function Planes() {
     const range = localStorage.getItem('range')
+    const dispatch = useDispatch();
+    const link = useSelector((state) => state.link);    
+
+    useEffect(() => {
+        if (link?.length) {
+            window.open(link);
+            dispatch(deleteLink());
+        }
+    }, [link])
 
     return (
         <div className="bodyPlanes">
