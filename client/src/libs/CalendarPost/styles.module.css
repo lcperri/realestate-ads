@@ -8,12 +8,10 @@
     width: 430px;
     display: flex;
 }
-.horarioLabel{
-    margin-top: 10px;
-    color: rgb(230, 38, 51);
-    font-size: 20px;
-    display: flex;
-}
+
 .btnVisita {
     margin-top: 30px;       
+}
+.error{
+    color: red;
 }

@@ -15,7 +15,7 @@ export default function UserCard({id,name, lastName, birthday, email, dni, telep
 
   const handleElim = (e) =>{
     dispatch(deleteUser(id,headers));
-    console.log("id:",id)
+    
   }
     
   return(
