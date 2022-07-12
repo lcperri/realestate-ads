@@ -329,12 +329,22 @@ export function updateCurrentPage () {
   };
 }
 
-export function subscription (data) {
+export function subscription (data, headers) {
   return async function (dispatch) {
-    const link = await axios.post(`${url}/subscription`, data);
+    const link = await axios.post(`${url}/subscription`, data, headers);
+    console.log('hola')
     return dispatch({
       type: PAY_LINK,
       payload: link.data,
     });
   };
+}
+
+export function deleteLink (data) {
+  return async function (dispatch) {
+    return dispatch({
+      type: PAY_LINK,
+      payload: ''
+    })
+  }
 }

@@ -57,7 +57,6 @@ const App = () => {
         <Route path="/perfil" element={<ProfileDataUpdate />} />
         <Route path="/terms" element={<Terms/>} />
         <Route path="/contacto/:id" element={<ContactCards />} />
-        {/* <Route path='*' element={<Home/>} />  */}
       </Routes>
     </>
   );

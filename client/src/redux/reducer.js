@@ -15,6 +15,7 @@ import {
   UPDATE_PAGE,
   GET_CALENDAR,
   CONTACT,
+  PAY_LINK,
 } from "./actionTypes";
 
 const initialState = {
@@ -35,7 +36,8 @@ const initialState = {
   contacts: [],
   updateCurrentPage: false,
   calendar: [],
-  authroized: false
+  authroized: false,
+  link: ''
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -145,6 +147,11 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         telephone: payload,
       };
+    case PAY_LINK:
+      return {
+        ...state,
+        link: payload
+      }
     case UPDATE_PAGE:
       return {
         ...state,
