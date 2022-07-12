@@ -17,8 +17,6 @@ const Nav = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  //************************ */
-
   const headers = LoginController();
   const range = localStorage.getItem('range');
   const id = localStorage.getItem('id');

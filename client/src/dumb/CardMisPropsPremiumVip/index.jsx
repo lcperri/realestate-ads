@@ -8,52 +8,56 @@ import AreaIcon from '../Icons/Area'
 import Button from '../../styledComponents/Button';
 import { StyledLink } from "../../styledComponents/StyledLink";
 import capitalize from './../../functions/capitalize';
+import Shopping from '../Icons/Shopping'
 
-export default function CardMisPropPremiumVip({id, type, address, price, area, rooms, bathrooms, pictures}){
+export default function CardMisPropPremiumVip({ id, type, address, price, area, rooms, bathrooms, pictures }) {
 
-    return(
+    return (
         <div className={styles.contenedorMP}>
 
             <div className={styles.divFotos}>
-                
-                <img src={pictures} alt={"not found"} className={styles.foto}/>
-                               
+
+                <img src={pictures} alt={"not found"} className={styles.foto} />
+
             </div>
 
             <div className={styles.divCaracteristicas}>
                 <div>
-                   <h2>
-                      $ {price} USD 
-                   </h2>   
-                </div>                   
-        
+                    <h2>
+                        $ {price} USD
+                    </h2>
+                </div>
+
                 <div className={styles.typo}>
-                   <StyledText className='typeCard'>{capitalize(type)}</StyledText> 
+                    <StyledText className='typeCard'>{capitalize(type)}</StyledText>
                 </div>
-                
+
                 <div className={styles.direcc}>
-                   <h4>{capitalize(address)}</h4> 
+                    <h4>{capitalize(address)}</h4>
                 </div>
-                
+
                 <div className={styles.areaRoomBath}>
-                  <h5>
-                    <AreaIcon/> {area}m2   
-                    <RoomIcon/> {rooms} hab
-                   <BathIcon/> {bathrooms} baños
-                  </h5>
+                    <h5>
+                        <AreaIcon /> {area}m2
+                        <RoomIcon /> {rooms} hab
+                        <BathIcon /> {bathrooms} baños
+                    </h5>
                 </div>
-            </div>             
-            
+                <Shopping top='-40px' left='300px' hover='green' />
+            </div>
+
             <div className={styles.divBotones}>
-                <p className={styles.visto}>Visto: </p>
+                <p className={styles.visto}>
+                    Visto:
+                </p>
                 <p>Marcado Favorito: </p>
                 <Button className={styles.botonConetar}>
                     <StyledLink to={`/contacto/${id}`}>Ver solicitudes de contacto</StyledLink>
                 </Button>
-                <Button className={styles.botonDet}>Ver comentarios</Button>      
+                <Button className={styles.botonDet}>Ver comentarios</Button>
                 <Button className={styles.botonQuitar}>Rentado/Vendido/Reservado</Button>
             </div>
-                   
+
         </div>
-     )
+    )
 }
