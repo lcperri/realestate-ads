@@ -4,7 +4,8 @@
   flex-wrap: wrap;
   /* background-color: bisque; */
   justify-content: space-between;
-  width: auto;
+  /* width: auto; */
+  width: 500px;
 }
 
 .container {
