@@ -2,33 +2,27 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import "./FormCreate.css";
-import { createProperty, getAllProperties } from "../../redux/actions";
+import { createProperty } from "../../redux/actions";
 import DivContainer from "../../styledComponents/DivContainer";
 import Cloudinary from "../../libs/Cloudinary";
 import Button from "../../styledComponents/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  GrupoInput,
-  Option,
-  ErrorLeyend,
-  ValidationIcon,
   TermsAndConditions,
   SubmitContainer,
   MensajeError,
-  MensajeExito,
   Label,
 } from "../../styledComponents/StyledFormElements";
 import {
-  faCheck,
   faCircleExclamation,
 } from "@fortawesome/free-solid-svg-icons";
 import Input from "../FormElements/Input";
 import Select from "../FormElements/Select";
 import { regExps } from "../FormElements/regExpressions";
-import toast, { Toaster } from "react-hot-toast";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import Title from "../../styledComponents/Title";
+import Shopping from '../../dumb/Icons/Shopping'
 
 export default function FormCreateProp() {
   //para las cards:
@@ -47,14 +41,8 @@ export default function FormCreateProp() {
   const [rooms, setRooms] = useState({ key: "", valid: null });
   const [bathrooms, setBathrooms] = useState({ key: "", valid: null });
   const [parkingSlot, setParkingSlot] = useState({ key: "", valid: null });
-  const [constructionDate, setConstructionDate] = useState({
-    key: "",
-    valid: null,
-  });
-  const [renovationDate, setRenovationDate] = useState({
-    key: "",
-    valid: null,
-  });
+  const [constructionDate, setConstructionDate] = useState({ key: "", valid: null });
+  const [renovationDate, setRenovationDate] = useState({ key: "", valid: null });
   const [pictures, setPictures] = useState([]);
   const [termsAndConditions, setTermsAndConditions] = useState(false);
   const [propertyCreated, setPropertyCreated] = useState(false);
@@ -257,8 +245,7 @@ export default function FormCreateProp() {
                   disabled={errorsFirstCard}
                   onClick={() => setContador(1)}
                 >
-                  {" "}
-                  Siguiente
+  |                Siguiente
                 </Button>
               </div>
             </DivContainer>
@@ -431,7 +418,7 @@ export default function FormCreateProp() {
                     Sube imágenes de tu propiedad, y listo!
                   </div>
                   <Cloudinary getImages={getImagesResultsCloudinary} />
-                  <Input type='file' />
+                  <input type='file' />
                 </div>
                 <div className="buttonsNextBack">
                   <Button onClick={() => setContador(2)}>Anterior</Button>
