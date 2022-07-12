@@ -61,17 +61,21 @@ export default function CardMisPropPremiumVip({
         )}
       </div>
       <div className={styles.divBotones}>
-        <p className={styles.visto}>Visto:</p>
-        <p>Marcado Favorito: </p>
+        {/* <p className={styles.visto}>Visto:</p>
+        <p>Marcado Favorito: </p> */}
         <Button className={styles.botonConetar}>
           <StyledLink to={`/contacto/${idProperty}`}>
             Ver solicitudes de contacto
           </StyledLink>
         </Button>
-        <Button className={styles.botonDet}>Ver comentarios</Button>
-        <Button className={styles.botonQuitar}>
-          Rentado/Vendido/Reservado
+        <Button className={styles.botonConetar}>
+        <StyledLink to={`/${idProperty}`}>
+            Ver detalle
+          </StyledLink>
         </Button>
+        {/* <Button className={styles.botonQuitar}>
+          Rentado/Vendido/Reservado
+        </Button> */}
       </div>
     </div>
   );
