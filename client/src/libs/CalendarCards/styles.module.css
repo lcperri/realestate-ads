@@ -1,0 +1,6 @@
+.calendaris{
+    background: #bc6981;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #d57d92 0%, #f5a9ae 100%); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(0deg, #e86a88 0%, #f09b9e 100%); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    margin-left: 240px;
+}
