@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { filterByFollower, filterByOwner, getUserById, propertyPagination} from '../../redux/actions'
+import { filterByCart, filterByFollower, filterByOwner, getUserById, propertyPagination} from '../../redux/actions'
 import CardsContainer from '../../styledComponents/CardsContainer'
 import Card from '../../dumb/Card'
 import Pagination from '../Pagination'
@@ -9,10 +9,11 @@ import Favorito from '../../dumb/CardFavorito'
 import StyledCard from '../../styledComponents/StyledCard'
 import LoginController from './../../localStorage/login';
 
-const Cards = ({ id, favourites }) => {
+const Cards = ({ id, favourites, cart }) => {
   const dispatch = useDispatch();
   const headers = LoginController();
   const properties = useSelector((state) => state.properties);
+  const cartProperties = useSelector((state) => state.cart);
   const pages = useSelector((state) => state.pages);
   const filter = useSelector((state) => state.filter);
   const user = useSelector(state => state.user)
@@ -24,15 +25,15 @@ const Cards = ({ id, favourites }) => {
   }, [])
 
   useEffect(() => {
-    if ((!id && !favourites) && (filter.location !== undefined && filter.max !== undefined)) {
+    if ((!id && !favourites && !cart) && (filter.location !== undefined && filter.max !== undefined)) {
       dispatch(propertyPagination(filter));
     } else if ((id) && (filter.location !== undefined && filter.max !== undefined)) {
       dispatch(filterByOwner(filter, id, headers));
     } else if ((favourites) && (filter.location !== undefined && filter.max !== undefined)) {
       dispatch(filterByFollower(filter, favourites, headers));
-    }
+    } else if (cart) dispatch(filterByCart(userId, headers));
   }, [filter, updateCurrentPage]);
-
+  console.log(cartProperties)
   return (
     <>
       <CardsContainer>

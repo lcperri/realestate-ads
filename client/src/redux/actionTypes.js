@@ -16,3 +16,4 @@ export const UPDATE_PAGE = "UPDATE_PAGE";
 export const SWITCH_BETWEEN_FORMS = "SWITCH_BETWEEN_FORMS";
 export const PAY_LINK = "PAY_LINK";
 export const DELETE_USER = "DELETE_USER";
+export const CART = "CART";

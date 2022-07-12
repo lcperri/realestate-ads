@@ -31,7 +31,8 @@ import {
   UPDATE_PAGE,
   SWITCH_BETWEEN_FORMS,
   GET_CALENDAR,
-  PAY_LINK
+  PAY_LINK,
+  CART
 } from "./actionTypes";
 
 export function login(data) {
@@ -123,6 +124,21 @@ export function filterByFollower({ filters, location, max }, id, headers) {
     return dispatch({
       type: PROPERTIES,
       payload: filtered.data,
+    });
+  };
+}
+
+export function filterByCart(id, headers) {
+  return async function (dispatch) {
+    dispatch({ type: LOADING });
+    console.log(id)
+    const cart = await axios.get(
+      `${url}/property/cart/${id}`,
+      headers
+    );
+    return dispatch({
+      type: CART,
+      payload: cart.data,
     });
   };
 }
@@ -311,6 +327,16 @@ export function addToUserFavourites(id, property, headers) {
     return dispatch({
       type: USER,
       payload: favs.data
+    });
+  };
+}
+
+export function addToUserCart(id, property, headers) {
+  return async function (dispatch) {
+    const cart = await axios.put(`${url}/user/addcart/${id}`, property, headers);
+    return dispatch({
+      type: USER,
+      payload: cart.data
     });
   };
 }
