@@ -64,9 +64,10 @@ const Nav = () => {
             </>
             :
             <>
-              {range && range !== 'free' && <StyledLink to={'/mispropiedades'} color='#fff'>Mis Propiedades</StyledLink>}
-              {range && <StyledLink to={'/favoritos'} color='#fff'>Mis Favoritos</StyledLink>}
-              {range && <StyledLink to={'/calendario'} color='#fff'>Calendario</StyledLink>}
+              {range && range !== 'free' && <StyledLink to={'/mispropiedades'}>Mis Propiedades</StyledLink>}
+              {range && range !== 'free' && <StyledLink to={'/cart'}>Carrito</StyledLink>}
+              {range && <StyledLink to={'/favoritos'}>Mis Favoritos</StyledLink>}
+              {range && range !== 'free' && <StyledLink to={'/calendario'}>Calendario</StyledLink>}
             </>
           }
         </li>
