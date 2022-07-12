@@ -2,9 +2,13 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserById, updateUserById } from "../../redux/actions";
 
+import altImg from "./img/alt.jpg";
+
 import styles from "./PersonalData.module.css";
 import { validate } from "./validate";
 import LoginController from "../../localStorage/login";
+
+import Loader from "../../pages/Loader/index";
 
 import capitalize from "./../../functions/capitalize";
 
@@ -76,47 +80,53 @@ const PersonalData = () => {
 
   return (
     <div className={styles.fullContainer}>
-      <form
-        className={styles.container}
-        onSubmit={(e) => handleSubmit(e)}
-        autoComplete="off"
-      >
-        <h1 className={styles.title}>Datos</h1>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <form
+            className={styles.container}
+            onSubmit={(e) => handleSubmit(e)}
+            autoComplete="off"
+          >
+            <h1 className={styles.title}>Datos</h1>
 
-        <label className={styles.header}>Personales</label>
+            <label className={styles.header}>Personales</label>
 
-        <label className={styles.explain}>
-          Completa con tus datos personales
-        </label>
+            <label className={styles.explain}>
+              Completa con tus datos personales
+            </label>
 
-        <div className={styles.inputcontainer}>
-          <label className={styles.label}>Nonbre:</label>
-          <input
-            type="text"
-            name="name"
-            placeholder="Nombre"
-            className={styles.input}
-            value={capitalize(input.name)}
-            onChange={handleChange}
-          />
-        </div>
-        {errors.name && <span className={styles.errospan}>{errors.name}</span>}
-        <div className={styles.inputcontainer}>
-          <label className={styles.label}>Apellido:</label>
+            <div className={styles.inputcontainer}>
+              <label className={styles.label}>Nonbre:</label>
+              <input
+                type="text"
+                name="name"
+                placeholder="Nombre"
+                className={styles.input}
+                value={capitalize(input.name)}
+                onChange={handleChange}
+              />
+            </div>
+            {errors.name && (
+              <span className={styles.errospan}>{errors.name}</span>
+            )}
+            <div className={styles.inputcontainer}>
+              <label className={styles.label}>Apellido:</label>
 
-          <input
-            type="text"
-            name="lastName"
-            placeholder="Apellido"
-            className={styles.input}
-            value={capitalize(input.lastName)}
-            onChange={handleChange}
-          />
-        </div>
-        {errors.lastName && (
-          <span className={styles.errospan}>{errors.lastName}</span>
-        )}
-        {/* <div className={styles.inputcontainer}>
+              <input
+                type="text"
+                name="lastName"
+                placeholder="Apellido"
+                className={styles.input}
+                value={capitalize(input.lastName)}
+                onChange={handleChange}
+              />
+            </div>
+            {errors.lastName && (
+              <span className={styles.errospan}>{errors.lastName}</span>
+            )}
+            {/* <div className={styles.inputcontainer}>
         <label className={styles.label}>Cumpleaños:</label>
         <input
           type="date"
@@ -129,7 +139,7 @@ const PersonalData = () => {
         />
       </div> */}
 
-        {/* <div className={styles.inputcontainer}>
+            {/* <div className={styles.inputcontainer}>
         <label className={styles.label}>DNI:</label>
         <input
           type="number"
@@ -140,36 +150,45 @@ const PersonalData = () => {
           onChange={handleChange}
         />
       </div> */}
-        {errors.dni && <span className={styles.errospan}>{errors.dni}</span>}
-        <div className={styles.inputcontainer}>
-          <label className={styles.label}>Telefono:</label>
-          <input
-            type="number"
-            name="telephone"
-            placeholder="Telefono"
-            className={styles.input}
-            value={input.telephone}
-            onChange={handleChange}
-          />
-        </div>
-        {errors.telephone && (
-          <span className={styles.errospan}>{errors.telephone}</span>
-        )}
-        <div className={styles.inputcontainer}>
-          <label className={styles.label}>Avatar:</label>
+            {errors.dni && (
+              <span className={styles.errospan}>{errors.dni}</span>
+            )}
+            <div className={styles.inputcontainer}>
+              <label className={styles.label}>Telefono:</label>
+              <input
+                type="number"
+                name="telephone"
+                placeholder="Telefono"
+                className={styles.input}
+                value={input.telephone}
+                onChange={handleChange}
+              />
+            </div>
+            {errors.telephone && (
+              <span className={styles.errospan}>{errors.telephone}</span>
+            )}
+            <div className={styles.inputcontainer}>
+              <label className={styles.label}>
+                Guarda un Avatar o Foto de perfil:
+              </label>
 
-          <Cloudinary getImages={getImagesResultsCloudinary} />
-        </div>
-        <button
-          className={styles.savebutton}
-          type="submit"
-          disabled={errors.button}
-        >
-          Guardar cambios
-        </button>
-      </form>
-
-      <img src={input.avatar} alt="Avatar" className={styles.avatarContainer} />
+              <Cloudinary getImages={getImagesResultsCloudinary} />
+            </div>
+            <img
+              src={input.avatar || altImg}
+              alt="Sube tu Avatar/Foto"
+              className={styles.avatarContainer}
+            />
+            <button
+              className={styles.savebutton}
+              type="submit"
+              disabled={errors.button}
+            >
+              Guardar cambios
+            </button>
+          </form>
+        </>
+      )}
     </div>
   );
 };
