@@ -46,7 +46,10 @@ const Cards = ({ id, favourites, cart }) => {
             )) : favourites ?
               properties && properties.slice(pages[1] - 1, pages[2]).map(e => (
                 <Favorito key={e.id} user={user} {...e} />
-              )) :
+              )) : cart ?
+              console.log('hola')
+              // propertyCart && propertyCart
+              :
               properties && properties.slice(pages[1] - 1, pages[2]).map(e => (
                 <StyledCard key={e._id}>
                   <Card key={e.id} user={user} {...e} />
