@@ -81,7 +81,8 @@ const reducer = (state = initialState, { type, payload }) => {
     case CART:
       return {
         ...state,
-        cart: payload,
+        cart: payload.cart,
+        properties: payload.properties,
         loading: false
       }
     case PAGE_SETTER:

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styles from './CardFav.module.css';
+import styles from '../CardFavorito/CardFav.module.css';
 import StyledText from '../../styledComponents/StyledText';
 import BathIcon from '../Icons/Bath';
 import RoomIcon from '../Icons/Room';
@@ -14,7 +14,7 @@ import house from '../../assets/house.png'
 import apartment from '../../assets/apartment.png'
 import capitalize from './../../functions/capitalize';
 
-export default function CardFavorito({ _id, user, operation, type, address, price, city, area, rooms, bathrooms, pictures, neighbourhood }) {
+export default function CardCart({ _id, user, operation, type, address, price, city, area, rooms, bathrooms, pictures, neighbourhood }) {
 
     const handleConectar = (e) => { };
 
@@ -40,12 +40,6 @@ export default function CardFavorito({ _id, user, operation, type, address, pric
                     </h5>
                 </div>
                 <div className={styles.divBotones}>
-                    <Button onClick={handleConectar}>
-                        <StyledLink to='/contact'>
-                            Solicitar Contacto
-                        </StyledLink>
-                    </Button>
-
                     <Button >
                         <StyledLink to={`/${_id}`}>
                             Ver detalle

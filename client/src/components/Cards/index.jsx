@@ -8,12 +8,12 @@ import CardMisPropsPremiumVip from '../../dumb/CardMisPropsPremiumVip';
 import Favorito from '../../dumb/CardFavorito'
 import StyledCard from '../../styledComponents/StyledCard'
 import LoginController from './../../localStorage/login';
+import CardCart from '../../dumb/CardCart'
 
 const Cards = ({ id, favourites, cart }) => {
   const dispatch = useDispatch();
   const headers = LoginController();
   const properties = useSelector((state) => state.properties);
-  const cartProperties = useSelector((state) => state.cart);
   const pages = useSelector((state) => state.pages);
   const filter = useSelector((state) => state.filter);
   const user = useSelector(state => state.user)
@@ -33,7 +33,7 @@ const Cards = ({ id, favourites, cart }) => {
       dispatch(filterByFollower(filter, favourites, headers));
     } else if (cart) dispatch(filterByCart(userId, headers));
   }, [filter, updateCurrentPage]);
-  console.log(cartProperties)
+  console.log(properties)
   return (
     <>
       <CardsContainer>
@@ -47,8 +47,9 @@ const Cards = ({ id, favourites, cart }) => {
               properties && properties.slice(pages[1] - 1, pages[2]).map(e => (
                 <Favorito key={e.id} user={user} {...e} />
               )) : cart ?
-              console.log('hola')
-              // propertyCart && propertyCart
+              properties && properties.slice(pages[1] - 1, pages[2]).map(e => (
+                <CardCart key={e.id} user={user} {...e} />
+              )) 
               :
               properties && properties.slice(pages[1] - 1, pages[2]).map(e => (
                 <StyledCard key={e._id}>
