@@ -30,15 +30,7 @@ const Card = ({
   neighbourhood
 }) => {
 
-  //const range = localStorage.getItem('range');
-  const headers = LoginController()
-  const dispatch = useDispatch();
-
-  const handleElim = (e) =>{
-    dispatch(deleteProp(headers, _id));
     
-  }
-
   return (
     <>
       <StyledLinkCard to={`/${_id}`}>
@@ -94,17 +86,6 @@ const Card = ({
       {user._id && (
         <SetToFavortie idProperty={_id} user={user} top="252px" right="2px" />
       )}
-
-      {
-        user.range === 'premium' && (
-          <div>
-            <Button onClick={handleElim}>Suspender Prop</Button>
-
-            <Button onClick={handleElim}>Ver denuncias</Button>
-          </div>
-          
-        )
-      }
     </>
   );
 };
