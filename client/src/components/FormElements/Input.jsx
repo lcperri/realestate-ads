@@ -40,12 +40,12 @@ const InputComponent = ({ className, type, min, max, name, placeHolder, regExp, 
     }
 
     //ejecutamos funcion que va a comparar fecha creac con renovation:
-    funcion && funcion()
+    state.valid && funcion && funcion()
   }
 
   return (
     <div className="group">
-      <Label className='controlLabel' valid={state.valid} htmlFor={name}>{name}</Label>
+      <Label className='controlLabel' htmlFor={name}>{name}</Label>
       <GrupoInput className={className} >
         <Input
           name={name}

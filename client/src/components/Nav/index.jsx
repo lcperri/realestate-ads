@@ -17,8 +17,6 @@ const Nav = () => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  //************************ */
-
   const headers = LoginController();
   const range = localStorage.getItem('range');
   const id = localStorage.getItem('id');
@@ -66,9 +64,9 @@ const Nav = () => {
             </>
             :
             <>
-              {range && range !== 'free' && <StyledLink to={'/mispropiedades'}>Mis Propiedades</StyledLink>}
-              {range && <StyledLink to={'/favoritos'}>Mis Favoritos</StyledLink>}
-              {range && <StyledLink to={'/calendario'}>Calendario</StyledLink>}
+              {range && range !== 'free' && <StyledLink to={'/mispropiedades'} color='#fff'>Mis Propiedades</StyledLink>}
+              {range && <StyledLink to={'/favoritos'} color='#fff'>Mis Favoritos</StyledLink>}
+              {range && <StyledLink to={'/calendario'} color='#fff'>Calendario</StyledLink>}
             </>
           }
         </li>

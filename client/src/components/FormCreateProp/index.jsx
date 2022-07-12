@@ -431,6 +431,7 @@ export default function FormCreateProp() {
                     Sube imágenes de tu propiedad, y listo!
                   </div>
                   <Cloudinary getImages={getImagesResultsCloudinary} />
+                  <Input type='file' />
                 </div>
                 <div className="buttonsNextBack">
                   <Button onClick={() => setContador(2)}>Anterior</Button>
