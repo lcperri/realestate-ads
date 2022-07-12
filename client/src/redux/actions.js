@@ -327,6 +327,17 @@ export function GetUserById(id) {
   };
 }
 
+export function getPayment(id) {
+  return async function (dispatch) {
+    console.log('hola')
+    // const user = await axios.get(`${url}/user/${id}`);
+    // return dispatch({
+    //   type: USER,
+    //   payload: user.data
+    // });
+  };
+}
+
 export function addToUserFavourites(id, property, headers) {
   return async function (dispatch) {
     const favs = await axios.put(`${url}/user/addfavs/${id}`, property, headers);
