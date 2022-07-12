@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect }  from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styles from './CardMisPropsPV.module.css';
 import StyledText from '../../styledComponents/StyledText'
 //import DivContainer from '../../styledComponents/'
@@ -9,18 +10,16 @@ import Button from '../../styledComponents/Button';
 import { StyledLink } from "../../styledComponents/StyledLink";
 import capitalize from './../../functions/capitalize';
 import Shopping from '../Icons/Shopping'
+import AddToCart from "../../components/AddToCart";
+import { getUserById } from "../../redux/actions";
 
-export default function CardMisPropPremiumVip({ id, type, address, price, area, rooms, bathrooms, pictures }) {
+export default function CardMisPropPremiumVip({ user, idProperty, type, address, price, area, rooms, bathrooms, pictures }) {
 
     return (
         <div className={styles.contenedorMP}>
-
             <div className={styles.divFotos}>
-
                 <img src={pictures} alt={"not found"} className={styles.foto} />
-
             </div>
-
             <div className={styles.divCaracteristicas}>
                 <div>
                     <h2>
@@ -43,21 +42,19 @@ export default function CardMisPropPremiumVip({ id, type, address, price, area, 
                         <BathIcon /> {bathrooms} baños
                     </h5>
                 </div>
-                <Shopping top='-40px' left='300px' hover='green' />
+                <AddToCart user={user} idProperty={idProperty} top='-40px' right='-310px' hover='green' />
             </div>
-
             <div className={styles.divBotones}>
                 <p className={styles.visto}>
                     Visto:
                 </p>
                 <p>Marcado Favorito: </p>
                 <Button className={styles.botonConetar}>
-                    <StyledLink to={`/contacto/${id}`}>Ver solicitudes de contacto</StyledLink>
+                    <StyledLink to={`/contacto/${idProperty}`}>Ver solicitudes de contacto</StyledLink>
                 </Button>
                 <Button className={styles.botonDet}>Ver comentarios</Button>
                 <Button className={styles.botonQuitar}>Rentado/Vendido/Reservado</Button>
             </div>
-
         </div>
     )
 }
