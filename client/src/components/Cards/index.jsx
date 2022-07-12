@@ -60,55 +60,32 @@ const Cards = ({ id, favourites, cart }) => {
       dispatch(filterByFollower(filter, favourites, headers));
     } else if (cart) dispatch(filterByCart(userId, headers));
   }, [filter, updateCurrentPage]);
-
-  // console.log(properties)
+  
   return (
     <>
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <>
-          <CardsContainer>
-            {id
-              ? properties &&
-                properties
-                  .slice(pages[1] - 1, pages[2])
-                  .map((e) => (
-                    <CardMisPropsPremiumVip
-                      user={user}
-                      key={e.id}
-                      idProperty={e._id}
-                      type={e.type}
-                      address={e.address}
-                      price={e.price}
-                      area={e.area}
-                      rooms={e.rooms}
-                      bathrooms={e.bathrooms}
-                      pictures={e.pictures[0]}
-                    />
-                  ))
-              : favourites
-              ? properties &&
-                properties
-                  .slice(pages[1] - 1, pages[2])
-                  .map((e) => (
-                    <Favorito key={e.id} userId={user._id} user={user} {...e} />
-                  ))
-              : cart
-              ? properties &&
-                properties
-                  .slice(pages[1] - 1, pages[2])
-                  .map((e) => <CardCart key={e.id} user={user} {...e} />)
-              : properties &&
-                properties.slice(pages[1] - 1, pages[2]).map((e) => (
-                  <StyledCard key={e._id}>
-                    <Card key={e.id} user={user} {...e} />
-                  </StyledCard>
-                ))}
-          </CardsContainer>
-          <Pagination></Pagination>
-        </>
-      )}
+      <CardsContainer>
+      
+        {
+          id ?
+            properties && properties.slice(pages[1] - 1, pages[2]).map(e => (
+              <CardMisPropsPremiumVip user={user} key={e.id} idProperty={e._id} type={e.type} address={e.address} price={e.price}
+                area={e.area} rooms={e.rooms} bathrooms={e.bathrooms} pictures={e.pictures[0]} status={e.status} />
+            )) : favourites ?
+              properties && properties.slice(pages[1] - 1, pages[2]).map(e => (
+                <Favorito key={e.id} userId={user._id} user={user} {...e} />
+              )) : cart ?
+              properties && properties.slice(pages[1] - 1, pages[2]).map(e => (
+                <CardCart key={e.id} user={user} {...e} />
+              )) 
+              :
+              properties && properties.slice(pages[1] - 1, pages[2]).map(e => (
+                <StyledCard key={e._id}>
+                  <Card key={e.id} user={user} {...e} />
+                </StyledCard>
+              ))
+        }
+      </CardsContainer>
+      <Pagination></Pagination>
     </>
   );
 };
