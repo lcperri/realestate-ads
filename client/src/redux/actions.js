@@ -366,6 +366,17 @@ export function subscription (data, headers) {
   };
 }
 
+export function payment (data, headers) {
+  return async function (dispatch) {
+    const link = await axios.post(`${url}/payment`, data, headers);
+    console.log('hola')
+    return dispatch({
+      type: PAY_LINK,
+      payload: link.data,
+    });
+  };
+}
+
 export function deleteLink (data) {
   return async function (dispatch) {
     return dispatch({

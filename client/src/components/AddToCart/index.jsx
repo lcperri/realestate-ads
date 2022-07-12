@@ -37,7 +37,7 @@ const AddToCart = ({ idProperty, user, top, right, left, hover }) => {
             setIncart(true)
         }
         dispatch(addToUserCart(userId, { property: idProperty }, headers))
-        // dispatch(updateCurrentPage())
+        dispatch(updateCurrentPage())
     }
 
     return (

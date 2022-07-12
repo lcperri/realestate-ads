@@ -13,6 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import house from '../../assets/house.png'
 import apartment from '../../assets/apartment.png'
 import capitalize from './../../functions/capitalize';
+import AddToCart from "../../components/AddToCart";
 
 export default function CardCart({ _id, user, operation, type, address, price, city, area, rooms, bathrooms, pictures, neighbourhood }) {
 
@@ -46,7 +47,7 @@ export default function CardCart({ _id, user, operation, type, address, price, c
                         </StyledLink>
                     </Button>
 
-                    <SetToFavortie idProperty={_id} user={user} />
+                    <AddToCart user={user} idProperty={_id} top='-40px' right='-310px' hover='green' />
                 </div>
 
             </div>

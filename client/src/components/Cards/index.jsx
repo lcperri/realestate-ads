@@ -33,8 +33,7 @@ const Cards = ({ id, favourites, cart }) => {
       dispatch(filterByFollower(filter, favourites, headers));
     } else if (cart) dispatch(filterByCart(userId, headers));
   }, [filter, updateCurrentPage]);
-
-  // console.log(properties)
+  
   return (
     <>
       <CardsContainer>
