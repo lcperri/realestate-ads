@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { filterByFollower, filterByOwner, getUserById, propertyPagination} from '../../redux/actions'
+import { filterByCart, filterByFollower, filterByOwner, getUserById, propertyPagination} from '../../redux/actions'
 import CardsContainer from '../../styledComponents/CardsContainer'
 import Card from '../../dumb/Card'
 import Pagination from '../Pagination'
@@ -8,8 +8,9 @@ import CardMisPropsPremiumVip from '../../dumb/CardMisPropsPremiumVip';
 import Favorito from '../../dumb/CardFavorito'
 import StyledCard from '../../styledComponents/StyledCard'
 import LoginController from './../../localStorage/login';
+import CardCart from '../../dumb/CardCart'
 
-const Cards = ({ id, favourites }) => {
+const Cards = ({ id, favourites, cart }) => {
   const dispatch = useDispatch();
   const headers = LoginController();
   const properties = useSelector((state) => state.properties);
@@ -24,15 +25,15 @@ const Cards = ({ id, favourites }) => {
   }, [])
 
   useEffect(() => {
-    if ((!id && !favourites) && (filter.location !== undefined && filter.max !== undefined)) {
+    if ((!id && !favourites && !cart) && (filter.location !== undefined && filter.max !== undefined)) {
       dispatch(propertyPagination(filter));
     } else if ((id) && (filter.location !== undefined && filter.max !== undefined)) {
       dispatch(filterByOwner(filter, id, headers));
     } else if ((favourites) && (filter.location !== undefined && filter.max !== undefined)) {
       dispatch(filterByFollower(filter, favourites, headers));
-    }
+    } else if (cart) dispatch(filterByCart(userId, headers));
   }, [filter, updateCurrentPage]);
-
+  console.log(properties)
   return (
     <>
       <CardsContainer>
@@ -45,7 +46,11 @@ const Cards = ({ id, favourites }) => {
             )) : favourites ?
               properties && properties.slice(pages[1] - 1, pages[2]).map(e => (
                 <Favorito key={e.id} user={user} {...e} />
-              )) :
+              )) : cart ?
+              properties && properties.slice(pages[1] - 1, pages[2]).map(e => (
+                <CardCart key={e.id} user={user} {...e} />
+              )) 
+              :
               properties && properties.slice(pages[1] - 1, pages[2]).map(e => (
                 <StyledCard key={e._id}>
                   <Card key={e.id} user={user} {...e} />

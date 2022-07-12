@@ -43,7 +43,6 @@ const PersonalData = () => {
 
   useEffect(() => {
     if (userData) {
-      console.log(userData)
       setInput({ ...input, ...userData });
     }
   }, [userData]);

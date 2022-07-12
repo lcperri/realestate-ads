@@ -193,7 +193,7 @@ const Details = () => {
                         Iniciar sesión
                       </Button>
                     </StyledLink>
-                    <StyledLink to='/registro'>
+                    <StyledLink color='#3e4b56' to='/registro' >
                       registrarse
                     </StyledLink>
                   </DivRow>

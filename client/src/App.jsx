@@ -21,6 +21,7 @@ import Users from "./pages/Users";
 import CalendarCards from "./libs/CalendarCards";
 import Contact from "./pages/Contact";
 import ContactCards from "./pages/ContactCards";
+import Cart from "./pages/Cart/Cart";
 
 
 const App = () => {
@@ -50,6 +51,7 @@ const App = () => {
         <Route path="/sesion" element={<Login />} />
         <Route path="/planes" element={<Planes />} />
         <Route path="/favoritos" element={<Favoritos />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="/mispropiedades" element={<MisPropsPV />} />
         <Route path="/calendario" element={<CalendarCards />} />
         <Route path="/contact" element={<Contact />} />
@@ -57,7 +59,6 @@ const App = () => {
         <Route path="/perfil" element={<ProfileDataUpdate />} />
         <Route path="/terms" element={<Terms/>} />
         <Route path="/contacto/:id" element={<ContactCards />} />
-        {/* <Route path='*' element={<Home/>} />  */}
       </Routes>
     </>
   );
