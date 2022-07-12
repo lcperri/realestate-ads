@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserById, updateUserById } from "../../redux/actions";
 
+import altImg from "./img/alt.jpg";
+
 import styles from "./PersonalData.module.css";
 import { validate } from "./validate";
 import LoginController from "../../localStorage/login";
@@ -156,10 +158,17 @@ const PersonalData = () => {
           <span className={styles.errospan}>{errors.telephone}</span>
         )}
         <div className={styles.inputcontainer}>
-          <label className={styles.label}>Avatar:</label>
+          <label className={styles.label}>
+            Guarda un Avatar o Foto de perfil:
+          </label>
 
           <Cloudinary getImages={getImagesResultsCloudinary} />
         </div>
+        <img
+          src={input.avatar || altImg}
+          alt="Sube tu Avatar/Foto"
+          className={styles.avatarContainer}
+        />
         <button
           className={styles.savebutton}
           type="submit"
@@ -168,8 +177,6 @@ const PersonalData = () => {
           Guardar cambios
         </button>
       </form>
-
-      <img src={input.avatar} alt="Avatar" className={styles.avatarContainer} />
     </div>
   );
 };
