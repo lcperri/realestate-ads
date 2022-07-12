@@ -21,7 +21,7 @@ import Users from "./pages/Users";
 import CalendarCards from "./libs/CalendarCards";
 import Contact from "./pages/Contact";
 import ContactCards from "./pages/ContactCards";
-
+import ContactCard from "./dumb/CardContact";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -58,7 +58,7 @@ const App = () => {
         <Route path="/terms" element={<Terms/>} />
         <Route path="/contacto/:id" element={<ContactCards />} />
         {/* <Route path='*' element={<Home/>} />  */}
-        <Route path="/contactCards" element={<ContactCards />} />
+        <Route path="/contactCard" element={<ContactCard />} />
       </Routes>
     </>
   );
