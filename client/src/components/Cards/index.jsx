@@ -27,13 +27,11 @@ const Cards = ({ id, favourites, cart }) => {
   const updateCurrentPage = useSelector((state) => state.updateCurrentPage);
   const userId = localStorage.getItem("id");
 
-  let [forceRender, setforceRender] = useState("");
+  
 
   const isLoading = useSelector((state) => state.loading);
 
-  useEffect(() => {
-    setforceRender(isLoading);
-  }, [isLoading]);
+ 
 
   useEffect(() => {
     dispatch(getUserById(userId));
