@@ -10,6 +10,7 @@
   background: linear-gradient(0deg, #FF416C 0%, #ff765e 100%);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   margin: 0;
+  width: 100%;
 }
 
 .priceWrapper {
@@ -18,19 +19,15 @@
   font-weight: 600;
   display: flex;
   padding: 30px 0 10px 0;
-  /* grid-template-columns: 1fr 1fr 1fr; */
-  /* align */
 }
 
 .features {
-  /* background-color: #999; */
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   padding-left: 40px;
 }
 
 .features > div {
-  /* margin: 10px auto; */
   border-radius: 10px;
   background-color: #98989825;
   padding: 4px 2px 4px 12px;
@@ -50,7 +47,7 @@
 .btnBackTop {
   position: absolute;
   top: 160px;
-  left: 150px;
+  left: 170px;
 }
 
 .btnContainer {
@@ -59,22 +56,18 @@
   justify-content: center;
 }
 
-.statusOperation {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
-}
-
 .addresFeatures_contact_wrapper {
   display: grid;
   grid-template-columns: 55% 45%;
   border-radius: 20px;
-  height: 570px;
-  justify-content: flex-end;
+  /* height: 570px; */
 }
 
 .contact_subWrapper {
-  /* background-color: #5ee7ff; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* justify-content: flex-end; */
 }
 
 /*Modal: */

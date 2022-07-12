@@ -24,8 +24,8 @@ export default function Users(){
                 allUsers.length ?
                 allUsers.map(u => {
                     return(
-                        <div key={u.id}>
-                             <UserCard id={u.id} name={u.name} lastName={u.lastName} birthday={u.birthday} email={u.email} dni={u.dni} telephone={u.telephone} avatar={u.avatar}/>
+                        <div key={u._id}>
+                             <UserCard id={u._id} name={u.name} lastName={u.lastName} birthday={u.birthday} email={u.email} dni={u.dni} telephone={u.telephone} avatar={u.avatar}/>
                         </div>
                     )
                 }) :

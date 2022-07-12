@@ -15,6 +15,8 @@ import {
   UPDATE_PAGE,
   GET_CALENDAR,
   CONTACT,
+  PAY_LINK,
+  CART,
 } from "./actionTypes";
 
 const initialState = {
@@ -35,7 +37,9 @@ const initialState = {
   contacts: [],
   updateCurrentPage: false,
   calendar: [],
-  authroized: false
+  authroized: false,
+  link: '',
+  cart: []
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -64,6 +68,7 @@ const reducer = (state = initialState, { type, payload }) => {
         city: "",
         users: [],
         user: {},
+        cart: [],
         calendar: false,
         cardsCalendary: [],
       };
@@ -73,6 +78,13 @@ const reducer = (state = initialState, { type, payload }) => {
         properties: payload,
         loading: false,
       };
+    case CART:
+      return {
+        ...state,
+        cart: payload.cart,
+        properties: payload.properties,
+        loading: false
+      }
     case PAGE_SETTER:
       return {
         ...state,
@@ -145,6 +157,11 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         telephone: payload,
       };
+    case PAY_LINK:
+      return {
+        ...state,
+        link: payload
+      }
     case UPDATE_PAGE:
       return {
         ...state,

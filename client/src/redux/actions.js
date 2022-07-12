@@ -30,7 +30,9 @@ import {
   CONTACT,
   UPDATE_PAGE,
   SWITCH_BETWEEN_FORMS,
-  GET_CALENDAR
+  GET_CALENDAR,
+  PAY_LINK,
+  CART
 } from "./actionTypes";
 
 export function login(data) {
@@ -126,6 +128,21 @@ export function filterByFollower({ filters, location, max }, id, headers) {
   };
 }
 
+export function filterByCart(id, headers) {
+  return async function (dispatch) {
+    dispatch({ type: LOADING });
+    console.log(id)
+    const cart = await axios.get(
+      `${url}/property/cart/${id}`,
+      headers
+    );
+    return dispatch({
+      type: CART,
+      payload: cart.data,
+    });
+  };
+}
+
 export function pageSetter(payload) {
   return {
     type: PAGE_SETTER,
@@ -163,7 +180,18 @@ export function getAllUsers(headers) {
     return dispatch({ type: ALL_USERS, payload: resp.data });
   };
 }
-export function deleteUser(){}
+
+export function deleteUser(id, headers){
+  return async function(dispatch){
+    const users = await axios.delete(`${url}/user/${id}`, headers);
+    console.log(users.data)
+    return dispatch({
+      type: ALL_USERS,
+      payload: users.data
+    });
+  }
+}
+
 export function createUser(data) {
   return async function (dispatch) {
     dispatch({ type: LOADING });
@@ -303,6 +331,16 @@ export function addToUserFavourites(id, property, headers) {
   };
 }
 
+export function addToUserCart(id, property, headers) {
+  return async function (dispatch) {
+    const cart = await axios.put(`${url}/user/addcart/${id}`, property, headers);
+    return dispatch({
+      type: USER,
+      payload: cart.data
+    });
+  };
+}
+
 export function switchBetweenForms(){
   return function (dispatch) {
     return dispatch({
@@ -315,4 +353,24 @@ export function updateCurrentPage () {
   return {
     type: UPDATE_PAGE
   };
+}
+
+export function subscription (data, headers) {
+  return async function (dispatch) {
+    const link = await axios.post(`${url}/subscription`, data, headers);
+    console.log('hola')
+    return dispatch({
+      type: PAY_LINK,
+      payload: link.data,
+    });
+  };
+}
+
+export function deleteLink (data) {
+  return async function (dispatch) {
+    return dispatch({
+      type: PAY_LINK,
+      payload: ''
+    })
+  }
 }

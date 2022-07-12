@@ -70,13 +70,13 @@ const Card = ({
           </aside>
         </DivRow>
       </StyledLinkCard>
-        <div>
-      <blockquote>
-        <StyledText status={status} className="statusCard">
-          {status === "available" ? "Disponible" : "Destacada" }
-        </StyledText>
-      </blockquote>
-        </div>
+      <div>
+        <blockquote>
+          <StyledText status={status} className="statusCard">
+            {status === "available" ? "Disponible" : "Destacada"}
+          </StyledText>
+        </blockquote>
+      </div>
       {user._id && (
         <SetToFavortie idProperty={_id} user={user} top="252px" right="2px" />
       )}
