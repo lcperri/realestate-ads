@@ -15,8 +15,10 @@ export default function UserCard({id,name, lastName, birthday, email, dni, telep
 
   const handleElim = (e) =>{
     dispatch(deleteUser(id,headers));
-  }
     
+  }
+  const handleDenuncia = (e) =>{}
+  
   return(
 
     <StyledCard>
@@ -34,7 +36,11 @@ export default function UserCard({id,name, lastName, birthday, email, dni, telep
       <div className={styles.datos}>
         {
           range === 'premium' && (
-            <Button onClick={handleElim}>Eliminar</Button>
+            <div>
+            <Button onClick={handleElim}>Eliminar</Button>            
+
+            <Button onClick={handleDenuncia}>Ver denuncias</Button>
+            </div>
           )
         }
         

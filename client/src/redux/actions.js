@@ -192,6 +192,12 @@ export function deleteUser(id, headers){
   }
 }
 
+export function deleteProp(headers, id){
+  return async function(){
+    await axios.delete(`${url}/property`,headers,id);
+    
+  }
+}
 export function createUser(data) {
   return async function (dispatch) {
     dispatch({ type: LOADING });

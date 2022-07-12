@@ -1,10 +1,11 @@
 
 import StyledCard from '../../styledComponents/StyledCard'
 import styles from './styles.module.css'
+import DivContainer from '../../styledComponents/DivContainer';
 
 export default function ContactCard ({ name, email, telephone, message }){
   return (
-
+    <DivContainer className={styles.contactForm}>
     <StyledCard className={styles.contenedorGral}>
         
         <div>
@@ -24,6 +25,7 @@ export default function ContactCard ({ name, email, telephone, message }){
         </div>
 
     </StyledCard>
+    </DivContainer>
   )
 }
 
