@@ -8,16 +8,16 @@ const StyledCard = styled.div`
   align-items: flex-start;
   display: flex;
   flex-direction: column; 
-  padding: 1px 1px 15px 1px;
-  border-radius: 1rem;
-  border: 1px solid #efefef;
+  padding: 0px 0px 15px 0px;
+  border-radius: 20px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  z-index: 10;
 
   img {
     width: 300px;
     height: 240px;
     object-fit: cover;
-    border-radius: 1rem;
+    border-radius: 20px;
   }
 
   div {
@@ -26,21 +26,16 @@ const StyledCard = styled.div`
 
   blockquote {
     position: absolute;
-    top: -425px;
+    top: -440px;
     left: 5px;
-  }
-
-  * {
-    transition: all .2s linear;
-    -webkit-transition: all .2s linear;
   }
   
   &:hover {
-    transition: all .2s linear;
-    margin-top: -3px;
-    margin-bottom: 6px;
+    transition: all .2s;
+    -webkit-transition: all .2s;
+    margin: -4px 0 6px 0;
   }
-  transition: .3s;
 
+  transition: all .2s;
 `
 export default StyledCard

@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom'
 import { HashLink } from 'react-router-hash-link'
 
 export const StyledLink = styled(Link)`
-    color: #fff;
+    color: ${props => props.color || '#fff'};
+    color: #333;
     text-decoration: none;
-    font-size: 13.5px;
+    font-size: 13px;
     padding: 4px;
     margin: ${props => props.margin};
+    font-weight: 500;
 
     &.perfil {
         color: #fff;
@@ -26,10 +28,11 @@ export const StyledLink = styled(Link)`
     }
 
     &:visited {
-        color:#fff;
+        font-weight: 500;
+        color: ${props => props.color};
     }
     &:hover {
-        font-weight: bolder;
+        font-weight: 500;
         color:#ff765e;
     }
     &:link {
@@ -40,7 +43,7 @@ export const StyledLink = styled(Link)`
 export const StyledHash = styled(HashLink)`
     color: #fff;
     text-decoration: none;
-    font-size: 13.5px;    
+    font-size: 13px;    
     &:visited {
         color:#fff;
     }
@@ -54,7 +57,7 @@ export const StyledHash = styled(HashLink)`
 export const StyledLinkCard = styled(Link)`
     color: #333;
     text-decoration: none;
-    font-size: 15px;    
+    font-size: 13px;    
     &:visited {
         color:#333;
     }

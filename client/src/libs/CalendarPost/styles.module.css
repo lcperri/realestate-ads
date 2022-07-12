@@ -1,13 +1,7 @@
-.contactForm{
-    display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .selectMotivo, .selectHorario, .inputDia{
-    width: 430px;
     display: flex;
 }
+<<<<<<< HEAD
 
 .btnVisita {
     margin-top: 30px;       
@@ -15,3 +9,11 @@
 .error{
     color: red;
 }
+=======
+.horarioLabel{
+    margin-top: 10px;
+    color: rgb(230, 38, 51);
+    font-size: 14px;
+    display: flex;
+}
+>>>>>>> e9e65b2ae6d4924892663624a8384d50cbea9230

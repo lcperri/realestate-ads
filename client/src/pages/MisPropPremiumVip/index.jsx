@@ -6,6 +6,7 @@ import DivContainer from "../../styledComponents/DivContainer";
 import Cards from "../../components/Cards";
 import { clear } from "../../redux/actions";
 import { useDispatch } from 'react-redux';
+import Shopping from '../../dumb/Icons/Shopping'
 
 export default function MisPropPremiumVip(){
   const dispatch = useDispatch();
@@ -30,7 +31,8 @@ export default function MisPropPremiumVip(){
               <label className={styles.plan}>Hacete VIP y publica SIN LIMITES !!</label>
                
               <div><Button className={styles.contratar} onClick={handleVip}>Contratar</Button></div>
-                
+              
+              
             </DivContainer>
             }
             <Cards id={id} />

@@ -11,7 +11,7 @@ const userId = localStorage.getItem("id");
 
 const EmailUpdate = () => {
   const dispatch = useDispatch();
-  const userData = useSelector((state) => state.userById);
+  const userData = useSelector((state) => state.user);
   const [input, setInput] = useState({  inicialemail:"",
                                         newemail: "",
                                         repeatemail: "",

@@ -21,9 +21,14 @@ import Users from "./pages/Users";
 import CalendarCards from "./libs/CalendarCards";
 import Contact from "./pages/Contact";
 import ContactCards from "./pages/ContactCards";
+<<<<<<< HEAD
 import ContactCard from "./dumb/CardContact";
 import Success from "./components/Success/Success";
 import CardDenuncia from "./dumb/CardDenuncia";
+=======
+import Cart from "./pages/Cart/Cart";
+
+>>>>>>> e9e65b2ae6d4924892663624a8384d50cbea9230
 
 const App = () => {
   const dispatch = useDispatch();
@@ -52,6 +57,7 @@ const App = () => {
         <Route path="/sesion" element={<Login />} />
         <Route path="/planes" element={<Planes />} />
         <Route path="/favoritos" element={<Favoritos />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="/mispropiedades" element={<MisPropsPV />} />
         <Route path="/calendario" element={<CalendarCards />} />
         <Route path="/contact" element={<Contact />} />

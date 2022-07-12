@@ -14,6 +14,7 @@ import LabelRed from '../../styledComponents/LabelRed'
 import StyledText from "../../styledComponents/StyledText";
 import './toast.css'
 import { StyledLink } from "../../styledComponents/StyledLink";
+import { DivRow } from "../../styledComponents/DivRow";
 
 export default function FormContacto() {
     const ref = useRef(null);
@@ -100,8 +101,8 @@ export default function FormContacto() {
     }
 
     return (
-        <DivContainer className={styles.contactForm}>
-            <h1 className={styles.titulo}>Formulario de contacto</h1>
+        <DivContainer className='contactForm'>
+            <h1>Formulario de contacto</h1>
             <div className={styles.inputWrapper}>
                 <label> Email: <LabelRed><LabelRed>*</LabelRed></LabelRed></label>
                 <Input className={styles.input} type={'text'} placeholder={'Email'} value={user.email} disabled='true'></Input>
@@ -121,12 +122,12 @@ export default function FormContacto() {
                 <label>Mensaje:</label>
                 <textarea className={styles.descrip} name='message' type={'text'} placeholder={'Mensaje:'} value={input.message} onChange={handleOnChange} />
             </div>
-            <div className={styles.container}>
+            <DivRow alignIt='center'>
                 <a href={url}><img src={imagw} className={styles.whatsapp} /></a>
-                <Button className={styles.contactar} onClick={onSubmit}>Contactar</Button>
-                <Toaster />
-                <Button className={styles.contactar} onClick={switchButton}>Agendar Visita</Button>
-            </div>
+                <Button margin='0 10px 0 0' onClick={onSubmit}>Contactar</Button>
+                <Button onClick={switchButton}>Agendar Visita</Button>
+            </DivRow>
+            <Toaster />
         </DivContainer>
     )
-}
+}   

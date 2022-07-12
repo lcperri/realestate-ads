@@ -1,17 +1,18 @@
-/* .body {
-  background-color: #38b6ff;
-  background-position: center;
+.body {
+  /* background-color: #fff; */
+  /* background-position: center;
   background-size: cover;
-  background-repeat: no-repeat;
-  width: 50%;
+  background-repeat: no-repeat; */
+  width: 20%;
   height: 50%;
-  position: fixed;
-  display: flex;
-  flex-flow: column wrap;
-  justify-content: center;
-}  */
+  position: relative;
+  /* display: flex;
+  flex-flow: column wrap; */
+  /* justify-content: center; */
+  margin: 0px auto;
+} 
 .imagenProp{
-  position: absolute;
+  /* position: absolute; */
   /* margin-top: 22%;
   left: 40%; */
   display: flex;
@@ -40,7 +41,7 @@
   font-weight: bold;
 
   /* letter-spacing: 12px; */
-  color: #e41037;
+  color:#fff;
 
   left: -40%;
 }
@@ -66,7 +67,7 @@
   height: 18px;
   border-radius: 20%;
   /* background: #fff; */
-  background: #ff385c;
+  background: #fff;
 }
 .ldsspinner div:nth-child(1) {
   transform: rotate(0deg);

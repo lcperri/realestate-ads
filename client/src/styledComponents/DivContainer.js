@@ -7,25 +7,31 @@ const DivContainer = styled.div`
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 18px;
   transition: .2s ease all;
   width: ${props => props.width};
-  /* gap: ${props => props.gap || '2px'}; */
+  gap: ${props => props.gap || '2px'};
 
   ${(props) => props.home ? 'min-width: 100rem; min-height: 58rem; width: 75%; height: 75%;' : 
     'width: 75%;'
   }
 
-  ${(props) => props.contacto ? 'min-width: 40rem;' : null }
-
-  &.contactForm {
-    /* margin: 20px auto 15px auto; */
-    position: relative;
+  &.calendarPost {
+    padding: 0 35px;
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
-    /* justify-content: center; */
+    justify-content: space-evenly;
     align-items: center;
-    height: 610px;
-    width: 80%;
-    background-color: #FAFAFA;
+    min-height: 550px;
+    width: 100%;
+  }
+
+  &.contactForm {
+    padding: 0 35px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap; 
+    justify-content: center;
+    align-items: center;
+    min-height: 550px;
+    width: 100%;
   }
   
   &.plansCard {
@@ -67,7 +73,6 @@ const DivContainer = styled.div`
     grid-template-columns: 35% 65%;
     transition: width 2s;
   }
-
   
   &.detail {
     background-color: #fff;

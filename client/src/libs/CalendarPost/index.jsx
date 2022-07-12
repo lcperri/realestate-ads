@@ -2,39 +2,39 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux/es/exports';
 
 import styles from './styles.module.css';
-import { Label, Input, Select} from '../../styledComponents/StyledFormElements';
+import { Label, Input, Select } from '../../styledComponents/StyledFormElements';
 import Button from "../../styledComponents/Button";
 
 import CalendarAuth from "../Calendar";
 import DivContainer from "../../styledComponents/DivContainer";
 
-import { createEvent, getUserById, switchBetweenForms } from "../../redux/actions"; 
+import { createEvent, getUserById, switchBetweenForms } from "../../redux/actions";
 /*import CalendarCards from './../CalendarCards'; */
 import LoginController from './../../localStorage/login';
 import { useParams } from 'react-router-dom';
 import Swal from "sweetalert2";
 
-export default function Calendar ({ operation }) {
+export default function Calendar({ operation }) {
    const dispatch = useDispatch();
    const headers = LoginController();
    const id = localStorage.getItem('id');
-   const {id:location} = useParams();
+   const { id: location } = useParams();
    const email = useSelector((state) => state.user?.email);
 
-   const summary = operation === 'rent' ? 'Alquiler' : 'Venta'; 
-   const [ dia, setDia ] = useState('');
-   const [ hora, setHora ] = useState('');
-   
+   const summary = operation === 'rent' ? 'Alquiler' : 'Venta';
+   const [dia, setDia] = useState('');
+   const [hora, setHora] = useState('');
+
    useEffect(() => {
       dispatch(getUserById(id, headers));
    }, [id]);
 
    //-------------creo dato startDateTime
    const modifDia = dia.replace('/', '-');//paso de 2022/12/12 a 2022-12-12
-   let startDateTime = modifDia+hora;//unifico dia + hora y obtengo startDateTime
+   let startDateTime = modifDia + hora;//unifico dia + hora y obtengo startDateTime
 
    //-----funcion suma 30'
-   function sumaMinutos(hora){
+   function sumaMinutos(hora) {
       let result = '';
       if(hora === 'T09:00:00.000Z')return result = 'T09:30:00.000Z';
       if(hora === 'T09:30:00.000Z')return result = 'T10:00:00.000Z';
@@ -51,8 +51,8 @@ export default function Calendar ({ operation }) {
    }
    //----creo dato endDateTime
    let endH = sumaMinutos(hora);
-   let endDateTime = modifDia+endH;//obtengo  endDateTime -->2022-07-06T11:30:00.000Z
-   
+   let endDateTime = modifDia + endH;//obtengo  endDateTime -->2022-07-06T11:30:00.000Z
+
    const handleSubmit = (e) => {
       e.preventDefault();
       if(!dia || !hora){
@@ -123,9 +123,10 @@ export default function Calendar ({ operation }) {
       
                      {/* <CalendarCards/> */}
                      <Button type="button" className={styles.contactar} onClick={switchButton}>Contactar</Button>
+                              
                   </DivContainer>
             </div>
-         </form>  
+         </form>
    )
 }
 /*
