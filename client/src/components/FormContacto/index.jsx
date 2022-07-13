@@ -38,7 +38,7 @@ export default function FormContacto() {
     let url = `https://wa.me/${phone}?text=Me%20gustaría%20saber%20el%20precio%20de%20la%20propiedad`
 
     const data = {
-        name: user.name + user.lastName,
+        name: user.name + " " + user.lastName,
         email: user.email,
         message: input.message,
         property: id,

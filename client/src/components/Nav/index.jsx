@@ -78,7 +78,7 @@ const Nav = () => {
               {range && range !== "free" && (
                 <StyledLink to={"/mispropiedades"}>Mis Propiedades</StyledLink>
               )}
-              {range && range !== "free" && (
+              {range && range === "premium" && (
                 <StyledLink to={"/cart"}>Carrito</StyledLink>
               )}
               {range && (

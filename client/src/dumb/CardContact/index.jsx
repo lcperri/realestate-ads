@@ -19,15 +19,20 @@ export default function ContactCard ({ name, email, telephone, message }){
           <h2 className={styles.name}>{email}</h2>         
         </div>
 
+        { telephone && 
         <div>
           <h3 className={styles.datos}>Teléfono: </h3>
           <h2 className={styles.name}>{telephone}</h2> 
         </div>
+        }
+
         
+        { message &&
         <div>
           <h3 className={styles.datos}>Mensaje: </h3> 
           <h2 className={styles.name}>{message}</h2> 
         </div>
+        }
 
     </StyledCard>
     

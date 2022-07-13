@@ -98,7 +98,7 @@ const PersonalData = () => {
             </label>
 
             <div className={styles.inputcontainer}>
-              <label className={styles.label}>Nonbre:</label>
+              <label className={styles.label}>Nombre:</label>
               <input
                 type="text"
                 name="name"
@@ -139,22 +139,22 @@ const PersonalData = () => {
         />
       </div> */}
 
-            {/* <div className={styles.inputcontainer}>
-        <label className={styles.label}>DNI:</label>
-        <input
-          type="number"
-          name="dni"
-          placeholder="DNI"
-          className={styles.input}
-          value={input.dni}
-          onChange={handleChange}
-        />
-      </div> */}
+            <div className={styles.inputcontainer}>
+              <label className={styles.label}>DNI:</label>
+              <input
+                type="number"
+                name="dni"
+                placeholder="DNI"
+                className={styles.input}
+                value={input.dni}
+                onChange={handleChange}
+              />
+            </div>
             {errors.dni && (
               <span className={styles.errospan}>{errors.dni}</span>
             )}
             <div className={styles.inputcontainer}>
-              <label className={styles.label}>Telefono:</label>
+              <label className={styles.label}>Teléfono:</label>
               <input
                 type="number"
                 name="telephone"
@@ -169,7 +169,7 @@ const PersonalData = () => {
             )}
             <div className={styles.inputcontainer}>
               <label className={styles.label}>
-                Guarda un Avatar o Foto de perfil:
+                Foto de perfil:
               </label>
 
               <Cloudinary getImages={getImagesResultsCloudinary} />

@@ -15,12 +15,12 @@ const AddToCart = ({ idProperty, user, top, right, left, hover }) => {
     const [inCart, setIncart] = useState(false);
 
     useEffect(() => {
-        if (user && user.cart) {
-            for (let property of user.cart) {
+        if (cart) {
+            for (let property of cart) {
                 if (property.title.includes(idProperty)) setIncart(true);
             }
         }
-    }, [cart])
+    }, [cart.length])
 
     const onClick = (userId, idProperty) => {
         if (inCart) {
