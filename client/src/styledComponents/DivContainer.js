@@ -63,10 +63,10 @@ const DivContainer = styled.div`
   }
 
   &.createPicture {
-    margin: 60px auto 15px auto;
+    margin: 40px auto 15px auto;
     padding: 30px 40px 32px 40px;
     background-color: #fff;
-    width: 1200px;
+    width: 1050px;
   }
 
   &.login {

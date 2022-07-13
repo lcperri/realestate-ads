@@ -62,14 +62,23 @@ export default function FormCreateProp() {
   const [formOk, setFormOk] = useState(false);
 
   const user = useSelector(state => state.user)
-  
+
   useEffect(() => {
     const userId = localStorage.getItem('id')
     dispatch(getUserById(userId))
   }, [])
 
+  // ********Estado para forzar un render*******
+  let [forceRender, setforceRender] = useState("");
+  let userData = useSelector((state) => state.user);
+
   useEffect(() => {
-    if (user) {
+    setforceRender(userData);
+  }, [userData]);
+  // ********************
+
+  useEffect(() => {
+    if (user._id) {
       if (!user.email || user.email === 0 || user.email === '') setMissingUserData([...missingUserData, 'Email'])
       if (!user.telephone || user.telephone === 0 || user.telephone === '') setMissingUserData([...missingUserData, 'Teléfono'])
       if (!user.dni || user.dni === 0 || user.dni === '') setMissingUserData([...missingUserData, 'Dni'])
@@ -141,8 +150,22 @@ export default function FormCreateProp() {
 
   //Obteniendo imágenes de Cloudinary:
   const getImagesResultsCloudinary = (images) => {
-    setImagesPreview([images]);
-  };
+    if (images !== null) {
+      setImagesPreview(prevState =>
+        [...prevState, images]
+      )
+    } else {
+      // console.log(images);
+    }
+  }
+
+  const deleteImagePreview = (image) => {
+    setImagesPreview(imagesPreview.filter(e => e !==image))
+  }
+
+  useEffect(() => {
+    // console.log(imagesPreview);
+  }, [imagesPreview])
 
   //habilita botones siguiente de cards:
   useEffect(() => {
@@ -233,27 +256,27 @@ export default function FormCreateProp() {
     <div className="bodyCreateProperty">
       <div className="form">
         <Title>PUBLICA TU INMUEBLE</Title>
-        {missingUserData.length > 0
+        { missingUserData.length > 0
           ? <DivColumn>
-            <Title color='#1f373d' fontSize='20px' margin='120px 0 80px 0'>
-              Los siguientes datos no están registrados en tu cuenta:
-              <DivColumn gap='20px' padding='20px 0' color='#fff'>
-                <li>{ missingUserData[0] } </li>
-                { missingUserData[0] !== missingUserData[1] && <li> { missingUserData[1] } </li> }
-              </DivColumn>
-            </Title>
-            <div>
-              Es importante para que te contacten y sepamos quién eres que registres correctamente dicha información. Será breve:
-            </div>
-            <DivRow gap='20px' margin='60px'>
-              <Button onClick={() => navigate('/perfil')}>
-                De acuerdo: Ir
-              </Button>
-              <Button onClick={() => navigate('/home')}>
-                Tal vez mas tarde
-              </Button>
-            </DivRow>
-          </DivColumn>
+              <Title color='#1f373d' fontSize='20px' margin='120px 0 80px 0'>
+                Los siguientes datos no están registrados en tu cuenta:
+                <DivColumn gap='20px' padding='20px 0' color='#fff'>
+                  <li>{missingUserData[0]} </li>
+                  {missingUserData[0] !== missingUserData[1] && <li> {missingUserData[1]} </li>}
+                </DivColumn>
+              </Title>
+              <div>
+                Es importante para que te contacten y sepamos quién eres que registres correctamente dicha información. Será breve:
+              </div>
+              <DivRow gap='20px' margin='60px'>
+                <Button onClick={() => navigate('/perfil')}>
+                  De acuerdo: Ir
+                </Button>
+                <Button onClick={() => navigate('/home')}>
+                  Tal vez mas tarde
+                </Button>
+              </DivRow>
+            </DivColumn>
           : <form onSubmit={handleOnSubmit} id="form">
             {contador === 0 && (
               <DivContainer className="create">
@@ -297,7 +320,7 @@ export default function FormCreateProp() {
                     disabled={errorsFirstCard}
                     onClick={() => setContador(1)}
                   >
-                    |                Siguiente
+                    Siguiente
                   </Button>
                 </div>
               </DivContainer>
@@ -465,20 +488,23 @@ export default function FormCreateProp() {
             {contador === 3 && (
               <>
                 <DivContainer className="createPicture">
-                  <div>
-                    <div className="subTitle">
-                      Sube imágenes de tu propiedad, y listo!
-                    </div>
-                    <div className="cloudinaryWrapper">
-                      <Cloudinary getImages={getImagesResultsCloudinary} />
-                      <Cloudinary getImages={getImagesResultsCloudinary} />
-                      <Cloudinary getImages={getImagesResultsCloudinary} />
-                      <Cloudinary getImages={getImagesResultsCloudinary} />
-                      <Cloudinary getImages={getImagesResultsCloudinary} />
-                      <Cloudinary getImages={getImagesResultsCloudinary} />
-
-                    </div>
+                  {/* <div> */}
+                  <div className="subTitle">
+                    Sube imágenes de tu propiedad, y listo!
                   </div>
+                  <DivRow>
+                    <b>Puedes seleccionar un máximo de 6 imágenes:</b>
+                  </DivRow>
+                  <div className="cloudinaryWrapper">
+                    <Cloudinary getImages={getImagesResultsCloudinary} deleteImage={deleteImagePreview} />
+                    <Cloudinary getImages={getImagesResultsCloudinary} deleteImage={deleteImagePreview} />
+                    <Cloudinary getImages={getImagesResultsCloudinary} deleteImage={deleteImagePreview} />
+                    <Cloudinary getImages={getImagesResultsCloudinary} deleteImage={deleteImagePreview} />
+                    <Cloudinary getImages={getImagesResultsCloudinary} deleteImage={deleteImagePreview} />
+                    <Cloudinary getImages={getImagesResultsCloudinary} deleteImage={deleteImagePreview} />
+
+                  </div>
+                  {/* </div> */}
                   <div className="buttonsNextBack">
                     <Button onClick={() => setContador(2)}>Anterior</Button>
                   </div>
