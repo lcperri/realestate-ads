@@ -19,11 +19,8 @@ import {
   CART,
   ONLY_CART,
   PROPERTY_COMMENTS,
-<<<<<<< HEAD
-  DENUNCIA
-=======
+  DENUNCIA,
   NAV
->>>>>>> f1ac0f47eb91b42d04d37dbd0789385bc5d5dcfb
 } from "./actionTypes";
 
 const initialState = {

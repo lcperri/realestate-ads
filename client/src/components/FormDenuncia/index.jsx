@@ -31,7 +31,7 @@ const flag = useSelector(state => state.flag);
     };
     const handleSub = (e) => {
         e.preventDefault();
-        if(!input.reason || !input.denounced){
+        if(!input.reason ){
             Swal.fire({
                icon: "error",
                title: "Oops...",

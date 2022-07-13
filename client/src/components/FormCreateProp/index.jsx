@@ -22,12 +22,7 @@ import { regExps } from "../FormElements/regExpressions";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import Title from "../../styledComponents/Title";
-<<<<<<< HEAD
-import { useDropzone } from 'react-dropzone'
-import remove from '../../assets/remove.png'
-=======
 // import { useDropzone } from 'react-dropzone'
->>>>>>> f1ac0f47eb91b42d04d37dbd0789385bc5d5dcfb
 import { DivRow } from '../../styledComponents/DivRow'
 import { DivColumn } from '../../styledComponents/DivColumn'
 import axios from "axios";
