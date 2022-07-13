@@ -226,7 +226,7 @@ const Details = () => {
         <DivColumn padding="30px 0 0 0" justCont='flex-start'>
           <PostComments/>
         </DivColumn>
-        <div>          
+        <div> 
             <Button className={styles.btnDenunciar} onClick={handleDenuncia}>Denunciar Publicación</Button>
         </div>
       </DivContainer>
