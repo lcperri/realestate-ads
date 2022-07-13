@@ -50,7 +50,7 @@ export default function FormDenuncia (){
                   <option value={null}>Motivos</option>  
                   <option value={"Mucha humedad en los hambientes"}>Mucha humedad en los hambientes</option>
                   <option value={"Fotos fasas"}>Fotos fasas</option>
-                  <option value={"Mala predispocición del dueño"}>Mala predispocición del dueño</option>
+                  <option value={"Mala predisposición  del dueño"}>Mala predisposición  del dueño</option>
                   <option value={"No se presentó a la visita"}>No se presentó a la visita</option>
                 </Select>
            </div>
