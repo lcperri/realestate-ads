@@ -14,23 +14,28 @@ import LoginController from "../../localStorage/login";
 import { DivColumn } from "./../../styledComponents/DivColumn";
 
 export default function Planes() {
-  const id = localStorage.getItem("id");
-  const range = localStorage.getItem("range");
-  const headers = LoginController();
-  const dispatch = useDispatch();
-  const link = useSelector((state) => state.link);
-  const user = useSelector((state) => state.user);
+    const id = localStorage.getItem("id");
+    const range = localStorage.getItem("range");
+    const headers = LoginController();
+    const dispatch = useDispatch();
+    const link = useSelector((state) => state.link);
+    const user = useSelector((state) => state.user);
 
-  useEffect(() => {
-    dispatch(GetUserById(id));
-  }, []);
+    useEffect(() => {
+        dispatch(GetUserById(id));
+    }, []);
 
-  useEffect(() => {
-    if (link?.length) {
-      window.open(link);
-      dispatch(deleteLink());
+    const updateSubscription = (e) => {
+        e.preventDefault();
+        // console.log(e.target.value)
     }
-  }, [link]);
+    
+    useEffect(() => {
+        if (link?.length) {
+            window.open(link);
+            dispatch(deleteLink());
+        }
+    }, [link]);
 
   const degradeSubscription = (e) => {
     e.preventDefault();

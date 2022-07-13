@@ -27,7 +27,6 @@ const Svg = styled.svg`
     height: ${(props) => props.height};
     padding: 1px 0px 0px 0px;
     width: ${(props) => props.width};
-    z-index: 99;
     transition: .1s ease all;
     &:hover {
         fill: ${props => props.onHover};
