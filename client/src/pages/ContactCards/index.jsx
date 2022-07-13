@@ -38,6 +38,31 @@ export default function ContactCards() {
          })
         }
       </CardsContainer>
+      {/* <div className={styles.contact_subWrapper}>
+            { !userId
+              ? <div>
+                  <h4>
+                    Te gusta esta propiedad?
+                    No pierdas la oportunidad de {property.operation === 'rent' ? 'alquilarla.' : 'adquirirla.'} <br />
+                    Inicia sesión o regístrate gratis para comunicarte con el propietario.
+                  </h4>
+                  <DivRow padding='10px 10px 10px 10px' justCont='center'>
+                    <StyledLink to='/sesion' url={id}>
+                      <Button>
+                        Iniciar sesión
+                      </Button>
+                    </StyledLink>
+                    <StyledLink color='#3e4b56' to='/registro' >
+                      registrarse
+                    </StyledLink>
+                  </DivRow>
+                </div>
+              :
+                form === false || form === undefined 
+                ? <FormContacto /> 
+                : form === true && <Calendar operation={property?.operation} />
+            }
+          </div> */}
       </DivContainer>
     </>
   )

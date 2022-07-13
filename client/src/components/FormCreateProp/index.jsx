@@ -28,12 +28,14 @@ import { DivRow } from '../../styledComponents/DivRow'
 import { DivColumn } from '../../styledComponents/DivColumn'
 import axios from "axios";
 import { url } from "../../helpers/url";
+import LoginController from "../../localStorage/login"
 
 export default function FormCreateProp() {
 
   const [missingUserData, setMissingUserData] = useState([])
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const headers = LoginController();
 
   //para las cards:
   const [contador, setContador] = useState(0);
@@ -140,7 +142,7 @@ export default function FormCreateProp() {
         neighbourhood: neighbourhood.key.toLowerCase(),
         parkingSlot: parkingSlot.key,
         imagesPreview,
-      })
+      }, headers)
     )
       .then(() => {
         Swal.fire({
@@ -153,7 +155,7 @@ export default function FormCreateProp() {
         navigate("/mispropiedades");
         cleanForm();
       })
-      .catch(() => {
+      .catch((err) => {
         Swal.fire({
           icon: "error",
           title: "Oops...",

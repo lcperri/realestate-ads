@@ -176,11 +176,11 @@ export function getPropertyById(id) {
   };
 }
 
-export function createProperty(info) {
+export function createProperty(info, headers) {
   return async function (dispatch) {
     const id = localStorage.getItem("id");
     dispatch({ type: LOADING });
-    const property = await axios.post(`${url}/property/${id}`, info);
+    const property = await axios.post(`${url}/property/${id}`, info, headers);
     return dispatch({
       type: PROPERTY,
       payload: property.data,
