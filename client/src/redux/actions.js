@@ -1,4 +1,5 @@
 import axios from "axios";
+import Nav from "../components/Nav";
 import { url } from "../helpers/url";
 import {
   SaveToken,
@@ -91,6 +92,15 @@ export function propertyPagination({ filters, location, max }) {
       payload: filtered.data,
     });
   };
+}
+
+export function navData(data) {
+  return function (dispatch) {
+    dispatch({
+      type: Nav,
+      payload: data
+    })
+  }
 }
 
 export function clear() {
