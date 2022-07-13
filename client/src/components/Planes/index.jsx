@@ -3,30 +3,34 @@ import { DivRow } from "../../styledComponents/DivRow";
 import { Title } from "../../styledComponents/FiltersStyles";
 import Premium from "./Premium";
 import Vip from "./Vip";
-import capitalize from '../../functions/capitalize'
-import Button from '../../styledComponents/Button'
-import BackButton from '../../dumb/BackButton'
-import { useSelector, useDispatch } from 'react-redux/es/exports';
+import capitalize from "../../functions/capitalize";
+import Button from "../../styledComponents/Button";
+import BackButton from "../../dumb/BackButton";
+import { useSelector, useDispatch } from "react-redux/es/exports";
 import { deleteLink } from "../../redux/actions";
 import styles from './styles.module.css'
 import { DivColumn } from "../../styledComponents/DivColumn";
+import { GetUserById } from "./../../redux/actions";
+import LoginController from "../../localStorage/login";
 
 export default function Planes() {
-    const range = localStorage.getItem('range')
-    const dispatch = useDispatch();
-    const link = useSelector((state) => state.link);    
+  const id = localStorage.getItem("id");
+  const range = localStorage.getItem("range");
+  const headers = LoginController();
+  const dispatch = useDispatch();
+  const link = useSelector((state) => state.link);
+  const user = useSelector((state) => state.user);
 
-    useEffect(() => {
-        if (link?.length) {
-            window.open(link);
-            dispatch(deleteLink());
-        }
-    }, [link]);
+  useEffect(() => {
+    dispatch(GetUserById(id));
+  }, []);
 
-    const updateSubscription = (e) => {
-        e.preventDefault();
-        // console.log(e.target.value)
+  useEffect(() => {
+    if (link?.length) {
+      window.open(link);
+      dispatch(deleteLink());
     }
+  }, [link]);
 
     return (
         <div className={styles.bodyPlanes}>

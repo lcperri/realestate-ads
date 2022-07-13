@@ -23,20 +23,19 @@ export default function ContactCards() {
     <DivContainer className="calendaris">
       <CardsContainer>
         {
-         contacts.length ?
-         contacts.map(c => {
+         contacts && contacts.map(c => {
             return(
                 <div key={c.id}>
                     <ContactCard
                       key={c.id}
                       name={c.name}
                       email={c.email}
-                      telephone={c.telephone}
-                      message={c.message}
+                      telephone={c.telephone ? c.telephone : null }
+                      message={c.message ? c.message : null }
                     />
                 </div>
             )
-         }) : <div></div>
+         })
         }
       </CardsContainer>
       </DivContainer>

@@ -198,7 +198,6 @@ export function getAllUsers(headers) {
 export function deleteUser(id, headers){
   return async function(dispatch){
     const users = await axios.delete(`${url}/user/${id}`, headers);
-    console.log(users.data)
     return dispatch({
       type: ALL_USERS,
       payload: users.data
@@ -341,17 +340,6 @@ export function GetUserById(id) {
   };
 }
 
-export function getPayment(id) {
-  return async function (dispatch) {
-    console.log('hola')
-    // const user = await axios.get(`${url}/user/${id}`);
-    // return dispatch({
-    //   type: USER,
-    //   payload: user.data
-    // });
-  };
-}
-
 export function addToUserFavourites(id, property, headers) {
   return async function (dispatch) {
     const favs = await axios.put(`${url}/user/addfavs/${id}`, property, headers);
@@ -389,7 +377,16 @@ export function updateCurrentPage () {
 export function subscription (data, headers) {
   return async function (dispatch) {
     const link = await axios.post(`${url}/subscription`, data, headers);
-    console.log('hola')
+    return dispatch({
+      type: PAY_LINK,
+      payload: link.data,
+    });
+  };
+}
+
+export function updateSubscription (id, data, headers) {
+  return async function (dispatch) {
+    const link = await axios.post(`${url}/subscription/${id}`, data, headers);
     return dispatch({
       type: PAY_LINK,
       payload: link.data,
@@ -400,11 +397,20 @@ export function subscription (data, headers) {
 export function payment (data, headers) {
   return async function (dispatch) {
     const link = await axios.post(`${url}/payment`, data, headers);
-    console.log('hola')
     return dispatch({
       type: PAY_LINK,
       payload: link.data,
     });
+  };
+}
+
+export function getPayment(id, headers) {
+  return async function (dispatch) {
+    // const user = await axios.get(`${url}/user/${id}`);
+    // return dispatch({
+    //   type: USER,
+    //   payload: user.data
+    // });
   };
 }
 
