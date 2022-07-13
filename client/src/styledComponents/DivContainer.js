@@ -29,6 +29,7 @@ const DivContainer = styled.div`
 
   &.contactForm {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 18px;
+    background-color: #fff;
     padding: 0 35px;
     display: flex;
     flex-direction: column;
@@ -107,8 +108,8 @@ const DivContainer = styled.div`
   }
 
   &.calendaris {
-    background: #fff; 
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 18px;
+    /* background: #fff;  */
+    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 18px; */
     /* background: #BA5370; 
     background: -webkit-linear-gradient(to right, #FF416C 0%, #ff765e 100%); 
     background: linear-gradient(0deg, #FF416C 0%, #ff765e 100%); */

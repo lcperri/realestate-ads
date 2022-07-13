@@ -1,8 +1,12 @@
 import styled from 'styled-components'
 
 const Button = styled.button`
-    background: #E52F50;
-    color: #fff;
+    position: ${props => props.position};
+    top: ${props => props.top};
+    left: ${props => props.left};
+    right: ${props => props.right};
+    background: ${props => props.bgColor || '#E52F50'};
+    color: ${props => props.color || '#fff'};
     cursor: pointer;
     font-size: 14px;
     padding: 4px 10px;
