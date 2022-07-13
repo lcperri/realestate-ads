@@ -107,7 +107,7 @@ const Details = () => {
   };
   
   const handleDenuncia = () => {
-    Swal(navigate(`/formDenuncia/${id}`));
+    Swal(navigate(`/flag/${id}`));
   };
 
   return (

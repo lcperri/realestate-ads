@@ -19,6 +19,7 @@ import {
   CART,
   ONLY_CART,
   PROPERTY_COMMENTS,
+  DENUNCIA,
   NAV
 } from "./actionTypes";
 
@@ -44,7 +45,7 @@ const initialState = {
   authroized: false,
   link: '',
   cart: [],
-  nav: { name: "", range: "" }
+  flag:[]
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -188,6 +189,11 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         propertyComments: payload
       };
+      case DENUNCIA:
+        return{
+          ...state,
+          flag: payload
+        }
     default:
       return {
         ...state,

@@ -447,11 +447,8 @@ export function addComments (data, idProperty, headers) {
 
 export function addDenuncia (data, idProperty, headers) {
   return async function (dispatch){
-    const resp = await axios.post(`${url}/formDenuncia/${idProperty}`, data, headers);
-    return dispatch({
-      type: DENUNCIA,
-      payload: resp.data
-    });
+    return await axios.post(`${url}/flag/${idProperty}`, data, headers);
+        
   }
 }
 
