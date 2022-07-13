@@ -68,15 +68,6 @@ export default function FormCreateProp() {
     dispatch(getUserById(userId))
   }, [])
 
-  // ********Estado para forzar un render*******
-  let [forceRender, setforceRender] = useState("");
-  let userData = useSelector((state) => state.user);
-
-  useEffect(() => {
-    setforceRender(userData);
-  }, [userData]);
-  // ********************
-
   useEffect(() => {
     if (user._id) {
       if (!user.email || user.email === 0 || user.email === '') setMissingUserData([...missingUserData, 'Email'])
