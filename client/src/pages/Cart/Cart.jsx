@@ -13,7 +13,6 @@ export default function Cart(){
   const id = localStorage.getItem('id');
   const headers = LoginController();
   const user = useSelector((state) => state.user);
-  const updateCurrentPage = useSelector(state => state.updateCurrentPage)
   const cart = useSelector((state => state.cart));
 
   useEffect(() => {
@@ -21,10 +20,6 @@ export default function Cart(){
     dispatch(filterByCart(id, headers));
     return () => dispatch(clear());
   }, []);
-
-  useEffect(() => {
-    dispatch(filterByCart(id, headers));
-  }, [updateCurrentPage]);
 
 
   const requestPurchase = (e) => {
