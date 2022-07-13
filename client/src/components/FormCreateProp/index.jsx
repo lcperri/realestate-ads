@@ -22,7 +22,7 @@ import { regExps } from "../FormElements/regExpressions";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import Title from "../../styledComponents/Title";
-import { useDropzone } from 'react-dropzone'
+// import { useDropzone } from 'react-dropzone'
 import remove from '../../assets/remove.png'
 import { DivRow } from '../../styledComponents/DivRow'
 import { DivColumn } from '../../styledComponents/DivColumn'

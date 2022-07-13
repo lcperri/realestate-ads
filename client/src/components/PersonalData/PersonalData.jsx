@@ -13,6 +13,7 @@ import Loader from "../../pages/Loader/index";
 import capitalize from "./../../functions/capitalize";
 
 import Cloudinary from "../../libs/Cloudinary";
+import swal from "sweetalert";
 
 const PersonalData = () => {
   const dispatch = useDispatch();
@@ -71,11 +72,21 @@ const PersonalData = () => {
     input.lastName = input.lastName.toLowerCase();
 
     dispatch(updateUserById(userId, input, headers));
-    alert("Datos personales actualizados.");
+    // alert("Datos personales actualizados.");
 
-    dispatch(getUserById(userId));
-    localStorage.setItem("name", input.name);
-    localStorage.setItem("last-name", input.lastName);
+    swal({
+      title: "Cambios en datos personales.",
+      text: "Datos personales actualizados con exito.",
+      icon: "success",
+      button: "Aceptar",
+      // timer: "2000",
+    }).then(function(){
+
+      dispatch(getUserById(userId));
+      localStorage.setItem("name", input.name);
+      localStorage.setItem("last-name", input.lastName);
+    })
+
   }
 
   return (
@@ -168,9 +179,7 @@ const PersonalData = () => {
               <span className={styles.errospan}>{errors.telephone}</span>
             )}
             <div className={styles.inputcontainer}>
-              <label className={styles.label}>
-                Foto de perfil:
-              </label>
+              <label className={styles.label}>Foto de perfil:</label>
 
               <Cloudinary getImages={getImagesResultsCloudinary} />
             </div>
