@@ -184,7 +184,7 @@ const PersonalData = () => {
               <Cloudinary getImages={getImagesResultsCloudinary} />
             </div>
             <img
-              src={input.avatar || altImg}
+              src={userData.avatar || altImg}
               alt="Sube tu Avatar/Foto"
               className={styles.avatarContainer}
             />
