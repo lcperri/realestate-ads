@@ -445,9 +445,9 @@ export function addComments (data, idProperty, headers) {
   };
 }
 
-export function addDenuncia (data, idProperty, headers) {
+export function addDenuncia (data, idProperty) {
   return async function (dispatch){
-    return await axios.post(`${url}/flag/${idProperty}`, data, headers);
+    return await axios.post(`${url}/flag/${idProperty}`, data);
         
   }
 }
