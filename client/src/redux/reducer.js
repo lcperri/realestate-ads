@@ -19,7 +19,11 @@ import {
   CART,
   ONLY_CART,
   PROPERTY_COMMENTS,
+<<<<<<< HEAD
   DENUNCIA
+=======
+  NAV
+>>>>>>> f1ac0f47eb91b42d04d37dbd0789385bc5d5dcfb
 } from "./actionTypes";
 
 const initialState = {
@@ -29,7 +33,7 @@ const initialState = {
   error: {},
   filter: { location: "", max: "", filters: {} },
   properties: [],
-  pages: [1, 1, 10],
+  pages: [1, 1, 12],
   property: {},
   propertyComments: [],
   city: "",
@@ -44,7 +48,7 @@ const initialState = {
   authroized: false,
   link: '',
   cart: [],
-  flag:{}
+  flag:[]
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -68,7 +72,7 @@ const reducer = (state = initialState, { type, payload }) => {
         error: {},
         filter: { location: "", max: "", filters: {} },
         properties: [],
-        pages: [1, 1, 10],
+        pages: [1, 1, 12],
         property: {},
         city: "",
         users: [],
@@ -112,6 +116,11 @@ const reducer = (state = initialState, { type, payload }) => {
         calendar: payload,
         authorized: true
       }
+    case NAV:
+      return {
+        ...state,
+        nav: payload
+      }
     case CLEAR:
       return {
         ...state,
@@ -120,7 +129,7 @@ const reducer = (state = initialState, { type, payload }) => {
         error: {},
         filter: { location: "", max: "", filters: {} },
         properties: [],
-        pages: [1, 1, 10],
+        pages: [1, 1, 12],
         property: {},
         city: "",
         users: [],

@@ -12,6 +12,7 @@ import Logo from "../../dumb/Icons/Logo";
 import Title from "../../styledComponents/Title";
 import { useSelector } from "react-redux";
 import LoginController from "../../localStorage/login";
+import { SaveName, SaveRange } from './../../localStorage/index';
 const Nav = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -25,11 +26,21 @@ const Nav = () => {
 
   // ********Estado para cambiar el nombre en la nav cuando se actualiza el Perfil*******
 
-  let [changeNavBarName, setchangeNavBarName] = useState("");
+  let [changeNavBarName, setchangeNavBarName] = useState(name);
+  let [changeNavBarRange, setchangeNavBarRange] = useState(range);
   let userData = useSelector((state) => state.user);
 
   useEffect(() => {
-    setchangeNavBarName(userData);
+    if (userData.range && userData.name) {
+      if (range !== undefined && range !== userData.range) {
+        setchangeNavBarRange(userData.range);
+        SaveRange(userData.range);
+      }
+      if (name.length && name !== userData.name) {
+        SaveName(userData.name);
+        setchangeNavBarName(userData.name);
+      }
+    }
   }, [userData]);
 
   // ********************
@@ -37,11 +48,6 @@ const Nav = () => {
   useEffect(() => {
     getUserById(id, headers);
   }, [name, lastName, range]);
-
-  if (name) {
-    name = capitalize(name);
-    lastName = capitalize(lastName);
-  }
 
   const logoutFunction = (e) => {
     e.preventDefault();
@@ -114,8 +120,8 @@ const Nav = () => {
             <Title fontSize="20px" color="#ff765e">
               {capitalize(range)}
             </Title>
-            <Title fontSize="20px">¡Hola, {name}!</Title>
-            {range && (
+            <Title fontSize="20px">¡Hola, {capitalize(name)}!</Title>
+            {range && range !== "admin" && (
               <StyledLink to={"/planes"} className="perfil">
                 Subscripción
               </StyledLink>

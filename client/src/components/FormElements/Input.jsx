@@ -3,7 +3,7 @@ import { GrupoInput, Label, Input, ValidationIcon, ErrorLeyend } from '../../sty
 import { faCircleCheck, faCircleXmark } from '@fortawesome/free-solid-svg-icons'
 import capitalize from '../../functions/capitalize'
 
-const InputComponent = ({ className, type, min, max, name, placeHolder, regExp, errorLeyend, state, setState, funcion }) => {
+const InputComponent = ({ className, type, min, max, name, placeHolder, regExp, errorLeyend, state, setState, funcion, width }) => {
 
   const handleOnChange = (e) => {
     //Replaces: Quita multiples espacios y ceros al inicio:
@@ -48,6 +48,7 @@ const InputComponent = ({ className, type, min, max, name, placeHolder, regExp, 
       <Label className='controlLabel' htmlFor={name}>{name}</Label>
       <GrupoInput className={className} >
         <Input
+          width={width}
           name={name}
           type={type || 'text'}
           min={min}

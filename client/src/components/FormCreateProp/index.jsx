@@ -22,18 +22,24 @@ import { regExps } from "../FormElements/regExpressions";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import Title from "../../styledComponents/Title";
+<<<<<<< HEAD
 import { useDropzone } from 'react-dropzone'
 import remove from '../../assets/remove.png'
+=======
+// import { useDropzone } from 'react-dropzone'
+>>>>>>> f1ac0f47eb91b42d04d37dbd0789385bc5d5dcfb
 import { DivRow } from '../../styledComponents/DivRow'
 import { DivColumn } from '../../styledComponents/DivColumn'
 import axios from "axios";
 import { url } from "../../helpers/url";
+import LoginController from "../../localStorage/login"
 
 export default function FormCreateProp() {
 
   const [missingUserData, setMissingUserData] = useState([])
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const headers = LoginController();
 
   //para las cards:
   const [contador, setContador] = useState(0);
@@ -77,33 +83,6 @@ export default function FormCreateProp() {
     setMissingUserData(new Set(missingUserData))
   }, [])
 
-  //upload images:
-  const onDrop = useCallback((acceptedFiles, rejectFiles) => {
-    acceptedFiles.forEach(file => {
-      const reader = new FileReader()
-      reader.onload = () => {
-        setImagesPreview(previously => [...previously, reader.result])
-      }
-      reader.readAsDataURL(file)
-    })
-  }, [])
-
-  // const { getRootProps, getInputProps, isDragActive } = useDropzone({ 
-  //   onDrop, 
-  //   accept: 'image/jpg, image/jpeg, image/png' 
-  // })
-
-  // const handleUpload = () => {
-  //   axios.post(`${url}/uploadimages`, imagesPreview)
-  //   .then(resp => console.log(resp.data))
-  //   // setPictures(response.data.url)
-  //   .catch(err => console.log(err.message))
-  // }
-
-  // const deletePreview = (image) => {  
-  //   setImagesPreview(imagesPreview.filter(e => e !== image))
-  // }
-
   //clean form
   const cleanForm = () => {
     setCity({ key: "", valid: null });
@@ -140,7 +119,7 @@ export default function FormCreateProp() {
         neighbourhood: neighbourhood.key.toLowerCase(),
         parkingSlot: parkingSlot.key,
         imagesPreview,
-      })
+      }, headers)
     )
       .then(() => {
         Swal.fire({
@@ -153,7 +132,7 @@ export default function FormCreateProp() {
         navigate("/mispropiedades");
         cleanForm();
       })
-      .catch(() => {
+      .catch((err) => {
         Swal.fire({
           icon: "error",
           title: "Oops...",
@@ -255,7 +234,6 @@ export default function FormCreateProp() {
 
   return (
     <div className="bodyCreateProperty">
-
       <div className="form">
         <Title>PUBLICA TU INMUEBLE</Title>
         {missingUserData.length > 0
@@ -489,28 +467,20 @@ export default function FormCreateProp() {
 
             {contador === 3 && (
               <>
-                <DivContainer className="create">
-                  <div className="subContainerCreate">
+                <DivContainer className="createPicture">
+                  <div>
                     <div className="subTitle">
                       Sube imágenes de tu propiedad, y listo!
                     </div>
-                    <Cloudinary getImages={getImagesResultsCloudinary} />
-                    {/* <div className="dropzone" {...getRootProps()}>
-                                      <input {...getInputProps()} />
-                                      {isDragActive ? 'Arrastre activo' : 'Puedes arrastrar tus fotografías aquí o da click en el recuadro.'}
-                                    </div>
-                                    {imagesPreview.length > 0 && <div>
-                                        { 
-                                          imagesPreview.map((image, index) => 
-                                            <DivRow key={index}>
-                                              <img  className="selectedImages" src={image}/>
-                                              <img  className="removeDropBoxImages" src={remove} alt="remove" onClick={()=> deletePreview(image)}/>
-                                            </DivRow>
-                                        )}
-                                        {
-                                          imagesPreview.length > 0 && <button onClick={handleUpload}>Upload images</button>
-                                        }
-                                    </div>} */}
+                    <div className="cloudinaryWrapper">
+                      <Cloudinary getImages={getImagesResultsCloudinary} />
+                      <Cloudinary getImages={getImagesResultsCloudinary} />
+                      <Cloudinary getImages={getImagesResultsCloudinary} />
+                      <Cloudinary getImages={getImagesResultsCloudinary} />
+                      <Cloudinary getImages={getImagesResultsCloudinary} />
+                      <Cloudinary getImages={getImagesResultsCloudinary} />
+
+                    </div>
                   </div>
                   <div className="buttonsNextBack">
                     <Button onClick={() => setContador(2)}>Anterior</Button>

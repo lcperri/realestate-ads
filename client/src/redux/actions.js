@@ -1,4 +1,5 @@
 import axios from "axios";
+import Nav from "../components/Nav";
 import { url } from "../helpers/url";
 import {
   SaveToken,
@@ -93,6 +94,15 @@ export function propertyPagination({ filters, location, max }) {
   };
 }
 
+export function navData(data) {
+  return function (dispatch) {
+    dispatch({
+      type: Nav,
+      payload: data
+    })
+  }
+}
+
 export function clear() {
   return function (dispatch) {
     return dispatch({
@@ -177,11 +187,11 @@ export function getPropertyById(id) {
   };
 }
 
-export function createProperty(info) {
+export function createProperty(info, headers) {
   return async function (dispatch) {
     const id = localStorage.getItem("id");
     dispatch({ type: LOADING });
-    const property = await axios.post(`${url}/property/${id}`, info);
+    const property = await axios.post(`${url}/property/${id}`, info, headers);
     return dispatch({
       type: PROPERTY,
       payload: property.data,
@@ -437,12 +447,8 @@ export function addComments (data, idProperty, headers) {
 
 export function addDenuncia (data, idProperty, headers) {
   return async function (dispatch){
-    const resp = await axios.post(`${url}/flag/${idProperty}`, data, headers);
-    
-    return dispatch({
-      type: DENUNCIA,
-      payload: resp.data
-    });
+    return await axios.post(`${url}/flag/${idProperty}`, data, headers);
+        
   }
 }
 
