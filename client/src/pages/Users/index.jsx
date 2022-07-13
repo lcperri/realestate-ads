@@ -25,7 +25,7 @@ export default function Users(){
                 allUsers.map(u => {
                     return(
                         <div key={u._id}>
-                             <UserCard id={u._id} name={u.name} lastName={u.lastName} birthday={u.birthday} email={u.email} dni={u.dni} telephone={u.telephone} avatar={u.avatar}/>
+                             <UserCard id={u._id} name={u.name} lastName={u.lastName} birthday={u.birthday} email={u.email} dni={u.dni} telephone={u.telephone} avatar={u.avatar} flags={u.flags}/>
                         </div>
                     )
                 }) :

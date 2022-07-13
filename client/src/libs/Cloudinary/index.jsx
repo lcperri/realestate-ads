@@ -1,11 +1,11 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from './styles.module.css'
 import { DivRow } from '../../styledComponents/DivRow'
 import noImage from '../../assets/noimage.png'
 import remove from '../../assets/remove.png'
 
-const Cloudinary = ({ getImages }) => {
-    const [image, setImage] = useState("")
+const Cloudinary = ({ getImages, deleteImage }) => {
+    const [image, setImage] = useState(null)
     const [loading, setloading] = useState(false)    
     const data = new FormData()
 
@@ -22,15 +22,18 @@ const Cloudinary = ({ getImages }) => {
         )
         const file = await res.json()
         setImage(file.secure_url)
-        getImages(image)
         setloading(false)
     }
+    
+    useEffect(() => {
+        getImages(image)
+    }, [image])
+    
 
-    const removePicture = () => {
-        setImage('')
+    const removePicture = (image) => {
+        deleteImage(image)
         data.delete('file')
-        data.delete("upload_preset")
-        data.delete("o7plh3sw")
+        setImage(null)
     }
 
     return (
@@ -47,7 +50,7 @@ const Cloudinary = ({ getImages }) => {
                         ? <DivRow padding='30px 10px 10px 10px'><b>Loading ...</b></DivRow>
                         : <DivRow>
                             <img src={image || noImage} className={styles.imgPreview} placeholder='upload preview' />
-                            { image && <img src={remove} className={styles.removeBtn} onClick={() => removePicture()} />}
+                            { image && <img src={remove} className={styles.removeBtn} onClick={() => removePicture(image)} />}
                           </DivRow>
                     }
                     

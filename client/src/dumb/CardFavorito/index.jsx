@@ -41,7 +41,7 @@ export default function CardFavorito({ _id, user, operation, type, address, pric
                 </div>
                 <div className={styles.divBotones}>
                     <Button onClick={handleConectar}>
-                        <StyledLink to='/contact'>
+                        <StyledLink to={`/contacto/${_id}`}>
                             Solicitar Contacto
                         </StyledLink>
                     </Button>

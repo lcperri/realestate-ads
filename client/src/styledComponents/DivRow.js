@@ -4,7 +4,8 @@ export const DivRow = styled.div`
     /* background-color: aqua; */
     display: flex;
     flex-direction: row;
-    flex: ${props => props.flexWrap};;
+    color: ${props => props.color || '#333'};
+    flex: ${props => props.flexWrap};
     justify-content: ${props => props.justCont};
     align-items: ${props => props.alignIt || 'center'};
     padding: ${props => props.padding};
