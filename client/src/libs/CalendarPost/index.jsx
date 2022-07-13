@@ -12,6 +12,7 @@ import { createEvent, getUserById, switchBetweenForms } from "../../redux/action
 /*import CalendarCards from './../CalendarCards'; */
 import LoginController from './../../localStorage/login';
 import { useParams } from 'react-router-dom';
+import Swal from "sweetalert2";
 
 export default function Calendar({ operation }) {
    const dispatch = useDispatch();
@@ -35,18 +36,18 @@ export default function Calendar({ operation }) {
    //-----funcion suma 30'
    function sumaMinutos(hora) {
       let result = '';
-      if (hora === 'T12:00:00.000Z') return result = 'T12:30:00.000Z';
-      if (hora === 'T12:30:00.000Z') return result = 'T13:00:00.000Z';
-      if (hora === 'T13:00:00.000Z') return result = 'T13:30:00.000Z';
-      if (hora === 'T13:30:00.000Z') return result = 'T14:00:00.000Z';
-      if (hora === 'T14:00:00.000Z') return result = 'T14:30:00.000Z';
-      if (hora === 'T14:30:00.000Z') return result = 'T15:00:00.000Z';
-      if (hora === 'T15:00:00.000Z') return result = 'T15:30:00.000Z';
-      if (hora === 'T15:30:00.000Z') return result = 'T16:00:00.000Z';
-      if (hora === 'T16:00:00.000Z') return result = 'T16:30:00.000Z';
-      if (hora === 'T16:30:00.000Z') return result = 'T17:00:00.000Z';
-      if (hora === 'T17:00:00.000Z') return result = 'T17:30:00.000Z';
-
+      if(hora === 'T09:00:00.000Z')return result = 'T09:30:00.000Z';
+      if(hora === 'T09:30:00.000Z')return result = 'T10:00:00.000Z';
+      if(hora === 'T10:00:00.000Z')return result = 'T10:30:00.000Z';
+      if(hora === 'T10:30:00.000Z')return result = 'T11:00:00.000Z';
+      if(hora === 'T11:00:00.000Z')return result = 'T11:30:00.000Z';
+      if(hora === 'T11:30:00.000Z')return result = 'T12:00:00.000Z';
+      if(hora === 'T12:00:00.000Z')return result = 'T12:30:00.000Z';
+      if(hora === 'T12:30:00.000Z')return result = 'T13:00:00.000Z';
+      if(hora === 'T13:00:00.000Z')return result = 'T13:30:00.000Z';
+      if(hora === 'T13:30:00.000Z')return result = 'T14:00:00.000Z';
+      if(hora === 'T14:00:00.000Z')return result = 'T14:30:00.000Z'; 
+   
    }
    //----creo dato endDateTime
    let endH = sumaMinutos(hora);
@@ -54,7 +55,23 @@ export default function Calendar({ operation }) {
 
    const handleSubmit = (e) => {
       e.preventDefault();
-      dispatch(createEvent({ email, summary, location, startDateTime, endDateTime }, headers));
+      if(!dia || !hora){
+         Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Ingresa los datos correspondientes.",
+         });
+      }else{
+         dispatch(createEvent({ email, summary, location, startDateTime, endDateTime }, headers));
+         Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: "Tu publicación fue creada exitosamente",
+            showConfirmButton: false,
+            timer: 1500,
+         });
+      }
+      
    };
 
    const switchButton = () => {
@@ -62,47 +79,54 @@ export default function Calendar({ operation }) {
    }
 
    return (
-      <form onSubmit={handleSubmit} id='form'>
-         <DivContainer className='calendarPost'>
-            <h1>
-               Solicite una visita
-            </h1>
-            <div>
-               <Label >Seleccione el día:</Label>
-               <Input width='100%'
-                  type="date"/* "datetime-local" */
-                  id='dia'
-                  value={dia}
-                  onChange={(e) => setDia(e.target.value)}>
-               </Input>
-               <Label className={styles.input}>Seleccione horario: </Label>
-               <Select width='100%' className={styles.selectHorario}
-                  type='text'
-                  id='hora'
-                  value={hora}
-                  onChange={(e) => { setHora(e.target.value) }}
-               >
-                  <option value={null}>Horarios</option>
-                  <option value={"T12:00:00.000Z"}>09:00:00</option>
-                  <option value={"T12:30:00.000Z"}>09:30:00</option>
-                  <option value={"T13:00:00.000Z"}>10:00:00</option>
-                  <option value={"T13:30:00.000Z"}>10:30:00</option>
-                  <option value={"T14:00:00.000Z"}>11:00:00</option>
-                  <option value={"T14:30:00.000Z"}>11:30:00</option>
-                  <option value={"T15:00:00.000Z"}>12:00:00</option>
-                  <option value={"T15:30:00.000Z"}>12:30:00</option>
-                  <option value={"T16:00:00.000Z"}>13:00:00</option>
-                  <option value={"T16:30:00.000Z"}>13:30:00</option>
-                  <option value={"T17:00:00.000Z"}>14:00:00</option>
-               </Select>
-               <Label className={styles.horarioLabel}>Horario de visita: de 09 a 14hs - 30min por Visita</Label>
+         <form onSubmit={handleSubmit} id='form'>
+            <div className={styles.contactForm}>
+                 
+                  <DivContainer contacto={true}>
+                     <div className="addressWrapper"></div>                                
+
+                     <Label className={styles.horarioLabel}>Horario de visita: de 09 a 14hs - 30min por Visita</Label>
+                     
+                     <Label className={styles.label}>Seleccione día de la visita:</Label>
+                     <Input className={styles.inputDia}
+                        type= "date"/* "datetime-local" */ 
+                        id='dia'
+                        value={dia}
+                        onChange={(e) => setDia(e.target.value)}>
+                     </Input>
+                                       
+                     <Label className={styles.input}>Seleccione horario: </Label>                              
+                     <Select  className={styles.selectHorario}
+                        type='text'
+                        id='hora'
+                        value={hora}
+                        onChange={(e) => {setHora(e.target.value)}}
+                     >
+                        <option value={null}>Horarios</option>
+                        <option value={"T09:00:00.000Z"}>09:00:00</option>
+                        <option value={"T09:30:00.000Z"}>09:30:00</option>
+                        <option value={"T10:00:00.000Z"}>10:00:00</option>
+                        <option value={"T10:30:00.000Z"}>10:30:00</option>
+                        <option value={"T11:00:00.000Z"}>11:00:00</option>
+                        <option value={"T11:30:00.000Z"}>11:30:00</option>
+                        <option value={"T12:00:00.000Z"}>12:00:00</option>
+                        <option value={"T12:30:00.000Z"}>12:30:00</option>
+                        <option value={"T13:00:00.000Z"}>13:00:00</option>
+                        <option value={"T13:30:00.000Z"}>13:30:00</option>
+                        <option value={"T14:00:00.000Z"}>14:00:00</option>
+                                                         
+                     </Select>
+
+                     <br/>
+                     <Button type="submit" className={styles.btnVisita}>Programar visita</Button>
+                     
+      
+                     {/* <CalendarCards/> */}
+                     <Button type="button" className={styles.contactar} onClick={switchButton}>Contactar</Button>
+                              
+                  </DivContainer>
             </div>
-            <div>
-               <Button margin='0 20px 0 0' type="submit">Programar visita</Button>
-               <Button type="button" onClick={switchButton}>Contactar</Button>
-            </div>
-         </DivContainer>
-      </form>
+         </form>
    )
 }
 /*

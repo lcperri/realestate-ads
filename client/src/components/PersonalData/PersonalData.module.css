@@ -4,17 +4,18 @@
   flex-wrap: wrap;
   /* background-color: bisque; */
   justify-content: space-between;
-  width: auto;
+  /* width: auto; */
+  width: 500px;
 }
 
 .container {
-  border-radius: 10px;
+  border-radius: 20px;
   /* position: fixed; */
   /* top: 98px; */
   /* left: 98px; */
   width: 500px;
 
-  background-color: #f1f1f1;
+  background-color: #fff;
   /* height: 500px; */
   height: auto;
   display: flex;
@@ -32,7 +33,8 @@
   height: 250px;
   width: 300px;
   border-radius: 0px;
-  margin-top: 175px;
+  margin-top: 0px;
+  margin-bottom: 20px;
   margin-left: 40px;
 
   text-align: center;

@@ -1,6 +1,6 @@
 .conteiner {
   text-decoration: none;
-  margin-top: 89px;
+  margin-top: 50px;
   /* margin: 0px; */
   padding: 0px;
   font-family: sans-serif;
@@ -11,38 +11,24 @@
   /* border: 1px solid rgba(225, 225, 226, 0.8);
   box-shadow: 0px 0px 10px #ccc; */
 
-  /* margin-top: 40px;
-  margin-bottom: 40px; */
   min-height: 1000px;
-
-  
 
   display: flex;
   /* background-color: aqua; */
   flex-direction: column;
 
-
   background: #BA5370;  /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #FF416C 0%, #ff765e 100%); /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(0deg, #FF416C 0%, #ff765e 100%); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-   
-
-
-  
-
-  /* align-content: space-between; */
-  /* margin-top: 200px; */
-  /* margin-left: 100px; */
 }
 .infoconteiner {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-
   
   /* background-color: #ff416c; */
   height: auto;
-  margin-top: 100px;
+  margin-top: 80px;
 
   /* padding-top: 40px; */
   padding-left: 50px;

@@ -6,6 +6,8 @@ import DivContainer from '../../styledComponents/DivContainer';
 import { getCalendar, getUserById } from './../../redux/actions';
 import LoginController from './../../localStorage/login';
 import CalendarAuth from '../Calendar';
+import styles from "./styles.module.css";
+
 
 export default function CalendarCards() {
   const dispatch = useDispatch();
@@ -21,7 +23,7 @@ export default function CalendarCards() {
 
   return (
     <>
-    <DivContainer className="calendaris">
+    <DivContainer className={styles.calendaris}>
       { !authorized ? (<CalendarAuth></CalendarAuth>) :
       <CardsContainer>
         {

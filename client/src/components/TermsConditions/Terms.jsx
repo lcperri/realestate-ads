@@ -10,38 +10,38 @@ const Terms = () => {
           <b>1. PLAZO</b>
         </p>
         <p className={styles.claustext}>
-          Cada Plan tendrá un plazo de publicación de 30 (treinta) días
+          Cada Subscripcion tendrá un plazo de publicación de 30 (treinta) días
           corridos/naturales contados a partir de la acreditación del pago (en
           adelante, el “Plazo”).
         </p>
         <p className={styles.claustext}>
-          Vencido el referido Plazo, el Plan se renovará en forma automática por
-          igual Plazo, salvo que el Usuario cancele el Plan, bajo las
+          Vencido el referido Plazo, la Subscripcion se renovará en forma automática por
+          igual Plazo, salvo que el Usuario cancele la Subscripcion, bajo las
           condiciones detalladas en la Cláusula 2 de más abajo.
         </p>
         <p className={styles.claustittle}>
           <b>2. CANCELACIÓN:</b>
         </p>
         <p className={styles.claustext}>
-          El Usuario podrá cancelar su Plan en cualquier momento, y continuará
-          teniendo acceso al Plan hasta el final de su periodo de facturación.
+          El Usuario podrá cancelar su Subscripcion en cualquier momento, y continuará
+          teniendo acceso a la Subscripcion hasta el final de su periodo de facturación.
           Los pagos no son reembolsables y no se otorgarán reembolsos ni
-          créditos por los periodos del Plan utilizados parcialmente o por el
-          servicio no utilizado. Si cancela el Plan, el mismo se dará de baja
+          créditos por los periodos de Subscripcion utilizados parcialmente o por el
+          servicio no utilizado. Si cancela el Subscripcion, la misma se dará de baja
           automáticamente al final de su periodo de facturación actual.
         </p>
         <p className={styles.claustext}>
-          Para cancelar el Plan, el Usuario deberá ingresar a la sección
+          Para cancelar la Subscripcion, el Usuario deberá ingresar a la sección
           “Contrataciones” en su panel de anunciante.
         </p>
         <p className={styles.claustittle}>
           <b>3. FACTURACIÓN Y PAGO.:</b>
         </p>
         <p className={styles.claustext}>
-          El Plan será facturado al Usuario por mes adelantado.
+          La Subscripcion será facturada al Usuario por mes adelantado.
         </p>
         <p className={styles.claustext}>
-          Para la activación del Plan contratado, se deberá acreditar el pago de
+          Para la activación del Subscripcion contratada, se deberá acreditar el pago de
           la primera factura.
         </p>
         <p className={styles.claustittle}>
@@ -59,7 +59,7 @@ const Terms = () => {
           por el Usuario en estos Terminos de Contratación por E-commerce será
           automática, sin necesidad de notificación judicial o extrajudicial
           alguna. La falta de pago en término facultará suspender inmediatamente
-          el Plan hasta su efectivo pago, sin que ello genere derecho al Usuario
+          la Subscripcion hasta su efectivo pago, sin que ello genere derecho al Usuario
           a reclamo ni indemnización alguna.
         </p>
         <p className={styles.claustittle}>
@@ -67,7 +67,7 @@ const Terms = () => {
         </p>
         <p className={styles.claustext}>
           Mikasa Nueva podrá terminar anticipadamente la relación contractual
-          con el Usuario y por ende la prestación del Plan, sin necesidad de
+          con el Usuario y por ende la prestación de la Subscripcion, sin necesidad de
           invocar causa alguna, debiendo al efecto preavisar en forma fehaciente
           con por lo menos treinta (30) días de anticipación a la fecha de
           terminación.

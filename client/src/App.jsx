@@ -21,8 +21,11 @@ import Users from "./pages/Users";
 import CalendarCards from "./libs/CalendarCards";
 import Contact from "./pages/Contact";
 import ContactCards from "./pages/ContactCards";
+import ContactCard from "./dumb/CardContact";
+import Success from "./components/Success/Success";
+import CardDenuncia from "./dumb/CardDenuncia";
 import Cart from "./pages/Cart/Cart";
-
+import Purchase from './components/Purchase/Purchase';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -59,6 +62,11 @@ const App = () => {
         <Route path="/perfil" element={<ProfileDataUpdate />} />
         <Route path="/terms" element={<Terms/>} />
         <Route path="/contacto/:id" element={<ContactCards />} />
+        <Route path="/success" element={<Success/>} />
+        <Route path="/purchase" element={<Purchase/>} />
+        {/* <Route path='*' element={<Home/>} />  */}
+        <Route path="/contactCard" element={<ContactCard />} />
+        <Route path="/cardDenuncia" element={<CardDenuncia />} />
       </Routes>
     </>
   );
