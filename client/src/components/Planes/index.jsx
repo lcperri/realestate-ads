@@ -14,16 +14,17 @@ import LoginController from "../../localStorage/login";
 import { DivColumn } from "./../../styledComponents/DivColumn";
 
 export default function Planes() {
-    const id = localStorage.getItem("id");
-    const range = localStorage.getItem("range");
-    const headers = LoginController();
-    const dispatch = useDispatch();
-    const link = useSelector((state) => state.link);
-    const user = useSelector((state) => state.user);
-
-    useEffect(() => {
-        dispatch(GetUserById(id));
-    }, []);
+  const id = localStorage.getItem("id");
+  const range = localStorage.getItem("range");
+  const headers = LoginController();
+  const dispatch = useDispatch();
+  const link = useSelector((state) => state.link);
+  const user = useSelector((state) => state.user);
+  
+  
+  useEffect(() => {
+    dispatch(GetUserById(id));
+  }, []);
 
     const updateSubscription = (e) => {
         e.preventDefault();
