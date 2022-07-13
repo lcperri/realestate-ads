@@ -18,7 +18,7 @@ export default function FormDenuncia (){
     const {id} = useParams();
     const navigate = useNavigate();
     const headers = LoginController()
-
+//console.log("opc:",reason)
     const handleSub = (e) => {
         e.preventDefault();
         if(!reason ){
