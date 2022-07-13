@@ -70,6 +70,9 @@
   /* justify-content: flex-end; */
 }
 
+.btnDenunciar{
+  margin-top: 5px;
+}
 /*Modal: */
 .overlay {
   position: fixed;
