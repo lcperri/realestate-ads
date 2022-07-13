@@ -54,6 +54,7 @@ export default function Login() {
               regExp={regExps.email.regExp}
               state={email}
               setState={setEmail}
+              width='100%'
             />
             {/* <div className="group">
                   <Label for="">Correo electrónico:</Label>
@@ -69,6 +70,7 @@ export default function Login() {
               regExp={regExps.password.regExp}
               state={password}
               setState={setPassword}
+              width='100%'
             />
             {/* <div className="group">
                   <Label for="">Contraseña:</Label>
