@@ -5,10 +5,14 @@ export default createGlobalStyle`
     }
 
     body {
-        /* background: #FF416C;  
-        background: -webkit-linear-gradient(to right, #FF416C 0%, #ff765e 100%); 
-        background: linear-gradient(0deg, #FF416C 0%, #ff765e 100%);
-        height: 100vh; */
+        /* background: #FF416C no-repeat center center fixed;  
+        background: -webkit-linear-gradient(to right, #FF416C 0%, #ff765e 100%) no-repeat center center fixed; 
+        background: linear-gradient(0deg, #FF416C 0%, #ff765e 100%) no-repeat center center fixed;
+        height: 100vh;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover; */
     }
 
     * {
