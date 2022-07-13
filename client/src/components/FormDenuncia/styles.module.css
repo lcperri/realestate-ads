@@ -1,24 +1,18 @@
 .contactForm {
-    width: 40%;
-    background: #BA5370;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #FF416C 0%, #ff765e 100%); /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(0deg, #FF416C 0%, #ff765e 100%); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    margin-top: 200px;
+    
 }
 .contenedorGral{
-    width: 100%;
-    margin-top: 150px;
+    width: 60%;
 }
 .titulos{
     margin-left: 20px;
     
 }
-.razon , .denuncia{
+.selectMotivos{
     margin-left: 20px;
-    width: 500px;
-}
-.denuncia{
-    height: 200px;
 }
 .btnSubmit{
-    margin-left: 20px;
+    margin-top: 30px;
+    margin-left: 25px;
 }
