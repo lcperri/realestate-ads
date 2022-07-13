@@ -386,7 +386,7 @@ export function subscription (data, headers) {
 
 export function updateSubscription (id, data, headers) {
   return async function (dispatch) {
-    const link = await axios.post(`${url}/subscription/${id}`, data, headers);
+    const link = await axios.put(`${url}/subscription/${id}`, data, headers);
     return dispatch({
       type: PAY_LINK,
       payload: link.data,
@@ -406,11 +406,11 @@ export function payment (data, headers) {
 
 export function getPayment(id, headers) {
   return async function (dispatch) {
-    // const user = await axios.get(`${url}/user/${id}`);
-    // return dispatch({
-    //   type: USER,
-    //   payload: user.data
-    // });
+    const user = await axios.get(`${url}/payment/${id}`, headers);
+    return dispatch({
+      type: USER,
+      payload: user.data
+    });
   };
 }
 
