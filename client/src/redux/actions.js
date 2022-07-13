@@ -426,7 +426,7 @@ export function deleteLink (data) {
 
 export function addComments (data, idProperty, headers) {
   return async function (dispatch) {
-    const comments = await axios.get(`${url}/comments/${idProperty}`, data, headers);
+    const comments = await axios.post(`${url}/comment/${idProperty}`, data, headers);
     return dispatch({
       type: PROPERTY_COMMENTS,
       payload: comments.data
