@@ -18,6 +18,7 @@ import {
   PAY_LINK,
   CART,
   ONLY_CART,
+  PROPERTY_COMMENTS
 } from "./actionTypes";
 
 const initialState = {
@@ -29,6 +30,7 @@ const initialState = {
   properties: [],
   pages: [1, 1, 10],
   property: {},
+  propertyComments: [],
   city: "",
   users: [],
   user: {},
@@ -173,6 +175,11 @@ const reducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         updateCurrentPage: !state.updateCurrentPage
+      };
+    case PROPERTY_COMMENTS:
+      return {
+        ...state,
+        propertyComments: payload
       };
     default:
       return {

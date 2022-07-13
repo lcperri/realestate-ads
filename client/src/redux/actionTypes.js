@@ -18,3 +18,4 @@ export const PAY_LINK = "PAY_LINK";
 export const DELETE_USER = "DELETE_USER";
 export const CART = "CART";
 export const ONLY_CART = "ONLY_CART";
+export const PROPERTY_COMMENTS = "PROPERTY_COMMENTS";
