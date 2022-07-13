@@ -27,22 +27,17 @@ export default function UserCard({id,name, lastName, birthday, email, dni, telep
         <img src={avatar} />
       </div>                
        
-      <h1 className={styles.nomb}>{name} {lastName}</h1>
-      <h1 className={styles.datos}>{email}</h1>
-      <h1 className={styles.datos}>{dni}</h1>
-      <h1 className={styles.datos}> {telephone}</h1>
-      <h1 className={styles.datos}>{birthday}</h1>
+      <h1 className={styles.nomb}>Nombre: {name} {lastName}</h1>
+      <h1 className={styles.datos}>Correo electrónico: {email}</h1>
+      <h1 className={styles.datos}>DNI: {dni}</h1>
+      <h1 className={styles.datos}>Teléfono: {telephone}</h1>
 
       <div className={styles.datos}>
-        {
-          range === 'premium' && (
-            <div>
-            <Button onClick={handleElim}>Eliminar</Button>            
+      <div>
+      <Button onClick={handleElim}>Eliminar</Button>            
 
-            <Button onClick={handleDenuncia}>Ver denuncias</Button>
-            </div>
-          )
-        }
+      <Button onClick={handleDenuncia}>Ver denuncias</Button>
+      </div>
         
       </div>
 

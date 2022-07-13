@@ -33,7 +33,8 @@ import {
   GET_CALENDAR,
   PAY_LINK,
   CART,
-  ONLY_CART
+  ONLY_CART,
+  PROPERTY_COMMENTS
 } from "./actionTypes";
 
 export function login(data) {
@@ -386,7 +387,7 @@ export function subscription (data, headers) {
 
 export function updateSubscription (id, data, headers) {
   return async function (dispatch) {
-    const link = await axios.post(`${url}/subscription/${id}`, data, headers);
+    const link = await axios.put(`${url}/subscription/${id}`, data, headers);
     return dispatch({
       type: PAY_LINK,
       payload: link.data,
@@ -406,11 +407,11 @@ export function payment (data, headers) {
 
 export function getPayment(id, headers) {
   return async function (dispatch) {
-    // const user = await axios.get(`${url}/user/${id}`);
-    // return dispatch({
-    //   type: USER,
-    //   payload: user.data
-    // });
+    const user = await axios.get(`${url}/payment/${id}`, headers);
+    return dispatch({
+      type: USER,
+      payload: user.data
+    });
   };
 }
 
@@ -422,6 +423,17 @@ export function deleteLink (data) {
     })
   }
 }
+
+export function addComments (data, idProperty, headers) {
+  return async function (dispatch) {
+    const comments = await axios.post(`${url}/comment/${idProperty}`, data, headers);
+    return dispatch({
+      type: PROPERTY_COMMENTS,
+      payload: comments.data
+    });
+  };
+}
+
 
 // export function uploadImages (data) {
 //   return async function (dispatch) {

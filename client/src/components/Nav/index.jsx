@@ -87,6 +87,9 @@ const Nav = () => {
               {range && range !== "free" && (
                 <StyledLink to={"/calendario"}>Calendario</StyledLink>
               )}
+              {range && range === "admin" && (
+                <StyledLink to={"/administrador"}>Panel</StyledLink>
+              )}
             </>
           )}
         </li>

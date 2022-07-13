@@ -27,6 +27,7 @@ const Vip = () => {
           {
             email: "test_user_9451359@testuser.com",
             reason: "Mikasa Nueva Vip",
+            id
           },
           headers
         )
