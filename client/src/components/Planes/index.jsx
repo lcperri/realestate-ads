@@ -12,24 +12,20 @@ import { deleteLink, updateSubscription } from "../../redux/actions";
 import { GetUserById } from "./../../redux/actions";
 import LoginController from "../../localStorage/login";
 import { DivColumn } from "./../../styledComponents/DivColumn";
+import { useNavigate } from "react-router-dom";
 
 export default function Planes() {
-  const id = localStorage.getItem("id");
-  const range = localStorage.getItem("range");
-  const headers = LoginController();
-  const dispatch = useDispatch();
-  const link = useSelector((state) => state.link);
-  const user = useSelector((state) => state.user);
-  
-  
-  useEffect(() => {
-    dispatch(GetUserById(id));
-  }, []);
+    const id = localStorage.getItem("id");
+    const range = localStorage.getItem("range");
+    const headers = LoginController();
+    const dispatch = useDispatch();
+    const link = useSelector((state) => state.link);
+    const user = useSelector((state) => state.user);
+    const navigate = useNavigate();
 
-    const updateSubscription = (e) => {
-        e.preventDefault();
-        // console.log(e.target.value)
-    }
+    useEffect(() => {
+        dispatch(GetUserById(id));
+    }, []);
     
     useEffect(() => {
         if (link?.length) {
@@ -58,6 +54,7 @@ export default function Planes() {
         )
       );
     }
+    navigate("/home");
   };
 
   return (
