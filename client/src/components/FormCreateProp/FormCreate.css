@@ -1,7 +1,9 @@
 .bodyCreateProperty {
     position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 100vh;
     width: 100%;
-    height: 1000px;
     background: #FF416C;  
     background: -webkit-linear-gradient(to right, #FF416C 0%, #ff765e 100%); 
     background: linear-gradient(0deg, #FF416C 0%, #ff765e 100%);
@@ -13,7 +15,6 @@
     background-size: cover;
     margin: 160px auto;
 }
-
 
 .group {
     /* position: relative;
@@ -96,4 +97,35 @@
 }
 .input-direcc-error{
     border-color: #E52F50;
+}
+
+.dropzone {
+    display: flex;
+    flex-direction: column;
+    border: 2px dotted rgb(255, 84, 75);
+    background-color: #5f798e;
+    height: 200px;
+    width: 260px;
+    margin: 0 auto;
+    border-radius: 20px;
+    color: #fff;
+    padding: 40px;
+    justify-content: center;
+}
+
+.selectedImages {
+    height: 200px;
+    width: 260px;
+    object-fit: cover;
+    margin-top: 10px;
+    background-color:#349;
+}
+
+.removeDropBoxImages {
+    height: 22px;
+    width: 22px;
+    
+}
+.removeDropBoxImages:hover {
+    cursor: pointer;
 }
