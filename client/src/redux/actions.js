@@ -34,7 +34,8 @@ import {
   PAY_LINK,
   CART,
   ONLY_CART,
-  PROPERTY_COMMENTS
+  PROPERTY_COMMENTS,
+  DENUNCIA
 } from "./actionTypes";
 
 export function login(data) {
@@ -176,11 +177,11 @@ export function getPropertyById(id) {
   };
 }
 
-export function createProperty(info) {
+export function createProperty(info, headers) {
   return async function (dispatch) {
     const id = localStorage.getItem("id");
     dispatch({ type: LOADING });
-    const property = await axios.post(`${url}/property/${id}`, info);
+    const property = await axios.post(`${url}/property/${id}`, info, headers);
     return dispatch({
       type: PROPERTY,
       payload: property.data,
@@ -434,6 +435,15 @@ export function addComments (data, idProperty, headers) {
   };
 }
 
+export function addDenuncia (data, idProperty, headers) {
+  return async function (dispatch){
+    const resp = await axios.post(`${url}/formDenuncia/${idProperty}`, data, headers);
+    return dispatch({
+      type: DENUNCIA,
+      payload: resp.data
+    });
+  }
+}
 
 // export function uploadImages (data) {
 //   return async function (dispatch) {

@@ -31,6 +31,9 @@ import apartment from '../../assets/apartment.png'
 import Calendar from "../../libs/CalendarPost";
 import Reviews from "../../dumb/Reviews";
 import PostComments from "../../components/PostComments";
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import FormDenuncia from "../../components/FormDenuncia";
 
 const Details = () => {
   const navigate = useNavigate();
@@ -101,6 +104,10 @@ const Details = () => {
     const newItem = newUrl[0];
     setClickedImg(newItem);
     setCurrentIndex(newIndex);
+  };
+  
+  const handleDenuncia = () => {
+    Swal(navigate(`/formDenuncia/${id}`));
   };
 
   return (
@@ -219,8 +226,8 @@ const Details = () => {
         <DivColumn padding="30px 0 0 0" justCont='flex-start'>
           <PostComments/>
         </DivColumn>
-        <div>
-          <Button className={styles.btnDenunciar}>Denunciar Publicación</Button>
+        <div>          
+            <Button className={styles.btnDenunciar} onClick={handleDenuncia}>Denunciar Publicación</Button>
         </div>
       </DivContainer>
       <div className={styles.btnContainer}>
