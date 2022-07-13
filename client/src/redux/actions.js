@@ -33,7 +33,8 @@ import {
   GET_CALENDAR,
   PAY_LINK,
   CART,
-  ONLY_CART
+  ONLY_CART,
+  PROPERTY_COMMENTS
 } from "./actionTypes";
 
 export function login(data) {
@@ -422,6 +423,17 @@ export function deleteLink (data) {
     })
   }
 }
+
+export function addComments (data, idProperty, headers) {
+  return async function (dispatch) {
+    const comments = await axios.get(`${url}/comments/${idProperty}`, data, headers);
+    return dispatch({
+      type: PROPERTY_COMMENTS,
+      payload: comments.data
+    });
+  };
+}
+
 
 // export function uploadImages (data) {
 //   return async function (dispatch) {

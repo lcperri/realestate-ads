@@ -28,6 +28,7 @@ import capitalize from "../../functions/capitalize";
 import house from '../../assets/house.png'
 import apartment from '../../assets/apartment.png'
 import Calendar from "../../libs/CalendarPost";
+import Reviews from "../../dumb/Reviews";
 
 const Details = () => {
   const navigate = useNavigate();
@@ -207,6 +208,12 @@ const Details = () => {
         </div>
         <h1>Ubicación:</h1>
         <Map address={coordenate} />
+        <h1>Opiniones:</h1>
+        {
+          property.comments?.map(e => 
+            <Reviews key={e.id} {...e} />
+          )
+        }
       </DivContainer>
       <div className={styles.btnContainer}>
         <Button onClick={() => navigate("/home", { replace: true })}>
