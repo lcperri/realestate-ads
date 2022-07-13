@@ -7,7 +7,7 @@ export const DivRow = styled.div`
     justify-content: ${props => props.justCont};
     align-items: ${props => props.alignIt || 'center'};
     padding: ${props => props.padding};
-    margin: ${props => props.margin || '122px'}; 
+    margin: ${props => props.margin}; 
     gap: ${props => props.gap || '4px'};    
 
     @media (max-width: 768px) {
