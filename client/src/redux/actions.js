@@ -34,7 +34,8 @@ import {
   PAY_LINK,
   CART,
   ONLY_CART,
-  PROPERTY_COMMENTS
+  PROPERTY_COMMENTS,
+  DENUNCIA
 } from "./actionTypes";
 
 export function login(data) {
@@ -434,6 +435,15 @@ export function addComments (data, idProperty, headers) {
   };
 }
 
+export function addDenuncia (data, idProperty, headers) {
+  return async function (dispatch){
+    const resp = await axios.post(`${url}/formDenuncia/${idProperty}`, data, headers);
+    return dispatch({
+      type: DENUNCIA,
+      payload: resp.data
+    });
+  }
+}
 
 // export function uploadImages (data) {
 //   return async function (dispatch) {

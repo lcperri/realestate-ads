@@ -26,6 +26,7 @@ import Success from "./components/Success/Success";
 import CardDenuncia from "./dumb/CardDenuncia";
 import Cart from "./pages/Cart/Cart";
 import Purchase from './components/Purchase/Purchase';
+import FormDenuncia from "./components/FormDenuncia";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -67,6 +68,7 @@ const App = () => {
         {/* <Route path='*' element={<Home/>} />  */}
         <Route path="/contactCard" element={<ContactCard />} />
         <Route path="/denuncias/:id" element={<CardDenuncia />} />
+        <Route path="/formDenuncia/:id" element={<FormDenuncia />} />
       </Routes>
     </>
   );
