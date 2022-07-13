@@ -33,7 +33,7 @@ import {
   GET_CALENDAR,
   PAY_LINK,
   CART,
-  UPLOAD_IMAGES
+  ONLY_CART
 } from "./actionTypes";
 
 export function login(data) {
@@ -132,13 +132,26 @@ export function filterByFollower({ filters, location, max }, id, headers) {
 export function filterByCart(id, headers) {
   return async function (dispatch) {
     dispatch({ type: LOADING });
-    console.log(id)
     const cart = await axios.get(
       `${url}/property/cart/${id}`,
       headers
     );
     return dispatch({
       type: CART,
+      payload: cart.data,
+    });
+  };
+}
+
+export function onlyCart(id, headers) {
+  return async function (dispatch) {
+    dispatch({ type: LOADING });
+    const cart = await axios.get(
+      `${url}/property/onlycart/${id}`,
+      headers
+    );
+    return dispatch({
+      type: ONLY_CART,
       payload: cart.data,
     });
   };
@@ -193,6 +206,12 @@ export function deleteUser(id, headers){
   }
 }
 
+export function deleteProp(headers, id){
+  return async function(){
+    await axios.delete(`${url}/property`,headers,id);
+    
+  }
+}
 export function createUser(data) {
   return async function (dispatch) {
     dispatch({ type: LOADING });
@@ -322,6 +341,17 @@ export function GetUserById(id) {
   };
 }
 
+export function getPayment(id) {
+  return async function (dispatch) {
+    console.log('hola')
+    // const user = await axios.get(`${url}/user/${id}`);
+    // return dispatch({
+    //   type: USER,
+    //   payload: user.data
+    // });
+  };
+}
+
 export function addToUserFavourites(id, property, headers) {
   return async function (dispatch) {
     const favs = await axios.put(`${url}/user/addfavs/${id}`, property, headers);
@@ -359,6 +389,17 @@ export function updateCurrentPage () {
 export function subscription (data, headers) {
   return async function (dispatch) {
     const link = await axios.post(`${url}/subscription`, data, headers);
+    console.log('hola')
+    return dispatch({
+      type: PAY_LINK,
+      payload: link.data,
+    });
+  };
+}
+
+export function payment (data, headers) {
+  return async function (dispatch) {
+    const link = await axios.post(`${url}/payment`, data, headers);
     console.log('hola')
     return dispatch({
       type: PAY_LINK,

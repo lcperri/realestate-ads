@@ -87,8 +87,7 @@ const LandingPage = () => {
               <h3 className={styles.stepTittle}>02. Ingresa a tu Perfil</h3>
               <p className={styles.stepDescrpt}>
                 Haz click en la opcion Iniciar Sesion de la barra de navegacion.
-                Compra el plan de publicacion que mas te convenga y completa el
-                formulario de tu propiedad.
+                Paga una subscripcion y completa el formulario de tu propiedad.
               </p>
               <p className={styles.firststepKeyWord}>Compra un Plan</p>
             </div>
@@ -133,17 +132,14 @@ const LandingPage = () => {
               <p className={styles.technologyName}>Sweetalert.</p>
             </article>
             <article className={styles.articleContainer}>
-            <p className={styles.technologyName}>Cloudinary React.</p>
-            <p className={styles.technologyName}>React Google Login.</p>
-            <p className={styles.technologyName}>React Google Maps.</p>
-            
+              <p className={styles.technologyName}>Cloudinary React.</p>
+              <p className={styles.technologyName}>React Google Login.</p>
+              <p className={styles.technologyName}>React Google Maps.</p>
             </article>
           </div>
         </div>
 
         {/* <!-- Agents --> */}
-
-
 
         <section id="agents" className={styles.Staffback}>
           <div className={styles.Staffcontainer}>
@@ -151,19 +147,13 @@ const LandingPage = () => {
               <h2>Conoce a Nuestro Equipo</h2>
             </div>
 
-            
             <div className={styles.StaffCardsContainer}>
-
-
               <div className={styles.Staffcard}>
-
-                
-                  <img
-                    src="https://ca.slack-edge.com/TPRS7H4PN-U02KJCRURT7-469f4b2ce25d-512"
-                    alt="Agent 1"
-                    className={styles.StaffCardimg}
-                  />
-             
+                <img
+                  src="https://ca.slack-edge.com/TPRS7H4PN-U02KJCRURT7-469f4b2ce25d-512"
+                  alt="Agent 1"
+                  className={styles.StaffCardimg}
+                />
 
                 <div className={styles.agentcardcontent}>
                   <div className={styles.agentname}>
@@ -173,16 +163,13 @@ const LandingPage = () => {
                 </div>
               </div>
 
-
-
               <div className={styles.Staffcard}>
-                
-                  <img
+                <img
                   className={styles.StaffCardimg}
-                    src="https://ca.slack-edge.com/TPRS7H4PN-U02QW9S15AQ-8eb1e43f87ac-512"
-                    alt="Agent 1"
-                  />
-               
+                  src="https://ca.slack-edge.com/TPRS7H4PN-U02QW9S15AQ-8eb1e43f87ac-512"
+                  alt="Agent 1"
+                />
+
                 <div className={styles.agentcardcontent}>
                   <div className={styles.agentname}>
                     <h3 className={styles.agentnameh3}>Full Stack Developer</h3>
@@ -191,15 +178,13 @@ const LandingPage = () => {
                 </div>
               </div>
 
-
               <div className={styles.Staffcard}>
-                
-                  <img
-                    src="https://ca.slack-edge.com/T013Z1B5U3X-U02NGSRA4MP-0909ffec6388-512"
-                    alt="Agent 1"
-                    className={styles.StaffCardimg}
-                  />
-                
+                <img
+                  src="https://ca.slack-edge.com/T013Z1B5U3X-U02NGSRA4MP-0909ffec6388-512"
+                  alt="Agent 1"
+                  className={styles.StaffCardimg}
+                />
+
                 <div className={styles.agentcardcontent}>
                   <div className={styles.agentname}>
                     <h3 className={styles.agentnameh3}>Full Stack Developer</h3>
@@ -208,15 +193,13 @@ const LandingPage = () => {
                 </div>
               </div>
 
-
               <div className={styles.Staffcard}>
-                
-                  <img
-                    src="https://ca.slack-edge.com/TPRS7H4PN-U02DJ88DRFW-d106b546b6cc-512"
-                    alt="Agent 1"
-                    className={styles.StaffCardimg}
-                  />
-                
+                <img
+                  src="https://ca.slack-edge.com/TPRS7H4PN-U02DJ88DRFW-d106b546b6cc-512"
+                  alt="Agent 1"
+                  className={styles.StaffCardimg}
+                />
+
                 <div className={styles.agentcardcontent}>
                   <div className={styles.agentname}>
                     <h3 className={styles.agentnameh3}>Full Stack Developer</h3>
@@ -228,36 +211,25 @@ const LandingPage = () => {
           </div>
         </section>
 
-
-        
         {/* <!-- Footer --> */}
         <footer className={styles.footer}>
           <div className={styles.footercontainer}>
+            <div className={styles.footerdatacontainer}>
+              <h3 className={styles.footerdatacontainerh3}>Mikasa Nueva</h3>
+              <p className={styles.footerdatacontainerp}>
+                © 2022 - Mikasa Nueva, Marca Registrada
+              </p>
+            </div>
 
-            
-              <div className={styles.footerdatacontainer}>
-                
-                  <h3 className={styles.footerdatacontainerh3}>Mikasa Nueva</h3>
-                  <p className={styles.footerdatacontainerp}>© 2022 - Mikasa Nueva, Marca Registrada</p>
-                
-              </div>
-
-              {/* <div className={styles.footerdatacontainer}>
+            {/* <div className={styles.footerdatacontainer}>
                 <h3 className={styles.footerdatacontainerh3}>Mikasa Nueva</h3>
                 
               </div> */}
-              <div className={styles.footerdatacontainer}>
-                
-                
-                <Link to={"/terms"}>
-                  
-                    <h3 className={styles.footerTerms}>Terminos y Condiciones</h3>
-                  
-                  </Link>
-                 
-              
-              </div>
-           
+            <div className={styles.footerdatacontainer}>
+              <Link to={"/terms"}>
+                <h3 className={styles.footerTerms}>Terminos y Condiciones</h3>
+              </Link>
+            </div>
           </div>
         </footer>
       </div>

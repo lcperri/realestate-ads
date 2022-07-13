@@ -1,9 +1,8 @@
 .selectMotivo, .selectHorario, .inputDia{
     display: flex;
 }
-.horarioLabel{
-    margin-top: 10px;
-    color: rgb(230, 38, 51);
-    font-size: 14px;
-    display: flex;
+
+.btnVisita {
+    margin-top: 30px;       
 }
+

@@ -17,4 +17,8 @@ export const SWITCH_BETWEEN_FORMS = "SWITCH_BETWEEN_FORMS";
 export const PAY_LINK = "PAY_LINK";
 export const DELETE_USER = "DELETE_USER";
 export const CART = "CART";
+<<<<<<< HEAD
 export const UPLOAD_IMAGES = "UPLOAD_IMAGES";
+=======
+export const ONLY_CART = "ONLY_CART";
+>>>>>>> 206badaa586d3337bac3af58f9436e54c962ab72

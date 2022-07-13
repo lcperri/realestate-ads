@@ -5,16 +5,22 @@ import { addToUserCart, updateCurrentPage } from '../../redux/actions'
 import toast, { Toaster } from 'react-hot-toast';
 import Shopping from '../../dumb/Icons/Shopping'
 import styled from "styled-components"
+import { useSelector } from 'react-redux/es/exports';
 
 const AddToCart = ({ idProperty, user, top, right, left, hover }) => {
     const dispatch = useDispatch()
     const headers = LoginController()
+    const cart = useSelector((state) => state.cart);
 
-    const [inCart, setIncart] = useState(false)
+    const [inCart, setIncart] = useState(false);
 
     useEffect(() => {
-        user && user.cart?.includes(idProperty) ? setIncart(true) : setIncart(false)
-    }, [])
+        if (cart) {
+            for (let property of cart) {
+                if (property.title.includes(idProperty)) setIncart(true);
+            }
+        }
+    }, [cart.length])
 
     const onClick = (userId, idProperty) => {
         if (inCart) {
@@ -37,7 +43,7 @@ const AddToCart = ({ idProperty, user, top, right, left, hover }) => {
             setIncart(true)
         }
         dispatch(addToUserCart(userId, { property: idProperty }, headers))
-        // dispatch(updateCurrentPage())
+        dispatch(updateCurrentPage())
     }
 
     return (

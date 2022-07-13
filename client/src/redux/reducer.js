@@ -17,7 +17,7 @@ import {
   CONTACT,
   PAY_LINK,
   CART,
-  UPLOAD_IMAGES
+  ONLY_CART,
 } from "./actionTypes";
 
 const initialState = {
@@ -84,6 +84,12 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         cart: payload.cart,
         properties: payload.properties,
+        loading: false
+      }
+    case ONLY_CART:
+      return {
+        ...state,
+        cart: payload,
         loading: false
       }
     case PAGE_SETTER:
