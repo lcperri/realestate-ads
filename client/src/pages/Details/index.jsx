@@ -217,7 +217,7 @@ const Details = () => {
         </div>
         <h1>Ubicación:</h1>
         <Map address={coordenate} />
-        <h1>Opiniones:</h1>
+        { property.comments?.length && <h1>Opiniones:</h1> }
         {
           property.comments?.map(e => 
             <Reviews key={e.id} {...e} />
