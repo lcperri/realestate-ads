@@ -87,6 +87,9 @@ const Nav = () => {
               {range && range !== "free" && (
                 <StyledLink to={"/calendario"}>Calendario</StyledLink>
               )}
+              {range && range === "admin" && (
+                <StyledLink to={"/administrador"}>Panel</StyledLink>
+              )}
             </>
           )}
         </li>
@@ -112,7 +115,7 @@ const Nav = () => {
               {capitalize(range)}
             </Title>
             <Title fontSize="20px">¡Hola, {name}!</Title>
-            {range && (
+            {range && range !== "admin" && (
               <StyledLink to={"/planes"} className="perfil">
                 Subscripción
               </StyledLink>

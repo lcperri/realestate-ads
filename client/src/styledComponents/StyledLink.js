@@ -29,14 +29,14 @@ export const StyledLink = styled(Link)`
 
     &:visited {
         font-weight: 500;
-        color: ${props => props.color};
+        color: ${props => props.color || '#fff'};
     }
     &:hover {
         font-weight: 500;
         color:#ff765e;
     }
     &:link {
-        color:#ff765e;
+        color:#fff;
     }
 `
 

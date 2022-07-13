@@ -22,12 +22,18 @@ import { getPropertyById, clear } from "../../redux/actions";
 import getCoordenates from "../../functions/getCoordenates";
 import FormContacto from "../../components/FormContacto";
 import { DivRow } from "../../styledComponents/DivRow";
+import { DivColumn } from "../../styledComponents/DivColumn";
 import { StyledLink } from "../../styledComponents/StyledLink";
 import BackButton from "../../dumb/BackButton";
 import capitalize from "../../functions/capitalize";
 import house from '../../assets/house.png'
 import apartment from '../../assets/apartment.png'
 import Calendar from "../../libs/CalendarPost";
+import Reviews from "../../dumb/Reviews";
+import PostComments from "../../components/PostComments";
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import FormDenuncia from "../../components/FormDenuncia";
 
 const Details = () => {
   const navigate = useNavigate();
@@ -98,6 +104,10 @@ const Details = () => {
     const newItem = newUrl[0];
     setClickedImg(newItem);
     setCurrentIndex(newIndex);
+  };
+  
+  const handleDenuncia = () => {
+    Swal(navigate(`/formDenuncia/${id}`));
   };
 
   return (
@@ -207,6 +217,18 @@ const Details = () => {
         </div>
         <h1>Ubicación:</h1>
         <Map address={coordenate} />
+        <h1>Opiniones:</h1>
+        {
+          property.comments?.map(e => 
+            <Reviews key={e.id} {...e} />
+          )
+        }
+        <DivColumn padding="30px 0 0 0" justCont='flex-start'>
+          <PostComments/>
+        </DivColumn>
+        <div>          
+            <Button className={styles.btnDenunciar} onClick={handleDenuncia}>Denunciar Publicación</Button>
+        </div>
       </DivContainer>
       <div className={styles.btnContainer}>
         <Button onClick={() => navigate("/home", { replace: true })}>

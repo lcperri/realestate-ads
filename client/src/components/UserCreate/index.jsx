@@ -77,7 +77,7 @@ export default function UserCreate(){
             birthday: birthday.key,
             email: email.key,
             password: password.key,
-            range: range.key,
+            range: 'free',
         }))
         .then(() => {
             Swal.fire({
@@ -248,10 +248,9 @@ export default function UserCreate(){
                            <div className={styles.create3}>
                            <div className="subTitle">Datos de usuario:</div>
                             <div className="ddressWrapper">
-                                <Select
+                                {/* <Select
                                     className='adjustOperationSelect'
                                     name='Tipo de Usuario'
-                                    /* errorLeyend={regExps.tipoUsuario.errorLeyend} */
                                     state={range}
                                     setState={setRange}
                                     options={[
@@ -261,8 +260,7 @@ export default function UserCreate(){
                                         { description: 'Vip', value: 'vip' },
                                         { description: 'Adim', value: 'admin' }
                                     ]}
-                                // // onChange={handleChange} 
-                                />
+                                /> */}
                                 <Input 
                                     className='addressCreateForm'
                                         name='Contraseña:'

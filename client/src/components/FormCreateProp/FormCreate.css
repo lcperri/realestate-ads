@@ -5,15 +5,14 @@
     height: 100vh;
     width: 100%;
     background: #FF416C;  
-    background: -webkit-linear-gradient(to right, #FF416C 0%, #ff765e 100%); 
-    background: linear-gradient(0deg, #FF416C 0%, #ff765e 100%);
+    background: -webkit-linear-gradient(to right, #FF416C 0%, #ff765e 100%) no-repeat center center fixed; 
+    background: linear-gradient(0deg, #FF416C 0%, #ff765e 100%) no-repeat center center fixed;
 }
 
 .form{
     border-radius: 20px;
     width: 50%;  
-    background-size: cover;
-    margin: 160px auto;
+    margin: 120px auto 0 auto;
 }
 
 .group {
@@ -124,8 +123,13 @@
 .removeDropBoxImages {
     height: 22px;
     width: 22px;
-    
 }
 .removeDropBoxImages:hover {
     cursor: pointer;
+}
+
+.cloudinaryWrapper {
+    /* background-color: aqua; */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 }
