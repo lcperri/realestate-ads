@@ -1,3 +1,13 @@
 .wrapper {
     padding: 20px 20px 20px 0;
 }
+
+.imgPreview {
+    width: 220px;
+    height: 180px;
+}
+
+.removeBtn {
+    width: 20px;
+    height: 20px;
+}
