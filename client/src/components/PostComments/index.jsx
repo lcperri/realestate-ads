@@ -8,6 +8,7 @@ import { Input } from '../../styledComponents/StyledFormElements';
 import { useParams } from 'react-router-dom';
 import LoginController from '../../localStorage/login' 
 import capitalize from '../../functions/capitalize';
+import styles from './styles.module.css'
 
 const PostComments = () => {
     const headers = LoginController()
@@ -48,9 +49,9 @@ const PostComments = () => {
     // dispatch(addComents(input, idProperty))  
     return (
         <DivColumn gap='14px' alignIt='flex-start'>
-            <h2>{capitalize(user.name)} Valoramos tu opinión:</h2>
-            Puntuación: <input name='stars' value={input.stars} onChange={handleOnChange}/>
-            Comentario: <textarea name='content' value={input.content} onChange={handleOnChange}/>
+            <h2>{capitalize(user.name)}, valoramos tu opinión:</h2>
+            Puntuación: <input className={styles.input} name='stars' value={input.stars} onChange={handleOnChange}/>
+            Comentario: <textarea className={styles.textarea} name='content' value={input.content} onChange={handleOnChange}/>
             <Button onClick={() => sendComments()}>Enviar</Button>
         </DivColumn>
     )

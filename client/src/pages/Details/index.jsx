@@ -22,6 +22,7 @@ import { getPropertyById, clear } from "../../redux/actions";
 import getCoordenates from "../../functions/getCoordenates";
 import FormContacto from "../../components/FormContacto";
 import { DivRow } from "../../styledComponents/DivRow";
+import { DivColumn } from "../../styledComponents/DivColumn";
 import { StyledLink } from "../../styledComponents/StyledLink";
 import BackButton from "../../dumb/BackButton";
 import capitalize from "../../functions/capitalize";
@@ -215,7 +216,9 @@ const Details = () => {
             <Reviews key={e.id} {...e} />
           )
         }
-        <PostComments/>
+        <DivColumn padding="30px 0 0 0" justCont='flex-start'>
+          <PostComments/>
+        </DivColumn>
       </DivContainer>
       <div className={styles.btnContainer}>
         <Button onClick={() => navigate("/home", { replace: true })}>
