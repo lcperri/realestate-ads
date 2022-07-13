@@ -28,7 +28,6 @@ const Cloudinary = ({ getImages }) => {
 
     const removePicture = () => {
         setImage('')
-        data.delete(files[0])
         data.delete('file')
         data.delete("upload_preset")
         data.delete("o7plh3sw")
