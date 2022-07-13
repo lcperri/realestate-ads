@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserById, updateUserById } from "../../redux/actions";
 import LoginController from "../../localStorage/login"
+import swal from "sweetalert";
 
 import { validate } from "./validate";
 
@@ -63,8 +64,17 @@ const EmailUpdate = () => {
       newemail: "",
       repeatemail: "",
     });
-    alert('Email actualizado.')
-    dispatch(getUserById(userId));
+    // alert('Email actualizado.')
+    swal({
+      title: "Cambios en email",
+      text: "Email actualizado con exito.",
+      icon: "success",
+      button: "Aceptar",
+      // timer: "2000",
+    }).then(function () {
+      dispatch(getUserById(userId));
+    });
+    
   }
   
   return (
