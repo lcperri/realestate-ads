@@ -78,7 +78,12 @@ const DivContainer = styled.div`
     background-color: #fff;
     border: 1px solid #efefef;
     box-shadow: 0 3px 15px rgba(0, 0, 0, 0.159);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: space-between;
     width: 70%;
+
   }
 
   &.home {
