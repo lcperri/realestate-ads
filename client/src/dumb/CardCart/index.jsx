@@ -47,7 +47,7 @@ export default function CardCart({ _id, user, operation, type, address, price, c
                         </StyledLink>
                     </Button>
 
-                    <AddToCart user={user} idProperty={_id} top='-40px' right='-310px' hover='green' />
+                    <AddToCart user={user} idProperty={_id} hover='green' />
                 </div>
 
             </div>

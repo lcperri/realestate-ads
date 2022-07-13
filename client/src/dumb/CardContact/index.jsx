@@ -2,6 +2,7 @@
 import StyledCard from '../../styledComponents/StyledCard'
 import styles from './styles.module.css'
 import DivContainer from '../../styledComponents/DivContainer';
+import capitalize from '../../functions/capitalize';
 
 export default function ContactCard ({ name, email, telephone, message }){
   return (
@@ -10,7 +11,7 @@ export default function ContactCard ({ name, email, telephone, message }){
         
         <div>
           <h3 className={styles.datos}>Mensaje de: </h3>
-          <h2 className={styles.name}>{name}</h2>
+          <h2 className={styles.name}>{capitalize(name)}</h2>
         </div>
 
         <div>

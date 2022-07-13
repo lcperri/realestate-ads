@@ -7,6 +7,8 @@ import CardsContainer from "../../styledComponents/CardsContainer";
 import DivContainer from "../../styledComponents/DivContainer";
 import LoginController from "../../localStorage/login";
 import Button from "../../styledComponents/Button";
+import styles from "./styles.module.css";
+
 
 export default function Cart(){
   const dispatch = useDispatch();
@@ -44,12 +46,12 @@ export default function Cart(){
 
   const link = useSelector((state) => state.link);    
 
-    useEffect(() => {
-        if (link?.length) {
-            window.open(link);
-            dispatch(deleteLink());
-        }
-    }, [link])
+  useEffect(() => {
+    if (link?.length) {
+        window.open(link);
+        dispatch(deleteLink());
+    }
+  }, [link])
 
   return(      
     <div >
@@ -57,9 +59,10 @@ export default function Cart(){
         {/* <Loader /> */}
         <CardsContainer>
           <Cards cart={id} />
-        </CardsContainer>      
-        <Button margin="20px 0 0 0" onClick={requestPurchase}>
-          ¡Destacar por solo ARS {cart?.length*10000}!
+        </CardsContainer>    
+          
+        <Button className={styles.btnDestacar} onClick={requestPurchase}>
+          ¡Destacar todas por ARS {cart?.length*10000}!
         </Button>
       </DivContainer>
     </div>
