@@ -20,7 +20,12 @@ export default function Planes() {
             window.open(link);
             dispatch(deleteLink());
         }
-    }, [link])
+    }, [link]);
+
+    const updateSubscription = (e) => {
+        e.preventDefault();
+        console.log(e.target.value)
+    }
 
     return (
         <div className="bodyPlanes">
@@ -48,7 +53,7 @@ export default function Planes() {
                         <BackButton>{'<'}</BackButton>
                     </DivRow>
                     <h2>Tu subscripción actual es: {capitalize(range)}</h2>   
-                    <Button className='planes' margin='20px 0 0 0' to='/#' onClick={()=> alert('voy a pasarela')}>
+                    <Button className='planes' margin='20px 0 0 0' to='/#' value={'hola'} onClick={(e)=> updateSubscription(e)}>
                         Cambiar a premium
                     </Button>
                     <Button className='planes' margin='10px 0 0 0' to='/#'>Cancelar subscripción</Button>

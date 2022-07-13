@@ -59,9 +59,6 @@ const Cards = ({ id, favourites, cart }) => {
 
   return (
     <>
-      {isLoading ? (
-        <Loader />
-      ) : (
         <>
           <CardsContainer>
             {id
@@ -104,7 +101,6 @@ const Cards = ({ id, favourites, cart }) => {
           </CardsContainer>
           <Pagination></Pagination>
         </>
-      )}
     </>
   );
 };

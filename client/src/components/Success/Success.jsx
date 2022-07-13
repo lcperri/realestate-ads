@@ -11,7 +11,7 @@ export default function Success(){
               Swal.fire({
                  position: "top-center",
                  icon: "success",
-                 title: "Gracias por unirte a Mikasa Nueva!!",
+                 title: "¡¡Gracias por unirte a Mikasa Nueva!!",
                  showConfirmButton: true,
                  /* timer: 1500, */
                 })

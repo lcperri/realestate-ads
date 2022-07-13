@@ -32,7 +32,8 @@ import {
   SWITCH_BETWEEN_FORMS,
   GET_CALENDAR,
   PAY_LINK,
-  CART
+  CART,
+  ONLY_CART
 } from "./actionTypes";
 
 export function login(data) {
@@ -131,13 +132,26 @@ export function filterByFollower({ filters, location, max }, id, headers) {
 export function filterByCart(id, headers) {
   return async function (dispatch) {
     dispatch({ type: LOADING });
-    console.log(id)
     const cart = await axios.get(
       `${url}/property/cart/${id}`,
       headers
     );
     return dispatch({
       type: CART,
+      payload: cart.data,
+    });
+  };
+}
+
+export function onlyCart(id, headers) {
+  return async function (dispatch) {
+    dispatch({ type: LOADING });
+    const cart = await axios.get(
+      `${url}/property/onlycart/${id}`,
+      headers
+    );
+    return dispatch({
+      type: ONLY_CART,
       payload: cart.data,
     });
   };
@@ -324,6 +338,17 @@ export function GetUserById(id) {
       type: USER,
       payload: user.data
     });
+  };
+}
+
+export function getPayment(id) {
+  return async function (dispatch) {
+    console.log('hola')
+    // const user = await axios.get(`${url}/user/${id}`);
+    // return dispatch({
+    //   type: USER,
+    //   payload: user.data
+    // });
   };
 }
 
