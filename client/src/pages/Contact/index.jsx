@@ -5,7 +5,7 @@ const Contact = () => {
   return (
     <>
         <FormContacto />    
-        <BackButton />
+        <BackButton position='absolute' top='40px'/>
     </>
   )
 }

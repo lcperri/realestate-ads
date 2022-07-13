@@ -58,7 +58,7 @@ const App = () => {
         <Route path="/cart" element={<Cart />} />
         <Route path="/mispropiedades" element={<MisPropsPV />} />
         <Route path="/calendario" element={<CalendarCards />} />
-        <Route path="/contact" element={<Contact />} />
+        <Route path="/contacto" element={<Contact />} />
         <Route path="/administrador" element={<Users />} />
         <Route path="/perfil" element={<ProfileDataUpdate />} />
         <Route path="/terms" element={<Terms/>} />
@@ -68,7 +68,7 @@ const App = () => {
         {/* <Route path='*' element={<Home/>} />  */}
         <Route path="/contactCard" element={<ContactCard />} />
         <Route path="/denuncias/:id" element={<CardDenuncia />} />
-        <Route path="/formDenuncia/:id" element={<FormDenuncia />} />
+        <Route path="/flag/:id" element={<FormDenuncia />} />
       </Routes>
     </>
   );

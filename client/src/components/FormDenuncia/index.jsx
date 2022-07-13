@@ -4,38 +4,33 @@ import styles from './styles.module.css'
 import DivContainer from '../../styledComponents/DivContainer';
 import Button from "../../styledComponents/Button";
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { useNavigate, useParams } from 'react-router-dom';
 import Swal from "sweetalert2";
 import LoginController from '../../localStorage/login'; 
 import { addDenuncia } from '../../redux/actions';
-
+import { Label, Select } from '../../styledComponents/StyledFormElements';
 
 export default function FormDenuncia (){
 
-    const [input, setInput] = useState({
-        razon:"",
-        denuncia: ""
-    });
+    const [reason, setReason] = useState("");
     const dispatch = useDispatch();
     const {id} = useParams();
     const navigate = useNavigate();
     const headers = LoginController()
 
-    const handleChange = (e) => {
-       setInput({
-            ...input,[
-            e.target.id]: e.target.value
-        })
-    };
     const handleSub = (e) => {
         e.preventDefault();
-        if(!input.razon || !input.denuncia){Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Faltan datos.",});}
-        dispatch(addDenuncia(input, id, headers));
-        navigate(`/home`);
+        if(!reason ){
+            Swal.fire({
+               icon: "error",
+               title: "Oops...",
+               text: "Faltan datos."
+            });
+        }else{
+            dispatch(addDenuncia(reason, id, headers));
+            navigate(`/home`);
+        }        
 
     }
 
@@ -44,29 +39,25 @@ export default function FormDenuncia (){
        <StyledCard className={styles.contenedorGral}>
            <form onSubmit={handleSub}>
            <div >
-               <label className={styles.titulos}>Razon:</label><br/>
-               <input 
+               <Label className={styles.titulos}>Motivo denuncia:</Label><br/>
+               <Select 
                   type={'text'} 
-                  className={styles.razon}
-                  value={input.razon}
-                  id={'razon'}
-                  onChange={handleChange}
-                />
+                  className={styles.selectMotivos}
+                  value={reason}
+                  id={'reason'}
+                  onChange={(e) => {setReason(e.target.value)}}
+                >
+                  <option value={null}>Motivos</option>  
+                  <option value={"Mucha humedad en los hambientes"}>Mucha humedad en los hambientes</option>
+                  <option value={"Fotos fasas"}>Fotos fasas</option>
+                  <option value={"Mala predisposición  del dueño"}>Mala predisposición  del dueño</option>
+                  <option value={"No se presentó a la visita"}>No se presentó a la visita</option>
+                </Select>
            </div>
 
-           <div>
-              <label className={styles.titulos}>Denuncia:</label><br/>
-              <textarea 
-                type={'text'} 
-                className={styles.denuncia}
-                value={input.denuncia}
-                id={'denuncia'}
-                onChange={handleChange}
-            />
-           </div>
            
             <Button className={styles.btnSubmit} type="submit">
-                Publicar
+                Denunciar
             </Button>
             
             </form>

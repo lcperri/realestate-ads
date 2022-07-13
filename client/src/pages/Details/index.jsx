@@ -107,7 +107,7 @@ const Details = () => {
   };
   
   const handleDenuncia = () => {
-    Swal(navigate(`/formDenuncia/${id}`));
+    Swal(navigate(`/flag/${id}`));
   };
 
   return (
@@ -217,7 +217,7 @@ const Details = () => {
         </div>
         <h1>Ubicación:</h1>
         <Map address={coordenate} />
-        <h1>Opiniones:</h1>
+        { property.comments?.length && <h1>Opiniones:</h1> }
         {
           property.comments?.map(e => 
             <Reviews key={e.id} {...e} />
@@ -226,7 +226,7 @@ const Details = () => {
         <DivColumn padding="30px 0 0 0" justCont='flex-start'>
           <PostComments/>
         </DivColumn>
-        <div>          
+        <div> 
             <Button className={styles.btnDenunciar} onClick={handleDenuncia}>Denunciar Publicación</Button>
         </div>
       </DivContainer>
