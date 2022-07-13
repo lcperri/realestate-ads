@@ -1,21 +1,11 @@
 .container {
-  border-radius: 10px;
-  /* position: fixed;
-  top: 98px; */
-  /* left: 98px; */
-  /* width: 240px; */
-
-  /* flex-basis: 15%; */
+  border-radius: 20px;
   width: 240px;
-  background-color: #f1f1f1;
+  background-color: #fff;
   height: 175px;
   display: flex;
-
   flex-wrap: nowrap;
-  /* display: block; */
-
   flex-direction: column;
-  /* padding-top: 1px; */
   padding-left: 10px;
   padding-bottom: 10px;
   margin-right: 20px;
