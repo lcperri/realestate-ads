@@ -1,8 +1,8 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useState, useEffect, useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import "./FormCreate.css";
-import { createProperty } from "../../redux/actions";
+import { createProperty, getUserById } from "../../redux/actions";
 import DivContainer from "../../styledComponents/DivContainer";
 import Cloudinary from "../../libs/Cloudinary";
 import Button from "../../styledComponents/Button";
@@ -22,14 +22,25 @@ import { regExps } from "../FormElements/regExpressions";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import Title from "../../styledComponents/Title";
-import Shopping from '../../dumb/Icons/Shopping'
+import { useDropzone } from 'react-dropzone'
+import remove from '../../assets/remove.png'
+import { DivRow } from '../../styledComponents/DivRow'
+import { DivColumn } from '../../styledComponents/DivColumn'
+import axios from "axios";
+import { url } from "../../helpers/url";
 
 export default function FormCreateProp() {
+
+  const [missingUserData, setMissingUserData] = useState([])
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   //para las cards:
   const [contador, setContador] = useState(0);
   const [errorsFirstCard, setErrorsFirstCard] = useState(true);
   const [errorsSecondCard, setErrorsSecondCard] = useState(true);
   const [errorsThirdCard, setErrorsThirdCard] = useState(true);
+
   // estados de cada input:
   const [city, setCity] = useState({ key: "", valid: null });
   const [neighbourhood, setneighbourhood] = useState({ key: "", valid: null });
@@ -43,13 +54,57 @@ export default function FormCreateProp() {
   const [parkingSlot, setParkingSlot] = useState({ key: "", valid: null });
   const [constructionDate, setConstructionDate] = useState({ key: "", valid: null });
   const [renovationDate, setRenovationDate] = useState({ key: "", valid: null });
-  const [pictures, setPictures] = useState([]);
+  const [imagesPreview, setImagesPreview] = useState([]);
+  const [pictures, setPictures] = useState([])
   const [termsAndConditions, setTermsAndConditions] = useState(false);
   const [propertyCreated, setPropertyCreated] = useState(false);
   const [formOk, setFormOk] = useState(false);
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
 
+  const user = useSelector(state => state.user)
+  const userId = localStorage.getItem('id')
+
+  useEffect(() => {
+    dispatch(getUserById(userId))
+  }, [])
+
+  useEffect(() => {
+    if (!user.email || user.email === 0 || user.email === '') setMissingUserData(prevState => [...prevState, 'Email'])
+    if (!user.telephone || user.telephone === 0 || user.telephone === '') setMissingUserData(prevState => [...prevState, 'Teléfono'])
+    if (!user.dni || user.dni === 0 || user.dni === '') setMissingUserData(prevState => [...prevState, 'Dni'])
+  }, [user])
+
+  useEffect(() => {
+    setMissingUserData(new Set(missingUserData))
+  }, [])
+
+  //upload images:
+  const onDrop = useCallback((acceptedFiles, rejectFiles) => {
+    acceptedFiles.forEach(file => {
+      const reader = new FileReader()
+      reader.onload = () => {
+        setImagesPreview(previously => [...previously, reader.result])
+      }
+      reader.readAsDataURL(file)
+    })
+  }, [])
+
+  // const { getRootProps, getInputProps, isDragActive } = useDropzone({ 
+  //   onDrop, 
+  //   accept: 'image/jpg, image/jpeg, image/png' 
+  // })
+
+  // const handleUpload = () => {
+  //   axios.post(`${url}/uploadimages`, imagesPreview)
+  //   .then(resp => console.log(resp.data))
+  //   // setPictures(response.data.url)
+  //   .catch(err => console.log(err.message))
+  // }
+
+  // const deletePreview = (image) => {  
+  //   setImagesPreview(imagesPreview.filter(e => e !== image))
+  // }
+
+  //clean form
   const cleanForm = () => {
     setCity({ key: "", valid: null });
     setneighbourhood({ key: "", valid: null });
@@ -63,7 +118,7 @@ export default function FormCreateProp() {
     setParkingSlot({ key: "", valid: null });
     setConstructionDate({ key: "", valid: "true" });
     setRenovationDate({ key: "", valid: "true" });
-    setPictures([]);
+    setImagesPreview([]);
   };
 
   const handleOnSubmit = (e) => {
@@ -84,7 +139,7 @@ export default function FormCreateProp() {
         renovationDate: renovationDate.key,
         neighbourhood: neighbourhood.key.toLowerCase(),
         parkingSlot: parkingSlot.key,
-        pictures,
+        imagesPreview,
       })
     )
       .then(() => {
@@ -108,9 +163,9 @@ export default function FormCreateProp() {
       });
   };
 
-  //Obteniendo imágeness de Cloudinary:
+  //Obteniendo imágenes de Cloudinary:
   const getImagesResultsCloudinary = (images) => {
-    setPictures([images]);
+    setImagesPreview([images]);
   };
 
   //habilita botones siguiente de cards:
@@ -191,7 +246,7 @@ export default function FormCreateProp() {
       bathrooms.valid === "true" &&
       neighbourhood.valid === "true" &&
       parkingSlot.valid === "true" &&
-      // pictures.valid === 'true' &&
+      // imagesPreview.valid === 'true' &&
       termsAndConditions === true
     )
       setFormOk(true);
@@ -203,53 +258,78 @@ export default function FormCreateProp() {
       <form onSubmit={handleOnSubmit} id="form">
         <div className="form">
           <Title>PUBLICA TU INMUEBLE</Title>
-          {contador === 0 && (
-            <DivContainer className="create">
-              {/* <div className='subContainerCreate'> */}
-              <div className="subTitle">Cuéntanos sobre su ubicación:</div>
-              <div className="addressWrapper">
-                <Input
-                  className="addressCreateForm"
-                  name="Ciudad:"
-                  type="text"
-                  placeHolder="Ciudad"
-                  errorLeyend={regExps.city.errorLeyend}
-                  regExp={regExps.city.regExp}
-                  state={city}
-                  setState={setCity}
-                />
-                <Input
-                  className="addressCreateForm"
-                  name="Zona/Barrio:"
-                  type="text"
-                  placeHolder="Zona/Barrio"
-                  errorLeyend={regExps.neighbourhood.errorLeyend}
-                  regExp={regExps.neighbourhood.regExp}
-                  state={neighbourhood}
-                  setState={setneighbourhood}
-                />
-                <Input
-                  className="addressCreateForm"
-                  name="Dirección:"
-                  type="text"
-                  placeHolder="Dirección"
-                  errorLeyend={regExps.address.errorLeyend}
-                  regExp={regExps.address.regExp}
-                  state={address}
-                  setState={setAddress}
-                />
-              </div>
-              {/* </div> */}
-              <div className="buttonsNextBack">
-                <Button
-                  disabled={errorsFirstCard}
-                  onClick={() => setContador(1)}
-                >
-  |                Siguiente
-                </Button>
-              </div>
-            </DivContainer>
-          )}
+          {
+            missingUserData.length > 0
+              ? <DivColumn>
+                <Title color='#1f373d' fontSize='20px' margin='120px auto'>
+                  Los siguientes datos no están registrados en tu cuenta:
+                  <DivColumn gap='20px' padding='20px 0' color='#fff'>
+                    <li>{missingUserData[0]} </li>
+                    <li>{missingUserData[1]}</li>
+                  </DivColumn>
+                </Title>
+                <div>
+                  Es importante para que te contacten y sepamos quién eres, que registres correctamente dicha información.
+                </div>
+                <div>
+                  Será breve:
+                </div>
+                <div>
+                  <Button>
+                    De acuerdo: Ir
+                  </Button>
+                  <Button>
+                    Talvés mas tarde
+                  </Button>
+                </div>
+              </DivColumn>
+              : contador === 0 && (
+                <DivContainer className="create">
+                  {/* <div className='subContainerCreate'> */}
+                  <div className="subTitle">Cuéntanos sobre su ubicación:</div>
+                  <div className="addressWrapper">
+                    <Input
+                      className="addressCreateForm"
+                      name="Ciudad:"
+                      type="text"
+                      placeHolder="Ciudad"
+                      errorLeyend={regExps.city.errorLeyend}
+                      regExp={regExps.city.regExp}
+                      state={city}
+                      setState={setCity}
+                    />
+                    <Input
+                      className="addressCreateForm"
+                      name="Zona/Barrio:"
+                      type="text"
+                      placeHolder="Zona/Barrio"
+                      errorLeyend={regExps.neighbourhood.errorLeyend}
+                      regExp={regExps.neighbourhood.regExp}
+                      state={neighbourhood}
+                      setState={setneighbourhood}
+                    />
+                    <Input
+                      className="addressCreateForm"
+                      name="Dirección:"
+                      type="text"
+                      placeHolder="Dirección"
+                      errorLeyend={regExps.address.errorLeyend}
+                      regExp={regExps.address.regExp}
+                      state={address}
+                      setState={setAddress}
+                    />
+                  </div>
+                  {/* </div> */}
+                  <div className="buttonsNextBack">
+                    <Button
+                      disabled={errorsFirstCard}
+                      onClick={() => setContador(1)}
+                    >
+                      |                Siguiente
+                    </Button>
+                  </div>
+                </DivContainer>
+              )}
 
           {contador === 1 && (
             <DivContainer className="create">
@@ -268,7 +348,7 @@ export default function FormCreateProp() {
                     { description: "Vender mi propiedad", value: "sell" },
                     { description: "Rentar mi propiedad", value: "rent" },
                   ]}
-                  // // onChange={handleChange}
+                // // onChange={handleChange}
                 />
                 <Input
                   className="operationCreateForm"
@@ -418,7 +498,22 @@ export default function FormCreateProp() {
                     Sube imágenes de tu propiedad, y listo!
                   </div>
                   <Cloudinary getImages={getImagesResultsCloudinary} />
-                  <input type='file' />
+                  {/* <div className="dropzone" {...getRootProps()}>
+                    <input {...getInputProps()} />
+                    {isDragActive ? 'Arrastre activo' : 'Puedes arrastrar tus fotografías aquí o da click en el recuadro.'}
+                  </div>
+                  {imagesPreview.length > 0 && <div>
+                      { 
+                        imagesPreview.map((image, index) => 
+                          <DivRow key={index}>
+                            <img  className="selectedImages" src={image}/>
+                            <img  className="removeDropBoxImages" src={remove} alt="remove" onClick={()=> deletePreview(image)}/>
+                          </DivRow>
+                      )}
+                      {
+                        imagesPreview.length > 0 && <button onClick={handleUpload}>Upload images</button>
+                      }
+                  </div>} */}
                 </div>
                 <div className="buttonsNextBack">
                   <Button onClick={() => setContador(2)}>Anterior</Button>

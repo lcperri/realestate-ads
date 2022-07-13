@@ -32,7 +32,8 @@ import {
   SWITCH_BETWEEN_FORMS,
   GET_CALENDAR,
   PAY_LINK,
-  CART
+  CART,
+  UPLOAD_IMAGES
 } from "./actionTypes";
 
 export function login(data) {
@@ -374,3 +375,13 @@ export function deleteLink (data) {
     })
   }
 }
+
+// export function uploadImages (data) {
+//   return async function (dispatch) {
+//     const imagesUrl = await axios.post(`${url}/uploadimages`, data);
+//     return dispatch({
+//       type: UPLOAD_IMAGES,
+//       payload: imagesUrl,
+//     });
+//   };
+// }

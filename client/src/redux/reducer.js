@@ -17,6 +17,7 @@ import {
   CONTACT,
   PAY_LINK,
   CART,
+  UPLOAD_IMAGES
 } from "./actionTypes";
 
 const initialState = {
