@@ -35,7 +35,8 @@ import {
   PAY_LINK,
   CART,
   ONLY_CART,
-  PROPERTY_COMMENTS
+  PROPERTY_COMMENTS,
+  DENUNCIA
 } from "./actionTypes";
 
 export function login(data) {
@@ -436,7 +437,7 @@ export function deleteLink (data) {
 
 export function addComments (data, idProperty, headers) {
   return async function (dispatch) {
-    const comments = await axios.get(`${url}/comments/${idProperty}`, data, headers);
+    const comments = await axios.post(`${url}/comment/${idProperty}`, data, headers);
     return dispatch({
       type: PROPERTY_COMMENTS,
       payload: comments.data
@@ -444,6 +445,15 @@ export function addComments (data, idProperty, headers) {
   };
 }
 
+export function addDenuncia (data, idProperty, headers) {
+  return async function (dispatch){
+    const resp = await axios.post(`${url}/formDenuncia/${idProperty}`, data, headers);
+    return dispatch({
+      type: DENUNCIA,
+      payload: resp.data
+    });
+  }
+}
 
 // export function uploadImages (data) {
 //   return async function (dispatch) {

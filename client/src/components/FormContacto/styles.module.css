@@ -1,4 +1,6 @@
-
+.contactForm{
+    width: 50%;
+}
 
 .input {
     margin: 4px 0;
@@ -37,3 +39,4 @@
     width: 3rem;
     height: 3rem;
 }
+

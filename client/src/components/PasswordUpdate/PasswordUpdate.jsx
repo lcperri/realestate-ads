@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserById, updateUserById } from "../../redux/actions";
-import LoginController from "../../localStorage/login"
+import LoginController from "../../localStorage/login";
 
 import styles from "./PasswordUpdate.module.css";
 import { validate } from "./validate";
-
-
-
+import swal from "sweetalert";
 
 const PasswordUpdate = () => {
   const dispatch = useDispatch();
@@ -17,32 +15,20 @@ const PasswordUpdate = () => {
   const [errors, setErrors] = useState({});
   const [passInicial, setpassInicial] = useState("");
 
-  const headers = LoginController()
+  const headers = LoginController();
   const userId = localStorage.getItem("id");
 
-  console.log(passInicial,"password inicial ******")
-
-  
-
-
+  console.log(passInicial, "password inicial ******");
 
   useEffect(() => {
-    
-      dispatch(getUserById(userId));
-    
+    dispatch(getUserById(userId));
   }, [userId]);
 
-
-
-
-
   useEffect(() => {
-    if(userData){
+    if (userData) {
       setpassInicial(userData.password);
-      console.log(passInicial," dentro del use efect password inicial ******")
-     ;
+      console.log(passInicial, " dentro del use efect password inicial ******");
     }
-
   }, [userData]);
 
   function handleChange(e) {
@@ -60,21 +46,25 @@ const PasswordUpdate = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    
-    dispatch(updateUserById(userId,{ password: input.newpassword}, headers));  
-    
-    
+
+    dispatch(updateUserById(userId, { password: input.newpassword }, headers));
+
     setInput({
-      
-        
-        actualpassword: "",
-        newpassword: "",
-        repeatnewpassword: "",
-      });
-      
-      alert('Email actualizado.')
+      actualpassword: "",
+      newpassword: "",
+      repeatnewpassword: "",
+    });
+
+    // alert('Password actualizada con exito.')
+    swal({
+      title: "Cambios en password",
+      text: "Password actualizada con exito.",
+      icon: "success",
+      button: "Aceptar",
+      // timer: "2000",
+    }).then(function () {
       dispatch(getUserById(userId));
-      
+    });
   }
 
   return (

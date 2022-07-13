@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux/es/exports";
 import { addComments, getPropertyById, getUserById, propertyPagination } from '../../redux/actions';
@@ -7,9 +7,10 @@ import Button from '../../styledComponents/Button';
 import { Input } from '../../styledComponents/StyledFormElements';
 import { useParams } from 'react-router-dom';
 import LoginController from '../../localStorage/login' 
+import capitalize from '../../functions/capitalize';
+import styles from './styles.module.css'
 
 const PostComments = () => {
-
     const headers = LoginController()
     const userId = localStorage.getItem('id')
     const user = useSelector(state => state.user)
@@ -17,11 +18,10 @@ const PostComments = () => {
     const [input, setInput] = useState({
         sender: '',
         content: '',
-        stars: null
+        stars: 0
     })
-    const { idProperty } = useParams()
+    const { id } = useParams()
     const dispatch = useDispatch()
-
 
     useEffect(() => {
         dispatch(getUserById(userId))
@@ -30,7 +30,7 @@ const PostComments = () => {
     useEffect(() => {
         setInput({
             ...input,
-            sender: `${user.name} ${user.lastname}`
+            sender: `${user.name}`
         })
     }, [user])
 
@@ -38,20 +38,20 @@ const PostComments = () => {
     const handleOnChange = (e) => {
         setInput({
             ...input,
-            [e.target.value]: e.target.value
+            [e.target.name]: e.target.value
         })
     }
 
     const sendComments = () => {
-        dispatch(addComments(input, idProperty, headers))
+        dispatch(addComments(input, id, headers))
     }
 
     // dispatch(addComents(input, idProperty))  
     return (
-        <DivColumn gap='14px'>
-            <h2> Valoramos tu opinión:</h2>
-            <input name='stars' type='number' value={input.stars} />
-            <textarea name='content' value={Input.comments} onChange={handleOnChange} />
+        <DivColumn gap='14px' alignIt='flex-start'>
+            <h2>{capitalize(user.name)}, valoramos tu opinión:</h2>
+            Puntuación: <input className={styles.input} name='stars' value={input.stars} onChange={handleOnChange}/>
+            Comentario: <textarea className={styles.textarea} name='content' value={input.content} onChange={handleOnChange}/>
             <Button onClick={() => sendComments()}>Enviar</Button>
         </DivColumn>
     )

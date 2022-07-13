@@ -20,3 +20,4 @@ export const CART = "CART";
 export const ONLY_CART = "ONLY_CART";
 export const PROPERTY_COMMENTS = "PROPERTY_COMMENTS";
 export const NAV = "NAV";
+export const DENUNCIA = "DENUNCIA";
