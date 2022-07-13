@@ -60,16 +60,18 @@ export default function FormCreateProp() {
   const [formOk, setFormOk] = useState(false);
 
   const user = useSelector(state => state.user)
-  const userId = localStorage.getItem('id')
-
+  
   useEffect(() => {
+    const userId = localStorage.getItem('id')
     dispatch(getUserById(userId))
   }, [])
 
   useEffect(() => {
-    if (!user.email || user.email === 0 || user.email === '') setMissingUserData(prevState => [...prevState, 'Email'])
-    if (!user.telephone || user.telephone === 0 || user.telephone === '') setMissingUserData(prevState => [...prevState, 'Teléfono'])
-    if (!user.dni || user.dni === 0 || user.dni === '') setMissingUserData(prevState => [...prevState, 'Dni'])
+    if (user) {
+      if (!user.email || user.email === 0 || user.email === '') setMissingUserData([...missingUserData, 'Email'])
+      if (!user.telephone || user.telephone === 0 || user.telephone === '') setMissingUserData([...missingUserData, 'Teléfono'])
+      if (!user.dni || user.dni === 0 || user.dni === '') setMissingUserData([...missingUserData, 'Dni'])
+    }
   }, [user])
 
   useEffect(() => {
