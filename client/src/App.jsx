@@ -68,7 +68,7 @@ const App = () => {
         {/* <Route path='*' element={<Home/>} />  */}
         <Route path="/contactCard" element={<ContactCard />} />
         <Route path="/denuncias/:id" element={<CardDenuncia />} />
-        <Route path="/formDenuncia/:id" element={<FormDenuncia />} />
+        <Route path="/flag/:id" element={<FormDenuncia />} />
       </Routes>
     </>
   );

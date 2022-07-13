@@ -18,7 +18,8 @@ import {
   PAY_LINK,
   CART,
   ONLY_CART,
-  PROPERTY_COMMENTS
+  PROPERTY_COMMENTS,
+  DENUNCIA
 } from "./actionTypes";
 
 const initialState = {
@@ -42,7 +43,8 @@ const initialState = {
   calendar: [],
   authroized: false,
   link: '',
-  cart: []
+  cart: [],
+  flag:{}
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -181,6 +183,11 @@ const reducer = (state = initialState, { type, payload }) => {
         ...state,
         propertyComments: payload
       };
+      case DENUNCIA:
+        return{
+          ...state,
+          flag: payload
+        }
     default:
       return {
         ...state,
