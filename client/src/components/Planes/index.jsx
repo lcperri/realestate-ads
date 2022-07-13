@@ -20,7 +20,8 @@ export default function Planes() {
   const dispatch = useDispatch();
   const link = useSelector((state) => state.link);
   const user = useSelector((state) => state.user);
-
+  
+  const updateSubscription = (e) =>{}
   useEffect(() => {
     dispatch(GetUserById(id));
   }, []);
