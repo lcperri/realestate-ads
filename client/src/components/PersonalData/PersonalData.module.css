@@ -9,13 +9,13 @@
 }
 
 .container {
-  border-radius: 10px;
+  border-radius: 20px;
   /* position: fixed; */
   /* top: 98px; */
   /* left: 98px; */
   width: 500px;
 
-  background-color: #f1f1f1;
+  background-color: #fff;
   /* height: 500px; */
   height: auto;
   display: flex;

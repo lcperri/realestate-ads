@@ -416,3 +416,13 @@ export function deleteLink (data) {
     })
   }
 }
+
+// export function uploadImages (data) {
+//   return async function (dispatch) {
+//     const imagesUrl = await axios.post(`${url}/uploadimages`, data);
+//     return dispatch({
+//       type: UPLOAD_IMAGES,
+//       payload: imagesUrl,
+//     });
+//   };
+// }
