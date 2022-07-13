@@ -4,6 +4,7 @@ import LoginController from '../../localStorage/login'
 import { addToUserFavourites, updateCurrentPage } from '../../redux/actions'
 import toast, { Toaster } from 'react-hot-toast';
 import { Heart } from '../../dumb/Icons/Heart'
+import styled from "styled-components"
 
 const SetToFavortie = ({ idProperty, user, top, right }) => {
     const dispatch = useDispatch()
