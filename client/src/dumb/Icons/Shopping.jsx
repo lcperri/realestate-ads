@@ -26,9 +26,6 @@ const Svg = styled.svg`
     top: ${(props) => props.top};
     left: ${(props) => props.left};
     right: ${(props) => props.right};
-    /* background-color: black; */
-    /* border-radius: 100px; */
-    /* border: 2px solid black; */
     cursor: pointer;
     fill: ${(props) => props.fill};
     height: ${(props) => props.height};
