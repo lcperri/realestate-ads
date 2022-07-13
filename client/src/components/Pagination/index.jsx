@@ -16,7 +16,7 @@ export default function Pagination () {
    }, [pages]);
 
    useEffect(() => {
-      setPages([ 1, 1, 10])
+      setPages([ 1, 1, 12])
    }, [properties])
 
    const indexes = [];
@@ -25,10 +25,10 @@ export default function Pagination () {
    
    const pageManager = index => {
       let firstProperty = 1;
-      let lastProperty = 10;
+      let lastProperty = 12;
       if (index > 1) {
-         firstProperty = (10 * (index-1)) + 1;
-         lastProperty = 10 * index;
+         firstProperty = (12 * (index-1)) + 1;
+         lastProperty = 12 * index;
       }
       setPages([index, firstProperty, lastProperty]);
    };
