@@ -5,15 +5,17 @@ import Logo from "../../dumb/Icons/Logo";
 import { useSearchParams } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { getPayment } from './../../redux/actions';
+import LoginController from "../../localStorage/login";
 
 export default function Purchase(){
     const dispatch = useDispatch();
     const [searchParams, setSearchParams] = useSearchParams();
     const id = searchParams.get("preference_id");
     const status = searchParams.get("collection_status");
+    const headers = LoginController();
 
     if (status === "approved" && id) {
-        dispatch(getPayment(id))
+        dispatch(getPayment(id, headers));
     }
     
     return(
