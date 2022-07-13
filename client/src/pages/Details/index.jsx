@@ -216,6 +216,11 @@ const Details = () => {
           )
         }
         <PostComments/>
+        
+        <div>
+          <Button className={styles.btnDenunciar}>Denunciar Propiedad</Button>
+        </div>
+
       </DivContainer>
       <div className={styles.btnContainer}>
         <Button onClick={() => navigate("/home", { replace: true })}>
