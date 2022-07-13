@@ -25,6 +25,7 @@ export default function CardMisPropPremiumVip({
   pictures,
   status,
 }) {
+  const range = localStorage.getItem("range");
   return (
     <div className={styles.contenedorMP}>
       <div className={styles.divFotos}>
@@ -50,7 +51,7 @@ export default function CardMisPropPremiumVip({
             <BathIcon /> {bathrooms} baños
           </h5>
         </div>
-        {(status === "available" || status === "invisible") && (
+        {(status === "available" || status === "invisible") && (range === "premium") && (
           <AddToCart
             user={user}
             idProperty={idProperty}
