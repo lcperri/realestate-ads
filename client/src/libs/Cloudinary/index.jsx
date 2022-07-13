@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
-import DivContainer from '../../styledComponents/DivContainer'
-import { Input } from '../../styledComponents/StyledFormElements'
 import styles from './styles.module.css'
+import { DivRow } from '../../styledComponents/DivRow'
+import noImage from '../../assets/noimage.png'
+import remove from '../../assets/remove.png'
 
 const Cloudinary = ({ getImages }) => {
     const [image, setImage] = useState("")
     const [loading, setloading] = useState(false)    
+    const data = new FormData()
 
     const uploadImage =  async (files) => {
-        const data = new FormData()
         data.append('file', files[0])
         data.append("upload_preset", "o7plh3sw")
         setloading(true)
@@ -21,27 +22,37 @@ const Cloudinary = ({ getImages }) => {
         )
         const file = await res.json()
         setImage(file.secure_url)
-        getImages(file.secure_url)
+        getImages(image)
         setloading(false)
+    }
+
+    const removePicture = () => {
+        setImage('')
+        data.delete('file')
+        data.delete("upload_preset")
+        data.delete("o7plh3sw")
     }
 
     return (
         <div className={styles.wrapper}>
-            {/* <CloudinaryContext cloudName="real-estate-ads">
-                <div>
-                    <Image publicId="sample" width="50" />
-                </div>
-                <Image publicId="sample" width="0.5" />
-            </CloudinaryContext> */}
                 <input
                     type='file'    
                     name='file'
                     placeholder='Sube tu imagen aquí'
                     onChange={e => uploadImage(e.target.files)}
-                >
-                </input>
+                />
                 
-                {image && <img src={image} placeholder='upload preview' />}
+                <DivRow>
+                    { loading 
+                        ? <DivRow padding='30px 10px 10px 10px'><b>Loading ...</b></DivRow>
+                        : <DivRow>
+                            <img src={image || noImage} className={styles.imgPreview} placeholder='upload preview' />
+                            { image && <img src={remove} className={styles.removeBtn} onClick={() => removePicture()} />}
+                          </DivRow>
+                    }
+                    
+                </DivRow>
+
         </div>
     )
 }
