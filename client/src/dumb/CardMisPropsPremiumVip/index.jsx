@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
 import styles from "./CardMisPropsPV.module.css";
 import StyledText from "../../styledComponents/StyledText";
 //import DivContainer from '../../styledComponents/'
@@ -9,9 +8,9 @@ import AreaIcon from "../Icons/Area";
 import Button from "../../styledComponents/Button";
 import { StyledLink } from "../../styledComponents/StyledLink";
 import capitalize from "./../../functions/capitalize";
-import Shopping from "../Icons/Shopping";
 import AddToCart from "../../components/AddToCart";
-import { getUserById } from "../../redux/actions";
+import house from "../../assets/house.png";
+import apartment from "../../assets/apartment.png";
 
 export default function CardMisPropPremiumVip({
   user,
@@ -29,7 +28,12 @@ export default function CardMisPropPremiumVip({
   return (
     <div className={styles.contenedorMP}>
       <div className={styles.divFotos}>
-        <img src={pictures} alt={"not found"} className={styles.foto} />
+      <img className={styles.foto}
+          src={
+            pictures ||
+            (type.toLowerCase().includes("casa") ? house : apartment)
+          }
+        />
       </div>
       <div className={styles.divCaracteristicas}>
         <div>
