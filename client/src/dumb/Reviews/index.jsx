@@ -11,7 +11,7 @@ const Reviews = ({ sender, content, stars }) => {
   return (
     <DivColumn alignIt='flex-start' gap='14px' bgColor='#345' color="#fff" bRadius="20px" padding='20px' border='1px solid #fb6d5d'>
       <label><b>{capitalize(sender)}</b></label>
-      <label>Puntuacion: {stars}</label>
+      <label>Puntuación: {stars}</label>
       <div>{content}</div>
     </DivColumn>
   )

@@ -104,7 +104,7 @@ const Details = () => {
     setClickedImg(newItem);
     setCurrentIndex(newIndex);
   };
-  
+
   const handleDenuncia = () => {
     Swal(navigate(`/flag/${id}`));
   };
@@ -116,13 +116,13 @@ const Details = () => {
         <GalleryDetailsContainer>
           {property.pictures && property.pictures.length > 0
             ? property.pictures.map((e, index) => (
-                <GalleryDetails key={e}>
-                  <img
-                    src={e === '' ? property.type.toLowerCase().includes('casa') ? house : apartment : e}
-                    onClick={() => handleClick(e, index)}
-                  />
-                </GalleryDetails>
-              ))
+              <GalleryDetails key={e}>
+                <img
+                  src={e === '' ? property.type.toLowerCase().includes('casa') ? house : apartment : e}
+                  onClick={() => handleClick(e, index)}
+                />
+              </GalleryDetails>
+            ))
             : <img src={property.type === 'Casa' ? house : apartment} />
           }
         </GalleryDetailsContainer>
@@ -189,44 +189,48 @@ const Details = () => {
             </div>
           </div>
           <div className={styles.contact_subWrapper}>
-            { !userId
+            {!userId
               ? <div>
-                  <h4>
-                    Te gusta esta propiedad?
-                    No pierdas la oportunidad de {property.operation === 'rent' ? 'alquilarla.' : 'adquirirla.'} <br />
-                    Inicia sesión o regístrate gratis para comunicarte con el propietario.
-                  </h4>
-                  <DivRow padding='10px 10px 10px 10px' justCont='center'>
-                    <StyledLink to='/sesion' url={id}>
-                      <Button>
-                        Iniciar sesión
-                      </Button>
-                    </StyledLink>
-                    <StyledLink color='#3e4b56' to='/registro' >
-                      registrarse
-                    </StyledLink>
-                  </DivRow>
-                </div>
+                <h4>
+                  Te gusta esta propiedad?
+                  No pierdas la oportunidad de {property.operation === 'rent' ? 'alquilarla.' : 'adquirirla.'} <br />
+                  Inicia sesión o regístrate gratis para comunicarte con el propietario.
+                </h4>
+                <DivRow padding='10px 10px 10px 10px' justCont='center'>
+                  <StyledLink to='/sesion' url={id}>
+                    <Button>
+                      Iniciar sesión
+                    </Button>
+                  </StyledLink>
+                  <StyledLink color='#3e4b56' to='/registro' >
+                    registrarse
+                  </StyledLink>
+                </DivRow>
+              </div>
               :
-                form === false || form === undefined 
-                ? <FormContacto /> 
+              form === false || form === undefined
+                ? <FormContacto />
                 : form === true && <Calendar operation={property?.operation} />
             }
           </div>
         </div>
         <h1>Ubicación:</h1>
         <Map address={coordenate} />
-        { property.comments?.length && <h1>Opiniones:</h1> }
+        <h1>Opiniones:</h1>
         {
-          property.comments?.map(e => 
-            <Reviews key={e.id} {...e} />
-          )
+          property.comments?.length > 0
+            ? property.comments.map(e =>
+                <Reviews key={e.id} {...e} />
+              )
+            : <h3>
+                Ésta propiedad aún no ha recibido valoraciones. ¡Sé el primero en aportar!
+              </h3>
         }
         <DivColumn padding="30px 0 0 0" justCont='flex-start'>
-          <PostComments/>
+          <PostComments />
         </DivColumn>
-        <div> 
-            <Button className={styles.btnDenunciar} onClick={handleDenuncia}>Denunciar Publicación</Button>
+        <div>
+          <Button className={styles.btnDenunciar} onClick={handleDenuncia}>Denunciar Publicación</Button>
         </div>
       </DivContainer>
       <div className={styles.btnContainer}>

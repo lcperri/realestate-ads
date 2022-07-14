@@ -43,7 +43,13 @@ const PostComments = () => {
     }
 
     const sendComments = () => {
-        dispatch(addComments(input, id, headers))
+        dispatch(addComments(input, id, headers));
+        window.location.reload()
+        setInput({
+            sender: '',
+            content: '',
+            stars: 0
+        });
     }
 
     // dispatch(addComents(input, idProperty))  
