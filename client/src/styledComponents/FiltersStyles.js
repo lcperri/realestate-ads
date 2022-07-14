@@ -3,9 +3,9 @@ import styled from "styled-components";
 export const Container = styled.div`
   border-radius: 10px;
   position: fixed;
-  top: 98px;
+  top: 125px;
   width: 240px;
-  background-color: #f1f1f1;
+  background-color: rgb(243, 247, 248);
   height: 832px;
 `;
 

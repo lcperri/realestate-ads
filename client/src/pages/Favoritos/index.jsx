@@ -7,6 +7,7 @@ import CardsContainer from "../../styledComponents/CardsContainer";
 import DivContainer from "../../styledComponents/DivContainer";
 
 export default function Favoritos(){
+
   const dispatch = useDispatch();
   const id = localStorage.getItem('id');
   
@@ -14,17 +15,13 @@ export default function Favoritos(){
     return () => dispatch(clear());
   });
 
-  return(      
+  return (      
     <div >
       <div>
         <Filter />
       </div>
-
-      <DivContainer home={true} className="home">
-        {/* <Loader /> */}
-        <CardsContainer>
+      <DivContainer className="home">
           <Cards favourites={id} />
-        </CardsContainer>      
       </DivContainer>
     </div>
   )
