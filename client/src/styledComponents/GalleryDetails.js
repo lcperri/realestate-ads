@@ -2,10 +2,10 @@ import styled from 'styled-components'
 
 const GalleryDetails = styled.span`
     cursor: pointer;
-    transition: all 350ms ease;
+    /* transition: all 350ms ease; */
     img {
         border-radius: 10px;
-        /* position: relative; */
+        position: relative;
         width: 100%;
     }
 

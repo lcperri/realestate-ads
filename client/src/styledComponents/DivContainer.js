@@ -73,7 +73,7 @@ const DivContainer = styled.div`
     margin: 40px auto 15px auto;
     padding: 30px 40px 32px 40px;
     background-color: #fff;
-    width: 1050px;
+    width: 1150px;
   }
 
   &.login {

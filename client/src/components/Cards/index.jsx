@@ -59,47 +59,47 @@ const Cards = ({ id, favourites, cart }) => {
   }, [filter, updateCurrentPage]);
 
   return (
-    <DivColumn gap='20px'>
-      <CardsContainer margin='140px auto 40px auto'>
+    <DivColumn gap="20px">
+      <CardsContainer margin="140px auto 40px auto">
         {id
           ? properties &&
-          properties
-            .slice(pages[1] - 1, pages[2])
-            .map((e) => (
-              <CardMisPropsPremiumVip
-                user={user}
-                key={e.id}
-                idProperty={e._id}
-                type={e.type}
-                address={e.address}
-                price={e.price}
-                area={e.area}
-                rooms={e.rooms}
-                bathrooms={e.bathrooms}
-                pictures={e.pictures[0]}
-                status={e.status}
-              />
-            ))
+            properties
+              .slice(pages[1] - 1, pages[2])
+              .map((e) => (
+                <CardMisPropsPremiumVip
+                  user={user}
+                  key={e.id}
+                  idProperty={e._id}
+                  type={e.type}
+                  address={e.address}
+                  price={e.price}
+                  area={e.area}
+                  rooms={e.rooms}
+                  bathrooms={e.bathrooms}
+                  pictures={e.pictures[0]}
+                  status={e.status}
+                />
+              ))
           : favourites
-            ? properties &&
+          ? properties &&
             properties
               .slice(pages[1] - 1, pages[2])
               .map((e) => (
                 <Favorito key={e.id} userId={user._id} user={user} {...e} />
               ))
-            : cart
-              ? properties &&
-              properties
-                .slice(pages[1] - 1, pages[2])
-                .map((e) => <CardCart key={e.id} user={user} {...e} />)
-              : properties &&
-              properties.slice(pages[1] - 1, pages[2]).map((e) => (
-                <StyledCard key={e._id}>
-                  <Card key={e.id} user={user} {...e} />
-                </StyledCard>
-              ))}
+          : cart
+          ? properties &&
+            properties
+              .slice(pages[1] - 1, pages[2])
+              .map((e) => <CardCart key={e.id} user={user} {...e} />)
+          : properties &&
+            properties.slice(pages[1] - 1, pages[2]).map((e) => (
+              <StyledCard key={e._id}>
+                <Card key={e.id} user={user} {...e} />
+              </StyledCard>
+            ))}
       </CardsContainer>
-      <Pagination/>
+      <Pagination />
     </DivColumn>
   );
 };

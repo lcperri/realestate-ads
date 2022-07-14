@@ -29,7 +29,7 @@ export default function FormDenuncia (){
             });
         }else{
             dispatch(addDenuncia({ reason }, id));
-            navigate(`/home`);
+            navigate(-1, { replace: true});
         }        
 
     }

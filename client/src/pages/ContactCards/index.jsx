@@ -42,10 +42,6 @@ export default function ContactCards() {
     dispatch(getownersphone(id));
   }, [id]);
 
-  useEffect(() => {
-    console.log(form);
-  }, [form]);
-
   return (
     <>
       <DivContainer className="calendaris">
