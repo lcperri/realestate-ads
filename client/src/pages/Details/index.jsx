@@ -33,7 +33,6 @@ import Reviews from "../../dumb/Reviews";
 import PostComments from "../../components/PostComments";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
-import FormDenuncia from "../../components/FormDenuncia";
 
 const Details = () => {
   const navigate = useNavigate();
