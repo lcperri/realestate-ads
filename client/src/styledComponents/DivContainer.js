@@ -100,19 +100,10 @@ const DivContainer = styled.div`
   }
 
   &.home {
-    /* E52F50 */
-    /* background: #BA5370; 
-    background: -webkit-linear-gradient(to right, #FF416C 0%, #ff765e 100%);
-    background: linear-gradient(0deg, #FF416C 0%, #ff765e 100%); */
-    margin-left: 350px;
+    margin: -10px 0 60px 350px;
   }
 
   &.calendaris {
-    /* background: #fff;  */
-    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 18px; */
-    /* background: #BA5370; 
-    background: -webkit-linear-gradient(to right, #FF416C 0%, #ff765e 100%); 
-    background: linear-gradient(0deg, #FF416C 0%, #ff765e 100%); */
     margin-left: 240px;
   }
 

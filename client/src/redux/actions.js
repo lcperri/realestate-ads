@@ -452,6 +452,16 @@ export function addDenuncia (data, idProperty) {
   }
 }
 
+export function getReports (id, headers) {
+  return async function (dispatch) {
+    const reports = await axios.get(`${url}/flag/${id}`, headers);
+    return dispatch({
+      type: DENUNCIA,
+      payload: reports.data
+    });
+  };
+}
+
 // export function uploadImages (data) {
 //   return async function (dispatch) {
 //     const imagesUrl = await axios.post(`${url}/uploadimages`, data);

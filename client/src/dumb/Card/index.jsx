@@ -1,18 +1,14 @@
-import React, { useEffect, useState } from "react";
 import StyledText from "../../styledComponents/StyledText";
 import BathIcon from "../Icons/Bath";
 import RoomIcon from "../Icons/Room";
 import AreaIcon from "../Icons/Area";
 import { StyledLinkCard } from "../../styledComponents/StyledLink";
 import { DivRow } from "../../styledComponents/DivRow";
-import Button from "../../styledComponents/Button";
-import { useDispatch, useSelector } from "react-redux";
 import house from "../../assets/house.png";
 import apartment from "../../assets/apartment.png";
 import SetToFavortie from "../../components/SetToFavorite";
 import capitalize from "../../functions/capitalize";
-import { deleteProp } from '../../redux/actions';
-import LoginController from "../../localStorage/login";
+import Blockquote from './../../styledComponents/Blockquote';
 
 const Card = ({
   _id,
@@ -76,11 +72,11 @@ const Card = ({
         </DivRow>
       </StyledLinkCard>
       <div>
-        <blockquote>
+        <Blockquote>
           <StyledText status={status} className="statusCard">
             {status === "available" ? "Disponible" : "Destacada"}
           </StyledText>
-        </blockquote>
+        </Blockquote>
       </div>
       {user._id && (
         <SetToFavortie idProperty={_id} user={user} top="252px" right="2px" />
