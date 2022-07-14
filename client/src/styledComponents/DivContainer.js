@@ -13,6 +13,8 @@ const DivContainer = styled.div`
     'width: 75%;'
   }
 
+ 
+
   &.calendarPost {
     background-color: #fff;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 18px;

@@ -98,8 +98,8 @@ const Cards = ({ id, favourites, cart }) => {
                     <Card key={e.id} user={user} {...e} />
                   </StyledCard>
                 ))}
-          </CardsContainer>
           <Pagination></Pagination>
+          </CardsContainer>
         </>
     </>
   );
