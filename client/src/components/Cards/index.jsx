@@ -93,15 +93,14 @@ const Cards = ({ id, favourites, cart }) => {
                 .slice(pages[1] - 1, pages[2])
                 .map((e) => <CardCart key={e.id} user={user} {...e} />)
               : properties &&
-                properties.slice(pages[1] - 1, pages[2]).map((e) => (
-                  <StyledCard key={e._id}>
-                    <Card key={e.id} user={user} {...e} />
-                  </StyledCard>
-                ))}
-          <Pagination></Pagination>
-          </CardsContainer>
-        </>
-    </>
+              properties.slice(pages[1] - 1, pages[2]).map((e) => (
+                <StyledCard key={e._id}>
+                  <Card key={e.id} user={user} {...e} />
+                </StyledCard>
+              ))}
+      <Pagination/>
+      </CardsContainer>
+    </DivColumn>
   );
 };
 
