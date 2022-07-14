@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 const CardsContainer = styled.div`
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 18px;
     /* position: sticky; */
     display: flex;
     flex-direction: row;
@@ -14,6 +13,7 @@ const CardsContainer = styled.div`
     padding-top: 4px;
     
     &.denuncias {
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 18px;
       border-radius: 20px;
       background-color: #fff;
       /* margin: 140px auto 40px auto; */
