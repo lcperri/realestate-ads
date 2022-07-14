@@ -6,7 +6,7 @@ const CardsContainer = styled.div`
     flex-direction: row;
     flex-wrap: wrap;
     width: 100%;
-    background-color: none;
+    background-color: ${props => props.bgColor || 'none'};
     margin: ${props => props.margin};
     justify-content: center;
     gap: 25px;

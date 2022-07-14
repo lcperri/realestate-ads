@@ -10,6 +10,7 @@ import { DivColumn } from "../../styledComponents/DivColumn";
 import CardsContainer from "../../styledComponents/CardsContainer";
 import { deleteUser } from './../../redux/actions';
 import Button from './../../styledComponents/Button';
+import Swal from "sweetalert2";
 
 export default function Reports() {
   const dispatch = useDispatch();
@@ -27,7 +28,7 @@ export default function Reports() {
 
   return (
     <DivColumn >
-      <CardsContainer margin='140px auto 40px auto'>
+      <CardsContainer margin='140px auto 40px auto' bgColor="#fff">
       { flags && flags.map((report) => {
          return (
             <CardDenuncia
