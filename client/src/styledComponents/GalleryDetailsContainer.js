@@ -10,7 +10,7 @@ const GalleryDetailsContainer = styled.div`
     column-width: 33%;
     gap: 4px;
     /* width: 80%; */
-    overflow: hidden;
+    /* overflow: hidden; */
     /* margin: 0 auto; */
     /* border-radius: 20px; */
 

@@ -115,7 +115,7 @@ export default function FormCreateProp() {
         renovationDate: renovationDate.key,
         neighbourhood: neighbourhood.key.toLowerCase(),
         parkingSlot: parkingSlot.key,
-        imagesPreview,
+        pictures: imagesPreview,
       }, headers)
     )
       .then(() => {
@@ -141,24 +141,21 @@ export default function FormCreateProp() {
 
   //Obteniendo imágenes de Cloudinary:
   const getImagesResultsCloudinary = (images) => {
-    if (images !== null) {
-      setImagesPreview(prevState =>
-        [...prevState, images]
+    if (images !== null && images !== '') {
+      setImagesPreview([...imagesPreview, images]
       )
-    } else {
-      // console.log(images);
     }
   }
 
   const deleteImagePreview = (image) => {
-    setImagesPreview(imagesPreview.filter(e => e !==image))
+    setImagesPreview(imagesPreview.filter(e => e !== image))
   }
 
   useEffect(() => {
-    // console.log(imagesPreview);
+    console.log(imagesPreview);
   }, [imagesPreview])
 
-  //habilita botones siguiente de cards:
+  //habilita botones 'siguiente' de cards:
   useEffect(() => {
     //1ra card
     if (
