@@ -50,7 +50,20 @@ const PostComments = () => {
     return (
         <DivColumn gap='14px' alignIt='flex-start'>
             <h2>{capitalize(user.name)}, valoramos tu opinión:</h2>
-            Puntuación: <input className={styles.input} name='stars' value={input.stars} onChange={handleOnChange}/>
+            Puntuación: 
+            <select 
+              className={styles.puntuacion} 
+              type={'number'} 
+              name='stars' 
+              value={input.stars} 
+              onChange={handleOnChange}
+            >
+                <option value={1}>1</option>
+                <option value={2}>2</option>
+                <option value={3}>3</option>
+                <option value={4}>4</option>
+                <option value={5}>5</option>
+            </select>
             Comentario: <textarea className={styles.textarea} name='content' value={input.content} onChange={handleOnChange}/>
             <Button onClick={() => sendComments()}>Enviar</Button>
         </DivColumn>
