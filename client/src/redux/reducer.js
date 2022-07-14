@@ -45,7 +45,7 @@ const initialState = {
   authroized: false,
   link: '',
   cart: [],
-  flag:[]
+  flags: []
 };
 
 const reducer = (state = initialState, { type, payload }) => {
@@ -192,7 +192,7 @@ const reducer = (state = initialState, { type, payload }) => {
       case DENUNCIA:
         return{
           ...state,
-          flag: payload
+          flags: payload
         }
     default:
       return {
