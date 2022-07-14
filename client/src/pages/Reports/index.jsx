@@ -8,6 +8,8 @@ import LoginController from "../../localStorage/login";
 import CardDenuncia from './../../dumb/CardDenuncia/index';
 import { DivColumn } from "../../styledComponents/DivColumn";
 import CardsContainer from "../../styledComponents/CardsContainer";
+import { deleteUser } from './../../redux/actions';
+import Button from './../../styledComponents/Button';
 
 export default function Reports() {
   const dispatch = useDispatch();
@@ -18,6 +20,10 @@ export default function Reports() {
   useEffect(() => {
     dispatch(getReports(id, headers));
   }, []);
+
+  const handleElim = (e) => {
+    dispatch(deleteUser(id, headers));
+  };
 
   return (
     <DivColumn >
@@ -30,6 +36,7 @@ export default function Reports() {
          )
         })}
     </CardsContainer>
+    <Button onClick={(e) => {handleElim(e)}}>Eliminar usuario</Button>
     </DivColumn>
   );
 }
