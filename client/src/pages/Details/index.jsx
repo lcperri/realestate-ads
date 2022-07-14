@@ -114,15 +114,15 @@ const Details = () => {
       <DivContainer className="detail">
         <h1>Imágenes:</h1>
         <GalleryDetailsContainer>
-          {property.pictures?.length > 0
+          {property.pictures && property.pictures.length > 0
             ? property.pictures.map((e, index) => (
-              <GalleryDetails key={e}>
-                <img
-                  src={e === '' ? property.type.toLowerCase().includes('casa') ? house : apartment : e}
-                  onClick={() => handleClick(e, index)}
-                />
-              </GalleryDetails>
-            ))
+                <GalleryDetails key={e}>
+                  <img
+                    src={e === '' ? property.type.toLowerCase().includes('casa') ? house : apartment : e}
+                    onClick={() => handleClick(e, index)}
+                  />
+                </GalleryDetails>
+              ))
             : <img src={property.type === 'Casa' ? house : apartment} />
           }
         </GalleryDetailsContainer>
