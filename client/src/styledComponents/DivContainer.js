@@ -14,24 +14,31 @@ const DivContainer = styled.div`
   }
 
   &.calendarPost {
+    background-color: #fff;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 18px;
     padding: 0 35px;
+    margin: 0;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
+    justify-content: center;
+    align-items: flex-start;
     min-height: 550px;
-    width: 100%;
+    width: 85%;
+    gap: 14px;
   }
 
   &.contactForm {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 18px;
+    background-color: #fff;
     padding: 0 35px;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap; 
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
     min-height: 550px;
-    width: 100%;
+    width: 85%;
+
   }
   
   &.plansCard {
@@ -101,6 +108,8 @@ const DivContainer = styled.div`
   }
 
   &.calendaris {
+    /* background: #fff;  */
+    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 18px; */
     /* background: #BA5370; 
     background: -webkit-linear-gradient(to right, #FF416C 0%, #ff765e 100%); 
     background: linear-gradient(0deg, #FF416C 0%, #ff765e 100%); */

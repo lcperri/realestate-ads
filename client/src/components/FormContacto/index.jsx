@@ -101,7 +101,7 @@ export default function FormContacto() {
     }
 
     return (
-        <DivContainer className={styles.contactForm}>
+        <DivContainer className='contactForm'>
             <h1>Formulario de contacto</h1>
             <div className={styles.inputWrapper}>
                 <label> Email: <LabelRed><LabelRed>*</LabelRed></LabelRed></label>
