@@ -83,8 +83,9 @@ export default function UserCard({
         <Button className={styles.btns} onClick={handleElim}>
           Eliminar
         </Button>
-
+        {flags && flags?.length > 0 && (
         <Button onClick={handleDenuncia}>Ver denuncias</Button>
+        )}
       </div>
     </StyledCard>
   );
