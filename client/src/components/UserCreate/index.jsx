@@ -83,11 +83,11 @@ export default function UserCreate(){
             Swal.fire({
                 position: 'top-center',
                 icon: 'success',
-                title: 'Usuario/a creado/a exitosamente...ahora inici sesion',
+                title: '¡Bienvenido a la comunidad de Mikasa NUeva!',
                 showConfirmButton: false,
                 timer: 1500
             });
-            navigate('/sesion')
+            navigate('/home')
             cleanForm();
         })
         .catch(() => {
