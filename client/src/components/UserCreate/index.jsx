@@ -15,6 +15,7 @@ import { regExps } from "../../components/FormElements/regExpressions";
 import Swal from "sweetalert2";
 import {useNavigate } from "react-router-dom";
 import GoogleAuthenticator from "../../libs/GoogleAuthentication";
+import { login } from './../../redux/actions';
 
 //name,lastName,password,birthday,email,dni,telephone,range
 
@@ -78,17 +79,14 @@ export default function UserCreate(){
             email: email.key,
             password: password.key,
             range: 'free',
-        }))
-        .then(() => {
+        })).then(() => {
             Swal.fire({
                 position: 'top-center',
                 icon: 'success',
-                title: '¡Bienvenido! Ahora debes inicia sesión',
-                showConfirmButton: false,
-                timer: 1500
+                title: '¡Bienvenido a la comunidad de Mikasa Nueva!',
+                showConfirmButton: true,
             });
-            cleanForm();
-            navigate('/sesion');
+            dispatch(login({ email: email.key, password: password.key }));
         })
         .catch(() => {
             Swal.fire({
@@ -96,7 +94,7 @@ export default function UserCreate(){
                 title: 'Oops...',
                 text: 'Oops, algo no salió bien. Por favor intenta nuevamente.'
             })
-            navigate('/signup')
+            navigate('/registro')
         })
     }
 

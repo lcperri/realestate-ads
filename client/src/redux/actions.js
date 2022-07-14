@@ -226,8 +226,7 @@ export function deleteProp(headers, id){
 export function createUser(data) {
   return async function (dispatch) {
     dispatch({ type: LOADING });
-    const resp = await axios.post(`${url}/user`, data);
-    return dispatch({ type: USER, payload: resp.data });
+    return await axios.post(`${url}/user`, data);
   };
 }
 
