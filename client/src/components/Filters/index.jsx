@@ -162,19 +162,20 @@ export default function Filter() {
             onChange={(e) => handleMax(e)}
           >
             <option value="">Sin Limite</option>
-            <option value="400">$400</option>
-            <option value="600">$600</option>
-            <option value="800">$800</option>
-            <option value="1000">$1,000</option>
-            <option value="1500">$1,500</option>
-            <option value="2000">$2,000</option>
-            <option value="2500">$2,500</option>
-            <option value="3000">$3,000</option>
-            <option value="3500">$3,500</option>
-            <option value="4000">$4,000</option>
-            <option value="5000">$5,000</option>
-            <option value="7000">$7,000</option>
-            <option value="10000">$10,000</option>
+            <option value="400">hasta $400</option>
+            <option value="600">hasta $600</option>
+            <option value="800">hasta $800</option>
+            <option value="1000">hasta $1,000</option>
+            <option value="2500">hasta $2,500</option>
+            <option value="3500">hasta $3,500</option>
+            <option value="5500">hasta $5,500</option>
+            <option value="7500">hasta $7,500</option>
+            <option value="10000">hasta $10,000</option>
+            <option value="20000">hasta $20,000</option>
+            <option value="40000">hasta $40,000</option>
+            <option value="90000">hasta $90,000</option>
+            <option value="250000">hasta $250,000</option>
+            <option value="1000000">hasta $1000,000</option>
           </Select>
         </Label>
         <Label>

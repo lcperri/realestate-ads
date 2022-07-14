@@ -21,18 +21,11 @@ const Home = () => {
   }, []);
 
   return (
-    <div>
-      <div className={styles.homeWrapper}>
-        <div>
-          <Filter />
-        </div>
-
-        <DivContainer home={true} className="home">
-          <CardsContainer>
-            <Cards />
-          </CardsContainer>
-        </DivContainer>
-      </div>
+    <div className={styles.homeWrapper}>
+      <Filter />
+      <DivContainer home={true} className="home">
+        <Cards />
+      </DivContainer>
     </div>
   );
 };

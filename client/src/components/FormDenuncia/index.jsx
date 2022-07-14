@@ -17,7 +17,8 @@ export default function FormDenuncia (){
     const dispatch = useDispatch();
     const {id} = useParams();
     const navigate = useNavigate();
-    
+    const headers = LoginController()
+
     const handleSub = (e) => {
         e.preventDefault();
         if(!reason ){
