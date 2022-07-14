@@ -12,8 +12,12 @@ export const DivColumn = styled.div`
     padding: ${props => props.padding};
     margin: ${props => props.margin};
     gap: ${props => props.gap};
+    top: ${props => props.top};
+    left: ${props => props.left};
     color: ${props => props.color};
+    position: ${props => props.position};
     padding: ${props => props.padding};
+    height: ${props => props.height || '100vh'};
     width: ${props => props.width || '100%'};
 
 
