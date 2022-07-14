@@ -87,8 +87,8 @@ export default function UserCreate(){
                 showConfirmButton: false,
                 timer: 1500
             });
-            navigate('/home')
             cleanForm();
+            navigate('/home')
         })
         .catch(() => {
             Swal.fire({
