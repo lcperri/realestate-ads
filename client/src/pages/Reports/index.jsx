@@ -10,7 +10,8 @@ import { DivColumn } from "../../styledComponents/DivColumn";
 import CardsContainer from "../../styledComponents/CardsContainer";
 import { deleteUser } from './../../redux/actions';
 import Button from './../../styledComponents/Button';
-import Swal from "sweetalert2";
+import BackButton from "../../dumb/BackButton";
+
 
 export default function Reports() {
   const dispatch = useDispatch();
@@ -27,17 +28,19 @@ export default function Reports() {
   };
 
   return (
-    <DivColumn >
-      <CardsContainer margin='140px auto 40px auto' bgColor="#fff">
-      { flags && flags.map((report) => {
-         return (
+    <DivColumn padding='120px 0 0 0' gap='30px'>
+      <h1>DENUNCIAS</h1>
+      <CardsContainer className="denuncias">
+        {flags && flags.map((report) => {
+          return (
             <CardDenuncia
-            reason={report.reason}
+              reason={report.reason}
             />
-         )
+          )
         })}
-    </CardsContainer>
-    <Button onClick={(e) => {handleElim(e)}}>Eliminar usuario</Button>
+      </CardsContainer>
+      <Button onClick={(e) => { handleElim(e) }}>Eliminar usuario</Button>
+      <BackButton position='absolute' top='230px' left='150px' />
     </DivColumn>
   );
 }
