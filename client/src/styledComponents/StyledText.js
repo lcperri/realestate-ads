@@ -14,7 +14,6 @@ const StyledText = styled.div`
         color: #fff;
         padding: 0px 4px 0px 4px;
         margin-right: 4px;
-        margin-top:  32rem;
     }
 
     &.statusDetail {

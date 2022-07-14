@@ -12,7 +12,7 @@ export default function UserCard({
   id,
   name,
   lastName,
-  birthday,
+  rango,
   email,
   dni,
   telephone,
@@ -46,10 +46,16 @@ export default function UserCard({
       </div>
 
       <div>
-        {/* <h3 className={styles.datos}>Reportado</h3> */}
-        {flags.length > 1 && (
-          <h3 className={styles.datos}>{UserCard.flags.length} DENUNCIAS</h3>
+        {flags && flags?.length === 1 && (
+          <h3 className={styles.datos}>{flags.length} DENUNCIA</h3>
         )}
+        {flags && flags?.length > 1 && (
+          <h3 className={styles.datos}>{flags.length} DENUNCIAS</h3>
+        )}
+      </div>
+      <div>
+      <h3 className={styles.datos}>Rango: </h3>
+        <h2 className={styles.name}>{rango.toUpperCase()}</h2>
       </div>
       <div>
         <h3 className={styles.datos}>Nombre: </h3>

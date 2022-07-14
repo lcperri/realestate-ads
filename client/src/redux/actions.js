@@ -445,11 +445,21 @@ export function addComments (data, idProperty, headers) {
   };
 }
 
-export function addDenuncia (data, idProperty, headers) {
+export function addDenuncia (data, idProperty) {
   return async function (dispatch){
-    return await axios.post(`${url}/flag/${idProperty}`, data, headers);
+    return await axios.post(`${url}/flag/${idProperty}`, data);
         
   }
+}
+
+export function getReports (id, headers) {
+  return async function (dispatch) {
+    const reports = await axios.get(`${url}/flag/${id}`, headers);
+    return dispatch({
+      type: DENUNCIA,
+      payload: reports.data
+    });
+  };
 }
 
 // export function uploadImages (data) {

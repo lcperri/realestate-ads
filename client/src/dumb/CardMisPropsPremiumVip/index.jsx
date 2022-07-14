@@ -12,6 +12,8 @@ import capitalize from "./../../functions/capitalize";
 import Shopping from "../Icons/Shopping";
 import AddToCart from "../../components/AddToCart";
 import { getUserById } from "../../redux/actions";
+import house from '../../assets/house.png'
+import apartment from '../../assets/apartment.png'
 
 export default function CardMisPropPremiumVip({
   user,
@@ -29,7 +31,7 @@ export default function CardMisPropPremiumVip({
   return (
     <div className={styles.contenedorMP}>
       <div className={styles.divFotos}>
-        <img src={pictures} alt={"not found"} className={styles.foto} />
+        <img src={pictures || (type.toLowerCase().includes('casa') ? house : apartment) } className={styles.foto} />
       </div>
       <div className={styles.divCaracteristicas}>
         <div>
