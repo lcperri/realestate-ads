@@ -17,7 +17,7 @@ export const DivColumn = styled.div`
     color: ${props => props.color};
     position: ${props => props.position};
     padding: ${props => props.padding};
-    height: ${props => props.height || '100vh'};
+    height: ${props => props.height};
     width: ${props => props.width || '100%'};
 
 
