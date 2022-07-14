@@ -1,21 +1,20 @@
-
-.contenedor{
-  position: relative;
-  background-color: rgba(15, 129, 178, 0.434);
-  border-radius: 5px;  
-  width: 15%;
-  height: 100px;
+.contenedor {
+  background: rgba(145, 168, 191, 0.405);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  /* width: 15%; */
+  height: 140px;
   margin-top: 20px;
 }
 
-.datos{
-    margin-top: 15px;
-    margin-left: 10px;
-    color: aliceblue;
+.datos {
+  margin-top: 15px;
+  margin-left: 10px;
+  color: rgb(255, 70, 70);
 }
 
-.data{
-    margin-top: 20px;
-    margin-left: 10px;
-    color: aliceblue;
+.data {
+  margin-top: 20px;
+  margin-left: 10px;
+  color: #333;
 }

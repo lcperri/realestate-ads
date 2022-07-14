@@ -6,7 +6,7 @@ export default function CardDenuncia({ reason }) {
   return (
       <div className={styles.contenedor}>
         <div>
-          <h2 className={styles.datos}>Razon: </h2>
+          <h2 className={styles.datos}>Razón: </h2>
           <h2 className={styles.data}>{reason}</h2>
         </div>
       </div>
