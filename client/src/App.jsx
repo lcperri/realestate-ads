@@ -27,6 +27,7 @@ import Cart from "./pages/Cart/Cart";
 import Purchase from './components/Purchase/Purchase';
 import FormDenuncia from "./components/FormDenuncia";
 import Reports from "./pages/Reports";
+import CardDenuncia from "./dumb/CardDenuncia";
 
 const App = () => {
   const dispatch = useDispatch();
