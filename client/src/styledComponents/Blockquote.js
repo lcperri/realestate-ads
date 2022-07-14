@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const Blockquote = styled.blockquote`
-   margin-top: 33rem;
+   margin-top: 31.8rem;
 `
 
 export default Blockquote
